@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B431B3615F400E996F8 /* AppDelegate.swift */; };
-		DB940B461B3615F400E996F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B451B3615F400E996F8 /* ViewController.swift */; };
+		DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B451B3615F400E996F8 /* MainViewController.swift */; };
 		DB940B491B3615F400E996F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB940B471B3615F400E996F8 /* Main.storyboard */; };
 		DB940B4B1B3615F400E996F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB940B4A1B3615F400E996F8 /* Images.xcassets */; };
 		DB940B4E1B3615F400E996F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB940B4C1B3615F400E996F8 /* LaunchScreen.xib */; };
 		DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B591B3615F400E996F8 /* Grade_ConverterTests.swift */; };
+		DB940B651B361C3B00E996F8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B631B361C3B00E996F8 /* MainTableViewCell.swift */; };
+		DB940B661B361C3B00E996F8 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +31,15 @@
 		DB940B3E1B3615F400E996F8 /* Grade Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B421B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B431B3615F400E996F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DB940B451B3615F400E996F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DB940B451B3615F400E996F8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DB940B481B3615F400E996F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB940B4A1B3615F400E996F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DB940B4D1B3615F400E996F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		DB940B531B3615F400E996F8 /* Grade ConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grade ConverterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B581B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B591B3615F400E996F8 /* Grade_ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade_ConverterTests.swift; sourceTree = "<group>"; };
+		DB940B631B361C3B00E996F8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				DB940B431B3615F400E996F8 /* AppDelegate.swift */,
-				DB940B451B3615F400E996F8 /* ViewController.swift */,
+				DB940B451B3615F400E996F8 /* MainViewController.swift */,
 				DB940B471B3615F400E996F8 /* Main.storyboard */,
 				DB940B4A1B3615F400E996F8 /* Images.xcassets */,
 				DB940B4C1B3615F400E996F8 /* LaunchScreen.xib */,
 				DB940B411B3615F400E996F8 /* Supporting Files */,
+				DB940B631B361C3B00E996F8 /* MainTableViewCell.swift */,
+				DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */,
 			);
 			path = "Grade Converter";
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 			files = (
 				DB940B491B3615F400E996F8 /* Main.storyboard in Resources */,
 				DB940B4E1B3615F400E996F8 /* LaunchScreen.xib in Resources */,
+				DB940B661B361C3B00E996F8 /* MainTableViewCell.xib in Resources */,
 				DB940B4B1B3615F400E996F8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +219,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB940B461B3615F400E996F8 /* ViewController.swift in Sources */,
+				DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */,
+				DB940B651B361C3B00E996F8 /* MainTableViewCell.swift in Sources */,
 				DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +417,7 @@
 				DB940B5F1B3615F400E996F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB940B601B3615F400E996F8 /* Build configuration list for PBXNativeTarget "Grade ConverterTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				DB940B621B3615F400E996F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
