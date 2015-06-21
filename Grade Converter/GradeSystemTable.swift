@@ -21,6 +21,18 @@ struct GradeSystem {
     mutating func addGrade(grade: String) {
         grades.append(grade)
     }
+
+    func gradeAtIndex(index: Int) -> String {
+        var convertedIndex = index
+        if convertedIndex < 0 {
+            convertedIndex = 0
+        }
+        if convertedIndex >= grades.count {
+            convertedIndex = grades.count - 1
+        }
+
+        return grades[convertedIndex]
+    }
 }
 
 struct GradeSystemTable {

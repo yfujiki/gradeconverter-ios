@@ -53,4 +53,11 @@ class GradeSystemTableTest: XCTestCase {
         XCTAssertTrue(nil == table.gradeSystemForName("Hueco", category: "Sports"), "Returns nil for non existing combo.")
     }
 
+    func testGradeAtIndex() {
+        let table = GradeSystemTable()
+        let yosemiteGrade = table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
+
+        XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0), "Lowest grade should be 5.1")
+        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1), "Highest grade should be 5.15c") // TODO : that's a little bit weak
+    }
 }
