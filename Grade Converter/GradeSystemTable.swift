@@ -130,11 +130,12 @@ struct GradeSystemTable {
 
             let names = lines[0].componentsSeparatedByString(",") as [String]
             let categories = lines[1].componentsSeparatedByString(",") as [String]
-            let locales = lines[2].componentsSeparatedByString(",") as [String]
+            let arrayOfLocales = lines[2].componentsSeparatedByString(",") as [String]
             let arrayOfGrades = lines[3..<lines.count]
 
             for var i = 0; i < names.count; i++ {
-                let gradeSystem = GradeSystem(name: names[i], category: categories[i], locales: [locales[i]], grades: [String]())
+                let locales = arrayOfLocales[i].componentsSeparatedByString(" ")
+                let gradeSystem = GradeSystem(name: names[i], category: categories[i], locales: locales, grades: [String]())
                 tableBody[gradeSystem.key] = gradeSystem
             }
 
@@ -154,13 +155,25 @@ struct GradeSystemTable {
     }
 
     func names() -> [String] {
-        return map(tableBody, { (key: String, gradeSystem: GradeSystem) -> String in
-            gradeSystem.name
-        }).sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending}
+        return map(tableBody) { $1.name }.sorted { $0.localizedCaseInsensitiveCompare($1) == .OrderedAscending}
     }
 
     func gradeSystemForName(name:String, category:String) -> GradeSystem? {
         let key = "\(name)-\(category)"
         return tableBody[key]
+    }
+
+    func gradeSystemsForLocale(locale:String) -> [GradeSystem] {
+        return reduce(tableBody, [GradeSystem]()) { (tmp: [GradeSystem], dict:(name: String, gradeSystem: GradeSystem)) -> [GradeSystem] in
+            var result = tmp
+
+            if contains(dict.gradeSystem.locales, locale) {
+                result.append(dict.gradeSystem)
+            }
+
+            return result
+        }.sorted({ (a:GradeSystem, b:GradeSystem) -> Bool in
+            return a.name.caseInsensitiveCompare(b.name) == .OrderedAscending
+        })
     }
 }

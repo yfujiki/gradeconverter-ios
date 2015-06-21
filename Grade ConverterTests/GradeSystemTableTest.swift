@@ -82,4 +82,19 @@ class GradeSystemTableTest: XCTestCase {
         XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 25]), "Lower grade of V3-V4 should be V3.")
         XCTAssertEqual("V5", huecoGrade.higherGradeFromIndexes([21, 25]), "Higher grade of V3-V4 should be V4.")
     }
+
+    func testGradeSystemsForLocale() {
+        let usLocale = "en-US"
+
+        let gradeSystemsForUS = table.gradeSystemsForLocale(usLocale)
+        XCTAssertEqual(2, gradeSystemsForUS.count, "US locale should have YDS and Hueco.")
+        XCTAssertEqual(gradeSystemsForUS[0].name, "Hueco", "First grade system for US should be Hueco.")
+        XCTAssertEqual(gradeSystemsForUS[1].name, "Yosemite Decimal System", "Second grade system for US should be YDS.")
+
+        let jpLocale = "ja-JP"
+        let gradeSystemsForJapan = table.gradeSystemsForLocale(jpLocale)
+        XCTAssertEqual(2, gradeSystemsForJapan.count, "Japan locale should have Toyota and Ogawayama.")
+        XCTAssertEqual(gradeSystemsForJapan[0].name, "Ogawayama", "First grade system for Japan should be Ogawayama.")
+        XCTAssertEqual(gradeSystemsForJapan[1].name, "Toyota", "Second grade system for Japan should be Toyota.")
+    }
 }
