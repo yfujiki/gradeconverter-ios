@@ -9,10 +9,10 @@
 import Foundation
 
 struct GradeSystem {
-    private var name: String
-    private var category: String
-    private var locales: [String]
-    private var grades: [String] = [String]()
+    var name: String
+    var category: String
+    var locales: [String]
+    var grades: [String] = [String]()
 
     var key: String {
         return "\(name)-\(category)"
@@ -67,5 +67,10 @@ struct GradingTable {
         return map(gradeTable, { (key: String, system: GradeSystem) -> String in
             system.name
         }).sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending}
+    }
+
+    func gradeSystemForName(name:String, category:String) -> GradeSystem? {
+        let key = "\(name)-\(category)"
+        return gradeTable[key]
     }
 }

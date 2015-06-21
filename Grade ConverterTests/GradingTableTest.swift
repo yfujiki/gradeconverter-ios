@@ -40,4 +40,17 @@ class GradingTableTest: XCTestCase {
         XCTAssertEqual("UIAA", table.names()[14], "System name should be correct.")
         XCTAssertEqual("Yosemite Decimal System", table.names()[15], "System name should be correct.")
     }
+
+    func testGradeSystemForNameCategory() {
+        let table = GradingTable()
+
+        XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Sports")!.name, "Name should match")
+        XCTAssertEqual("Sports", table.gradeSystemForName("Brazil", category: "Sports")!.category, "Category should match")
+        XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Boulder")!.name, "Name should match")
+        XCTAssertEqual("Boulder", table.gradeSystemForName("Brazil", category: "Boulder")!.category, "Category should match")
+        XCTAssertEqual("Yosemite Decimal System", table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!.name, "Name should match")
+        XCTAssertEqual("Sports", table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!.category, "Category should match")
+        XCTAssertTrue(nil == table.gradeSystemForName("Hueco", category: "Sports"), "Returns nil for non existing combo.")
+    }
+
 }
