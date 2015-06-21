@@ -22,7 +22,7 @@ struct GradeSystem {
         grades.append(grade)
     }
 
-    func gradeAtIndex(index: Int) -> String {
+    func gradeAtIndex(index: Int, higher: Bool) -> String {
         var convertedIndex = index
         if convertedIndex < 0 {
             convertedIndex = 0
@@ -31,7 +31,29 @@ struct GradeSystem {
             convertedIndex = grades.count - 1
         }
 
-        return grades[convertedIndex]
+        var grade = grades[convertedIndex]
+
+        if count(grade) == 0 {
+            if higher {
+                for var i=index; i<grades.count; i++ {
+                    if count(grades[i]) > 0 {
+                        grade = grades[i]
+                        break
+                    }
+                }
+            } else {
+                for var i=index; i>=0; i-- {
+                    if count(grades[i]) > 0 {
+                        grade = grades[i]
+                        break
+                    }
+                }
+            }
+        }
+
+        assert(count(grade) > 0, "Grade should have something at this point.")
+
+        return grade
     }
 
     func indexesForGrade(grade: String) -> [Int] {
@@ -43,6 +65,51 @@ struct GradeSystem {
         }
 
         return indexes
+    }
+
+    func higherGradeFromIndexes(indexes:[Int]) -> String {
+        return nextGradeFromIndexes(indexes, higher: true)
+    }
+
+    func lowerGradeFromIndexes(indexes:[Int]) -> String {
+        return nextGradeFromIndexes(indexes, higher: false)
+    }
+
+    private func nextGradeFromIndexes(indexes:[Int], higher: Bool) -> String {
+        let sortedIndexes = indexes.sorted { $0 <= $1 }
+
+        let lowGrade = gradeAtIndex(sortedIndexes[0], higher:false)
+        let highGrade = gradeAtIndex(sortedIndexes[indexes.count - 1], higher:true)
+
+        var nextGrade: String = ""
+
+        if lowGrade == highGrade {
+            if higher {
+                for var i=sortedIndexes[indexes.count - 1]; i<grades.count; i++ {
+                    if count(grades[i]) > 0 && (grades[i] != highGrade || i == grades.count - 1) {
+                        nextGrade = grades[i]
+                        break
+                    }
+                }
+            } else {
+                for var i=sortedIndexes[0]; i>=0; i-- {
+                    if count(grades[i]) > 0 && (grades[i] != lowGrade || i == 0) {
+                        nextGrade = grades[i]
+                        break
+                    }
+                }
+            }
+        } else {
+            if higher {
+                nextGrade = highGrade
+            } else {
+                nextGrade = lowGrade
+            }
+        }
+
+        assert(count(nextGrade) > 0, "Next grade should have some value")
+
+        return nextGrade
     }
 }
 

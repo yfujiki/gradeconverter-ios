@@ -56,8 +56,8 @@ class GradeSystemTableTest: XCTestCase {
     func testGradeAtIndex() {
         let yosemiteGrade = table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
 
-        XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0), "Lowest grade should be 5.1.")
-        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1), "Highest grade should be 5.15c.") // TODO : that's a little bit weak
+        XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0, higher: false), "Lowest grade should be 5.1.")
+        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1, higher: true), "Highest grade should be 5.15c.") // TODO : that's a little bit weak
     }
 
     func textIndexesForGrade() {
@@ -65,6 +65,21 @@ class GradeSystemTableTest: XCTestCase {
 
         XCTAssertEqual([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], huecoGrade.indexesForGrade("VB"), "VB should cover wide range.")
         XCTAssertEqual([29, 30], huecoGrade.indexesForGrade("V6"), "V6 should cover 2 slots.")
+    }
 
+    func testLowerHigherGradeFromIndexes() {
+        let huecoGrade = table.gradeSystemForName("Hueco", category: "Boulder")!
+
+        XCTAssertEqual("VB", huecoGrade.lowerGradeFromIndexes([15, 16]), "Lower grade of V0 should be VB.")
+        XCTAssertEqual("V0+", huecoGrade.higherGradeFromIndexes([15, 16]), "Higher grade of V0 should be V0+.")
+
+        XCTAssertEqual("V0", huecoGrade.lowerGradeFromIndexes([15, 19]), "Lower grade of V0-V1 should be V1.")
+        XCTAssertEqual("V1", huecoGrade.higherGradeFromIndexes([15, 19]), "Higher grade of V0-V1 should be V1.")
+
+        XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 24]), "Lower grade of V3-V4 should be V3.")
+        XCTAssertEqual("V4", huecoGrade.higherGradeFromIndexes([21, 24]), "Higher grade of V3-V4 should be V4.")
+
+        XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 25]), "Lower grade of V3-V4 should be V3.")
+        XCTAssertEqual("V5", huecoGrade.higherGradeFromIndexes([21, 25]), "Higher grade of V3-V4 should be V4.")
     }
 }
