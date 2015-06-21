@@ -1,5 +1,5 @@
 //
-//  GradingTableTest.swift
+//  GradeSystemTableTest.swift
 //  Grade Converter
 //
 //  Created by Yuichi Fujiki on 6/20/15.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class GradingTableTest: XCTestCase {
+class GradeSystemTableTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -20,7 +20,7 @@ class GradingTableTest: XCTestCase {
     }
 
     func testNames() {
-        let table = GradingTable()
+        let table = GradeSystemTable()
 
         XCTAssertEqual(16, table.names().count, "Total number of table columns should be 16.")
         XCTAssertEqual("Brazil", table.names()[0], "System name should be correct.")
@@ -42,7 +42,7 @@ class GradingTableTest: XCTestCase {
     }
 
     func testGradeSystemForNameCategory() {
-        let table = GradingTable()
+        let table = GradeSystemTable()
 
         XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Sports")!.name, "Name should match")
         XCTAssertEqual("Sports", table.gradeSystemForName("Brazil", category: "Sports")!.category, "Category should match")

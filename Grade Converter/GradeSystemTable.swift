@@ -1,5 +1,5 @@
 //
-//  GradingTable.swift
+//  GradeSystemTable.swift
 //  Grade Converter
 //
 //  Created by Yuichi Fujiki on 6/20/15.
@@ -23,10 +23,10 @@ struct GradeSystem {
     }
 }
 
-struct GradingTable {
+struct GradeSystemTable {
 
     private static var kFileName: String {
-        return NSBundle.mainBundle().pathForResource("GradingTable", ofType: "csv")!
+        return NSBundle.mainBundle().pathForResource("GradeSystemTable", ofType: "csv")!
     }
 
     // Dictionary where key => grade system name, value => array of grade number
