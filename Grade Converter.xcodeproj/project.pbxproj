@@ -17,6 +17,8 @@
 		DB940B661B361C3B00E996F8 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */; };
 		DB940B691B364F3E00E996F8 /* GradingTable.csv in Resources */ = {isa = PBXBuildFile; fileRef = DB940B681B364F3E00E996F8 /* GradingTable.csv */; };
 		DB940B6B1B364F6C00E996F8 /* GradingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6A1B364F6C00E996F8 /* GradingTable.swift */; };
+		DB940B6D1B3659E200E996F8 /* GradingTableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6C1B3659E200E996F8 /* GradingTableTest.swift */; };
+		DB940B6E1B365A3900E996F8 /* GradingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6A1B364F6C00E996F8 /* GradingTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 		DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 		DB940B681B364F3E00E996F8 /* GradingTable.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GradingTable.csv; sourceTree = "<group>"; };
 		DB940B6A1B364F6C00E996F8 /* GradingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradingTable.swift; sourceTree = "<group>"; };
+		DB940B6C1B3659E200E996F8 /* GradingTableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradingTableTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,7 @@
 		DB940B561B3615F400E996F8 /* Grade ConverterTests */ = {
 			isa = PBXGroup;
 			children = (
+				DB940B6C1B3659E200E996F8 /* GradingTableTest.swift */,
 				DB940B591B3615F400E996F8 /* Grade_ConverterTests.swift */,
 				DB940B571B3615F400E996F8 /* Supporting Files */,
 			);
@@ -246,7 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB940B6E1B365A3900E996F8 /* GradingTable.swift in Sources */,
 				DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */,
+				DB940B6D1B3659E200E996F8 /* GradingTableTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
