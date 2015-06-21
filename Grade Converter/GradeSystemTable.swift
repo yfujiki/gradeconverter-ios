@@ -33,6 +33,17 @@ struct GradeSystem {
 
         return grades[convertedIndex]
     }
+
+    func indexesForGrade(grade: String) -> [Int] {
+        var indexes = [Int]()
+        for var i=0; i<grades.count; i++ {
+            if grades[i] == grade {
+                indexes.append(i)
+            }
+        }
+
+        return indexes
+    }
 }
 
 struct GradeSystemTable {

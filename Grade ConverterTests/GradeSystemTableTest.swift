@@ -11,7 +11,11 @@ import XCTest
 
 class GradeSystemTableTest: XCTestCase {
 
+    var table: GradeSystemTable!
+
     override func setUp() {
+        table = GradeSystemTable()
+
         super.setUp()
     }
 
@@ -20,8 +24,6 @@ class GradeSystemTableTest: XCTestCase {
     }
 
     func testNames() {
-        let table = GradeSystemTable()
-
         XCTAssertEqual(16, table.names().count, "Total number of table columns should be 16.")
         XCTAssertEqual("Brazil", table.names()[0], "System name should be correct.")
         XCTAssertEqual("Brazil", table.names()[1], "System name should be correct.")
@@ -42,22 +44,27 @@ class GradeSystemTableTest: XCTestCase {
     }
 
     func testGradeSystemForNameCategory() {
-        let table = GradeSystemTable()
-
-        XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Sports")!.name, "Name should match")
-        XCTAssertEqual("Sports", table.gradeSystemForName("Brazil", category: "Sports")!.category, "Category should match")
-        XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Boulder")!.name, "Name should match")
-        XCTAssertEqual("Boulder", table.gradeSystemForName("Brazil", category: "Boulder")!.category, "Category should match")
-        XCTAssertEqual("Yosemite Decimal System", table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!.name, "Name should match")
-        XCTAssertEqual("Sports", table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!.category, "Category should match")
+        XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Sports")!.name, "Name should match.")
+        XCTAssertEqual("Sports", table.gradeSystemForName("Brazil", category: "Sports")!.category, "Category should match.")
+        XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Boulder")!.name, "Name should match.")
+        XCTAssertEqual("Boulder", table.gradeSystemForName("Brazil", category: "Boulder")!.category, "Category should match.")
+        XCTAssertEqual("Yosemite Decimal System", table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!.name, "Name should match.")
+        XCTAssertEqual("Sports", table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!.category, "Category should match.")
         XCTAssertTrue(nil == table.gradeSystemForName("Hueco", category: "Sports"), "Returns nil for non existing combo.")
     }
 
     func testGradeAtIndex() {
-        let table = GradeSystemTable()
         let yosemiteGrade = table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
 
-        XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0), "Lowest grade should be 5.1")
-        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1), "Highest grade should be 5.15c") // TODO : that's a little bit weak
+        XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0), "Lowest grade should be 5.1.")
+        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1), "Highest grade should be 5.15c.") // TODO : that's a little bit weak
+    }
+
+    func textIndexesForGrade() {
+        let huecoGrade = table.gradeSystemForName("Hueco", category: "Boulder")!
+
+        XCTAssertEqual([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], huecoGrade.indexesForGrade("VB"), "VB should cover wide range.")
+        XCTAssertEqual([29, 30], huecoGrade.indexesForGrade("V6"), "V6 should cover 2 slots.")
+
     }
 }
