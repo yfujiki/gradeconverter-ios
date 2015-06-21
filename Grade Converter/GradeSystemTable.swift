@@ -30,7 +30,7 @@ struct GradeSystemTable {
     }
 
     // Dictionary where key => grade system name, value => array of grade number
-    private var gradeTable: [String: GradeSystem] = [:]
+    private var tableBody: [String: GradeSystem] = [:]
 
     init() {
         var error: NSError?
@@ -41,19 +41,19 @@ struct GradeSystemTable {
             let names = lines[0].componentsSeparatedByString(",") as [String]
             let categories = lines[1].componentsSeparatedByString(",") as [String]
             let locales = lines[2].componentsSeparatedByString(",") as [String]
-            let grades = lines[3..<lines.count]
+            let arrayOfGrades = lines[3..<lines.count]
 
             for var i = 0; i < names.count; i++ {
-                let system = GradeSystem(name: names[i], category: categories[i], locales: [locales[i]], grades: [String]())
-                gradeTable[system.key] = system
+                let gradeSystem = GradeSystem(name: names[i], category: categories[i], locales: [locales[i]], grades: [String]())
+                tableBody[gradeSystem.key] = gradeSystem
             }
 
-            for grade in grades {
-                let gradesOfSameLevel = grade.componentsSeparatedByString(",") as [String]
+            for grades in arrayOfGrades {
+                let gradesOfSameLevel = grades.componentsSeparatedByString(",") as [String]
 
                 for var i=0; i<names.count; i++ {
                     let key = "\(names[i])-\(categories[i])"
-                    gradeTable[key]?.addGrade(gradesOfSameLevel[i])
+                    tableBody[key]?.addGrade(gradesOfSameLevel[i])
                 }
             }
 
@@ -64,13 +64,13 @@ struct GradeSystemTable {
     }
 
     func names() -> [String] {
-        return map(gradeTable, { (key: String, system: GradeSystem) -> String in
-            system.name
+        return map(tableBody, { (key: String, gradeSystem: GradeSystem) -> String in
+            gradeSystem.name
         }).sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending}
     }
 
     func gradeSystemForName(name:String, category:String) -> GradeSystem? {
         let key = "\(name)-\(category)"
-        return gradeTable[key]
+        return tableBody[key]
     }
 }
