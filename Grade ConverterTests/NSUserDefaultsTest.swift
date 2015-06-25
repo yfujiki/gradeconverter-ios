@@ -41,13 +41,17 @@ class NSUserDefaultsTest: XCTestCase {
     }
 
     func testSelectedGradeSystems() {
-        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystems.count, NSUserDefaults.standardUserDefaults().selectedGradeSystems().count, "Initially, selected grade systems should be empty.")
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystems, NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "Initially, selected grade systems should be default.")
 
-        let gradeSystem = GradeSystem(name: "Yosemite Decimal Scale", category:"Sports", locales: [], grades: [])
+        let gradeSystem1 = GradeSystem(name: "Yosemite Decimal System", category:"Sports", locales: [], grades: [])
+        NSUserDefaults.standardUserDefaults().setSelectedGradeSystems([gradeSystem1])
+        XCTAssertEqual([gradeSystem1], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper additions")
 
-        NSUserDefaults.standardUserDefaults().setSelectedGradeSystems([gradeSystem])
+        let gradeSystem2 = GradeSystem(name: "Hueco", category:"Boulder", locales: [], grades: [])
+        NSUserDefaults.standardUserDefaults().addSelectedGradeSystem(gradeSystem2)
+        XCTAssertEqual([gradeSystem1, gradeSystem2], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper additions")
 
-//        TODO : Check
-//        XCTAssertEqual([gradeSystem], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper additions")
+        NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(gradeSystem1)
+        XCTAssertEqual([gradeSystem2], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper removals")
     }
 }
