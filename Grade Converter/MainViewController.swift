@@ -67,7 +67,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedSystems.count {
-            NSLog("Should launch add screen.")
+            performSegueWithIdentifier("PresentEdit", sender: self)
         }
 
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

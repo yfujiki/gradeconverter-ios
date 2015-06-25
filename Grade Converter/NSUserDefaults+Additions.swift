@@ -42,6 +42,20 @@ extension NSUserDefaults {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
 
+    func addSelectedGradeSystem(gradeSystem:GradeSystem) {
+        var gradeSystems = selectedGradeSystems()
+        gradeSystems.append(gradeSystem)
+        setSelectedGradeSystems(gradeSystems)
+    }
+
+    func removeSelectedGradeSystem(gradeSystemToRemove: GradeSystem) {
+        var gradeSystems = selectedGradeSystems()
+        gradeSystems = gradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
+            return gradeSystem != gradeSystemToRemove
+        }
+        setSelectedGradeSystems(gradeSystems)
+    }
+
     func selectedGradeSystems() -> [GradeSystem] {
         let globalSystemTable = GradeSystemTable()
 

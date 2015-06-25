@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GradeSystem {
+struct GradeSystem : Equatable {
     var name: String
     var category: String
     var locales: [String]
@@ -124,6 +124,10 @@ struct GradeSystem {
 
         return nextGrade
     }
+}
+
+func == (this: GradeSystem, that: GradeSystem) -> Bool {
+    return this.name == that.name && this.category == that.category
 }
 
 struct GradeSystemTable {

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Ia-mP-QVi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Grade Converter-->
@@ -36,11 +37,56 @@
                     <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV"/>
                     <connections>
                         <outlet property="tableView" destination="4bq-5q-1dv" id="TeE-tp-z93"/>
+                        <segue destination="QGL-tc-auQ" kind="presentation" identifier="PresentEdit" id="xW9-e5-pld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117" y="387"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="mBP-ps-GOJ">
+            <objects>
+                <viewController id="2P1-b5-Pwc" customClass="EditViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kxH-sl-dmp"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lhi-kY-AHh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sDN-fM-NiZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-Ew-kLz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2P1-b5-Pwc" id="C2r-bP-3Ky"/>
+                                    <outlet property="delegate" destination="2P1-b5-Pwc" id="TOg-QN-tgp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leadingMargin" constant="-16" id="Di8-UJ-ha5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eeC-Ew-kLz" secondAttribute="trailing" constant="-16" id="UtP-k3-qls"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-64" id="sUF-V6-vSC"/>
+                            <constraint firstItem="Lhi-kY-AHh" firstAttribute="top" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="uWg-ba-ldh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UJA-uS-tjn">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="eiy-qG-uti">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="2P1-b5-Pwc" id="bLn-zC-kfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="eeC-Ew-kLz" id="ACZ-o2-Uv6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yrk-wV-eWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2607" y="402"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q7e-7g-va6">
@@ -59,6 +105,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYk-cT-eAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="305" y="1048"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ukd-qt-788">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QGL-tc-auQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kIn-YX-Slb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2P1-b5-Pwc" kind="relationship" relationship="rootViewController" id="VCX-WS-z0n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkq-PI-6tC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="402"/>
         </scene>
     </scenes>
 </document>
