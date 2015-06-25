@@ -13,18 +13,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-1E-7Qb">
-                        <rect key="frame" x="100.5" y="39.5" width="106.5" height="48"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-HI-ybK" userLabel="Card View">
+                        <rect key="frame" x="16" y="8" width="288" height="111.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-1E-7Qb">
+                                <rect key="frame" x="90" y="32" width="106.5" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="4Dp-1E-7Qb" secondAttribute="centerY" id="qhG-NO-mjr"/>
+                            <constraint firstAttribute="centerX" secondItem="4Dp-1E-7Qb" secondAttribute="centerX" constant="0.75" id="vum-NN-gzm"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="centerY" secondItem="4Dp-1E-7Qb" secondAttribute="centerY" constant="0.25" id="1lU-7v-YDD"/>
-                    <constraint firstAttribute="centerX" secondItem="4Dp-1E-7Qb" secondAttribute="centerX" constant="7" id="Aib-ld-Cys"/>
+                    <constraint firstItem="xHG-HI-ybK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="QUS-4g-aGo"/>
+                    <constraint firstAttribute="bottom" secondItem="xHG-HI-ybK" secondAttribute="bottom" constant="8" id="mJb-YO-WX8"/>
+                    <constraint firstItem="xHG-HI-ybK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="q3e-hh-dFI"/>
+                    <constraint firstAttribute="trailing" secondItem="xHG-HI-ybK" secondAttribute="trailing" constant="16" id="zef-wR-eeQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cardView" destination="xHG-HI-ybK" id="CTJ-n5-sQf"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

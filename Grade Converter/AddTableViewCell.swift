@@ -10,14 +10,11 @@ import UIKit
 
 class AddTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var cardView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        cardView.layer.cornerRadius = 10
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }    
 }
