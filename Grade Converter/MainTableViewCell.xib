@@ -13,27 +13,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyX-bS-Fpb">
-                        <rect key="frame" x="109" y="63" width="101.5" height="43"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
-                        <rect key="frame" x="111" y="28" width="98" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf0-lT-IGm" userLabel="CardView">
+                        <rect key="frame" x="16" y="8" width="288" height="111.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
+                                <rect key="frame" x="96" y="16" width="97.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyX-bS-Fpb">
+                                <rect key="frame" x="94" y="53" width="101.5" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" constant="-0.75" id="bob-QU-sZU"/>
+                            <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="29.5" id="ex8-72-eAi"/>
+                            <constraint firstAttribute="centerX" secondItem="GyX-bS-Fpb" secondAttribute="centerX" constant="-0.75" id="glM-eh-uLp"/>
+                            <constraint firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" constant="-18.75" id="xDI-mg-z86"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="centerX" secondItem="GyX-bS-Fpb" secondAttribute="centerX" id="Oz9-RO-1N5"/>
-                    <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" id="Z1W-8R-jyO"/>
-                    <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="25.25" id="jxd-Of-QcU"/>
-                    <constraint firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" constant="-21.25" id="qbk-Jx-GQ0"/>
+                    <constraint firstAttribute="bottom" secondItem="yf0-lT-IGm" secondAttribute="bottom" constant="8" id="Xqw-5k-IoN"/>
+                    <constraint firstItem="yf0-lT-IGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eZh-IA-rbM"/>
+                    <constraint firstAttribute="trailing" secondItem="yf0-lT-IGm" secondAttribute="trailing" constant="16" id="mb3-9x-jJd"/>
+                    <constraint firstItem="yf0-lT-IGm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xNg-A1-8BO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cardView" destination="yf0-lT-IGm" id="3jp-IQ-boo"/>
                 <outlet property="gradeLabel" destination="GyX-bS-Fpb" id="E96-tt-5Zi"/>
                 <outlet property="gradeNameLabel" destination="VQO-XN-1ce" id="Gsz-xu-D0I"/>
             </connections>

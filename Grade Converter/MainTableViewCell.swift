@@ -12,19 +12,15 @@ class MainTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabel: UILabel!
+    @IBOutlet private weak var cardView: UIView!
 
     var gradeSystem: GradeSystem?
     var indexes: [Int]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        cardView.layer.cornerRadius = 10
     }
 
     override func layoutSubviews() {
