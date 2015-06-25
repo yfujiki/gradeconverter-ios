@@ -15,7 +15,7 @@ class EditViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    private var kCellHeight: CGFloat = 128
+    private var kCellHeight: CGFloat = 96
 
     private let allGradeSystems = GradeSystemTable().gradeSystems()
     private var gradeSystems = [GradeSystem]()

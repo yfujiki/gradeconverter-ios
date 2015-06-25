@@ -63,6 +63,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row < selectedSystems.count {
             var cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
+            cell.backgroundColor = UIColor.clearColor()
 
             cell.gradeSystem = selectedSystems[indexPath.row]
             cell.indexes = NSUserDefaults.standardUserDefaults().currentIndexes()
@@ -70,6 +71,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return cell
         } else {
             var cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
+            cell.backgroundColor = UIColor.clearColor()
 
             return cell
         }

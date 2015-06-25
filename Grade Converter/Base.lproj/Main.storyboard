@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Ia-mP-QVi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Grade Converter-->
@@ -17,21 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4bq-5q-1dv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dRw-BD-8Nn">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4bq-5q-1dv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="59E-WK-Fn5"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="QCm-xp-Peu"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4bq-5q-1dv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="5OC-Wx-p4V"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4bq-5q-1dv" secondAttribute="bottom" id="DEe-nt-XOB"/>
                             <constraint firstItem="4bq-5q-1dv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aU0-sG-5E3"/>
+                            <constraint firstItem="dRw-BD-8Nn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fiU-gC-EY8"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dRw-BD-8Nn" secondAttribute="bottom" id="oB9-8f-XkL"/>
                             <constraint firstAttribute="trailing" secondItem="4bq-5q-1dv" secondAttribute="trailing" id="qj6-LT-ss9"/>
+                            <constraint firstItem="dRw-BD-8Nn" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="rwm-KR-ULY"/>
+                            <constraint firstAttribute="trailing" secondItem="dRw-BD-8Nn" secondAttribute="trailing" id="s2Z-Uk-IIy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV"/>
@@ -67,8 +73,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leadingMargin" constant="-16" id="Di8-UJ-ha5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eeC-Ew-kLz" secondAttribute="trailing" constant="-16" id="UtP-k3-qls"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="Di8-UJ-ha5"/>
+                            <constraint firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="UtP-k3-qls"/>
                             <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-64" id="sUF-V6-vSC"/>
                             <constraint firstItem="Lhi-kY-AHh" firstAttribute="top" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="uWg-ba-ldh"/>
                         </constraints>
@@ -125,4 +131,7 @@
             <point key="canvasLocation" x="1795" y="402"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="main_bg" width="1080" height="1920"/>
+    </resources>
 </document>
