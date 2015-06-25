@@ -19,6 +19,8 @@ let kNSUserDefaultsDefaultGradeSystems = [
     GradeSystemTable().gradeSystemForName("Hueco", category: "Boulder")!
 ] // TODO : depends on locales
 
+let kNSUserDefaultsSystemSelectionChangedNotification = "com.responsivebytes.gradeConverter.SystemSelectionChangedNotification"
+
 extension NSUserDefaults {
     func setCurrentIndexes(indexes: [Int]) {
         NSUserDefaults.standardUserDefaults().setObject(indexes, forKey: kNSUserDefaultsCurrentIndexes)
@@ -40,6 +42,8 @@ extension NSUserDefaults {
 
         NSUserDefaults.standardUserDefaults().setObject(systemKeys, forKey: kNSUserDefaultsSelectedGradeSystems)
         NSUserDefaults.standardUserDefaults().synchronize()
+
+        NSNotificationCenter.defaultCenter().postNotificationName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil)
     }
 
     func addSelectedGradeSystem(gradeSystem:GradeSystem) {

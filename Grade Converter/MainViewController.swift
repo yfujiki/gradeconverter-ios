@@ -12,18 +12,42 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet private weak var tableView: UITableView!
 
-    private var selectedSystems: [GradeSystem] = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
+    private var selectedSystems: [GradeSystem] = []
 
-    private var kMinimumCellHeight: CGFloat = 128
-    private var kMaximumCellHeight: CGFloat = 128
+    private var kMinimumCellHeight: CGFloat = 96
+    private var kMaximumCellHeight: CGFloat = 96
+
+    private var observers = [NSObjectProtocol]()
+
+    private func updateSelectedSystems() {
+        selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
+    }
+
+    deinit {
+        for observer in observers {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        updateSelectedSystems()
 
         kMaximumCellHeight = CGRectGetHeight(tableView.frame) / 3
 
         tableView.registerNib(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         tableView.registerNib(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
+
+        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.updateSelectedSystems()
+        })
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +95,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return indexPath.row < selectedSystems.count
+    }
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let systemToDelete = selectedSystems[indexPath.row]
+            NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
+
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.endUpdates()
+        }
     }
 }
 

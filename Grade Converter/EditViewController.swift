@@ -15,15 +15,21 @@ class EditViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    private let allGradeSystems = GradeSystemTable().gradeSystems()
-
-    private var gradeSystems: [GradeSystem] = []
-
     private var kCellHeight: CGFloat = 128
+
+    private let allGradeSystems = GradeSystemTable().gradeSystems()
+    private var gradeSystems = [GradeSystem]()
+    private var observers = [NSObjectProtocol]()
 
     private func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
             return !contains(NSUserDefaults.standardUserDefaults().selectedGradeSystems(), gradeSystem)
+        }
+    }
+
+    deinit {
+        for observer in observers {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
         }
     }
 
@@ -33,6 +39,10 @@ class EditViewController: UIViewController {
         updateGradeSystems()
 
         tableView.registerNib(UINib(nibName: "EditTableViewCell", bundle: nil), forCellReuseIdentifier: "EditTableViewCell")
+
+        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.updateGradeSystems()
+        })
     }
 
     // MARK:- UITableViewDataSource
@@ -60,10 +70,11 @@ class EditViewController: UIViewController {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let gradeSystem = gradeSystems[indexPath.row]
         NSUserDefaults.standardUserDefaults().addSelectedGradeSystem(gradeSystem)
-        updateGradeSystems()
+
+        tableView.beginUpdates()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        tableView.endUpdates()
 
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        tableView.reloadData()
     }
 }

@@ -44,7 +44,7 @@
             </objects>
             <point key="canvasLocation" x="1117" y="387"/>
         </scene>
-        <!--Edit View Controller-->
+        <!--Add Grade System-->
         <scene sceneID="mBP-ps-GOJ">
             <objects>
                 <viewController id="2P1-b5-Pwc" customClass="EditViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                             <constraint firstItem="Lhi-kY-AHh" firstAttribute="top" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="uWg-ba-ldh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UJA-uS-tjn">
+                    <navigationItem key="navigationItem" title="Add Grade System" id="UJA-uS-tjn">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="eiy-qG-uti">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="2P1-b5-Pwc" id="bLn-zC-kfG"/>

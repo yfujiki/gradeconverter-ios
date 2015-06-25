@@ -65,7 +65,7 @@ struct GradeSystem : Equatable {
         if lowGrade == highGrade {
             return lowGrade
         } else {
-            return "\(lowGrade) - \(highGrade)"
+            return "\(lowGrade)/\(highGrade)"
         }
     }
 
