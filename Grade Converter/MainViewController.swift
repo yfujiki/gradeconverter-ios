@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var imageView: UIImageView!
 
     private var selectedSystems: [GradeSystem] = []
 
@@ -18,6 +19,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var kMaximumCellHeight: CGFloat = 96
 
     private var observers = [NSObjectProtocol]()
+
+    lazy private var blurEffectView: UIVisualEffectView = {
+        let effect = UIBlurEffect(style: .Light)
+        var effectView = UIVisualEffectView(effect: effect)
+        effectView.frame = self.view.bounds
+
+        return effectView
+    }()
 
     private func updateSelectedSystems() {
         selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
@@ -42,6 +51,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
             self?.updateSelectedSystems()
         })
+
+        imageView.addSubview(blurEffectView)
     }
 
     override func viewWillAppear(animated: Bool) {

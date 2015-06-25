@@ -42,6 +42,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV"/>
                     <connections>
+                        <outlet property="imageView" destination="dRw-BD-8Nn" id="bZA-gv-mKl"/>
                         <outlet property="tableView" destination="4bq-5q-1dv" id="TeE-tp-z93"/>
                         <segue destination="QGL-tc-auQ" kind="presentation" identifier="PresentEdit" id="xW9-e5-pld"/>
                     </connections>
