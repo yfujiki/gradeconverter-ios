@@ -15,6 +15,8 @@
 		DB5DC3C31B3BAECF0016F707 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */; };
 		DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */; };
 		DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */; };
+		DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
+		DB5DC3CC1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
 		DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B431B3615F400E996F8 /* AppDelegate.swift */; };
 		DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B451B3615F400E996F8 /* MainViewController.swift */; };
 		DB940B491B3615F400E996F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB940B471B3615F400E996F8 /* Main.storyboard */; };
@@ -47,6 +49,7 @@
 		DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
 		DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
+		DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		DB940B3E1B3615F400E996F8 /* Grade Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B421B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B431B3615F400E996F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
 				DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */,
 				DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */,
+				DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */,
 			);
 			path = "Grade Converter";
 			sourceTree = "<group>";
@@ -271,6 +275,7 @@
 				DB940B651B361C3B00E996F8 /* MainTableViewCell.swift in Sources */,
 				DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */,
 				DB5DC3C31B3BAECF0016F707 /* EditViewController.swift in Sources */,
+				DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +288,7 @@
 				DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */,
 				DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */,
 				DB5DC3BB1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
+				DB5DC3CC1B3BE9230016F707 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@ class MainTableViewCell: UITableViewCell {
 
     var gradeSystem: GradeSystem?
     var indexes: [Int]?
+    var cardColor: UIColor?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,10 @@ class MainTableViewCell: UITableViewCell {
                 let grade = gradeSystem.gradeAtIndexes(indexes)
                 gradeLabel.text = grade
             }
+        }
+
+        if let cardColor = cardColor {
+            cardView.backgroundColor = cardColor
         }
     }
 }

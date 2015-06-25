@@ -79,6 +79,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.gradeSystem = selectedSystems[indexPath.row]
             cell.indexes = NSUserDefaults.standardUserDefaults().currentIndexes()
 
+            let colors = UIColor.myColors()
+            cell.cardColor = colors[indexPath.row % colors.count]
+            
             return cell
         } else {
             var cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
