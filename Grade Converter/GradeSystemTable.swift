@@ -56,6 +56,19 @@ struct GradeSystem {
         return grade
     }
 
+    func gradeAtIndexes(indexes: [Int]) -> String {
+        let sortedIndexes = indexes.sorted(<=)
+
+        let lowGrade = gradeAtIndex(sortedIndexes[0], higher: false)
+        let highGrade = gradeAtIndex(sortedIndexes[indexes.count - 1], higher: true)
+
+        if lowGrade == highGrade {
+            return lowGrade
+        } else {
+            return "\(lowGrade) - \(highGrade)"
+        }
+    }
+
     func indexesForGrade(grade: String) -> [Int] {
         var indexes = [Int]()
         for var i=0; i<grades.count; i++ {

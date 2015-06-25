@@ -60,6 +60,15 @@ class GradeSystemTableTest: XCTestCase {
         XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1, higher: true), "Highest grade should be 5.15c.") // TODO : that's a little bit weak
     }
 
+    func testGradeAtIndexes() {
+        let yosemiteGrade = table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
+
+        XCTAssertEqual("5.1 - 5.2", yosemiteGrade.gradeAtIndexes([0, 1, 2]), "Grade range should match")
+        XCTAssertEqual("5.10d - 5.11b", yosemiteGrade.gradeAtIndexes([20, 21, 22, 23]), "Grade ranged should match")
+        XCTAssertEqual("5.10d - 5.11b", yosemiteGrade.gradeAtIndexes([20, 21, 22]), "Grade ranged should match")
+        XCTAssertEqual("5.11a - 5.11b", yosemiteGrade.gradeAtIndexes([22, 23]), "Grade ranged should match")
+    }
+
     func textIndexesForGrade() {
         let huecoGrade = table.gradeSystemForName("Hueco", category: "Boulder")!
 
