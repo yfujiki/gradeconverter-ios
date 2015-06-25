@@ -19,18 +19,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSr-nf-Djk">
-                        <rect key="frame" x="267" y="49" width="37" height="30"/>
-                        <state key="normal" title="Right">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-Uc-wlc">
-                        <rect key="frame" x="16" y="49" width="30" height="30"/>
-                        <state key="normal" title="Left">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
                         <rect key="frame" x="111" y="28" width="98" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -39,12 +27,8 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="xSr-nf-Djk" secondAttribute="trailing" constant="16" id="10w-Sl-KUi"/>
-                    <constraint firstItem="xSr-nf-Djk" firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" constant="-21" id="CSc-iX-CRu"/>
-                    <constraint firstItem="hWA-Uc-wlc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NX4-Lb-ln5"/>
                     <constraint firstAttribute="centerX" secondItem="GyX-bS-Fpb" secondAttribute="centerX" id="Oz9-RO-1N5"/>
                     <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" id="Z1W-8R-jyO"/>
-                    <constraint firstItem="GyX-bS-Fpb" firstAttribute="centerY" secondItem="hWA-Uc-wlc" secondAttribute="centerY" constant="21" id="fRo-d8-5Au"/>
                     <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="25.25" id="jxd-Of-QcU"/>
                     <constraint firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" constant="-21.25" id="qbk-Jx-GQ0"/>
                 </constraints>
