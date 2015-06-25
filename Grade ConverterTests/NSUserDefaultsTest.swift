@@ -41,7 +41,7 @@ class NSUserDefaultsTest: XCTestCase {
     }
 
     func testSelectedGradeSystems() {
-        XCTAssertEqual(0, NSUserDefaults.standardUserDefaults().selectedGradeSystems().count, "Initially, selected grade systems should be empty.")
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystems.count, NSUserDefaults.standardUserDefaults().selectedGradeSystems().count, "Initially, selected grade systems should be empty.")
 
         let gradeSystem = GradeSystem(name: "Yosemite Decimal Scale", category:"Sports", locales: [], grades: [])
 

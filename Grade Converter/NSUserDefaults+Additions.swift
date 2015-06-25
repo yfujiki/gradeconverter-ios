@@ -14,6 +14,10 @@ let kNSUserDefaultsGradeNameKey = "gradeName"
 let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 
 let kNSUserDefaultsDefaultIndexes = [Int(10)]
+let kNSUserDefaultsDefaultGradeSystems = [
+    GradeSystemTable().gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
+    GradeSystemTable().gradeSystemForName("Hueco", category: "Boulder")!
+] // TODO : depends on locales
 
 extension NSUserDefaults {
     func setCurrentIndexes(indexes: [Int]) {
@@ -54,6 +58,6 @@ extension NSUserDefaults {
             })
         }
 
-        return []
+        return kNSUserDefaultsDefaultGradeSystems
     }
 }
