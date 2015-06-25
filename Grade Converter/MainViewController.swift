@@ -23,6 +23,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         kMaximumCellHeight = CGRectGetHeight(tableView.frame) / 3
 
         tableView.registerNib(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
+        tableView.registerNib(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,16 +33,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     // MARK:- UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedSystems.count
+        return selectedSystems.count + 1
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
+        if indexPath.row < selectedSystems.count {
+            var cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
 
-        cell.gradeSystem = selectedSystems[indexPath.row]
-        cell.indexes = NSUserDefaults.standardUserDefaults().currentIndexes()
+            cell.gradeSystem = selectedSystems[indexPath.row]
+            cell.indexes = NSUserDefaults.standardUserDefaults().currentIndexes()
 
-        return cell
+            return cell
+        } else {
+            var cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
+
+            return cell
+        }
     }
 
     // MARK:- UITableViewDelegate
@@ -56,6 +63,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         targetHeight = max(targetHeight, kMinimumCellHeight)
 
         return targetHeight
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == selectedSystems.count {
+            NSLog("Should launch add screen.")
+        }
+
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
 
