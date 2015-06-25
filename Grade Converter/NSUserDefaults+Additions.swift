@@ -13,7 +13,7 @@ let kNSUserDefaultsSelectedGradeSystems = "com.responsivebytes.gradeConverter.se
 let kNSUserDefaultsGradeNameKey = "gradeName"
 let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 
-let kNSUserDefaultsDefaultIndexes = [Int(10)]
+let kNSUserDefaultsDefaultIndexes = [Int(17)]
 let kNSUserDefaultsDefaultGradeSystems = [
     GradeSystemTable().gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
     GradeSystemTable().gradeSystemForName("Hueco", category: "Boulder")!

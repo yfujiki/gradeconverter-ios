@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyX-bS-Fpb">
-                        <rect key="frame" x="109.5" y="42.5" width="101.5" height="43"/>
+                        <rect key="frame" x="109" y="63" width="101.5" height="43"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -31,16 +31,28 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
+                        <rect key="frame" x="111" y="28" width="98" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="xSr-nf-Djk" secondAttribute="trailing" constant="16" id="10w-Sl-KUi"/>
-                    <constraint firstItem="xSr-nf-Djk" firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" id="CSc-iX-CRu"/>
+                    <constraint firstItem="xSr-nf-Djk" firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" constant="-21" id="CSc-iX-CRu"/>
                     <constraint firstItem="hWA-Uc-wlc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NX4-Lb-ln5"/>
                     <constraint firstAttribute="centerX" secondItem="GyX-bS-Fpb" secondAttribute="centerX" id="Oz9-RO-1N5"/>
-                    <constraint firstItem="GyX-bS-Fpb" firstAttribute="centerY" secondItem="hWA-Uc-wlc" secondAttribute="centerY" id="fRo-d8-5Au"/>
-                    <constraint firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" id="qbk-Jx-GQ0"/>
+                    <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" id="Z1W-8R-jyO"/>
+                    <constraint firstItem="GyX-bS-Fpb" firstAttribute="centerY" secondItem="hWA-Uc-wlc" secondAttribute="centerY" constant="21" id="fRo-d8-5Au"/>
+                    <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="25.25" id="jxd-Of-QcU"/>
+                    <constraint firstAttribute="centerY" secondItem="GyX-bS-Fpb" secondAttribute="centerY" constant="-21.25" id="qbk-Jx-GQ0"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="gradeLabel" destination="GyX-bS-Fpb" id="E96-tt-5Zi"/>
+                <outlet property="gradeNameLabel" destination="VQO-XN-1ce" id="Gsz-xu-D0I"/>
+            </connections>
             <point key="canvasLocation" x="305" y="447"/>
         </tableViewCell>
     </objects>

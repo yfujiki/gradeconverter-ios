@@ -10,6 +10,12 @@ import UIKit
 
 class MainTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var gradeNameLabel: UILabel!
+    @IBOutlet private weak var gradeLabel: UILabel!
+
+    var gradeSystem: GradeSystem?
+    var indexes: [Int]?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +26,17 @@ class MainTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if let gradeSystem = gradeSystem {
+            gradeNameLabel.text = gradeSystem.name
+
+            if let indexes = indexes {
+                let grade = gradeSystem.gradeAtIndexes(indexes)
+                gradeLabel.text = grade
+            }
+        }
+    }
 }
