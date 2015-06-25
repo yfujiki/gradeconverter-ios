@@ -167,8 +167,26 @@ struct GradeSystemTable {
         }
     }
 
-    func names() -> [String] {
-        return map(tableBody) { $1.name }.sorted { $0.localizedCaseInsensitiveCompare($1) == .OrderedAscending}
+    func namesAndCategories() -> [(String, String)] {
+        return map(tableBody) { ($1.name, $1.category) }.sorted {
+            var result = $0.1.localizedCaseInsensitiveCompare($1.1) // Category
+
+            if result != .OrderedSame {
+                return true
+            }
+
+            return $0.0.localizedCaseInsensitiveCompare($1.0) == .OrderedAscending // Name
+        }
+    }
+
+    func gradeSystems() -> [GradeSystem] {
+        return namesAndCategories().reduce([GradeSystem](), combine: { (var result:[GradeSystem], pair:(name:String, category:String)) -> [GradeSystem] in
+            if let gradeSystem = self.gradeSystemForName(pair.name, category: pair.category) {
+                result.append(gradeSystem)
+            }
+
+            return result
+        })
     }
 
     func gradeSystemForName(name:String, category:String) -> GradeSystem? {
