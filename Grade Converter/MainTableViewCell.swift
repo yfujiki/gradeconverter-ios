@@ -50,6 +50,13 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         cardView.layer.cornerRadius = 10
 
         gradeLabelScrollView.delegate = self
+        if let gestureRecognizers = gradeLabelScrollView.gestureRecognizers {
+            for gestureRecognizer in gestureRecognizers.generate() {
+                if gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UISwipeGestureRecognizer {
+                    addGestureRecognizer(gestureRecognizer as! UIGestureRecognizer)
+                }
+            }
+        }
 
         for gradeLabel in gradeLabels {
             gradeLabelScrollView.addSubview(gradeLabel)
