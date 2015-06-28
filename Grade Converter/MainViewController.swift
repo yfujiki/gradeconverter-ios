@@ -105,6 +105,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return targetHeight
     }
 
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let mainTableViewCell = cell as? MainTableViewCell {
+            mainTableViewCell.configureGradeLabels()
+        }
+    }
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedSystems.count {
             performSegueWithIdentifier("PresentEdit", sender: self)
@@ -114,7 +120,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return indexPath.row < selectedSystems.count
+//        return indexPath.row < selectedSystems.count
+        return false        
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
