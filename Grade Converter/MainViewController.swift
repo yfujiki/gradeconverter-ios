@@ -30,6 +30,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     private func updateSelectedSystems() {
         selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
+
+        editButtonItem().enabled = selectedSystems.count > 0
+        if selectedSystems.count == 0 {
+            self.editing = false
+        }
     }
 
     deinit {
@@ -38,8 +43,31 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+    private func setEditingBody(editing: Bool) {
+        if tableView.editing != editing  {
+            tableView.editing = editing
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: self.selectedSystems.count, inSection: 0)], withRowAnimation: .Automatic)
+            })
+        }
+    }
+
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+
+        if animated {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.setEditingBody(editing)
+            })
+        } else {
+            setEditingBody(editing)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem = self.editButtonItem()
 
         updateSelectedSystems()
 
@@ -73,7 +101,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }))
 
-//        imageView.addSubview(blurEffectView)
+        imageView.addSubview(blurEffectView)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -102,11 +130,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             let colors = UIColor.myColors()
             cell.cardColor = colors[indexPath.row % colors.count]
-            
+
             return cell
         } else {
             var cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
             cell.backgroundColor = UIColor.clearColor()
+            cell.hidden = editing
 
             return cell
         }
@@ -144,8 +173,30 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return indexPath.row < selectedSystems.count
-        return false        
+        return tableView.editing && indexPath.row != selectedSystems.count
+    }
+
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return tableView.editing && indexPath.row != selectedSystems.count
+    }
+
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let sourceIndex = sourceIndexPath.row
+        let destinationIndex = destinationIndexPath.row
+
+        if destinationIndex != selectedSystems.count {
+            let item = selectedSystems.removeAtIndex(sourceIndex)
+            selectedSystems.insert(item, atIndex: destinationIndex)
+        }
+    }
+
+    func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+
+        if proposedDestinationIndexPath.row == selectedSystems.count {
+            return NSIndexPath(forRow: selectedSystems.count - 1, inSection: 0)
+        }
+
+        return proposedDestinationIndexPath
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
