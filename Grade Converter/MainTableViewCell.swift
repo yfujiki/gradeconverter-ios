@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
@@ -37,21 +37,19 @@ class MainTableViewCell: UITableViewCell {
     }()
 
     private var scrollViewWidth: CGFloat {
-        return scrollViewWidthConstraint.constant
+        return gradeLabelScrollView.frame.width
     }
 
     private var scrollViewHeight: CGFloat {
-        let gradeNameLabelBottom = CGRectGetMaxY(gradeNameLabel.frame)
-        let topMargin = gradeNameLabelBottom + scrollViewTopConstraint.constant
-        return frame.height - topMargin - scrollViewBottomConstraint.constant
+        return gradeLabelScrollView.frame.height
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        gradeLabelScrollView.pagingEnabled = true
-
         cardView.layer.cornerRadius = 10
+
+        gradeLabelScrollView.delegate = self
 
         for gradeLabel in gradeLabels {
             gradeLabelScrollView.addSubview(gradeLabel)
@@ -71,11 +69,15 @@ class MainTableViewCell: UITableViewCell {
     }
 
     func configureGradeLabels() {
-        gradeLabelScrollView.contentSize = CGSizeMake(scrollViewWidth * 3, scrollViewHeight)
-
         for var i=0; i<gradeLabels.count; i++ {
             configureGradeLabelAtIndex(i)
         }
+
+        gradeLabelScrollView.contentSize = CGSizeMake(scrollViewWidth * 3, scrollViewHeight)
+    }
+
+    func configureInitialContentOffset() {
+        gradeLabelScrollView.contentOffset = CGPointMake(scrollViewWidth, 0)
     }
 
     private func configureGradeLabelAtIndex(index: Int) {
@@ -96,5 +98,49 @@ class MainTableViewCell: UITableViewCell {
 
         var frame = CGRectMake(scrollViewWidth * CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
         gradeLabel.frame = frame
+    }
+
+    // MARK:- UIScrollViewDelegate
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x
+
+        if let indexes = indexes {
+            if gradeSystem?.lowerGradeFromIndexes(indexes) == nil {
+                if offsetX < scrollViewWidth * 1 {
+                    scrollView.contentOffset.x = scrollViewWidth
+                    return
+                }
+            }
+
+            if gradeSystem?.higherGradeFromIndexes(indexes) == nil {
+                if offsetX > scrollViewWidth * 1 {
+                    scrollView.contentOffset.x = scrollViewWidth
+                    return
+                }
+            }
+
+            if offsetX < scrollViewWidth * 0.5 {
+                let grade = gradeSystem?.lowerGradeFromIndexes(indexes)
+                if let grade = grade,
+                   let gradeIndexes = gradeSystem?.indexesForGrade(grade) {
+                    self.indexes = gradeIndexes
+                }
+                scrollView.contentOffset.x += scrollViewWidth
+            } else if offsetX > scrollViewWidth * 1.5 {
+                let grade = gradeSystem?.higherGradeFromIndexes(indexes)
+                if let grade = grade,
+                   let gradeIndexes = gradeSystem?.indexesForGrade(grade) {
+                    self.indexes = gradeIndexes
+                }
+                scrollView.contentOffset.x -= scrollViewWidth
+            }
+
+            configureGradeLabels()
+        }
+    }
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        scrollView.contentOffset.x = scrollViewWidth
     }
 }

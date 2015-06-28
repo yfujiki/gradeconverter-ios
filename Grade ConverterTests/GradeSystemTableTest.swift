@@ -96,17 +96,17 @@ class GradeSystemTableTest: XCTestCase {
     func testLowerHigherGradeFromIndexes() {
         let huecoGrade = table.gradeSystemForName("Hueco", category: "Boulder")!
 
-        XCTAssertEqual("VB", huecoGrade.lowerGradeFromIndexes([15, 16]), "Lower grade of V0 should be VB.")
-        XCTAssertEqual("V0+", huecoGrade.higherGradeFromIndexes([15, 16]), "Higher grade of V0 should be V0+.")
+        XCTAssertEqual("VB", huecoGrade.lowerGradeFromIndexes([15, 16])!, "Lower grade of V0 should be VB.")
+        XCTAssertEqual("V0+", huecoGrade.higherGradeFromIndexes([15, 16])!, "Higher grade of V0 should be V0+.")
 
-        XCTAssertEqual("V0", huecoGrade.lowerGradeFromIndexes([15, 19]), "Lower grade of V0-V1 should be V1.")
-        XCTAssertEqual("V1", huecoGrade.higherGradeFromIndexes([15, 19]), "Higher grade of V0-V1 should be V1.")
+        XCTAssertEqual("V0", huecoGrade.lowerGradeFromIndexes([15, 19])!, "Lower grade of V0-V1 should be V1.")
+        XCTAssertEqual("V1", huecoGrade.higherGradeFromIndexes([15, 19])!, "Higher grade of V0-V1 should be V1.")
 
-        XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 24]), "Lower grade of V3-V4 should be V3.")
-        XCTAssertEqual("V4", huecoGrade.higherGradeFromIndexes([21, 24]), "Higher grade of V3-V4 should be V4.")
+        XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 24])!, "Lower grade of V3-V4 should be V3.")
+        XCTAssertEqual("V4", huecoGrade.higherGradeFromIndexes([21, 24])!, "Higher grade of V3-V4 should be V4.")
 
-        XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 25]), "Lower grade of V3-V4 should be V3.")
-        XCTAssertEqual("V5", huecoGrade.higherGradeFromIndexes([21, 25]), "Higher grade of V3-V4 should be V4.")
+        XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 25])!, "Lower grade of V3-V4 should be V3.")
+        XCTAssertEqual("V5", huecoGrade.higherGradeFromIndexes([21, 25])!, "Higher grade of V3-V4 should be V4.")
     }
 
     func testGradeSystemsForLocale() {

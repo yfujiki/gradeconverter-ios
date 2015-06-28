@@ -108,6 +108,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let mainTableViewCell = cell as? MainTableViewCell {
             mainTableViewCell.configureGradeLabels()
+            mainTableViewCell.configureInitialContentOffset()
         }
     }
 

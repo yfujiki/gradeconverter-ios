@@ -80,33 +80,33 @@ struct GradeSystem : Equatable {
         return indexes
     }
 
-    func higherGradeFromIndexes(indexes:[Int]) -> String {
+    func higherGradeFromIndexes(indexes:[Int]) -> String? {
         return nextGradeFromIndexes(indexes, higher: true)
     }
 
-    func lowerGradeFromIndexes(indexes:[Int]) -> String {
+    func lowerGradeFromIndexes(indexes:[Int]) -> String? {
         return nextGradeFromIndexes(indexes, higher: false)
     }
 
-    private func nextGradeFromIndexes(indexes:[Int], higher: Bool) -> String {
+    private func nextGradeFromIndexes(indexes:[Int], higher: Bool) -> String? {
         let sortedIndexes = indexes.sorted { $0 <= $1 }
 
         let lowGrade = gradeAtIndex(sortedIndexes[0], higher:false)
         let highGrade = gradeAtIndex(sortedIndexes[indexes.count - 1], higher:true)
 
-        var nextGrade: String = ""
+        var nextGrade: String?
 
         if lowGrade == highGrade {
             if higher {
                 for var i=sortedIndexes[indexes.count - 1]; i<grades.count; i++ {
-                    if count(grades[i]) > 0 && (grades[i] != highGrade || i == grades.count - 1) {
+                    if count(grades[i]) > 0 && grades[i] != highGrade {
                         nextGrade = grades[i]
                         break
                     }
                 }
             } else {
                 for var i=sortedIndexes[0]; i>=0; i-- {
-                    if count(grades[i]) > 0 && (grades[i] != lowGrade || i == 0) {
+                    if count(grades[i]) > 0 && grades[i] != lowGrade {
                         nextGrade = grades[i]
                         break
                     }
@@ -119,8 +119,6 @@ struct GradeSystem : Equatable {
                 nextGrade = lowGrade
             }
         }
-
-        assert(count(nextGrade) > 0, "Next grade should have some value")
 
         return nextGrade
     }
