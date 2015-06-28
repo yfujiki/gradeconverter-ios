@@ -29,6 +29,8 @@
 		DB940B6B1B364F6C00E996F8 /* GradeSystemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */; };
 		DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6C1B3659E200E996F8 /* GradeSystemTableTest.swift */; };
 		DB940B6E1B365A3900E996F8 /* GradeSystemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */; };
+		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
+		DBD38D221B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,7 @@
 		DB940B681B364F3E00E996F8 /* GradeSystemTable.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GradeSystemTable.csv; sourceTree = "<group>"; };
 		DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSystemTable.swift; sourceTree = "<group>"; };
 		DB940B6C1B3659E200E996F8 /* GradeSystemTableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSystemTableTest.swift; sourceTree = "<group>"; };
+		DBD38D201B3FCE8000F9E40F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,13 +119,14 @@
 				DB940B631B361C3B00E996F8 /* MainTableViewCell.swift */,
 				DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */,
 				DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */,
-				DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */,
 				DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */,
 				DB5DC3BF1B3BAB890016F707 /* AddTableViewCell.xib */,
 				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
 				DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */,
 				DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */,
+				DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */,
 				DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */,
+				DBD38D201B3FCE8000F9E40F /* Constants.swift */,
 			);
 			path = "Grade Converter";
 			sourceTree = "<group>";
@@ -272,6 +276,7 @@
 				DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
 				DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */,
 				DB5DC3C01B3BAB890016F707 /* AddTableViewCell.swift in Sources */,
+				DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */,
 				DB940B651B361C3B00E996F8 /* MainTableViewCell.swift in Sources */,
 				DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */,
 				DB5DC3C31B3BAECF0016F707 /* EditViewController.swift in Sources */,
@@ -287,6 +292,7 @@
 				DB940B6E1B365A3900E996F8 /* GradeSystemTable.swift in Sources */,
 				DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */,
 				DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */,
+				DBD38D221B3FCE8000F9E40F /* Constants.swift in Sources */,
 				DB5DC3BB1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
 				DB5DC3CC1B3BE9230016F707 /* UIColor+Additions.swift in Sources */,
 			);

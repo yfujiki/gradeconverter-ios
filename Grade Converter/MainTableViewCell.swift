@@ -142,5 +142,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollView.contentOffset.x = scrollViewWidth
+
+        let userInfo = [kNewIndexesKey: indexes ?? []]
+
+        NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
     }
 }

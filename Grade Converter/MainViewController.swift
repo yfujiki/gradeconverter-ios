@@ -52,6 +52,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.updateSelectedSystems()
         })
 
+        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kGradeSelectedNotification, object: nil, queue: nil, usingBlock: { [weak self] (notification: NSNotification!) -> Void in
+            if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
+                if NSUserDefaults.standardUserDefaults().currentIndexes() != indexes {
+                    NSUserDefaults.standardUserDefaults().setCurrentIndexes(indexes)
+
+                    var indexPaths = [NSIndexPath]()
+
+                    if let strongSelf = self {
+                        for cell in strongSelf.tableView.visibleCells() {
+                            if let targetCell = cell as? MainTableViewCell,
+                               let baseCell = notification.object as? MainTableViewCell where targetCell != baseCell,
+                               let targetIndexPath = strongSelf.tableView.indexPathForCell(targetCell) {
+                                indexPaths.append(targetIndexPath)
+                            }
+                        }
+                        strongSelf.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+                    }
+                }
+            }
+        }))
+
         imageView.addSubview(blurEffectView)
     }
 
@@ -106,6 +127,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.tag = indexPath.row
+        
         if let mainTableViewCell = cell as? MainTableViewCell {
             mainTableViewCell.configureGradeLabels()
             mainTableViewCell.configureInitialContentOffset()
