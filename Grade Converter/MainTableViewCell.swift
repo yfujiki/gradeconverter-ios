@@ -15,8 +15,8 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet private weak var cardView: UIView!
 
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
 
     var gradeSystem: GradeSystem?
     var indexes: [Int]?
@@ -24,8 +24,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     private class func newGradeLabel() -> UILabel {
         var label = UILabel()
-        label.font = UIFont.systemFontOfSize(28)
+        label.font = UIFont.boldSystemFontOfSize(40)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         label.textAlignment = .Center
+        label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
 
         return label
     }
@@ -53,7 +56,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         if let gestureRecognizers = gradeLabelScrollView.gestureRecognizers {
             for gestureRecognizer in gestureRecognizers.generate() {
                 if gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UISwipeGestureRecognizer {
-                    addGestureRecognizer(gestureRecognizer as! UIGestureRecognizer)
+                    cardView.addGestureRecognizer(gestureRecognizer as! UIGestureRecognizer)
                 }
             }
         }

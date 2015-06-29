@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf0-lT-IGm" userLabel="CardView">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf0-lT-IGm" userLabel="CardView">
                         <rect key="frame" x="16" y="8" width="288" height="112"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
@@ -23,10 +23,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-G9-uuF">
-                                <rect key="frame" x="70" y="47" width="148" height="40"/>
+                                <rect key="frame" x="70" y="37" width="148" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="148" id="bav-UB-0W4"/>
-                                    <constraint firstAttribute="height" constant="40" id="q8D-vP-jHm"/>
+                                    <constraint firstAttribute="height" constant="64" id="q8D-vP-jHm"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="centerX" secondItem="0b2-G9-uuF" secondAttribute="centerX" id="3is-Bm-95Z"/>
                             <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" constant="-0.75" id="bob-QU-sZU"/>
                             <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="29.5" id="ex8-72-eAi"/>
-                            <constraint firstItem="0b2-G9-uuF" firstAttribute="top" secondItem="VQO-XN-1ce" secondAttribute="bottom" constant="10" id="hdC-Cp-Tro"/>
+                            <constraint firstItem="0b2-G9-uuF" firstAttribute="top" secondItem="VQO-XN-1ce" secondAttribute="bottom" id="hdC-Cp-Tro"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -50,6 +50,7 @@
                 <outlet property="cardView" destination="yf0-lT-IGm" id="3jp-IQ-boo"/>
                 <outlet property="gradeLabelScrollView" destination="0b2-G9-uuF" id="h79-Q4-j50"/>
                 <outlet property="gradeNameLabel" destination="VQO-XN-1ce" id="Gsz-xu-D0I"/>
+                <outlet property="scrollViewHeightConstraint" destination="q8D-vP-jHm" id="5Ug-Fh-lb3"/>
                 <outlet property="scrollViewTopConstraint" destination="hdC-Cp-Tro" id="AQQ-kX-I8t"/>
                 <outlet property="scrollViewWidthConstraint" destination="bav-UB-0W4" id="uTg-i5-CAy"/>
             </connections>
