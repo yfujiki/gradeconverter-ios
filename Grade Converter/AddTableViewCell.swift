@@ -13,11 +13,22 @@ class AddTableViewCell: UITableViewCell {
     class var kCellHeight: CGFloat { return 96 }
 
     @IBOutlet private weak var cardView: UIView!
+    @IBOutlet weak var label: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         cardView.layer.cornerRadius = 10
         cardView.backgroundColor = UIColor.addColor()
+    }
+
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        if highlighted {
+            cardView.alpha = 0.8
+            label.textColor = UIColor.grayColor()
+        } else {
+            cardView.alpha = 1.0
+            label.textColor = UIColor.blackColor()
+        }
     }
 }

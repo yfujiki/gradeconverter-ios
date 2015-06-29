@@ -101,7 +101,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }))
 
-//        imageView.addSubview(blurEffectView)
+        imageView.addSubview(blurEffectView)
     }
 
     override func viewWillAppear(animated: Bool) {
