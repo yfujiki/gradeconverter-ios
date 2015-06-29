@@ -10,14 +10,14 @@ import UIKit
 
 class AddTableViewCell: UITableViewCell {
 
+    class var kCellHeight: CGFloat { return 96 }
+
     @IBOutlet private weak var cardView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         cardView.layer.cornerRadius = 10
-        cardView.layer.borderColor = UIColor.addDarkColor().CGColor
-        cardView.layer.borderWidth = 4
         cardView.backgroundColor = UIColor.addColor()
     }
 }

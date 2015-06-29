@@ -147,12 +147,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let count = selectedSystems.count + 1
-        var targetHeight = CGRectGetHeight(tableView.frame) / CGFloat(count)
-        targetHeight = min(targetHeight, kMaximumCellHeight)
-        targetHeight = max(targetHeight, kMinimumCellHeight)
+        if indexPath.row < selectedSystems.count {
+            var totalHeight = CGRectGetHeight(tableView.frame) - AddTableViewCell.kCellHeight
+            let count = selectedSystems.count
+            var targetHeight = totalHeight / CGFloat(count)
+            targetHeight = min(targetHeight, kMaximumCellHeight)
+            targetHeight = max(targetHeight, kMinimumCellHeight)
 
-        return targetHeight
+            return targetHeight
+        } else {
+            return AddTableViewCell.kCellHeight
+        }
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
