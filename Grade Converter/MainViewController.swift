@@ -47,7 +47,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView.editing != editing  {
             tableView.editing = editing
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: self.selectedSystems.count, inSection: 0)], withRowAnimation: .Automatic)
+                if let visibleCellIndexPaths = self.tableView.indexPathsForVisibleRows() {
+                    self.tableView.reloadRowsAtIndexPaths(visibleCellIndexPaths, withRowAnimation: .Automatic)
+                }
             })
         }
     }
