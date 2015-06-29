@@ -50,7 +50,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        cardView.layer.cornerRadius = 10
+        cardView.layer.cornerRadius = 4
 
         gradeLabelScrollView.delegate = self
         if let gestureRecognizers = gradeLabelScrollView.gestureRecognizers {

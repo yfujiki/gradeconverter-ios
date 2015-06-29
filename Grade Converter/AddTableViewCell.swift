@@ -18,7 +18,7 @@ class AddTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        cardView.layer.cornerRadius = 10
+        cardView.layer.cornerRadius = 4
         cardView.backgroundColor = UIColor.addColor()
     }
 
