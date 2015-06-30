@@ -63,21 +63,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-Ew-kLz">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_bg" translatesAutoresizingMaskIntoConstraints="NO" id="2wq-fI-NPz">
+                                <rect key="frame" x="0.0" y="24" width="600" height="576"/>
+                            </imageView>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-Ew-kLz">
+                                <rect key="frame" x="0.0" y="24" width="600" height="576"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2P1-b5-Pwc" id="C2r-bP-3Ky"/>
                                     <outlet property="delegate" destination="2P1-b5-Pwc" id="TOg-QN-tgp"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Lhi-kY-AHh" firstAttribute="top" secondItem="2wq-fI-NPz" secondAttribute="bottom" id="8hT-Cf-Jmb"/>
                             <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="Di8-UJ-ha5"/>
+                            <constraint firstAttribute="trailing" secondItem="2wq-fI-NPz" secondAttribute="trailing" id="MBg-cR-zqR"/>
+                            <constraint firstItem="2wq-fI-NPz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-20" id="QaC-RC-YyE"/>
                             <constraint firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="UtP-k3-qls"/>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-64" id="sUF-V6-vSC"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-20" id="sUF-V6-vSC"/>
                             <constraint firstItem="Lhi-kY-AHh" firstAttribute="top" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="uWg-ba-ldh"/>
+                            <constraint firstItem="2wq-fI-NPz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="ukg-X8-gPo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Grade System" id="UJA-uS-tjn">
@@ -87,13 +93,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="imageView" destination="2wq-fI-NPz" id="ciR-Mi-spx"/>
                         <outlet property="tableView" destination="eeC-Ew-kLz" id="ACZ-o2-Uv6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrk-wV-eWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2607" y="402"/>
+            <point key="canvasLocation" x="2540" y="402"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q7e-7g-va6">
@@ -133,6 +141,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="edit_bg" width="1080" height="1920"/>
         <image name="main_bg" width="1080" height="1920"/>
     </resources>
 </document>

@@ -18,6 +18,8 @@ class EditTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        backgroundColor = UIColor.clearColor()
+
         gradeNameLabel.text = gradeSystem?.name ?? ""
         gradeCategoryLabel.text = gradeSystem?.category ?? ""
     }

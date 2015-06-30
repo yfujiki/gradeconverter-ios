@@ -97,7 +97,6 @@
 			children = (
 				DB940B631B361C3B00E996F8 /* MainTableViewCell.swift */,
 				DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */,
-				DB940B471B3615F400E996F8 /* Main.storyboard */,
 				DB940B4C1B3615F400E996F8 /* LaunchScreen.xib */,
 				DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */,
 				DB5DC3BF1B3BAB890016F707 /* AddTableViewCell.xib */,
@@ -110,6 +109,7 @@
 		DB3DF5891B4233BE00141E47 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB940B471B3615F400E996F8 /* Main.storyboard */,
 				DB940B451B3615F400E996F8 /* MainViewController.swift */,
 				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
 			);

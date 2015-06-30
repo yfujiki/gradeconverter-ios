@@ -10,7 +10,8 @@ import UIKit
 
 class EditViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-
+    @IBOutlet private weak var imageView: UIImageView!
+    
     @IBAction func doneButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -20,6 +21,14 @@ class EditViewController: UIViewController {
     private let allGradeSystems = GradeSystemTable().gradeSystems()
     private var gradeSystems = [GradeSystem]()
     private var observers = [NSObjectProtocol]()
+
+    lazy private var blurEffectView: UIVisualEffectView = {
+        let effect = UIBlurEffect(style: .Light)
+        var effectView = UIVisualEffectView(effect: effect)
+        effectView.frame = self.view.bounds
+
+        return effectView
+    }()
 
     private func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
@@ -43,6 +52,8 @@ class EditViewController: UIViewController {
         observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
             self?.updateGradeSystems()
         })
+
+        imageView.addSubview(blurEffectView)
     }
 
     // MARK:- UITableViewDataSource
