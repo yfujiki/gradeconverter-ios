@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
@@ -117,6 +117,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK:- Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PresentEdit" {
+            if let destinationViewController = segue.destinationViewController as? UIViewController {
+                destinationViewController.transitioningDelegate = self
+                destinationViewController.modalPresentationStyle = .Custom
+            }
+        }
+    }
+
     // MARK:- UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedSystems.count + 1
@@ -215,6 +225,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.endUpdates()
         }
+    }
+
+    // MARK:- UIViewControllerTransitioningDelegate
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transitioning = PresentationAnimatingTransitioning()
+        transitioning.presenting = true
+
+        return transitioning
+    }
+
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transitioning = PresentationAnimatingTransitioning()
+        transitioning.presenting = false
+
+        return transitioning
     }
 }
 
