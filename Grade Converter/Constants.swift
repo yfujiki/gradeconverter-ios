@@ -6,5 +6,6 @@
 //  Copyright (c) 2015 Responsive Bytes. All rights reserved.
 //
 
+let kNSUserDefaultsSystemSelectionChangedNotification = "com.responsivebytes.gradeConverter.SystemSelectionChangedNotification"
 let kGradeSelectedNotification = "com.responsivebytes.GradeConverter.GradeSelectedNotification"
 let kNewIndexesKey = "newIndexesKey"

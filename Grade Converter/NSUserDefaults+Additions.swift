@@ -19,7 +19,6 @@ let kNSUserDefaultsDefaultGradeSystems = [
     GradeSystemTable().gradeSystemForName("Hueco", category: "Boulder")!
 ] // TODO : depends on locales
 
-let kNSUserDefaultsSystemSelectionChangedNotification = "com.responsivebytes.gradeConverter.SystemSelectionChangedNotification"
 
 extension NSUserDefaults {
     func setCurrentIndexes(indexes: [Int]) {

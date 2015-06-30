@@ -21,11 +21,8 @@ class PresentationController: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
         let coordinator = presentedViewController.transitionCoordinator()
-
         dimmingView.alpha = 0.0
         containerView.addSubview(dimmingView)
-        NSLog("dimmingView \(dimmingView)")
-        NSLog("containerView \(containerView)")
         coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
             self?.dimmingView.alpha = kDimmingViewAlpha
         }, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
@@ -33,10 +30,13 @@ class PresentationController: UIPresentationController {
     }
 
     override func dismissalTransitionWillBegin() {
+        if let mainNavigationController = presentingViewController as? UINavigationController,
+            let mainViewController = mainNavigationController.childViewControllers.first as? MainViewController {
+                mainViewController.reloadTableView()
+        }
+
         let coordinator = presentingViewController.transitionCoordinator()
-
         dimmingView.alpha = kDimmingViewAlpha
-
         coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
             self?.dimmingView.alpha = 0.0
         }, completion: { [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in

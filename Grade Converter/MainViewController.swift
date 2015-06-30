@@ -227,6 +227,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
     // MARK:- UIViewControllerTransitioningDelegate
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let transitioning = PresentationAnimatingTransitioning()
