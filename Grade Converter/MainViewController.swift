@@ -241,5 +241,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         return transitioning
     }
+
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return PresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
 }
 

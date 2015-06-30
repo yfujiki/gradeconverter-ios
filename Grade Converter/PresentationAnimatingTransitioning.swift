@@ -27,7 +27,7 @@ import UIKit
 
         if presenting {
             if var toView = toView {
-                toView.frame = CGRectOffset(CGRectInset(containerView.frame, 20, 40), 0, 40)
+                toView.frame = CGRectOffset(CGRectInset(containerView.frame, 20, 20), 0, 20)
                 toView.frame = CGRectOffset(toView.frame, 0, toView.frame.height)
                 containerView.addSubview(toView)
 
@@ -39,7 +39,7 @@ import UIKit
             }
         } else {
             if var fromView = fromView {
-                fromView.frame = CGRectOffset(CGRectInset(containerView.frame, 20, 40), 0, 40)
+                fromView.frame = CGRectOffset(CGRectInset(containerView.frame, 20, 20), 0, 20)
 
                 UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 5, options: nil, animations: { () -> Void in
                     fromView.frame = CGRectOffset(fromView.frame, 0, fromView.frame.height)
