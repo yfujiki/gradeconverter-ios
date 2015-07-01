@@ -18,6 +18,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var kMinimumCellHeight: CGFloat = 96
     private var kMaximumCellHeight: CGFloat = 96
 
+    private let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
+
     private var observers = [NSObjectProtocol]()
 
     lazy private var blurEffectView: UIVisualEffectView = {
@@ -31,7 +33,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func updateSelectedSystems() {
         selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
 
-        editButtonItem().enabled = selectedSystems.count > 0
+        navigationItem.rightBarButtonItem = editButtonItem()
+
         if selectedSystems.count == 0 {
             self.editing = false
         }
@@ -43,27 +46,29 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    private func setEditingBody(editing: Bool) {
-        if tableView.editing != editing  {
-            tableView.editing = editing
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let visibleCellIndexPaths = self.tableView.indexPathsForVisibleRows() {
-                    self.tableView.reloadRowsAtIndexPaths(visibleCellIndexPaths, withRowAnimation: .Automatic)
-                }
-            })
-        }
-    }
-
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
-        if animated {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                self.setEditingBody(editing)
-            })
-        } else {
-            setEditingBody(editing)
-        }
+        tableView.reloadData()
+    }
+
+    private func startJigglingCell(cell: UITableViewCell) {
+        let leftWobble = CGAffineTransformMakeRotation(-kAnimationRotateDeg)
+        let rightWobble = CGAffineTransformMakeRotation(kAnimationRotateDeg)
+
+        cell.transform = leftWobble
+
+        UIView.animateWithDuration(0.1, delay: 0, options: (.Autoreverse | .AllowUserInteraction | .Repeat), animations: { [weak self] () -> Void in
+            UIView.setAnimationRepeatCount(Float(NSNotFound))
+            cell.transform = rightWobble
+            return
+            }, completion: { (success: Bool) -> Void in
+        })
+    }
+
+    private func stopJigglingCell(cell: UITableViewCell) {
+        cell.layer.removeAllAnimations()
+        cell.transform = CGAffineTransformIdentity
     }
 
     override func viewDidLoad() {
@@ -178,6 +183,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let mainTableViewCell = cell as? MainTableViewCell {
             mainTableViewCell.configureGradeLabels()
             mainTableViewCell.configureInitialContentOffset()
+
+            if editing {
+                startJigglingCell(mainTableViewCell)
+            } else {
+                stopJigglingCell(mainTableViewCell)
+            }
         }
     }
 
@@ -190,11 +201,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return tableView.editing && indexPath.row != selectedSystems.count
+        return false
     }
 
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return tableView.editing && indexPath.row != selectedSystems.count
+        return false
     }
 
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
