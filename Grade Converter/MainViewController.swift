@@ -18,8 +18,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var kMinimumCellHeight: CGFloat = 96
     private var kMaximumCellHeight: CGFloat = 96
 
-    private let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
-
     private var observers = [NSObjectProtocol]()
 
     lazy private var blurEffectView: UIVisualEffectView = {
@@ -50,25 +48,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.setEditing(editing, animated: animated)
 
         tableView.reloadData()
-    }
-
-    private func startJigglingCell(cell: UITableViewCell) {
-        let leftWobble = CGAffineTransformMakeRotation(-kAnimationRotateDeg)
-        let rightWobble = CGAffineTransformMakeRotation(kAnimationRotateDeg)
-
-        cell.transform = leftWobble
-
-        UIView.animateWithDuration(0.1, delay: 0, options: (.Autoreverse | .AllowUserInteraction | .Repeat), animations: { [weak self] () -> Void in
-            UIView.setAnimationRepeatCount(Float(NSNotFound))
-            cell.transform = rightWobble
-            return
-            }, completion: { (success: Bool) -> Void in
-        })
-    }
-
-    private func stopJigglingCell(cell: UITableViewCell) {
-        cell.layer.removeAllAnimations()
-        cell.transform = CGAffineTransformIdentity
     }
 
     override func viewDidLoad() {
@@ -183,12 +162,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let mainTableViewCell = cell as? MainTableViewCell {
             mainTableViewCell.configureGradeLabels()
             mainTableViewCell.configureInitialContentOffset()
-
-            if editing {
-                startJigglingCell(mainTableViewCell)
-            } else {
-                stopJigglingCell(mainTableViewCell)
-            }
+            mainTableViewCell.editing = editing
         }
     }
 

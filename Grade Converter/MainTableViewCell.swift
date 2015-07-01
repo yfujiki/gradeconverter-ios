@@ -9,6 +9,7 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
+    private let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
@@ -156,5 +157,33 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         let userInfo = [kNewIndexesKey: indexes ?? []]
 
         NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
+    }
+
+    // MARK:- Edit mode
+    override func setEditing(editing: Bool, animated: Bool) {
+        if editing {
+            startJiggling()
+        } else {
+            stopJiggling()
+        }
+    }
+
+    private func startJiggling() {
+        let leftWobble = CGAffineTransformMakeRotation(-kAnimationRotateDeg)
+        let rightWobble = CGAffineTransformMakeRotation(kAnimationRotateDeg)
+
+        transform = leftWobble
+
+        UIView.animateWithDuration(0.1, delay: 0, options: (.Autoreverse | .AllowUserInteraction | .Repeat), animations: { [weak self] () -> Void in
+            UIView.setAnimationRepeatCount(Float(NSNotFound))
+            self?.transform = rightWobble
+            return
+            }, completion: { (success: Bool) -> Void in
+        })
+    }
+
+    private func stopJiggling() {
+        layer.removeAllAnimations()
+        transform = CGAffineTransformIdentity
     }
 }
