@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, MainTableViewCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
@@ -119,6 +119,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row < selectedSystems.count {
             var cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
+            cell.delegate = self
             cell.backgroundColor = UIColor.clearColor()
 
             cell.gradeSystem = selectedSystems[indexPath.row]
@@ -201,17 +202,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return proposedDestinationIndexPath
     }
 
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let systemToDelete = selectedSystems[indexPath.row]
-            NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
-
-            tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            tableView.endUpdates()
-        }
-    }
-
     func reloadTableView() {
         tableView.reloadData()
     }
@@ -233,6 +223,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
         return PresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
+
+    // MARK:- MainTableViewCellDelegate
+    func didDeleteCell(cell: MainTableViewCell) {
+        if let indexPath = tableView.indexPathForCell(cell) {
+            let systemToDelete = selectedSystems[indexPath.row]
+            NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
+
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
+            if let indexPaths = tableView.indexPathsForVisibleRows() {
+                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+            }
+        }
     }
 }
 

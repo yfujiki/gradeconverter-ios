@@ -17,7 +17,7 @@
                         <rect key="frame" x="16" y="8" width="288" height="112"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
-                                <rect key="frame" x="96" y="16.5" width="97.5" height="20.5"/>
+                                <rect key="frame" x="96" y="16" width="97.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -29,13 +29,28 @@
                                     <constraint firstAttribute="height" constant="64" id="q8D-vP-jHm"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-6W-n4I" userLabel="CloseButton">
+                                <rect key="frame" x="16" y="44" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="j7M-e6-Zzp"/>
+                                    <constraint firstAttribute="width" constant="24" id="lZq-ut-sSE"/>
+                                </constraints>
+                                <state key="normal" image="close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mnk-6S-isu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="0b2-G9-uuF" secondAttribute="centerX" id="3is-Bm-95Z"/>
                             <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" constant="-0.75" id="bob-QU-sZU"/>
+                            <constraint firstItem="UJw-6W-n4I" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" constant="16" id="elI-xm-IsN"/>
                             <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="29.5" id="ex8-72-eAi"/>
                             <constraint firstItem="0b2-G9-uuF" firstAttribute="top" secondItem="VQO-XN-1ce" secondAttribute="bottom" id="hdC-Cp-Tro"/>
+                            <constraint firstAttribute="centerY" secondItem="UJw-6W-n4I" secondAttribute="centerY" id="sU9-Dk-RJj"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -48,6 +63,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cardView" destination="yf0-lT-IGm" id="3jp-IQ-boo"/>
+                <outlet property="closeButton" destination="UJw-6W-n4I" id="6px-Dz-1p2"/>
                 <outlet property="gradeLabelScrollView" destination="0b2-G9-uuF" id="h79-Q4-j50"/>
                 <outlet property="gradeNameLabel" destination="VQO-XN-1ce" id="Gsz-xu-D0I"/>
                 <outlet property="scrollViewHeightConstraint" destination="q8D-vP-jHm" id="5Ug-Fh-lb3"/>
@@ -57,4 +73,7 @@
             <point key="canvasLocation" x="305" y="447"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="close" width="24" height="24"/>
+    </resources>
 </document>

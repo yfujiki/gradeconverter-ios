@@ -8,20 +8,30 @@
 
 import UIKit
 
+protocol MainTableViewCellDelegate: NSObjectProtocol {
+    func didDeleteCell(cell: MainTableViewCell)
+}
+
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     private let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
+
+    var gradeSystem: GradeSystem?
+    var indexes: [Int]?
+    var cardColor: UIColor?
+    var delegate: MainTableViewCellDelegate?
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
     @IBOutlet private weak var cardView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
 
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
 
-    var gradeSystem: GradeSystem?
-    var indexes: [Int]?
-    var cardColor: UIColor?
+    @IBAction func closeButtonTapped(sender: AnyObject) {
+        delegate?.didDeleteCell(self)
+    }
 
     private class func newGradeLabel() -> UILabel {
         var label = UILabel()
@@ -163,8 +173,10 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     override func setEditing(editing: Bool, animated: Bool) {
         if editing {
             startJiggling()
+            closeButton.hidden = false
         } else {
             stopJiggling()
+            closeButton.hidden = true
         }
     }
 
