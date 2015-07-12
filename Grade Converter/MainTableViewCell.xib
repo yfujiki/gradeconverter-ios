@@ -17,14 +17,14 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf0-lT-IGm" userLabel="CardView">
                         <rect key="frame" x="16" y="8" width="288" height="112"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
-                                <rect key="frame" x="96" y="16" width="97.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
+                                <rect key="frame" x="97" y="21" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-G9-uuF">
-                                <rect key="frame" x="70" y="37" width="148" height="64"/>
+                                <rect key="frame" x="70" y="41" width="148" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="148" id="bav-UB-0W4"/>
                                     <constraint firstAttribute="height" constant="64" id="q8D-vP-jHm"/>
@@ -49,7 +49,7 @@
                             <constraint firstAttribute="centerX" secondItem="0b2-G9-uuF" secondAttribute="centerX" id="3is-Bm-95Z"/>
                             <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" constant="-0.75" id="bob-QU-sZU"/>
                             <constraint firstItem="UJw-6W-n4I" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" constant="16" id="elI-xm-IsN"/>
-                            <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="29.5" id="ex8-72-eAi"/>
+                            <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="25" id="ex8-72-eAi"/>
                             <constraint firstItem="0b2-G9-uuF" firstAttribute="top" secondItem="VQO-XN-1ce" secondAttribute="bottom" id="hdC-Cp-Tro"/>
                             <constraint firstAttribute="centerY" secondItem="UJw-6W-n4I" secondAttribute="centerY" id="sU9-Dk-RJj"/>
                         </constraints>
