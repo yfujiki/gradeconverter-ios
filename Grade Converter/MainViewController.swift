@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, MainTableViewCellDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate, MainTableViewCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
@@ -23,6 +23,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     lazy private var longPressGestureRecognizer: UILongPressGestureRecognizer = {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
         gestureRecognizer.minimumPressDuration = 0.2
+        gestureRecognizer.delegate = self
 
         return gestureRecognizer
     }()
@@ -233,6 +234,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
             redrawVisibleRows()
         }
+    }
+
+    // MARK:- UIGestureRecognizerDelegate
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let location = gestureRecognizer.locationInView(tableView)
+
+        if location.x >= MainTableViewCell.CardViewLeadingConstraint + MainTableViewCell.DeleteButtonLeadingConstraint &&
+            location.x <= MainTableViewCell.CardViewLeadingConstraint + MainTableViewCell.DeleteButtonLeadingConstraint + MainTableViewCell.DeleteButtonWidthConstraint {
+                return false
+        }
+
+        return true
     }
 
     // MARK:- Reordering

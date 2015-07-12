@@ -15,6 +15,18 @@ protocol MainTableViewCellDelegate: NSObjectProtocol {
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     private let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
 
+    class var CardViewLeadingConstraint: CGFloat {
+        return 16
+    }
+
+    class var DeleteButtonLeadingConstraint: CGFloat {
+        return 16
+    }
+
+    class var DeleteButtonWidthConstraint: CGFloat {
+        return 24
+    }
+
     var gradeSystem: GradeSystem?
     var indexes: [Int]?
     var cardColor: UIColor?
