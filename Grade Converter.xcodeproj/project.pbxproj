@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF58D1B4235C900141E47 /* PresentationController.swift */; };
+		DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */; };
 		DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
 		DB5DC3BB1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
 		DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		DB3DF58D1B4235C900141E47 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsTest.swift; sourceTree = "<group>"; };
 		DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */,
 				DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */,
+				DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -257,7 +260,8 @@
 		DB940B361B3615F400E996F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Responsive Bytes";
 				TargetAttributes = {
 					DB940B3D1B3615F400E996F8 = {
@@ -317,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */,
 				DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */,
 				DB940B6B1B364F6C00E996F8 /* GradeSystemTable.swift in Sources */,
 				DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
@@ -397,6 +402,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -412,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -450,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -463,6 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -473,6 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -491,6 +499,7 @@
 				);
 				INFOPLIST_FILE = "Grade ConverterTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grade Converter.app/Grade Converter";
 			};
@@ -506,6 +515,7 @@
 				);
 				INFOPLIST_FILE = "Grade ConverterTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grade Converter.app/Grade Converter";
 			};

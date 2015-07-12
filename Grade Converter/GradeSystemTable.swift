@@ -33,7 +33,7 @@ struct GradeSystem : Equatable {
 
         var grade = grades[convertedIndex]
 
-        if count(grade) == 0 {
+        if grade.characters.count == 0 {
             if higher {
                 if let higherGrade = higherGradeAtIndex(index) {
                     grade = higherGrade
@@ -49,13 +49,13 @@ struct GradeSystem : Equatable {
             }
         }
 
-        assert(count(grade) > 0, "Grade should have something at this point.")
+        assert(grade.characters.count > 0, "Grade should have something at this point.")
 
         return grade
     }
 
     func gradeAtIndexes(indexes: [Int]) -> String {
-        let sortedIndexes = indexes.sorted(<=)
+        let sortedIndexes = indexes.sort(<=)
 
         let lowGrade = gradeAtIndex(sortedIndexes[0], higher: false)
         let highGrade = gradeAtIndex(sortedIndexes[indexes.count - 1], higher: true)
@@ -80,7 +80,7 @@ struct GradeSystem : Equatable {
 
     private func higherGradeAtIndex(index: Int) -> String? {
         for var i=index; i<grades.count; i++ {
-            if count(grades[i]) > 0 {
+            if grades[i].characters.count > 0 {
                 return grades[i]
 
             }
@@ -90,7 +90,7 @@ struct GradeSystem : Equatable {
 
     private func lowerGradeAtIndex(index: Int) -> String? {
         for var i=index; i>=0; i-- {
-            if count(grades[i]) > 0 {
+            if grades[i].characters.count > 0 {
                 return grades[i]
             }
         }
@@ -106,7 +106,7 @@ struct GradeSystem : Equatable {
     }
 
     private func nextGradeFromIndexes(indexes:[Int], higher: Bool) -> String? {
-        let sortedIndexes = indexes.sorted { $0 <= $1 }
+        let sortedIndexes = indexes.sort { $0 <= $1 }
 
         let lowGrade = gradeAtIndex(sortedIndexes[0], higher:false)
         let highGrade = gradeAtIndex(sortedIndexes[indexes.count - 1], higher:true)
@@ -116,14 +116,14 @@ struct GradeSystem : Equatable {
         if lowGrade == highGrade {
             if higher {
                 for var i=sortedIndexes[indexes.count - 1]; i<grades.count; i++ {
-                    if count(grades[i]) > 0 && grades[i] != highGrade {
+                    if grades[i].characters.count > 0 && grades[i] != highGrade {
                         nextGrade = grades[i]
                         break
                     }
                 }
             } else {
                 for var i=sortedIndexes[0]; i>=0; i-- {
-                    if count(grades[i]) > 0 && grades[i] != lowGrade {
+                    if grades[i].characters.count > 0 && grades[i] != lowGrade {
                         nextGrade = grades[i]
                         break
                     }
@@ -157,8 +157,9 @@ struct GradeSystemTable {
     init() {
         var error: NSError?
 
-        if var contents = NSString(contentsOfFile: self.dynamicType.kFileName, encoding: NSUTF8StringEncoding, error: &error) {
-            let lines = contents.componentsSeparatedByString("\n") as! [String]
+        do {
+            let contents = try NSString(contentsOfFile: self.dynamicType.kFileName, encoding: NSUTF8StringEncoding)
+            let lines = contents.componentsSeparatedByString("\n") as [String]
 
             let names = lines[0].componentsSeparatedByString(",") as [String]
             let categories = lines[1].componentsSeparatedByString(",") as [String]
@@ -180,15 +181,18 @@ struct GradeSystemTable {
                 }
             }
 
-        } else if error != nil {
-            NSLog("Failed to read contents from file \(self.dynamicType.kFileName) : \(error?.debugDescription)")
-            abort()
+        } catch let error1 as NSError {
+            error = error1
+            if error != nil {
+                NSLog("Failed to read contents from file \(self.dynamicType.kFileName) : \(error?.debugDescription)")
+                abort()
+            }
         }
     }
 
     func namesAndCategories() -> [(String, String)] {
-        return map(tableBody) { ($1.name, $1.category) }.sorted {
-            var result = $0.1.localizedCaseInsensitiveCompare($1.1) // Category
+        return tableBody.map { ($1.name, $1.category) }.sort {
+            let result = $0.1.localizedCaseInsensitiveCompare($1.1) // Category
 
             if result != .OrderedSame {
                 return true
@@ -214,15 +218,15 @@ struct GradeSystemTable {
     }
 
     func gradeSystemsForLocale(locale:String) -> [GradeSystem] {
-        return reduce(tableBody, [GradeSystem]()) { (tmp: [GradeSystem], dict:(name: String, gradeSystem: GradeSystem)) -> [GradeSystem] in
+        return tableBody.reduce([GradeSystem]()) { (tmp: [GradeSystem], dict:(name: String, gradeSystem: GradeSystem)) -> [GradeSystem] in
             var result = tmp
 
-            if contains(dict.gradeSystem.locales, locale) {
+            if dict.gradeSystem.locales.contains(locale) {
                 result.append(dict.gradeSystem)
             }
 
             return result
-        }.sorted({ (a:GradeSystem, b:GradeSystem) -> Bool in
+        }.sort({ (a:GradeSystem, b:GradeSystem) -> Bool in
             return a.name.caseInsensitiveCompare(b.name) == .OrderedAscending
         })
     }

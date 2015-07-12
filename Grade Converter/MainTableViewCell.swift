@@ -34,7 +34,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     private class func newGradeLabel() -> UILabel {
-        var label = UILabel()
+        let label = UILabel()
         label.font = UIFont.boldSystemFontOfSize(40)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
@@ -67,7 +67,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         if let gestureRecognizers = gradeLabelScrollView.gestureRecognizers {
             for gestureRecognizer in gestureRecognizers.generate() {
                 if gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UISwipeGestureRecognizer {
-                    cardView.addGestureRecognizer(gestureRecognizer as! UIGestureRecognizer)
+                    cardView.addGestureRecognizer(gestureRecognizer as UIGestureRecognizer)
                 }
             }
         }
@@ -117,7 +117,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             }
         }
 
-        var frame = CGRectMake(scrollViewWidth * CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
+        let frame = CGRectMake(scrollViewWidth * CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
         gradeLabel.frame = frame
     }
 
@@ -186,7 +186,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
         transform = leftWobble
 
-        UIView.animateWithDuration(0.1, delay: 0, options: (.Autoreverse | .AllowUserInteraction | .Repeat), animations: { [weak self] () -> Void in
+        UIView.animateWithDuration(0.1, delay: 0, options: ([.Autoreverse, .AllowUserInteraction, .Repeat]), animations: { [weak self] () -> Void in
             UIView.setAnimationRepeatCount(Float(NSNotFound))
             self?.transform = rightWobble
             return
@@ -197,5 +197,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     private func stopJiggling() {
         layer.removeAllAnimations()
         transform = CGAffineTransformIdentity
+    }
+
+    func cardViewSnapshot() -> UIImageView {
+        return cardView.snapshot()
     }
 }

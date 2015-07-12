@@ -14,7 +14,10 @@ class PresentationController: UIPresentationController {
     lazy private var dimmingView: UIView = {
         var view = UIView()
         view.backgroundColor = UIColor.blackColor()
-        view.frame = self.containerView.bounds
+
+        if let containerView = self.containerView {
+            view.frame = containerView.bounds
+        }
 
         return view
     }()
@@ -22,7 +25,11 @@ class PresentationController: UIPresentationController {
     override func presentationTransitionWillBegin() {
         let coordinator = presentedViewController.transitionCoordinator()
         dimmingView.alpha = 0.0
-        containerView.addSubview(dimmingView)
+
+        if let containerView = containerView {
+            containerView.addSubview(dimmingView)
+        }
+        
         coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
             self?.dimmingView.alpha = kDimmingViewAlpha
         }, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in

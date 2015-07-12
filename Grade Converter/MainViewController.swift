@@ -20,6 +20,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     private var observers = [NSObjectProtocol]()
 
+    lazy private var longPressGestureRecognizer: UILongPressGestureRecognizer = {
+        UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
+    }()
+
     lazy private var blurEffectView: UIVisualEffectView = {
         let effect = UIBlurEffect(style: .Light)
         var effectView = UIVisualEffectView(effect: effect)
@@ -46,6 +50,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+
+        if (editing) {
+            tableView.addGestureRecognizer(longPressGestureRecognizer)
+        } else {
+            tableView.removeGestureRecognizer(longPressGestureRecognizer)
+        }
 
         tableView.reloadData()
     }
@@ -74,7 +84,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     var indexPaths = [NSIndexPath]()
 
                     if let strongSelf = self {
-                        for cell in strongSelf.tableView.visibleCells() {
+                        for cell in strongSelf.tableView.visibleCells {
                             if let targetCell = cell as? MainTableViewCell,
                                let baseCell = notification.object as? MainTableViewCell where targetCell != baseCell,
                                let targetIndexPath = strongSelf.tableView.indexPathForCell(targetCell) {
@@ -104,10 +114,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK:- Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PresentEdit" {
-            if let destinationViewController = segue.destinationViewController as? UIViewController {
-                destinationViewController.transitioningDelegate = self
-                destinationViewController.modalPresentationStyle = .Custom
-            }
+            let destinationViewController = segue.destinationViewController
+            destinationViewController.transitioningDelegate = self
+            destinationViewController.modalPresentationStyle = .Custom
         }
     }
 
@@ -118,7 +127,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row < selectedSystems.count {
-            var cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
             cell.delegate = self
             cell.backgroundColor = UIColor.clearColor()
 
@@ -130,7 +139,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             return cell
         } else {
-            var cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
             cell.backgroundColor = UIColor.clearColor()
             cell.hidden = editing
 
@@ -145,7 +154,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row < selectedSystems.count {
-            var totalHeight = CGRectGetHeight(tableView.frame) - AddTableViewCell.kCellHeight
+            let totalHeight = CGRectGetHeight(tableView.frame) - AddTableViewCell.kCellHeight
             let count = selectedSystems.count
             var targetHeight = totalHeight / CGFloat(count)
             targetHeight = min(targetHeight, kMaximumCellHeight)
@@ -221,7 +230,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return transitioning
     }
 
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         return PresentationController(presentedViewController: presented, presentingViewController: presenting)
     }
 
@@ -232,10 +241,68 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
 
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
-            if let indexPaths = tableView.indexPathsForVisibleRows() {
+            if let indexPaths = tableView.indexPathsForVisibleRows {
                 tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
             }
         }
+    }
+
+    // MARK:- Reordering
+    func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
+        let state = gestureRecognizer.state
+
+        let location = gestureRecognizer.locationInView(tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(location)
+
+        var srcIndexPath: NSIndexPath?
+        var snapshotView: UIImageView?
+
+        switch (state) {
+        case .Began:
+            (srcIndexPath, snapshotView) = reorderDidBeginAtIndexPath(indexPath)
+        case .Changed:
+            (srcIndexPath) = replaceCellFromIndexPath(srcIndexPath, toIndexPath:indexPath)
+            if let snapshotView = snapshotView {
+                snapshotView.center = CGPointMake(snapshotView.center.x, location.y)
+            }
+        default:
+            cleanupReorderingAction()
+            if let snapshotView = snapshotView {
+                snapshotView.removeFromSuperview()
+            }
+        }
+    }
+
+    private func reorderDidBeginAtIndexPath(indexPath: NSIndexPath?) -> (NSIndexPath?, UIImageView?){
+        if let srcIndexPath = indexPath,
+            let srcCell = tableView.cellForRowAtIndexPath(srcIndexPath) as? MainTableViewCell {
+            let snapshotView = srcCell.cardViewSnapshot()
+            snapshotView.center = srcCell.center
+            tableView.addSubview(snapshotView)
+
+            srcCell.hidden = true
+
+            return (srcIndexPath, snapshotView)
+        }
+
+        return (nil, nil)
+    }
+
+    private func replaceCellFromIndexPath(indexPath: NSIndexPath?, toIndexPath: NSIndexPath?) -> (NSIndexPath?) {
+        if let fromIndexPath = indexPath,
+            let toIndexPath = toIndexPath where toIndexPath != fromIndexPath {
+
+            let origSystem = selectedSystems[fromIndexPath.row]
+            selectedSystems[fromIndexPath.row] = selectedSystems[toIndexPath.row]
+            selectedSystems[toIndexPath.row] = origSystem
+            tableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
+        }
+
+        return toIndexPath
+    }
+
+    private func cleanupReorderingAction() {
+
     }
 }
 

@@ -32,7 +32,7 @@ class EditViewController: UIViewController {
 
     private func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
-            return !contains(NSUserDefaults.standardUserDefaults().selectedGradeSystems(), gradeSystem)
+            return !NSUserDefaults.standardUserDefaults().selectedGradeSystems().contains(gradeSystem)
         }
     }
 
@@ -62,7 +62,7 @@ class EditViewController: UIViewController {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("EditTableViewCell") as! EditTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("EditTableViewCell") as! EditTableViewCell
 
         cell.gradeSystem = gradeSystems[indexPath.row]
 
