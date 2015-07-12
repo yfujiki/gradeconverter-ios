@@ -201,25 +201,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return false
     }
 
-//    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-//        let sourceIndex = sourceIndexPath.row
-//        let destinationIndex = destinationIndexPath.row
-//
-//        if destinationIndex != selectedSystems.count {
-//            let item = selectedSystems.removeAtIndex(sourceIndex)
-//            selectedSystems.insert(item, atIndex: destinationIndex)
-//        }
-//    }
-//
-//    func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-//
-//        if proposedDestinationIndexPath.row == selectedSystems.count {
-//            return NSIndexPath(forRow: selectedSystems.count - 1, inSection: 0)
-//        }
-//
-//        return proposedDestinationIndexPath
-//    }
-
     func reloadTableView() {
         tableView.reloadData()
     }
