@@ -35,25 +35,32 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
     @IBOutlet private weak var cardView: UIView!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var leftArrowButton: UIButton!
+    @IBOutlet weak var rightArrowButton: UIButton!
 
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
 
-    @IBAction func closeButtonTapped(sender: AnyObject) {
+    @IBAction func deleteButtonTapped(sender: AnyObject) {
         delegate?.didDeleteCell(self)
     }
 
-    private class func newGradeLabel() -> UILabel {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFontOfSize(40)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
-        label.textAlignment = .Center
-        label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+    @IBAction func leftButtonTapped(sender: AnyObject) {
+        if gradeLabelScrollViewHasLeftPage() {
+            let currentOffset = gradeLabelScrollView.contentOffset
+            let nextOffset = CGPointMake(currentOffset.x - gradeLabelScrollView.bounds.width, currentOffset.y)
+            gradeLabelScrollView.setContentOffset(nextOffset, animated: true)
+        }
+    }
 
-        return label
+    @IBAction func rightButtonTapped(sender: AnyObject) {
+        if gradeLabelScrollViewHasRightPage() {
+            let currentOffset = gradeLabelScrollView.contentOffset
+            let nextOffset = CGPointMake(currentOffset.x + gradeLabelScrollView.bounds.width, currentOffset.y)
+            gradeLabelScrollView.setContentOffset(nextOffset, animated: true)
+        }
     }
 
     lazy private var gradeLabels: [UILabel] = {
@@ -135,6 +142,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     // MARK:- UIScrollViewDelegate
 
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        let userInfo = [kNewIndexesKey: indexes ?? []]
+        NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
+    }
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
 
@@ -176,8 +188,10 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollView.contentOffset.x = scrollViewWidth
 
-        let userInfo = [kNewIndexesKey: indexes ?? []]
+        leftArrowButton.enabled = gradeLabelScrollViewHasLeftPage()
+        rightArrowButton.enabled = gradeLabelScrollViewHasRightPage()
 
+        let userInfo = [kNewIndexesKey: indexes ?? []]
         NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
     }
 
@@ -185,10 +199,14 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     override func setEditing(editing: Bool, animated: Bool) {
         if editing {
             startJiggling()
-            closeButton.hidden = false
+            deleteButton.hidden = false
+            rightArrowButton.hidden = true
+            leftArrowButton.hidden = true
         } else {
             stopJiggling()
-            closeButton.hidden = true
+            deleteButton.hidden = true
+            rightArrowButton.hidden = false
+            leftArrowButton.hidden = false
         }
     }
 
@@ -213,5 +231,37 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     func cardViewSnapshot() -> UIImageView {
         return cardView.snapshot()
+    }
+
+    // MARK:- Private methods
+    private func gradeLabelScrollViewHasLeftPage() -> Bool {
+        let currentCenter = gradeNameLabel.center
+        let nextCenter = CGPointMake(currentCenter.x - gradeLabelScrollView.bounds.width, currentCenter.y)
+
+        return gradeLabelScrollViewContainsPoint(nextCenter)
+    }
+
+    private func gradeLabelScrollViewHasRightPage() -> Bool {
+        let currentCenter = gradeNameLabel.center
+        let nextCenter = CGPointMake(currentCenter.x + gradeLabelScrollView.bounds.width, currentCenter.y)
+
+        return gradeLabelScrollViewContainsPoint(nextCenter)
+    }
+
+    private func gradeLabelScrollViewContainsPoint(offset: CGPoint) -> Bool {
+        let contentFrame = CGRect(origin: CGPointZero, size: gradeLabelScrollView.contentSize)
+
+        return CGRectContainsPoint(contentFrame, offset)
+    }
+
+    private class func newGradeLabel() -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFontOfSize(40)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.textAlignment = .Center
+        label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+        
+        return label
     }
 }
