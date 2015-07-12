@@ -76,30 +76,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.registerNib(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         tableView.registerNib(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
 
-        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
-            self?.updateSelectedSystems()
-        })
-
-        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kGradeSelectedNotification, object: nil, queue: nil, usingBlock: { [weak self] (notification: NSNotification!) -> Void in
-            if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
-                if NSUserDefaults.standardUserDefaults().currentIndexes() != indexes {
-                    NSUserDefaults.standardUserDefaults().setCurrentIndexes(indexes)
-
-                    var indexPaths = [NSIndexPath]()
-
-                    if let strongSelf = self {
-                        for cell in strongSelf.tableView.visibleCells {
-                            if let targetCell = cell as? MainTableViewCell,
-                               let baseCell = notification.object as? MainTableViewCell where targetCell != baseCell,
-                               let targetIndexPath = strongSelf.tableView.indexPathForCell(targetCell) {
-                                indexPaths.append(targetIndexPath)
-                            }
-                        }
-                        strongSelf.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
-                    }
-                }
-            }
-        }))
+        registerForNotifications()
 
         imageView.addSubview(blurEffectView)
     }
@@ -118,6 +95,61 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func redrawVisibleRows() {
         if let indexPaths = tableView.indexPathsForVisibleRows {
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+        }
+    }
+
+    // MARK:- Notification handlers
+    private func registerForNotifications() {
+        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.updateSelectedSystems()
+        })
+
+        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kGradeSelectedNotification, object: nil, queue: nil) { [weak self] (notification: NSNotification!) -> Void in
+            if let strongSelf = self {
+                if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
+                    if NSUserDefaults.standardUserDefaults().currentIndexes() != indexes {
+                        NSUserDefaults.standardUserDefaults().setCurrentIndexes(indexes)
+
+                        if let baseCell = notification.object as? MainTableViewCell {
+                            let baseIndexPath = strongSelf.tableView.indexPathForCell(baseCell)
+                            let baseRow = baseIndexPath == nil ? NSNotFound : baseIndexPath!.row
+                            strongSelf.updateBaseSystemToIndex(baseRow)
+
+                            strongSelf.tableView.beginUpdates()
+                            strongSelf.reloadVisibleCellsButCell(baseCell, animated: true)
+                            strongSelf.reloadOnlyCell(baseCell, animated: false)
+                            strongSelf.tableView.endUpdates()
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    private func updateBaseSystemToIndex(index: Int) {
+        for (var i=0; i<selectedSystems.count; i++) {
+            selectedSystems[i].isBaseSystem = (i == index)
+        }
+    }
+
+    private func reloadVisibleCellsButCell(cell: UITableViewCell, animated: Bool) {
+
+        let indexPaths = tableView.visibleCells.reduce([NSIndexPath](), combine: { (var tmp: [NSIndexPath], visibleCell: UITableViewCell) -> [NSIndexPath] in
+            if let visibleCell = visibleCell as? MainTableViewCell where visibleCell != cell,
+                let visibleIndexPath = tableView.indexPathForCell(visibleCell) {
+                    tmp.append(visibleIndexPath)
+            }
+            return tmp
+        })
+
+        let animationOption: UITableViewRowAnimation = animated ? .Automatic : .None
+        tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animationOption)
+    }
+
+    private func reloadOnlyCell(cell: UITableViewCell, animated: Bool) {
+        if let baseIndexPath = tableView.indexPathForCell(cell) {
+            let animationOption: UITableViewRowAnimation = animated ? .Automatic : .None
+            tableView.reloadRowsAtIndexPaths([baseIndexPath], withRowAnimation: animationOption)
         }
     }
 

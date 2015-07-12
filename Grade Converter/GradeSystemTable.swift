@@ -13,6 +13,14 @@ struct GradeSystem : Equatable {
     var category: String
     var locales: [String]
     var grades: [String] = [String]()
+    var isBaseSystem: Bool = false
+
+    init(name: String, category: String, locales: [String], grades: [String]) {
+        self.name = name
+        self.category = category
+        self.locales = locales
+        self.grades = grades
+    }
 
     var key: String {
         return "\(name)-\(category)"
