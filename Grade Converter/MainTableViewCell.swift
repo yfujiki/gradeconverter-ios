@@ -219,6 +219,8 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             rightArrowButton.hidden = false
             leftArrowButton.hidden = false
         }
+
+        gradeLabelScrollView.scrollEnabled = !editing
     }
 
     private func startJiggling() {
