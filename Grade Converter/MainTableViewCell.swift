@@ -31,6 +31,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var indexes: [Int]?
     var cardColor: UIColor?
     var delegate: MainTableViewCellDelegate?
+    private var scrolling: Bool = false
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
@@ -48,18 +49,20 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     @IBAction func leftButtonTapped(sender: AnyObject) {
-        if gradeLabelScrollViewHasLeftPage() {
+        if !scrolling && gradeLabelScrollViewHasLeftPage() {
             let currentOffset = gradeLabelScrollView.contentOffset
             let nextOffset = CGPointMake(currentOffset.x - gradeLabelScrollView.bounds.width, currentOffset.y)
             gradeLabelScrollView.setContentOffset(nextOffset, animated: true)
+            scrolling = true
         }
     }
 
     @IBAction func rightButtonTapped(sender: AnyObject) {
-        if gradeLabelScrollViewHasRightPage() {
+        if !scrolling && gradeLabelScrollViewHasRightPage() {
             let currentOffset = gradeLabelScrollView.contentOffset
             let nextOffset = CGPointMake(currentOffset.x + gradeLabelScrollView.bounds.width, currentOffset.y)
             gradeLabelScrollView.setContentOffset(nextOffset, animated: true)
+            scrolling = true
         }
     }
 
@@ -143,6 +146,8 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     // MARK:- UIScrollViewDelegate
 
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        scrolling = false
+        
         let userInfo = [kNewIndexesKey: indexes ?? []]
         NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
     }
