@@ -21,7 +21,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var observers = [NSObjectProtocol]()
 
     lazy private var longPressGestureRecognizer: UILongPressGestureRecognizer = {
-        UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
+        gestureRecognizer.minimumPressDuration = 0.2
+
+        return gestureRecognizer
     }()
 
     lazy private var blurEffectView: UIVisualEffectView = {
@@ -111,6 +114,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
 
+    private func redrawVisibleRows() {
+        if let indexPaths = tableView.indexPathsForVisibleRows {
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+        }
+    }
+
     // MARK:- Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PresentEdit" {
@@ -192,24 +201,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return false
     }
 
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let sourceIndex = sourceIndexPath.row
-        let destinationIndex = destinationIndexPath.row
-
-        if destinationIndex != selectedSystems.count {
-            let item = selectedSystems.removeAtIndex(sourceIndex)
-            selectedSystems.insert(item, atIndex: destinationIndex)
-        }
-    }
-
-    func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-
-        if proposedDestinationIndexPath.row == selectedSystems.count {
-            return NSIndexPath(forRow: selectedSystems.count - 1, inSection: 0)
-        }
-
-        return proposedDestinationIndexPath
-    }
+//    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+//        let sourceIndex = sourceIndexPath.row
+//        let destinationIndex = destinationIndexPath.row
+//
+//        if destinationIndex != selectedSystems.count {
+//            let item = selectedSystems.removeAtIndex(sourceIndex)
+//            selectedSystems.insert(item, atIndex: destinationIndex)
+//        }
+//    }
+//
+//    func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+//
+//        if proposedDestinationIndexPath.row == selectedSystems.count {
+//            return NSIndexPath(forRow: selectedSystems.count - 1, inSection: 0)
+//        }
+//
+//        return proposedDestinationIndexPath
+//    }
 
     func reloadTableView() {
         tableView.reloadData()
@@ -241,35 +250,30 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
 
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
-            if let indexPaths = tableView.indexPathsForVisibleRows {
-                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
-            }
+            redrawVisibleRows()
         }
     }
 
     // MARK:- Reordering
+    var focusIndexPathOfReordering: NSIndexPath?
+    var snapShotViewForReordering: UIImageView?
     func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
         let state = gestureRecognizer.state
 
         let location = gestureRecognizer.locationInView(tableView)
         let indexPath = tableView.indexPathForRowAtPoint(location)
 
-        var srcIndexPath: NSIndexPath?
-        var snapshotView: UIImageView?
-
         switch (state) {
         case .Began:
-            (srcIndexPath, snapshotView) = reorderDidBeginAtIndexPath(indexPath)
+            (focusIndexPathOfReordering, snapShotViewForReordering) = reorderDidBeginAtIndexPath(indexPath)
         case .Changed:
-            (srcIndexPath) = replaceCellFromIndexPath(srcIndexPath, toIndexPath:indexPath)
-            if let snapshotView = snapshotView {
-                snapshotView.center = CGPointMake(snapshotView.center.x, location.y)
+            focusIndexPathOfReordering = replaceCellFromIndexPath(focusIndexPathOfReordering, toIndexPath:indexPath)
+
+            if let snapshotView = snapShotViewForReordering {
+                snapShotViewForReordering?.center = CGPointMake(snapshotView.center.x, location.y)
             }
         default:
             cleanupReorderingAction()
-            if let snapshotView = snapshotView {
-                snapshotView.removeFromSuperview()
-            }
         }
     }
 
@@ -288,21 +292,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return (nil, nil)
     }
 
-    private func replaceCellFromIndexPath(indexPath: NSIndexPath?, toIndexPath: NSIndexPath?) -> (NSIndexPath?) {
-        if let fromIndexPath = indexPath,
-            let toIndexPath = toIndexPath where toIndexPath != fromIndexPath {
+    private func replaceCellFromIndexPath(fromIndexPath: NSIndexPath?, toIndexPath: NSIndexPath?) -> (NSIndexPath?) {
+        if let fromIndexPath = fromIndexPath where fromIndexPath.row < selectedSystems.count,
+            let toIndexPath = toIndexPath where toIndexPath != fromIndexPath &&  toIndexPath.row < selectedSystems.count {
 
             let origSystem = selectedSystems[fromIndexPath.row]
             selectedSystems[fromIndexPath.row] = selectedSystems[toIndexPath.row]
             selectedSystems[toIndexPath.row] = origSystem
             tableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
+
+            redrawVisibleRows()
+
+            tableView.cellForRowAtIndexPath(toIndexPath)?.hidden = true
         }
 
         return toIndexPath
     }
 
     private func cleanupReorderingAction() {
-
+        snapShotViewForReordering?.removeFromSuperview()
+        redrawVisibleRows()
     }
 }
 
