@@ -212,7 +212,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let mainTableViewCell = cell as? MainTableViewCell {
             mainTableViewCell.configureGradeLabels()
             mainTableViewCell.configureInitialContentOffset()
-            mainTableViewCell.editing = editing
+            mainTableViewCell.editMode = editing
         }
     }
 
@@ -263,11 +263,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             self.tableView.endUpdates()
-
-            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_MSEC * 200))
-            dispatch_after(delay, dispatch_get_main_queue(), { [weak self] () -> Void in
-                self?.reloadVisibleCellsButCell(cell, animated: false)
-            })
         }
     }
 

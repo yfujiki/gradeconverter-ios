@@ -31,8 +31,8 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var indexes: [Int]?
     var cardColor: UIColor?
     var delegate: MainTableViewCellDelegate?
+    var editMode: Bool = false
     private var scrolling: Bool = false
-    private var editMode: Bool = false
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
@@ -205,10 +205,6 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     // MARK:- Edit mode
-    override func setEditing(editing: Bool, animated: Bool) {
-        editMode = editing
-    }
-
     private func startJiggling() {
         let leftWobble = CGAffineTransformMakeRotation(-kAnimationRotateDeg)
         let rightWobble = CGAffineTransformMakeRotation(kAnimationRotateDeg)
