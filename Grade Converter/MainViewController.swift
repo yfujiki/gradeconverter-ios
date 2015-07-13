@@ -39,8 +39,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func updateSelectedSystems() {
         selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
 
-        navigationItem.rightBarButtonItem = editButtonItem()
-
         if selectedSystems.count == 0 {
             editing = false
         }
@@ -263,10 +261,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.beginUpdates()
             let systemToDelete = selectedSystems[indexPath.row]
             NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            tableView.endUpdates()
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            self.tableView.endUpdates()
 
-            redrawVisibleRows()
+            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_MSEC * 200))
+            dispatch_after(delay, dispatch_get_main_queue(), { [weak self] () -> Void in
+                self?.reloadVisibleCellsButCell(cell, animated: false)
+            })
         }
     }
 

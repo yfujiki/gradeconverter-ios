@@ -32,10 +32,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var cardColor: UIColor?
     var delegate: MainTableViewCellDelegate?
     private var scrolling: Bool = false
-
-    private var isInEditMode: Bool {
-        return !deleteButton.hidden
-    }
+    private var editMode: Bool = false
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
@@ -114,6 +111,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             cardView.backgroundColor = cardColor
         }
 
+        gradeLabelScrollView.scrollEnabled = !editMode
+
+        updateButtons()
         updateBorder()
     }
 
@@ -206,19 +206,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     // MARK:- Edit mode
     override func setEditing(editing: Bool, animated: Bool) {
-        if editing {
-            startJiggling()
-            deleteButton.hidden = false
-            rightArrowButton.hidden = true
-            leftArrowButton.hidden = true
-        } else {
-            stopJiggling()
-            deleteButton.hidden = true
-            rightArrowButton.hidden = false
-            leftArrowButton.hidden = false
-        }
-
-        gradeLabelScrollView.scrollEnabled = !editing
+        editMode = editing
     }
 
     private func startJiggling() {
@@ -281,8 +269,22 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
     }
 
+    private func updateButtons() {
+        if editMode {
+            startJiggling()
+            deleteButton.hidden = false
+            rightArrowButton.hidden = true
+            leftArrowButton.hidden = true
+        } else {
+            stopJiggling()
+            deleteButton.hidden = true
+            rightArrowButton.hidden = false
+            leftArrowButton.hidden = false
+        }
+    }
+
     private func updateBorder() {
-        if !isInEditMode && gradeSystem?.isBaseSystem == true {
+        if !editMode && gradeSystem?.isBaseSystem == true {
             cardView.layer.borderWidth = CGFloat(10 / UIScreen.mainScreen().scale)
             cardView.layer.borderColor = UIColor.whiteColor().CGColor
         } else {
