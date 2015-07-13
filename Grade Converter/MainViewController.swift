@@ -260,10 +260,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK:- MainTableViewCellDelegate
     func didDeleteCell(cell: MainTableViewCell) {
         if let indexPath = tableView.indexPathForCell(cell) {
+            tableView.beginUpdates()
             let systemToDelete = selectedSystems[indexPath.row]
             NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
-
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.endUpdates()
+
             redrawVisibleRows()
         }
     }

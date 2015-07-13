@@ -95,10 +95,9 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
     }
 
     private func addGradeFromIndexPath(indexPath: NSIndexPath) {
+        tableView.beginUpdates()
         let gradeSystem = gradeSystems[indexPath.row]
         NSUserDefaults.standardUserDefaults().addSelectedGradeSystem(gradeSystem)
-
-        tableView.beginUpdates()
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         tableView.endUpdates()
     }
