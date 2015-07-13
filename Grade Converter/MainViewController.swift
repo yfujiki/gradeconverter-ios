@@ -39,6 +39,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func updateSelectedSystems() {
         selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
 
+        navigationItem.rightBarButtonItem?.enabled = selectedSystems.count > 0
+
         if selectedSystems.count == 0 {
             editing = false
         }
