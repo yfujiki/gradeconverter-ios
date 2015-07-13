@@ -263,7 +263,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let systemToDelete = selectedSystems[indexPath.row]
             NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
 
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             redrawVisibleRows()
         }
     }
