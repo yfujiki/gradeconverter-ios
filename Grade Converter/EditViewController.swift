@@ -54,6 +54,8 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
         })
 
         imageView.addSubview(blurEffectView)
+
+        tableView.tableFooterView = UIView()
     }
 
     // MARK:- UITableViewDataSource
