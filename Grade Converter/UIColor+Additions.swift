@@ -71,7 +71,7 @@ extension UIColor {
     }
 
     class func myColors() -> [UIColor] {
-        return [color1(), color2(), color3(), color4(), color5(), color6()]
+        return [color1(), color3()]
     }
 
     class func addColor() -> UIColor {
