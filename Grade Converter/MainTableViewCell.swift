@@ -33,6 +33,10 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var delegate: MainTableViewCellDelegate?
     private var scrolling: Bool = false
 
+    private var isInEditMode: Bool {
+        return !deleteButton.hidden
+    }
+
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
     @IBOutlet private weak var cardView: UIView!
@@ -108,15 +112,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
         if let cardColor = cardColor {
             cardView.backgroundColor = cardColor
-
-            if gradeSystem?.isBaseSystem == true {
-                cardView.layer.borderWidth = CGFloat(10 / UIScreen.mainScreen().scale)
-                cardView.layer.borderColor = UIColor.whiteColor().CGColor
-            } else {
-                cardView.layer.borderWidth = 0
-                cardView.layer.borderColor = nil
-            }
         }
+
+        updateBorder()
     }
 
     func configureGradeLabels() {
@@ -281,5 +279,15 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     private func didSelectNewGrade() {
         let userInfo = [kNewIndexesKey: indexes ?? []]
         NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
+    }
+
+    private func updateBorder() {
+        if !isInEditMode && gradeSystem?.isBaseSystem == true {
+            cardView.layer.borderWidth = CGFloat(10 / UIScreen.mainScreen().scale)
+            cardView.layer.borderColor = UIColor.whiteColor().CGColor
+        } else {
+            cardView.layer.borderWidth = 0
+            cardView.layer.borderColor = nil
+        }
     }
 }
