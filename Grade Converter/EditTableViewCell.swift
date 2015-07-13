@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol EditTableViewCellDelegate: NSObjectProtocol {
+    func didAddGradeCell(cell: EditTableViewCell)
+}
+
 class EditTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet weak var gradeCategoryLabel: UILabel!
 
+    @IBAction func addButtonTapped(sender: AnyObject) {
+        delegate?.didAddGradeCell(self)
+    }
+
     var gradeSystem: GradeSystem?
+    var delegate: EditTableViewCellDelegate?
 
     override func layoutSubviews() {
         super.layoutSubviews()

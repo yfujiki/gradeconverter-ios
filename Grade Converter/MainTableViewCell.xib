@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="64" id="q8D-vP-jHm"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-6W-n4I" userLabel="DeleteButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-6W-n4I" userLabel="DeleteButton">
                                 <rect key="frame" x="16" y="44" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="j7M-e6-Zzp"/>

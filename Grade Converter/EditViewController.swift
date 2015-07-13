@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, EditTableViewCellDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var imageView: UIImageView!
     
@@ -63,7 +63,7 @@ class EditViewController: UIViewController {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EditTableViewCell") as! EditTableViewCell
-
+        cell.delegate = self
         cell.gradeSystem = gradeSystems[indexPath.row]
 
         return cell
@@ -79,13 +79,25 @@ class EditViewController: UIViewController {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        addGradeFromIndexPath(indexPath)
+
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    // MARK:- EditTableViewCellDelegate
+
+    func didAddGradeCell(cell: EditTableViewCell) {
+        if let selectedIndexPath = tableView.indexPathForCell(cell) {
+            addGradeFromIndexPath(selectedIndexPath)
+        }
+    }
+
+    private func addGradeFromIndexPath(indexPath: NSIndexPath) {
         let gradeSystem = gradeSystems[indexPath.row]
         NSUserDefaults.standardUserDefaults().addSelectedGradeSystem(gradeSystem)
 
         tableView.beginUpdates()
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         tableView.endUpdates()
-
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
