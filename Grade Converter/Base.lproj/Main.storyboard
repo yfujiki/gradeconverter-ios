@@ -55,7 +55,7 @@
         <!--Add Grade System-->
         <scene sceneID="mBP-ps-GOJ">
             <objects>
-                <viewController id="2P1-b5-Pwc" customClass="EditViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2P1-b5-Pwc" customClass="EditViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kxH-sl-dmp"/>
                         <viewControllerLayoutGuide type="bottom" id="Lhi-kY-AHh"/>
@@ -68,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="24" width="600" height="576"/>
                             </imageView>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-Ew-kLz">
-                                <rect key="frame" x="0.0" y="24" width="600" height="576"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2P1-b5-Pwc" id="C2r-bP-3Ky"/>
@@ -82,7 +82,7 @@
                             <constraint firstAttribute="trailing" secondItem="2wq-fI-NPz" secondAttribute="trailing" id="MBg-cR-zqR"/>
                             <constraint firstItem="2wq-fI-NPz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-20" id="QaC-RC-YyE"/>
                             <constraint firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="UtP-k3-qls"/>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-20" id="sUF-V6-vSC"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" id="sUF-V6-vSC"/>
                             <constraint firstItem="Lhi-kY-AHh" firstAttribute="top" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="uWg-ba-ldh"/>
                             <constraint firstItem="2wq-fI-NPz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="ukg-X8-gPo"/>
                         </constraints>
