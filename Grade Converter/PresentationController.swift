@@ -11,7 +11,7 @@ import UIKit
 class PresentationController: UIPresentationController {
     private let kDimmingViewAlpha = CGFloat(0.7)
 
-    lazy private var dimmingView: UIView = {
+    lazy private var dimmingView: UIView = { [unowned self] _ in
         var view = UIView()
         view.backgroundColor = UIColor.blackColor()
 

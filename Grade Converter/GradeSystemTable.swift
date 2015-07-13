@@ -211,13 +211,13 @@ struct GradeSystemTable {
     }
 
     func gradeSystems() -> [GradeSystem] {
-        return namesAndCategories().reduce([GradeSystem](), combine: { (var result:[GradeSystem], pair:(name:String, category:String)) -> [GradeSystem] in
-            if let gradeSystem = self.gradeSystemForName(pair.name, category: pair.category) {
+        return namesAndCategories().reduce([GradeSystem]()) { (var result:[GradeSystem], pair:(name:String, category:String)) -> [GradeSystem] in
+            if let gradeSystem = gradeSystemForName(pair.name, category: pair.category) {
                 result.append(gradeSystem)
             }
 
             return result
-        })
+        }
     }
 
     func gradeSystemForName(name:String, category:String) -> GradeSystem? {

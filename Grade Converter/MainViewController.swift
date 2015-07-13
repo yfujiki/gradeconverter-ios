@@ -28,7 +28,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return gestureRecognizer
     }()
 
-    lazy private var blurEffectView: UIVisualEffectView = {
+    lazy private var blurEffectView: UIVisualEffectView = { [unowned self] _ in
         let effect = UIBlurEffect(style: .Light)
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.view.bounds
@@ -42,7 +42,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.rightBarButtonItem = editButtonItem()
 
         if selectedSystems.count == 0 {
-            self.editing = false
+            editing = false
         }
     }
 
@@ -67,7 +67,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.rightBarButtonItem = editButtonItem()
 
         updateSelectedSystems()
 

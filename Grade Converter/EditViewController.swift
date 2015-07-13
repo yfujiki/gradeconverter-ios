@@ -22,7 +22,7 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
     private var gradeSystems = [GradeSystem]()
     private var observers = [NSObjectProtocol]()
 
-    lazy private var blurEffectView: UIVisualEffectView = {
+    lazy private var blurEffectView: UIVisualEffectView = { [unowned self] _ in
         let effect = UIBlurEffect(style: .Light)
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.view.bounds
