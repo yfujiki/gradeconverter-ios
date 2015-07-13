@@ -21,6 +21,6 @@ class EditTableViewCell: UITableViewCell {
         backgroundColor = UIColor.clearColor()
 
         gradeNameLabel.text = gradeSystem?.name ?? ""
-        gradeCategoryLabel.text = gradeSystem?.category ?? ""
+        gradeCategoryLabel.text = gradeSystem?.category == nil ? "" : "(\(gradeSystem!.category))"
     }
 }
