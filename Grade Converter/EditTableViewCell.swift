@@ -14,6 +14,7 @@ protocol EditTableViewCellDelegate: NSObjectProtocol {
 
 class EditTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet private weak var gradeNameLabel: UILabel!
     @IBOutlet weak var gradeCategoryLabel: UILabel!
 
@@ -24,10 +25,19 @@ class EditTableViewCell: UITableViewCell {
     var gradeSystem: GradeSystem?
     var delegate: EditTableViewCellDelegate?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        cardView.layer.cornerRadius = 4
+        cardView.backgroundColor = UIColor.systemLightGrayColor()
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
         backgroundColor = UIColor.clearColor()
+
+        cardView.layer.cornerRadius = 4
 
         gradeNameLabel.text = gradeSystem?.name ?? ""
         gradeCategoryLabel.text = gradeSystem?.category == nil ? "" : "(\(gradeSystem!.category))"

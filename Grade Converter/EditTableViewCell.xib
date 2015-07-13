@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,37 +14,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="95.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Grade Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-8D-Mbw">
-                        <rect key="frame" x="82" y="18" width="156.5" height="33.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o39-2S-fD6">
-                        <rect key="frame" x="124" y="52" width="70.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUS-Q6-9sX" userLabel="Add Button">
-                        <rect key="frame" x="18" y="36" width="24" height="24"/>
-                        <state key="normal" image="close"/>
-                        <connections>
-                            <action selector="addButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g8k-Gm-mks"/>
-                        </connections>
-                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-CB-anD" userLabel="Card View">
+                        <rect key="frame" x="16" y="8" width="288" height="79.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o39-2S-fD6">
+                                <rect key="frame" x="109" y="50.5" width="70.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUS-Q6-9sX" userLabel="Add Button">
+                                <rect key="frame" x="16" y="28" width="24" height="24"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g8k-Gm-mks"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" textAlignment="center" lineBreakMode="wordWrap" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-8D-Mbw">
+                                <rect key="frame" x="65" y="9" width="156.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zdS-8D-Mbw" secondAttribute="trailing" priority="999" constant="16" id="J0m-aw-JHC"/>
+                            <constraint firstItem="cUS-Q6-9sX" firstAttribute="centerY" secondItem="ljZ-CB-anD" secondAttribute="centerY" id="MME-bG-vHy"/>
+                            <constraint firstItem="zdS-8D-Mbw" firstAttribute="centerY" secondItem="ljZ-CB-anD" secondAttribute="centerY" constant="-14" id="R4E-s5-iMj"/>
+                            <constraint firstItem="o39-2S-fD6" firstAttribute="top" secondItem="zdS-8D-Mbw" secondAttribute="bottom" constant="8" id="S1e-qg-yav"/>
+                            <constraint firstItem="cUS-Q6-9sX" firstAttribute="leading" secondItem="ljZ-CB-anD" secondAttribute="leading" constant="16" id="Z0V-cz-qb7"/>
+                            <constraint firstItem="o39-2S-fD6" firstAttribute="centerX" secondItem="ljZ-CB-anD" secondAttribute="centerX" id="acR-MV-Jqu"/>
+                            <constraint firstItem="zdS-8D-Mbw" firstAttribute="centerX" secondItem="ljZ-CB-anD" secondAttribute="centerX" priority="500" id="ean-cf-xis"/>
+                            <constraint firstItem="zdS-8D-Mbw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cUS-Q6-9sX" secondAttribute="trailing" priority="999" constant="16" id="r2V-u8-sRg"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zdS-8D-Mbw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cUS-Q6-9sX" secondAttribute="trailing" constant="20" id="AF6-jY-5TX"/>
-                    <constraint firstItem="cUS-Q6-9sX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FCa-p9-7mq"/>
-                    <constraint firstAttribute="centerX" secondItem="zdS-8D-Mbw" secondAttribute="centerX" id="Kcn-Nx-PX8"/>
-                    <constraint firstItem="o39-2S-fD6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VKf-tD-FTO"/>
-                    <constraint firstAttribute="centerY" secondItem="zdS-8D-Mbw" secondAttribute="centerY" constant="13" id="e6W-Yc-JgX"/>
-                    <constraint firstItem="o39-2S-fD6" firstAttribute="top" secondItem="zdS-8D-Mbw" secondAttribute="bottom" constant="0.5" id="ecb-uL-Xnn"/>
-                    <constraint firstItem="cUS-Q6-9sX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="lvI-Kh-mdX"/>
+                    <constraint firstAttribute="trailing" secondItem="ljZ-CB-anD" secondAttribute="trailing" constant="16" id="GiD-40-SyE"/>
+                    <constraint firstItem="ljZ-CB-anD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="S3L-Ha-TjD"/>
+                    <constraint firstAttribute="bottom" secondItem="ljZ-CB-anD" secondAttribute="bottom" constant="8" id="eB2-zp-4H1"/>
+                    <constraint firstItem="ljZ-CB-anD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="sud-w0-H2a"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cardView" destination="ljZ-CB-anD" id="Iwc-kb-0Yq"/>
                 <outlet property="gradeCategoryLabel" destination="o39-2S-fD6" id="ax3-7C-MaU"/>
                 <outlet property="gradeNameLabel" destination="zdS-8D-Mbw" id="eD9-z2-KbY"/>
             </connections>
