@@ -14,7 +14,7 @@ class GradeSystemTableTest: XCTestCase {
     var table: GradeSystemTable!
 
     override func setUp() {
-        table = GradeSystemTable()
+        table = GradeSystemTable.sharedInstance
 
         super.setUp()
     }

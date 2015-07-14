@@ -18,7 +18,7 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
 
     private var kCellHeight: CGFloat = 96
 
-    private let allGradeSystems = GradeSystemTable().gradeSystems()
+    private let allGradeSystems = GradeSystemTable.sharedInstance.gradeSystems()
     private var gradeSystems = [GradeSystem]()
     private var observers = [NSObjectProtocol]()
 

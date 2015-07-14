@@ -15,8 +15,8 @@ let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 
 let kNSUserDefaultsDefaultIndexes = [Int(17)]
 let kNSUserDefaultsDefaultGradeSystems = [
-    GradeSystemTable().gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
-    GradeSystemTable().gradeSystemForName("Hueco", category: "Boulder")!
+    GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
+    GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!
 ] // TODO : depends on locales
 
 
@@ -60,7 +60,7 @@ extension NSUserDefaults {
     }
 
     func selectedGradeSystems() -> [GradeSystem] {
-        let globalSystemTable = GradeSystemTable()
+        let globalSystemTable = GradeSystemTable.sharedInstance
 
         if let systemKeys = NSUserDefaults.standardUserDefaults().arrayForKey(kNSUserDefaultsSelectedGradeSystems) as? [[String:String]] {
             return systemKeys.reduce([], combine: { (var gradeSystems: [GradeSystem], dict: [String : String]) -> [GradeSystem] in

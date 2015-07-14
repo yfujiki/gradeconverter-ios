@@ -153,7 +153,9 @@ func == (this: GradeSystem, that: GradeSystem) -> Bool {
     return this.name == that.name && this.category == that.category
 }
 
-struct GradeSystemTable {
+class GradeSystemTable {
+
+    static let sharedInstance = GradeSystemTable()
 
     private static var kFileName: String {
         return NSBundle.mainBundle().pathForResource("GradeSystemTable", ofType: "csv")!
@@ -162,7 +164,7 @@ struct GradeSystemTable {
     // Dictionary where key => grade system name, value => array of grade number
     private var tableBody: [String: GradeSystem] = [:]
 
-    init() {
+    private init() {
         var error: NSError?
 
         do {
