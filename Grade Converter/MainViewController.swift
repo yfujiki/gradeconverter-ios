@@ -31,7 +31,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     lazy private var blurEffectView: UIVisualEffectView = { [unowned self] _ in
         let effect = UIBlurEffect(style: .Light)
         var effectView = UIVisualEffectView(effect: effect)
-        effectView.frame = self.view.bounds
+        effectView.frame = self.imageView.bounds
 
         return effectView
     }()
@@ -79,6 +79,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         registerForNotifications()
 
         imageView.addSubview(blurEffectView)
+        setConstraintsForBlurEffectView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -96,6 +97,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let indexPaths = tableView.indexPathsForVisibleRows {
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
         }
+    }
+
+    private func setConstraintsForBlurEffectView() {
+        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+        let views = ["imageView": imageView, "blurEffectView": blurEffectView]
+        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[blurEffectView]|", options: .AlignAllCenterX, metrics: nil, views: views))
+        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[blurEffectView]|", options: .AlignAllCenterY, metrics: nil, views: views))
     }
 
     // MARK:- Notification handlers

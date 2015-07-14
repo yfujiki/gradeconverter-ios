@@ -54,8 +54,16 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
         })
 
         imageView.addSubview(blurEffectView)
+        setConstraintsForBlurEffectView()
 
         tableView.tableFooterView = UIView()
+    }
+
+    private func setConstraintsForBlurEffectView() {
+        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+        let views = ["imageView": imageView, "blurEffectView": blurEffectView]
+        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[blurEffectView]|", options: .AlignAllCenterX, metrics: nil, views: views))
+        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[blurEffectView]|", options: .AlignAllCenterY, metrics: nil, views: views))
     }
 
     // MARK:- UITableViewDataSource

@@ -28,6 +28,7 @@ class PresentationController: UIPresentationController {
 
         if let containerView = containerView {
             containerView.addSubview(dimmingView)
+            setConstraintsForDimmingViewInContainerView(containerView)
         }
         
         coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
@@ -49,5 +50,12 @@ class PresentationController: UIPresentationController {
         }, completion: { [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
             self?.dimmingView.removeFromSuperview()
         })
+    }
+
+    private func setConstraintsForDimmingViewInContainerView(containerView: UIView) {
+        dimmingView.translatesAutoresizingMaskIntoConstraints = false
+        let views = ["containerView": containerView, "dimmingView": dimmingView]
+        containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[dimmingView]|", options: .AlignAllCenterX, metrics: nil, views: views))
+        containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[dimmingView]|", options: .AlignAllCenterY, metrics: nil, views: views))
     }
 }
