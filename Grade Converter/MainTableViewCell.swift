@@ -229,15 +229,20 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     // MARK:- Private methods
+    private func gradeLabelScrollViewCenter() -> CGPoint {
+        let currentOffset = gradeLabelScrollView.contentOffset
+        return CGPointMake(currentOffset.x + gradeLabelScrollView.bounds.width / 2, currentOffset.y + gradeLabelScrollView.bounds.height / 2)
+    }
+
     private func gradeLabelScrollViewHasLeftPage() -> Bool {
-        let currentCenter = gradeNameLabel.center
+        let currentCenter = gradeLabelScrollViewCenter()
         let nextCenter = CGPointMake(currentCenter.x - gradeLabelScrollView.bounds.width, currentCenter.y)
 
         return gradeLabelScrollViewContainsPoint(nextCenter)
     }
 
     private func gradeLabelScrollViewHasRightPage() -> Bool {
-        let currentCenter = gradeNameLabel.center
+        let currentCenter = gradeLabelScrollViewCenter()
         let nextCenter = CGPointMake(currentCenter.x + gradeLabelScrollView.bounds.width, currentCenter.y)
 
         return gradeLabelScrollViewContainsPoint(nextCenter)
@@ -245,7 +250,6 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     private func gradeLabelScrollViewContainsPoint(offset: CGPoint) -> Bool {
         let contentFrame = CGRect(origin: CGPointZero, size: gradeLabelScrollView.contentSize)
-
         return CGRectContainsPoint(contentFrame, offset)
     }
 
