@@ -13,7 +13,6 @@
 		DB5DC3BB1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
 		DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */; };
 		DB5DC3C01B3BAB890016F707 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */; };
-		DB5DC3C11B3BAB890016F707 /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5DC3BF1B3BAB890016F707 /* AddTableViewCell.xib */; };
 		DB5DC3C31B3BAECF0016F707 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */; };
 		DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */; };
 		DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */; };
@@ -34,6 +33,7 @@
 		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D221B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D271B41063A00F9E40F /* PresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D261B41063A00F9E40F /* PresentationAnimatingTransitioning.swift */; };
+		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsTest.swift; sourceTree = "<group>"; };
 		DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
-		DB5DC3BF1B3BAB890016F707 /* AddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTableViewCell.xib; sourceTree = "<group>"; };
 		DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
 		DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
@@ -75,6 +74,10 @@
 		DB940B6C1B3659E200E996F8 /* GradeSystemTableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSystemTableTest.swift; sourceTree = "<group>"; };
 		DBD38D201B3FCE8000F9E40F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBD38D261B41063A00F9E40F /* PresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
+		DBD8DFD91B56562B0078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		DBD8DFDA1B56562B0078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DBD8DFDC1B56574D0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTableViewCell.xib; sourceTree = "<group>"; };
+		DBD8DFE11B56575F0078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AddTableViewCell.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +105,7 @@
 				DB940B641B361C3B00E996F8 /* MainTableViewCell.xib */,
 				DB940B4C1B3615F400E996F8 /* LaunchScreen.xib */,
 				DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */,
-				DB5DC3BF1B3BAB890016F707 /* AddTableViewCell.xib */,
+				DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */,
 				DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */,
 				DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */,
 			);
@@ -282,6 +285,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = DB940B351B3615F400E996F8;
 			productRefGroup = DB940B3F1B3615F400E996F8 /* Products */;
@@ -302,7 +306,7 @@
 				DB940B491B3615F400E996F8 /* Main.storyboard in Resources */,
 				DB940B691B364F3E00E996F8 /* GradeSystemTable.csv in Resources */,
 				DB940B4E1B3615F400E996F8 /* LaunchScreen.xib in Resources */,
-				DB5DC3C11B3BAB890016F707 /* AddTableViewCell.xib in Resources */,
+				DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */,
 				DB940B661B361C3B00E996F8 /* MainTableViewCell.xib in Resources */,
 				DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */,
 				DB940B4B1B3615F400E996F8 /* Images.xcassets in Resources */,
@@ -368,6 +372,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DB940B481B3615F400E996F8 /* Base */,
+				DBD8DFD91B56562B0078111B /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -376,8 +381,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				DB940B4D1B3615F400E996F8 /* Base */,
+				DBD8DFDA1B56562B0078111B /* ja */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBD8DFDC1B56574D0078111B /* Base */,
+				DBD8DFE11B56575F0078111B /* ja */,
+			);
+			name = AddTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

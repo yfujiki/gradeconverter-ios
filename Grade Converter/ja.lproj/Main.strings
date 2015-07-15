@@ -1,0 +1,9 @@
+
+/* Class = "UINavigationItem"; title = "Grade Converter"; ObjectID = "F81-zo-MgV"; */
+"F81-zo-MgV.title" = "グレードコンバーター";
+
+/* Class = "UINavigationItem"; title = "Add Grade System"; ObjectID = "UJA-uS-tjn"; */
+"UJA-uS-tjn.title" = "グレードを追加";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "eiy-qG-uti"; */
+"eiy-qG-uti.title" = "完了";
