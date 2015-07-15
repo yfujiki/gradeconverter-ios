@@ -22,6 +22,10 @@ extension UIColor {
         return UIColor(red: 192.0/255, green: 250.0/255, blue: 178.0/255, alpha: 1.0)
     }
 
+    class func myLightAquaColor() -> UIColor {
+        return UIColor(red: 168.0/255, green: 224.0/255, blue: 254.0/255, alpha: 1.0)
+    }
+
     class func myAquaColor() -> UIColor {
         return UIColor(red: 80.0/255, green: 148.0/255, blue: 227.0/255, alpha: 1.0)
     }
