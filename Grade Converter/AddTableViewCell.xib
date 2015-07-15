@@ -15,10 +15,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-HI-ybK" userLabel="Card View">
-                        <rect key="frame" x="16" y="8" width="288" height="111.5"/>
+                        <rect key="frame" x="8" y="4" width="304" height="119.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-1E-7Qb">
-                                <rect key="frame" x="108" y="42.5" width="70" height="26.5"/>
+                                <rect key="frame" x="116" y="46.5" width="70" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,10 +32,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xHG-HI-ybK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="QUS-4g-aGo"/>
-                    <constraint firstAttribute="bottom" secondItem="xHG-HI-ybK" secondAttribute="bottom" constant="8" id="mJb-YO-WX8"/>
-                    <constraint firstItem="xHG-HI-ybK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="q3e-hh-dFI"/>
-                    <constraint firstAttribute="trailing" secondItem="xHG-HI-ybK" secondAttribute="trailing" constant="16" id="zef-wR-eeQ"/>
+                    <constraint firstItem="xHG-HI-ybK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="QUS-4g-aGo"/>
+                    <constraint firstAttribute="bottom" secondItem="xHG-HI-ybK" secondAttribute="bottom" constant="4" id="mJb-YO-WX8"/>
+                    <constraint firstItem="xHG-HI-ybK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="q3e-hh-dFI"/>
+                    <constraint firstAttribute="trailing" secondItem="xHG-HI-ybK" secondAttribute="trailing" constant="8" id="zef-wR-eeQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

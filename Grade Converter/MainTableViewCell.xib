@@ -15,23 +15,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf0-lT-IGm" userLabel="CardView">
-                        <rect key="frame" x="16" y="8" width="288" height="112"/>
+                        <rect key="frame" x="8" y="4" width="304" height="119.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-XN-1ce">
-                                <rect key="frame" x="97" y="21" width="96" height="20.5"/>
+                                <rect key="frame" x="105" y="25" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-G9-uuF">
-                                <rect key="frame" x="70" y="41" width="148" height="64"/>
+                                <rect key="frame" x="78" y="45" width="148" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="148" id="bav-UB-0W4"/>
                                     <constraint firstAttribute="height" constant="64" id="q8D-vP-jHm"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-6W-n4I" userLabel="DeleteButton">
-                                <rect key="frame" x="16" y="44" width="24" height="24"/>
+                                <rect key="frame" x="16" y="48" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="j7M-e6-Zzp"/>
                                     <constraint firstAttribute="width" constant="24" id="lZq-ut-sSE"/>
@@ -44,14 +44,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-uc-fcI" userLabel="LeftArrow">
-                                <rect key="frame" x="6" y="36" width="40" height="40"/>
+                                <rect key="frame" x="6" y="40" width="40" height="40"/>
                                 <state key="normal" image="arrow-left"/>
                                 <connections>
                                     <action selector="leftButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="USH-Py-dr4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-9G-5ic" userLabel="RightArrow">
-                                <rect key="frame" x="248" y="36" width="40" height="40"/>
+                                <rect key="frame" x="264" y="40" width="40" height="40"/>
                                 <state key="normal" image="arrow-right"/>
                                 <connections>
                                     <action selector="rightButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="45c-4r-rt4"/>
@@ -74,10 +74,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="yf0-lT-IGm" secondAttribute="bottom" constant="8" id="Xqw-5k-IoN"/>
-                    <constraint firstItem="yf0-lT-IGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eZh-IA-rbM"/>
-                    <constraint firstAttribute="trailing" secondItem="yf0-lT-IGm" secondAttribute="trailing" constant="16" id="mb3-9x-jJd"/>
-                    <constraint firstItem="yf0-lT-IGm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xNg-A1-8BO"/>
+                    <constraint firstAttribute="bottom" secondItem="yf0-lT-IGm" secondAttribute="bottom" constant="4" id="Xqw-5k-IoN"/>
+                    <constraint firstItem="yf0-lT-IGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="eZh-IA-rbM"/>
+                    <constraint firstAttribute="trailing" secondItem="yf0-lT-IGm" secondAttribute="trailing" constant="8" id="mb3-9x-jJd"/>
+                    <constraint firstItem="yf0-lT-IGm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="xNg-A1-8BO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

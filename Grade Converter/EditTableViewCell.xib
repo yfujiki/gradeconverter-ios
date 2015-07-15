@@ -15,23 +15,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-CB-anD" userLabel="Card View">
-                        <rect key="frame" x="16" y="8" width="288" height="79.5"/>
+                        <rect key="frame" x="8" y="4" width="304" height="87.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o39-2S-fD6">
-                                <rect key="frame" x="109" y="50.5" width="70.5" height="20.5"/>
+                                <rect key="frame" x="117" y="54" width="70.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUS-Q6-9sX" userLabel="Add Button">
-                                <rect key="frame" x="16" y="28" width="24" height="24"/>
+                                <rect key="frame" x="16" y="32" width="24" height="24"/>
                                 <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="addButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g8k-Gm-mks"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Name" textAlignment="center" lineBreakMode="wordWrap" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-8D-Mbw">
-                                <rect key="frame" x="65" y="9" width="156.5" height="33.5"/>
+                                <rect key="frame" x="73" y="13" width="156.5" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -51,10 +51,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ljZ-CB-anD" secondAttribute="trailing" constant="16" id="GiD-40-SyE"/>
-                    <constraint firstItem="ljZ-CB-anD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="S3L-Ha-TjD"/>
-                    <constraint firstAttribute="bottom" secondItem="ljZ-CB-anD" secondAttribute="bottom" constant="8" id="eB2-zp-4H1"/>
-                    <constraint firstItem="ljZ-CB-anD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="sud-w0-H2a"/>
+                    <constraint firstAttribute="trailing" secondItem="ljZ-CB-anD" secondAttribute="trailing" constant="8" id="GiD-40-SyE"/>
+                    <constraint firstItem="ljZ-CB-anD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="S3L-Ha-TjD"/>
+                    <constraint firstAttribute="bottom" secondItem="ljZ-CB-anD" secondAttribute="bottom" constant="4" id="eB2-zp-4H1"/>
+                    <constraint firstItem="ljZ-CB-anD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="sud-w0-H2a"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
