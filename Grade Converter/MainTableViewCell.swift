@@ -151,6 +151,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     // MARK:- UIScrollViewDelegate
 
+    // Comes to this delegate method on left/right button tap
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         scrolling = false
 
@@ -161,15 +162,18 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         let offsetX = scrollView.contentOffset.x
 
         if let indexes = indexes {
-            if gradeSystem?.lowerGradeFromIndexes(indexes) == nil {
-                if offsetX < scrollViewWidth * 1 {
+
+            // Adjust offset when there is no lower grade
+            if !gradeLabelScrollViewHasLeftPage() {
+                if offsetX < scrollViewWidth {
                     scrollView.contentOffset.x = scrollViewWidth
                     return
                 }
             }
 
-            if gradeSystem?.higherGradeFromIndexes(indexes) == nil {
-                if offsetX > scrollViewWidth * 1 {
+            // Adjust offset when there is no higher grade
+            if !gradeLabelScrollViewHasRightPage() {
+                if offsetX > scrollViewWidth {
                     scrollView.contentOffset.x = scrollViewWidth
                     return
                 }
@@ -195,11 +199,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         }
     }
 
+    // Comes at the end of manual scrolling. Programatic scrolling does not reach here.
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollView.contentOffset.x = scrollViewWidth
-
-        leftArrowButton.enabled = gradeLabelScrollViewHasLeftPage()
-        rightArrowButton.enabled = gradeLabelScrollViewHasRightPage()
 
         didSelectNewGrade()
     }
@@ -235,22 +237,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     private func gradeLabelScrollViewHasLeftPage() -> Bool {
-        let currentCenter = gradeLabelScrollViewCenter()
-        let nextCenter = CGPointMake(currentCenter.x - gradeLabelScrollView.bounds.width, currentCenter.y)
-
-        return gradeLabelScrollViewContainsPoint(nextCenter)
+        return gradeSystem?.lowerGradeFromIndexes(indexes!) != nil
     }
 
     private func gradeLabelScrollViewHasRightPage() -> Bool {
-        let currentCenter = gradeLabelScrollViewCenter()
-        let nextCenter = CGPointMake(currentCenter.x + gradeLabelScrollView.bounds.width, currentCenter.y)
-
-        return gradeLabelScrollViewContainsPoint(nextCenter)
-    }
-
-    private func gradeLabelScrollViewContainsPoint(offset: CGPoint) -> Bool {
-        let contentFrame = CGRect(origin: CGPointZero, size: gradeLabelScrollView.contentSize)
-        return CGRectContainsPoint(contentFrame, offset)
+        return gradeSystem?.higherGradeFromIndexes(indexes!) != nil
     }
 
     private class func newGradeLabel() -> UILabel {
@@ -280,6 +271,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             deleteButton.hidden = true
             rightArrowButton.hidden = false
             leftArrowButton.hidden = false
+
+            leftArrowButton.enabled = gradeLabelScrollViewHasLeftPage()
+            rightArrowButton.enabled = gradeLabelScrollViewHasRightPage()
         }
     }
 
