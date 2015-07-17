@@ -38,6 +38,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var handleButton: UIButton!
     @IBOutlet weak var leftArrowButton: UIButton!
     @IBOutlet weak var rightArrowButton: UIButton!
 
@@ -264,11 +265,13 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         if editMode {
             startJiggling()
             deleteButton.hidden = false
+            handleButton.hidden = false
             rightArrowButton.hidden = true
             leftArrowButton.hidden = true
         } else {
             stopJiggling()
             deleteButton.hidden = true
+            handleButton.hidden = true
             rightArrowButton.hidden = false
             leftArrowButton.hidden = false
 
