@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -30,15 +30,17 @@
                                     <constraint firstAttribute="height" constant="64" id="q8D-vP-jHm"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-6W-n4I" userLabel="DeleteButton">
-                                <rect key="frame" x="16" y="48" width="24" height="24"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-6W-n4I" userLabel="DeleteButton">
+                                <rect key="frame" x="16" y="37" width="46" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="j7M-e6-Zzp"/>
-                                    <constraint firstAttribute="width" constant="24" id="lZq-ut-sSE"/>
+                                    <constraint firstAttribute="height" constant="46" id="j7M-e6-Zzp"/>
+                                    <constraint firstAttribute="width" constant="46" id="lZq-ut-sSE"/>
                                 </constraints>
-                                <state key="normal" image="close">
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="delete">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="delete-highlight"/>
                                 <connections>
                                     <action selector="deleteButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1MP-Fv-s9J"/>
                                 </connections>
@@ -97,6 +99,7 @@
     <resources>
         <image name="arrow-left" width="40" height="40"/>
         <image name="arrow-right" width="40" height="40"/>
-        <image name="close" width="24" height="24"/>
+        <image name="delete" width="30" height="30"/>
+        <image name="delete-highlight" width="30" height="30"/>
     </resources>
 </document>
