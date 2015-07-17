@@ -46,15 +46,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-uc-fcI" userLabel="LeftArrow">
-                                <rect key="frame" x="6" y="40" width="40" height="40"/>
-                                <state key="normal" image="arrow-left"/>
+                                <rect key="frame" x="0.0" y="37" width="46" height="46"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="left-arrow"/>
+                                <state key="disabled" image="left-arrow-disabled"/>
                                 <connections>
                                     <action selector="leftButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="USH-Py-dr4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-9G-5ic" userLabel="RightArrow">
-                                <rect key="frame" x="264" y="40" width="40" height="40"/>
-                                <state key="normal" image="arrow-right"/>
+                                <rect key="frame" x="258" y="37" width="46" height="46"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="right-arrow"/>
+                                <state key="disabled" image="right-arrow-disabled"/>
                                 <connections>
                                     <action selector="rightButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="45c-4r-rt4"/>
                                 </connections>
@@ -69,7 +73,7 @@
                             <constraint firstItem="UJw-6W-n4I" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" constant="16" id="elI-xm-IsN"/>
                             <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="25" id="ex8-72-eAi"/>
                             <constraint firstItem="0b2-G9-uuF" firstAttribute="top" secondItem="VQO-XN-1ce" secondAttribute="bottom" id="hdC-Cp-Tro"/>
-                            <constraint firstItem="VZE-uc-fcI" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" constant="6" id="qdg-hb-nl6"/>
+                            <constraint firstItem="VZE-uc-fcI" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" id="qdg-hb-nl6"/>
                             <constraint firstAttribute="centerY" secondItem="UJw-6W-n4I" secondAttribute="centerY" id="sU9-Dk-RJj"/>
                             <constraint firstItem="VZE-uc-fcI" firstAttribute="centerY" secondItem="yf0-lT-IGm" secondAttribute="centerY" id="uyF-0t-UUZ"/>
                         </constraints>
@@ -97,9 +101,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow-left" width="40" height="40"/>
-        <image name="arrow-right" width="40" height="40"/>
         <image name="delete" width="30" height="30"/>
         <image name="delete-highlight" width="30" height="30"/>
+        <image name="left-arrow" width="30" height="30"/>
+        <image name="left-arrow-disabled" width="30" height="30"/>
+        <image name="right-arrow" width="30" height="30"/>
+        <image name="right-arrow-disabled" width="30" height="30"/>
     </resources>
 </document>
