@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
@@ -69,22 +69,39 @@
                                 <state key="normal" image="handle"/>
                                 <state key="highlighted" image="handle-highlight"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boulder" translatesAutoresizingMaskIntoConstraints="NO" id="Mk7-Gp-jxG">
+                                <rect key="frame" x="209" y="25.5" width="20" height="20"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="w9S-9G-5ic" firstAttribute="centerY" secondItem="yf0-lT-IGm" secondAttribute="centerY" id="0vC-sE-dTq"/>
+                            <constraint firstItem="Mk7-Gp-jxG" firstAttribute="centerX" secondItem="w9S-9G-5ic" secondAttribute="centerX" id="1tu-LI-tIy"/>
                             <constraint firstAttribute="centerX" secondItem="0b2-G9-uuF" secondAttribute="centerX" id="3is-Bm-95Z"/>
                             <constraint firstAttribute="trailing" secondItem="w9S-9G-5ic" secondAttribute="trailing" id="Bmm-Bh-yFd"/>
+                            <constraint firstItem="w9S-9G-5ic" firstAttribute="top" secondItem="Mk7-Gp-jxG" secondAttribute="bottom" constant="-1" id="OKZ-su-6JI"/>
+                            <constraint firstItem="Mk7-Gp-jxG" firstAttribute="leading" secondItem="VQO-XN-1ce" secondAttribute="trailing" constant="8" id="QfP-YT-PY7"/>
+                            <constraint firstItem="Mk7-Gp-jxG" firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" id="R02-eR-ujO"/>
                             <constraint firstAttribute="centerX" secondItem="VQO-XN-1ce" secondAttribute="centerX" constant="-0.75" id="bob-QU-sZU"/>
+                            <constraint firstItem="Mk7-Gp-jxG" firstAttribute="top" secondItem="yf0-lT-IGm" secondAttribute="top" constant="18" id="eGL-6h-2hK"/>
                             <constraint firstItem="UJw-6W-n4I" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" constant="16" id="elI-xm-IsN"/>
                             <constraint firstAttribute="centerY" secondItem="VQO-XN-1ce" secondAttribute="centerY" constant="25" id="ex8-72-eAi"/>
                             <constraint firstItem="0b2-G9-uuF" firstAttribute="top" secondItem="VQO-XN-1ce" secondAttribute="bottom" id="hdC-Cp-Tro"/>
                             <constraint firstItem="9eL-ON-6SU" firstAttribute="centerY" secondItem="yf0-lT-IGm" secondAttribute="centerY" id="kk1-Tm-YCP"/>
                             <constraint firstItem="VZE-uc-fcI" firstAttribute="leading" secondItem="yf0-lT-IGm" secondAttribute="leading" id="qdg-hb-nl6"/>
                             <constraint firstAttribute="centerY" secondItem="UJw-6W-n4I" secondAttribute="centerY" id="sU9-Dk-RJj"/>
+                            <constraint firstAttribute="trailing" secondItem="Mk7-Gp-jxG" secondAttribute="trailing" constant="21" id="ukr-hd-cep"/>
                             <constraint firstItem="VZE-uc-fcI" firstAttribute="centerY" secondItem="yf0-lT-IGm" secondAttribute="centerY" id="uyF-0t-UUZ"/>
                             <constraint firstAttribute="trailing" secondItem="9eL-ON-6SU" secondAttribute="trailing" constant="8" id="wNd-ci-XSM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OKZ-su-6JI"/>
+                                <exclude reference="1tu-LI-tIy"/>
+                                <exclude reference="eGL-6h-2hK"/>
+                                <exclude reference="ukr-hd-cep"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -96,6 +113,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cardView" destination="yf0-lT-IGm" id="3jp-IQ-boo"/>
+                <outlet property="categoryImageView" destination="Mk7-Gp-jxG" id="Umx-NI-H1R"/>
                 <outlet property="deleteButton" destination="UJw-6W-n4I" id="5Ah-n5-G8T"/>
                 <outlet property="gradeLabelScrollView" destination="0b2-G9-uuF" id="h79-Q4-j50"/>
                 <outlet property="gradeNameLabel" destination="VQO-XN-1ce" id="Gsz-xu-D0I"/>
@@ -110,6 +128,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="boulder" width="20" height="20"/>
         <image name="delete" width="30" height="30"/>
         <image name="delete-highlight" width="30" height="30"/>
         <image name="handle" width="30" height="30"/>

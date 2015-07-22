@@ -41,6 +41,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var handleButton: UIButton!
     @IBOutlet weak var leftArrowButton: UIButton!
     @IBOutlet weak var rightArrowButton: UIButton!
+    @IBOutlet weak var categoryImageView: UIImageView!
 
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
@@ -106,6 +107,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
         if let gradeSystem = gradeSystem {
             gradeNameLabel.text = gradeSystem.name
+            categoryImageView.image = categoryImageFromGradeSystem(gradeSystem)
         }
 
         if let cardColor = cardColor {
@@ -288,5 +290,10 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             cardView.layer.borderWidth = 0
             cardView.layer.borderColor = nil
         }
+    }
+
+    private func categoryImageFromGradeSystem(gradeSystem: GradeSystem) -> UIImage? {
+        let imageName = gradeSystem.category == "Sports" ? "sports" : "boulder"
+        return UIImage(named: imageName)
     }
 }
