@@ -17,3 +17,9 @@
 
 /* Climbing category : boulder */
 "Boulder" = "ボルダー";
+
+/* Climbing category : sports climbing */
+"(Sports)" = "（ルート）";
+
+/* Climbing category : boulder */
+"(Boulder)" = "（ボルダー）";

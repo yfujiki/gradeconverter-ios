@@ -39,7 +39,11 @@ class EditTableViewCell: UITableViewCell {
 
         cardView.layer.cornerRadius = 4
 
-        gradeNameLabel.text = gradeSystem?.name ?? ""
-        gradeCategoryLabel.text = gradeSystem?.category == nil ? "" : "(\(gradeSystem!.category))"
+        gradeNameLabel.text = gradeSystem?.localizedName ?? ""
+        gradeCategoryLabel.text = gradeSystem?.category == nil ? "" : localizedCategoryStringForGradeSystem(gradeSystem!)
+    }
+
+    private func localizedCategoryStringForGradeSystem(gradeSystem: GradeSystem) -> String {
+        return NSLocalizedString("(\(gradeSystem.category))", comment: "Climbing category in parenthesis")
     }
 }

@@ -147,6 +147,16 @@ struct GradeSystem : Equatable {
 
         return nextGrade
     }
+
+    // MARK: - localize
+
+    var localizedName: String {
+        return NSLocalizedString(name, comment: "Grade name")
+    }
+
+    var localizedCategory: String {
+        return NSLocalizedString(category, comment: "Climbing category")
+    }
 }
 
 func == (this: GradeSystem, that: GradeSystem) -> Bool {
