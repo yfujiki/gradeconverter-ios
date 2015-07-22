@@ -6,5 +6,5 @@
   Copyright © 2015 Responsive Bytes. All rights reserved.
 */
 
-"CFBundleName" = "グレード";
-"CFBundleDisplayName" = "グレード";
+"CFBundleName" = "クライミンググレード変換";
+"CFBundleDisplayName" = "グレード変換";
