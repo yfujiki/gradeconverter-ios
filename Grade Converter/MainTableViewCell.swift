@@ -294,6 +294,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     private func categoryImageFromGradeSystem(gradeSystem: GradeSystem) -> UIImage? {
         let imageName = gradeSystem.category == "Sports" ? "sports" : "boulder"
-        return UIImage(named: imageName)
+        
+        return UIImage(named: NSLocalizedString(imageName, comment: "Image name for climbing category."))
     }
 }

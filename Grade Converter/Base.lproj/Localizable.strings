@@ -5,3 +5,15 @@
   Created by Yuichi Fujiki on 7/15/15.
   Copyright © 2015 Responsive Bytes. All rights reserved.
 */
+
+/* Climbing category : sports climbing */
+"sports" = "sports";
+
+/* Climbing category : boulder */
+"boulder" = "boulder";
+
+/* Climbing category : sports climbing */
+"Sports" = "Sports";
+
+/* Climbing category : boulder */
+"Boulder" = "Boulder";
