@@ -23,3 +23,48 @@
 
 /* Climbing category : boulder */
 "(Boulder)" = "（ボルダー）";
+
+/* Yosemite Grade */
+"Yosemite Decimal System" = "ヨセミテ";
+
+/* British Technical Grade */
+"British Technical" = "ブリティッシュ テクニカル";
+
+/* British Adjective */
+"British Adjective" = "ブリティッシュ";
+
+/* French */
+"French" = "フレンチ";
+
+/* UIAA */
+"UIAA" = "UIAA";
+
+/* Saxon */
+"Saxon" = "サクソン";
+
+/* Ewbank AUS/NZ */
+"Ewbank AUS/NZ" = "オーストラリア";
+
+/* Ewbank South Africa */
+"Ewbank South Africa" = "南アフリカ";
+
+/* Nordic FIN */
+"Nordic FIN" = "フィンランド";
+
+/* Nordic SWE/NOR */
+"Nordic SWE/NOR" = "スウェーデン・ノルウェー";
+
+/* Brazil */
+"Brazil" = "ブラジル";
+
+/* Hueco */
+"Hueco" = "フエコ Vグレード";
+
+/* Ogawayama */
+"Ogawayama" = "小川山";
+
+/* Fontainebleu */
+"Fontainebleu" = "フォンテーヌブロー";
+
+/* Toyota */
+"Toyota" = "豊田";

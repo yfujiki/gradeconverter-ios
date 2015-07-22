@@ -106,7 +106,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         super.layoutSubviews()
 
         if let gradeSystem = gradeSystem {
-            gradeNameLabel.text = gradeSystem.name
+            gradeNameLabel.text = gradeSystem.localizedName
             categoryImageView.image = categoryImageFromGradeSystem(gradeSystem)
         }
 
