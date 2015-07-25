@@ -68,3 +68,25 @@
 
 /* Toyota */
 "Toyota" = "Toyota";
+
+/* Ogawayama Grade */
+"10-kyu" = "10-kyu";
+"9-kyu" = "9-kyu";
+"8-kyu" = "8-kyu";
+"7-kyu" = "7-kyu";
+"6-kyu" = "6-kyu";
+"5-kyu" = "5-kyu";
+"4-kyu" = "4-kyu";
+"3-kyu" = "3-kyu";
+"2-kyu" = "2-kyu";
+"1-kyu" = "1-kyu";
+"1-dan" = "1-dan";
+"2-dan" = "2-dan";
+"3-dan" = "3-dan";
+"4-dan" = "4-dan";
+"5-dan" = "5-dan";
+"6-dan" = "6-dan";
+"7-dan" = "7-dan";
+"8-dan" = "8-dan";
+"9-dan" = "9-dan";
+
