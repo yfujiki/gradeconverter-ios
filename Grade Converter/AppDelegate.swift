@@ -17,9 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
+        var fontName = "ChalkboardSE-Regular"
+        var boldFontName = "ChalkboardSE-Bold"
+        var navigationBarTitleFontSize = CGFloat(28)
+        var navigationBarItemFontSize = CGFloat(22)
+
+        if let localization = NSBundle.mainBundle().preferredLocalizations.first {
+            if localization == "ja" {
+                fontName = "STHeitiSC-Light"
+                boldFontName = "STHeitiSC-Medium"
+                navigationBarTitleFontSize = CGFloat(22)
+                navigationBarItemFontSize = CGFloat(18)
+            }
+        }
+
+        // navigation bar bar color
         UINavigationBar.appearance().barTintColor = UIColor.myAquaColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        window?.tintColor = UIColor.whiteColor()
+        // navigation bar title text color
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: fontName, size: navigationBarTitleFontSize)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        // navigation items title colors
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName: UIFont(name: fontName, size: navigationBarItemFontSize)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ], forState: UIControlState.Normal)
+
+//        window?.tintColor = UIColor.whiteColor() <= This works for navigation bar item if it is only color
+
+        // other labels
+        UILabel.appearance().substituteFontName = fontName
+        UILabel.appearance().substituteBoldFontName = boldFontName
 
         return true
     }
