@@ -41,7 +41,11 @@
                             <constraint firstAttribute="trailing" secondItem="dRw-BD-8Nn" secondAttribute="trailing" id="s2Z-Uk-IIy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV"/>
+                    <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV">
+                        <barButtonItem key="leftBarButtonItem" image="info" id="lIo-Il-GXq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="dRw-BD-8Nn" id="bZA-gv-mKl"/>
                         <outlet property="tableView" destination="4bq-5q-1dv" id="TeE-tp-z93"/>
@@ -145,6 +149,7 @@
     </scenes>
     <resources>
         <image name="edit_bg" width="1080" height="1920"/>
+        <image name="info" width="24" height="24"/>
         <image name="main_bg" width="1080" height="1920"/>
     </resources>
 </document>
