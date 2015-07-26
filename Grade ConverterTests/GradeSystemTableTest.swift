@@ -26,7 +26,7 @@ class GradeSystemTableTest: XCTestCase {
     func testNamesAndCategories() {
         XCTAssertEqual(16, table.namesAndCategories().count, "Total number of table columns should be 16.")
         XCTAssertEqual("Brazil", table.namesAndCategories()[0].0, "System name should be correct.")
-        XCTAssertEqual("British Adjectival", table.namesAndCategories()[1].0, "System name should be correct.")
+        XCTAssertEqual("British Adjective", table.namesAndCategories()[1].0, "System name should be correct.")
         XCTAssertEqual("British Technical", table.namesAndCategories()[2].0, "System name should be correct.")
         XCTAssertEqual("Ewbank AUS/NZ", table.namesAndCategories()[3].0, "System name should be correct.")
         XCTAssertEqual("Ewbank South Africa", table.namesAndCategories()[4].0, "System name should be correct.")
@@ -43,7 +43,7 @@ class GradeSystemTableTest: XCTestCase {
         XCTAssertEqual("Toyota", table.namesAndCategories()[15].0, "System name should be correct.")
 
         XCTAssertEqual("Brazil", table.namesAndCategories()[0].0, "System name should be correct.")
-        XCTAssertEqual("British Adjectival", table.namesAndCategories()[1].0, "System name should be correct.")
+        XCTAssertEqual("British Adjective", table.namesAndCategories()[1].0, "System name should be correct.")
         XCTAssertEqual("British Technical", table.namesAndCategories()[2].0, "System name should be correct.")
         XCTAssertEqual("Ewbank AUS/NZ", table.namesAndCategories()[3].0, "System name should be correct.")
         XCTAssertEqual("Ewbank South Africa", table.namesAndCategories()[4].0, "System name should be correct.")
@@ -110,15 +110,15 @@ class GradeSystemTableTest: XCTestCase {
     }
 
     func testGradeSystemsForLocale() {
-        let usLocale = "en-US"
+        let usCountryCode = "US"
 
-        let gradeSystemsForUS = table.gradeSystemsForLocale(usLocale)
+        let gradeSystemsForUS = table.gradeSystemsForCountryCode(usCountryCode)
         XCTAssertEqual(2, gradeSystemsForUS.count, "US locale should have YDS and Hueco.")
         XCTAssertEqual(gradeSystemsForUS[0].name, "Hueco", "First grade system for US should be Hueco.")
         XCTAssertEqual(gradeSystemsForUS[1].name, "Yosemite Decimal System", "Second grade system for US should be YDS.")
 
-        let jpLocale = "ja-JP"
-        let gradeSystemsForJapan = table.gradeSystemsForLocale(jpLocale)
+        let jpCountryCode = "JP"
+        let gradeSystemsForJapan = table.gradeSystemsForCountryCode(jpCountryCode)
         XCTAssertEqual(2, gradeSystemsForJapan.count, "Japan locale should have Toyota and Ogawayama.")
         XCTAssertEqual(gradeSystemsForJapan[0].name, "Ogawayama", "First grade system for Japan should be Ogawayama.")
         XCTAssertEqual(gradeSystemsForJapan[1].name, "Toyota", "Second grade system for Japan should be Toyota.")

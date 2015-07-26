@@ -11,14 +11,14 @@ import Foundation
 struct GradeSystem : Equatable {
     var name: String
     var category: String
-    var locales: [String]
+    var countryCodes: [String]
     var grades: [String] = [String]()
     var isBaseSystem: Bool = false
 
     init(name: String, category: String, locales: [String], grades: [String]) {
         self.name = name
         self.category = category
-        self.locales = locales
+        self.countryCodes = locales
         self.grades = grades
     }
 
@@ -237,11 +237,11 @@ class GradeSystemTable {
         return tableBody[key]
     }
 
-    func gradeSystemsForLocale(locale:String) -> [GradeSystem] {
+    func gradeSystemsForCountryCode(countryCode:String) -> [GradeSystem] {
         return tableBody.reduce([GradeSystem]()) { (tmp: [GradeSystem], dict:(name: String, gradeSystem: GradeSystem)) -> [GradeSystem] in
             var result = tmp
 
-            if dict.gradeSystem.locales.contains(locale) {
+            if dict.gradeSystem.countryCodes.contains(countryCode) {
                 result.append(dict.gradeSystem)
             }
 
