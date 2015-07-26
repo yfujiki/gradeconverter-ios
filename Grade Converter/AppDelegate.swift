@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if let localization = NSBundle.mainBundle().preferredLocalizations.first {
             if localization == "ja" {
-                fontName = "STHeitiSC-Light"
-                boldFontName = "STHeitiSC-Medium"
+                fontName = "rounded-mplus-2p-light"
+                boldFontName = "rounded-mplus-2p-heavy"
                 navigationBarTitleFontSize = CGFloat(22)
                 navigationBarItemFontSize = CGFloat(18)
             }

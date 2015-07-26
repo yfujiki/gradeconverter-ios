@@ -19,6 +19,8 @@
 		DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
 		DB5DC3CC1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
 		DB79CB911B640B7D000024A5 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CB901B640B7D000024A5 /* UILabel+Additions.swift */; };
+		DB79CB9D1B646FE3000024A5 /* rounded-mplus-2p-heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB79CB9B1B646FE3000024A5 /* rounded-mplus-2p-heavy.ttf */; };
+		DB79CB9E1B646FE3000024A5 /* rounded-mplus-2p-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB79CB9C1B646FE3000024A5 /* rounded-mplus-2p-light.ttf */; };
 		DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B431B3615F400E996F8 /* AppDelegate.swift */; };
 		DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B451B3615F400E996F8 /* MainViewController.swift */; };
 		DB940B491B3615F400E996F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB940B471B3615F400E996F8 /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		DB76478D1B5311D900BF01E9 /* Grade Converter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Grade Converter-Bridging-Header.h"; sourceTree = "<group>"; };
 		DB79CB901B640B7D000024A5 /* UILabel+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
 		DB79CB931B641647000024A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DB79CB9B1B646FE3000024A5 /* rounded-mplus-2p-heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-2p-heavy.ttf"; sourceTree = "<group>"; };
+		DB79CB9C1B646FE3000024A5 /* rounded-mplus-2p-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-2p-light.ttf"; sourceTree = "<group>"; };
 		DB940B3E1B3615F400E996F8 /* Grade Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B421B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B431B3615F400E996F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,15 @@
 			name = Presentations;
 			sourceTree = "<group>";
 		};
+		DB79CB9A1B646FB9000024A5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DB79CB9B1B646FE3000024A5 /* rounded-mplus-2p-heavy.ttf */,
+				DB79CB9C1B646FE3000024A5 /* rounded-mplus-2p-light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		DB940B351B3615F400E996F8 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +194,7 @@
 		DB940B401B3615F400E996F8 /* Grade Converter */ = {
 			isa = PBXGroup;
 			children = (
+				DB79CB9A1B646FB9000024A5 /* Fonts */,
 				DB3DF58C1B42342100141E47 /* Presentations */,
 				DB3DF58B1B42340200141E47 /* Extensions */,
 				DB3DF58A1B4233FC00141E47 /* Models */,
@@ -321,8 +335,10 @@
 				DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */,
 				DB940B661B361C3B00E996F8 /* MainTableViewCell.xib in Resources */,
 				DBD8DFE41B56C08F0078111B /* Localizable.strings in Resources */,
+				DB79CB9E1B646FE3000024A5 /* rounded-mplus-2p-light.ttf in Resources */,
 				DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */,
 				DBFC293C1B5950FE00ADD0B4 /* InfoPlist.strings in Resources */,
+				DB79CB9D1B646FE3000024A5 /* rounded-mplus-2p-heavy.ttf in Resources */,
 				DB940B4B1B3615F400E996F8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
