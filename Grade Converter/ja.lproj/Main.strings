@@ -6,13 +6,17 @@
 "F81-zo-MgV.title" = "グレード変換";
 
 /* Class = "UILabel"; text = "Thank you!"; ObjectID = "FXC-m9-G7x"; */
-"FXC-m9-G7x.text" = "こんにちは";
+"FXC-m9-G7x.text" = "ありがとうございます";
 
 /* Class = "UINavigationItem"; title = "Add Grade System"; ObjectID = "UJA-uS-tjn"; */
 "UJA-uS-tjn.title" = "追加";
 
-/* Class = "UILabel"; text = "support@responsivebyt.es"; ObjectID = "XjZ-jv-MsS"; */
-"XjZ-jv-MsS.text" = "support@responsivebyt.es";
-
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "eiy-qG-uti"; */
 "eiy-qG-uti.title" = "完了";
+
+/* Class = "UIButton"; normalTitle = "support@responsivebyt.es"; ObjectID = "eoN-Uk-bTg"; */
+"eoN-Uk-bTg.normalTitle" = "support@responsivebyt.es";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "sOu-oA-jSs"; */
+"sOu-oA-jSs.normalTitle" = "閉じる";
+

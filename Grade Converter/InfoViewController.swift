@@ -10,10 +10,18 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    @IBAction func closeButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        preferredContentSize = CGSizeMake(280, 280)
+        preferredContentSize = CGSizeMake(280, 300)
+
+        if CurrentLang() == .ja {
+            preferredContentSize = CGSizeMake(280, 260)
+        }
     }
 
     override func didReceiveMemoryWarning() {

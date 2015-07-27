@@ -16,14 +16,12 @@ let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 let kNSUserDefaultsDefaultIndexes = [Int(17)]
 
 func kNSUserDefaultsDefaultGradeSystem() -> [GradeSystem] {
-    if let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String {
-        if countryCode == "JP" {
-            return [
-                GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
-                GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!,
-                GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
+    if CurrentCountry() == .JP {
+        return [
+            GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
+            GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!,
+            GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
             ]
-        }
     }
 
     // US and everything else

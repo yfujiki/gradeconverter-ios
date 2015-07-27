@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Climbing grade is subjective by nature, and comparing them may be only so accurate. Best effort was made to collect info from authoritative media (wikipedia, Rock & Ice etc). However, please email me if you notice anything. Happy climbing!"; ObjectID = "95T-wa-iMg"; */
-"95T-wa-iMg.text" = "As both an avid climber and a mobile developer, wanted to make a handy tool to compare different grade systems. You will find it handy when you climb abroad or read climbing news. Happy climbing!";
+"95T-wa-iMg.text" = "Climbing grade is subjective by nature, and comparing them may be only so accurate. Best effort was made to collect info from authoritative media (wikipedia, Rock & Ice etc). However, please email me if you notice anything. Happy climbing!";
 
 /* Class = "UINavigationItem"; title = "Grade Converter"; ObjectID = "F81-zo-MgV"; */
 "F81-zo-MgV.title" = "Grade Converter";
@@ -11,8 +11,11 @@
 /* Class = "UINavigationItem"; title = "Add Grade System"; ObjectID = "UJA-uS-tjn"; */
 "UJA-uS-tjn.title" = "Add Grade System";
 
-/* Class = "UILabel"; text = "support@responsivebyt.es"; ObjectID = "XjZ-jv-MsS"; */
-"XjZ-jv-MsS.text" = "support@responsivebyt.es";
-
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "eiy-qG-uti"; */
 "eiy-qG-uti.title" = "Done";
+
+/* Class = "UIButton"; normalTitle = "support@responsivebyt.es"; ObjectID = "eoN-Uk-bTg"; */
+"eoN-Uk-bTg.normalTitle" = "support@responsivebyt.es";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "sOu-oA-jSs"; */
+"sOu-oA-jSs.normalTitle" = "Close";

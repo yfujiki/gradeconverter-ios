@@ -21,16 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navigationBarTitleFontSize = CGFloat(28)
         var navigationBarItemFontSize = CGFloat(22)
 
-        if let localization = NSBundle.mainBundle().preferredLocalizations.first {
-            if localization == "ja" {
-                fontName = "rounded-mplus-2p-light"
-                boldFontName = "rounded-mplus-2p-heavy"
-                navigationBarTitleFontSize = CGFloat(22)
-                navigationBarItemFontSize = CGFloat(18)
-            }
+        if CurrentLang() == .ja {
+            fontName = "rounded-mplus-2p-light"
+            boldFontName = "rounded-mplus-2p-heavy"
+            navigationBarTitleFontSize = CGFloat(22)
+            navigationBarItemFontSize = CGFloat(18)
         }
-
-//        NSLog("\(NSLocale.currentLocale().objectForKey(NSLocaleCountryCode))")
 
         // navigation bar bar color
         UINavigationBar.appearance().barTintColor = UIColor.myAquaColor()

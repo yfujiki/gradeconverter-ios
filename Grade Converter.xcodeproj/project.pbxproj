@@ -72,8 +72,8 @@
 		DB79CB9F1B655C4D000024A5 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DB79CBA11B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSheetPresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
 		DB79CBA31B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
-		DB79CBA61B6609BC000024A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		DB79CBA81B6609C5000024A5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		DB79CBAC1B668BBB000024A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DB79CBAE1B668BC2000024A5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		DB940B3E1B3615F400E996F8 /* Grade Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B421B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B431B3615F400E996F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -416,8 +416,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				DB940B481B3615F400E996F8 /* Base */,
-				DB79CBA61B6609BC000024A5 /* en */,
-				DB79CBA81B6609C5000024A5 /* ja */,
+				DB79CBAC1B668BBB000024A5 /* en */,
+				DB79CBAE1B668BC2000024A5 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
