@@ -5,6 +5,26 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
     </dependencies>
     <scenes>
+        <!--Info View Controller-->
+        <scene sceneID="9yn-m0-eTz">
+            <objects>
+                <viewController id="4bk-4t-QYX" customClass="InfoViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HP8-yB-Kll"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZBI-Tg-LmT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e4t-oD-HcJ">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="280" height="200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0a-jE-rfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1097" y="-269"/>
+        </scene>
         <!--Grade Converter-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -44,6 +64,9 @@
                     <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV">
                         <barButtonItem key="leftBarButtonItem" image="info" id="lIo-Il-GXq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="4bk-4t-QYX" kind="presentation" identifier="PresentInfo" id="Ri2-bq-9PV"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -54,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="387"/>
+            <point key="canvasLocation" x="959" y="441"/>
         </scene>
         <!--Add Grade System-->
         <scene sceneID="mBP-ps-GOJ">

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate, MainTableViewCellDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MainTableViewCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
@@ -167,6 +167,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let destinationViewController = segue.destinationViewController
             destinationViewController.transitioningDelegate = self
             destinationViewController.modalPresentationStyle = .Custom
+        } else if segue.identifier == "PresentInfo" {
+            let destinationViewController = segue.destinationViewController
+            destinationViewController.transitioningDelegate = self
+            destinationViewController.modalPresentationStyle = .Custom
         }
     }
 
@@ -248,15 +252,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK:- UIViewControllerTransitioningDelegate
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transitioning = PresentationAnimatingTransitioning()
-        transitioning.presenting = true
+
+        var transitioning: UIViewControllerAnimatedTransitioning?
+
+        if presented is UINavigationController && presented.childViewControllers.first is EditViewController {
+            let editViewTransitioning = SemiModalPresentationAnimatingTransitioning()
+            editViewTransitioning.presenting = true
+            transitioning = editViewTransitioning
+        } else if presented is InfoViewController {
+            let infoViewTransitioning = FormSheetPresentationAnimatingTransitioning()
+            infoViewTransitioning.presenting = true
+            transitioning = infoViewTransitioning
+        }
 
         return transitioning
     }
 
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transitioning = PresentationAnimatingTransitioning()
-        transitioning.presenting = false
+        var transitioning: UIViewControllerAnimatedTransitioning?
+
+        if dismissed is UINavigationController && dismissed.childViewControllers.first is EditViewController {
+            let editViewTransitioning = SemiModalPresentationAnimatingTransitioning()
+            editViewTransitioning.presenting = false
+            transitioning = editViewTransitioning
+        } else if dismissed is InfoViewController {
+            let infoViewTransitioning = FormSheetPresentationAnimatingTransitioning()
+            infoViewTransitioning.presenting = false
+            transitioning = infoViewTransitioning
+        }
 
         return transitioning
     }

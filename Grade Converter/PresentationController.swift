@@ -19,6 +19,8 @@ class PresentationController: UIPresentationController {
             view.frame = containerView.bounds
         }
 
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissPresentedViewController:"))
+        
         return view
     }()
 
@@ -57,5 +59,9 @@ class PresentationController: UIPresentationController {
         let views = ["containerView": containerView, "dimmingView": dimmingView]
         containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[dimmingView]|", options: .AlignAllCenterX, metrics: nil, views: views))
         containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[dimmingView]|", options: .AlignAllCenterY, metrics: nil, views: views))
+    }
+
+    func dismissPresentedViewController(sender: AnyObject) {
+        presentedViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

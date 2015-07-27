@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc class PresentationAnimatingTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
+@objc class SemiModalPresentationAnimatingTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
 
     var presenting: Bool = false
 
