@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Climbing grade is subjective by nature, and comparing them may be only so accurate. Best effort was made to collect info from authoritative media (wikipedia, Rock & Ice etc). However, please email me if you notice anything. Happy climbing!"; ObjectID = "95T-wa-iMg"; */
-"95T-wa-iMg.text" = "日本の段グレードとアメリカの Vグレード、またルートのグレードとボルダーのグレードを手軽に比較できるアプリがあまりなかったので自作してみました。 お気づきのことがあれば以下までメール宜しくお願いします。ガンバガンバ!";
+"95T-wa-iMg.text" = "日本の段グレードとアメリカの Vグレード、またルートのグレードとボルダーのグレード(など)を手軽に比較できるアプリがあまりなかったので自作してみました。 お気づきのことがあれば以下までメール宜しくお願いします。ガンバガンバ!";
 
 /* Class = "UINavigationItem"; title = "Grade Converter"; ObjectID = "F81-zo-MgV"; */
 "F81-zo-MgV.title" = "グレード変換";
