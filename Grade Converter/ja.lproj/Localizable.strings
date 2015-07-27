@@ -89,3 +89,6 @@
 "7-dan" = "七段";
 "8-dan" = "八段";
 "9-dan" = "九段";
+
+/* Support Email Title */
+"[Support] About Grade Converter" = "【サポート】クライミンググレード変換アプリについて";

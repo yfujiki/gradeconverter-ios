@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MainTableViewCellDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
@@ -132,6 +133,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         })
+
+        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kEmailComposingNotification, object: nil, queue: nil, usingBlock: { [weak self] (notification: NSNotification) -> Void in
+            if MFMailComposeViewController.canSendMail() {
+                let composeViewController = MFMailComposeViewController()
+                composeViewController.mailComposeDelegate = self
+                composeViewController.setToRecipients([kSupportEmailAddress])
+                composeViewController.setSubject(kSupportEmailSubject)
+                composeViewController.navigationBar.tintColor = UIColor.whiteColor()
+
+                self?.dismissViewControllerAnimated(false, completion: { [weak self] () -> Void in
+                    self?.presentViewController(composeViewController, animated: true, completion: nil)
+                })
+            }
+        }))
     }
 
     private func updateBaseSystemToIndex(index: Int) {
@@ -309,6 +324,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         return true
+    }
+
+    //MARK:- MFMailComposeViewControllerDelegate
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK:- Reordering

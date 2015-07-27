@@ -10,7 +10,10 @@ import Foundation
 
 let kNSUserDefaultsSystemSelectionChangedNotification = "com.responsivebytes.gradeConverter.SystemSelectionChangedNotification"
 let kGradeSelectedNotification = "com.responsivebytes.GradeConverter.GradeSelectedNotification"
+let kEmailComposingNotification = "com.responsivebytes.GradeConverter.EmailComposingNotification"
 let kNewIndexesKey = "newIndexesKey"
+let kSupportEmailAddress = "support@responsivebyt.es"
+let kSupportEmailSubject = NSLocalizedString("[Support] About Grade Converter", comment: "Support Email Title")
 
 enum Country: Int {
     case US = 0

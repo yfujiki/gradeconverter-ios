@@ -14,6 +14,10 @@ class InfoViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func emailbuttonTapped(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(kEmailComposingNotification, object: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,9 +27,4 @@ class InfoViewController: UIViewController {
             preferredContentSize = CGSizeMake(280, 260)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }    
 }
