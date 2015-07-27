@@ -13,7 +13,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        preferredContentSize = CGSizeMake(280, 400)
+        preferredContentSize = CGSizeMake(280, 280)
     }
 
     override func didReceiveMemoryWarning() {

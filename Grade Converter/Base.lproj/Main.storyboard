@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Info View Controller-->
@@ -14,12 +15,54 @@
                         <viewControllerLayoutGuide type="bottom" id="ZBI-Tg-LmT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e4t-oD-HcJ">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95T-wa-iMg">
+                                <rect key="frame" x="16" y="56" width="248" height="143.5"/>
+                                <string key="text">Climbing grade is subjective by nature, and comparing them may be only so accurate. Best effort was made to collect info from authoritative media (wikipedia, Rock &amp; Ice etc). However, please email me if you notice anything. Happy climbing!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="support@responsivebyt.es" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjZ-jv-MsS">
+                                <rect key="frame" x="16" y="207" width="248" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXC-m9-G7x">
+                                <rect key="frame" x="16" y="20" width="248" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="95T-wa-iMg" secondAttribute="trailing" id="2uk-H7-buT"/>
+                            <constraint firstItem="95T-wa-iMg" firstAttribute="top" secondItem="FXC-m9-G7x" secondAttribute="bottom" constant="12" id="72L-Jk-kRI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="95T-wa-iMg" secondAttribute="leading" id="AxP-fg-4pc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="FXC-m9-G7x" secondAttribute="leading" id="Bvm-2T-rys"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XjZ-jv-MsS" secondAttribute="trailing" id="JJb-dF-jXA"/>
+                            <constraint firstItem="ZBI-Tg-LmT" firstAttribute="top" secondItem="XjZ-jv-MsS" secondAttribute="bottom" constant="8" id="WDd-X2-lhd"/>
+                            <constraint firstItem="ZBI-Tg-LmT" firstAttribute="top" secondItem="95T-wa-iMg" secondAttribute="bottom" constant="8" id="Yc4-NF-e5b"/>
+                            <constraint firstItem="FXC-m9-G7x" firstAttribute="top" secondItem="HP8-yB-Kll" secondAttribute="bottom" constant="20" id="dkw-Ms-aNW"/>
+                            <constraint firstItem="XjZ-jv-MsS" firstAttribute="top" secondItem="95T-wa-iMg" secondAttribute="bottom" constant="8" id="eR3-J5-MBq"/>
+                            <constraint firstItem="XjZ-jv-MsS" firstAttribute="leading" secondItem="e4t-oD-HcJ" secondAttribute="leadingMargin" id="nF4-mn-jgm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FXC-m9-G7x" secondAttribute="trailing" id="nLE-gO-ftb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WDd-X2-lhd"/>
+                                <exclude reference="Yc4-NF-e5b"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="280" height="200"/>
+                    <size key="freeformSize" width="280" height="240"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0a-jE-rfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
