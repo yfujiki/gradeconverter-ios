@@ -142,7 +142,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             case 0:
                 gradeLabel.text = NSLocalizedString(gradeSystem.lowerGradeFromIndexes(indexes) ?? "", comment: "Grade itself")
             case 1:
-                gradeLabel.text = NSLocalizedString(gradeSystem.gradeAtIndexes(indexes), comment: "Grade itself")
+                gradeLabel.text = gradeSystem.localizedGradeAtIndexes(indexes)
             default: // 2
                 gradeLabel.text = NSLocalizedString(gradeSystem.higherGradeFromIndexes(indexes) ?? "", comment: "Grade itself")
             }

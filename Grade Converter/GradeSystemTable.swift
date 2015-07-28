@@ -65,22 +65,28 @@ struct GradeSystem : Equatable {
         return nextToLowGrade == highGrade
     }
 
-    func gradeAtIndexes(indexes: [Int]) -> String {
+    func localizedGradeAtIndexes(indexes: [Int]) -> String {
         let sortedIndexes = indexes.sort(<=)
 
         let lowGrade = gradeAtIndex(sortedIndexes[0], higher: false)
         let highGrade = gradeAtIndex(sortedIndexes[indexes.count - 1], higher: true)
 
         if lowGrade == highGrade {
-            return lowGrade
+            return NSLocalizedString(lowGrade, comment:"Grade itself")
         } else if lowGrade.characters.count == 0 {
-            return "~ \(highGrade)"
+            let localizedGrade = NSLocalizedString(highGrade, comment:"Grade itself")
+            return "~ \(localizedGrade))"
         } else if highGrade.characters.count == 0 {
-            return "\(lowGrade) ~"
+            let localizedGrade = NSLocalizedString(lowGrade, comment:"Grade itself")
+            return "\(localizedGrade) ~"
         } else if areAdjacentGrades(lowGrade: lowGrade, highGrade: highGrade) {
-            return "\(lowGrade)/\(highGrade)"
+            let localizedLowGrade = NSLocalizedString(lowGrade, comment:"Grade itself")
+            let localizedHighGrade = NSLocalizedString(highGrade, comment:"Grade itself")
+            return "\(localizedLowGrade)/\(localizedHighGrade)"
         } else {
-            return "\(lowGrade) ~ \(highGrade)"
+            let localizedLowGrade = NSLocalizedString(lowGrade, comment:"Grade itself")
+            let localizedHighGrade = NSLocalizedString(highGrade, comment:"Grade itself")
+            return "\(localizedLowGrade) ~ \(localizedHighGrade)"
         }
     }
 
