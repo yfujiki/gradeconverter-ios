@@ -42,24 +42,27 @@ struct GradeSystem : Equatable {
         var grade = grades[convertedIndex]
 
         if grade.characters.count == 0 {
+        // There is no corresponding entry at that specific index
             if higher {
                 if let higherGrade = higherGradeAtIndex(index) {
                     grade = higherGrade
-                } else {
-                    grade = lowerGradeAtIndex(index) ?? ""
                 }
             } else {
                 if let lowerGrade = lowerGradeAtIndex(index) {
                     grade = lowerGrade
-                } else {
-                    grade = higherGradeAtIndex(index) ?? ""
                 }
             }
         }
 
-        assert(grade.characters.count > 0, "Grade should have something at this point.")
-
         return grade
+    }
+
+    // Assuming lowGrade and highGrade are different grade strings and order is low => high.
+    func areAdjacentGrades(lowGrade lowGrade: String, highGrade: String) -> Bool {
+        let lowIndexes = indexesForGrade(lowGrade)
+        let nextToLowGrade = higherGradeFromIndexes(lowIndexes)
+
+        return nextToLowGrade == highGrade
     }
 
     func gradeAtIndexes(indexes: [Int]) -> String {
@@ -70,8 +73,14 @@ struct GradeSystem : Equatable {
 
         if lowGrade == highGrade {
             return lowGrade
-        } else {
+        } else if lowGrade.characters.count == 0 {
+            return "~ \(highGrade)"
+        } else if highGrade.characters.count == 0 {
+            return "\(lowGrade) ~"
+        } else if areAdjacentGrades(lowGrade: lowGrade, highGrade: highGrade) {
             return "\(lowGrade)/\(highGrade)"
+        } else {
+            return "\(lowGrade) ~ \(highGrade)"
         }
     }
 
