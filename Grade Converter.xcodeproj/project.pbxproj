@@ -44,6 +44,8 @@
 		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
 		DBD8DFE41B56C08F0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
 		DBD8DFE81B56C11E0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
+		DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8361B6807A500EF244F /* Fabric.framework */; };
+		DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8371B6807A500EF244F /* Crashlytics.framework */; };
 		DBFC293C1B5950FE00ADD0B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBFC293E1B5950FE00ADD0B4 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,8 @@
 		DBD8DFE11B56575F0078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AddTableViewCell.strings; sourceTree = "<group>"; };
 		DBD8DFE51B56C08F0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBD8DFE71B56C0950078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DBFAD8361B6807A500EF244F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
+		DBFAD8371B6807A500EF244F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
 		DBFC293D1B5950FE00ADD0B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DBFC293F1B59510100ADD0B4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */,
+				DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +230,8 @@
 		DB940B411B3615F400E996F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DBFAD8361B6807A500EF244F /* Fabric.framework */,
+				DBFAD8371B6807A500EF244F /* Crashlytics.framework */,
 				DB940B421B3615F400E996F8 /* Info.plist */,
 				DBFC293E1B5950FE00ADD0B4 /* InfoPlist.strings */,
 				DB76478D1B5311D900BF01E9 /* Grade Converter-Bridging-Header.h */,
@@ -270,6 +278,7 @@
 				DB940B3A1B3615F400E996F8 /* Sources */,
 				DB940B3B1B3615F400E996F8 /* Frameworks */,
 				DB940B3C1B3615F400E996F8 /* Resources */,
+				DBFAD8351B68070500EF244F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -365,6 +374,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DBFAD8351B68070500EF244F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 7b0a99403c40e57432aa63bf676099405145b6ba bc2a12c0c49c9e5399863acd93c8c8714b35668ad21baf12f52418bc33f3fde7";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DB940B3A1B3615F400E996F8 /* Sources */ = {
@@ -552,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
@@ -564,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
