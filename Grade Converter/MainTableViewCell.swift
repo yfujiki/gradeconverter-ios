@@ -284,7 +284,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     private func updateBorder() {
         if !editMode && gradeSystem?.isBaseSystem == true {
-            cardView.layer.borderWidth = CGFloat(5 / UIScreen.mainScreen().scale)
+            cardView.layer.borderWidth = CGFloat(10 / UIScreen.mainScreen().scale)
             cardView.layer.borderColor = UIColor.myLightAquaColor().CGColor
         } else {
             cardView.layer.borderWidth = 0
