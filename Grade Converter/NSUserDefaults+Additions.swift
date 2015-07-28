@@ -15,13 +15,13 @@ let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 
 let kNSUserDefaultsDefaultIndexes = [Int(17)]
 
-func kNSUserDefaultsDefaultGradeSystem() -> [GradeSystem] {
+let kNSUserDefaultsDefaultGradeSystem: [GradeSystem] = {
     if CurrentCountry() == .JP {
         return [
             GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
             GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!,
             GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
-            ]
+        ]
     }
 
     // US and everything else
@@ -29,9 +29,12 @@ func kNSUserDefaultsDefaultGradeSystem() -> [GradeSystem] {
         GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
         GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!
     ]
-}
+}()
 
 extension NSUserDefaults {
+
+
+
     func setCurrentIndexes(indexes: [Int]) {
         NSUserDefaults.standardUserDefaults().setObject(indexes, forKey: kNSUserDefaultsCurrentIndexes)
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -86,6 +89,6 @@ extension NSUserDefaults {
             })
         }
 
-        return kNSUserDefaultsDefaultGradeSystem()
+        return kNSUserDefaultsDefaultGradeSystem
     }
 }

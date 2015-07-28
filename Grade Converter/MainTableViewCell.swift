@@ -249,7 +249,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     private class func newGradeLabel() -> UILabel {
         let label = UILabel()
-        label.font = UIFont.boldSystemFontOfSize(40)
+        label.font = UIFont(name: FontNameForCurrentLang(), size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         label.textAlignment = .Center

@@ -42,7 +42,7 @@ class NSUserDefaultsTest: XCTestCase {
     }
 
     func testSelectedGradeSystems() {
-        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem(), NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "Initially, selected grade systems should be default.")
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "Initially, selected grade systems should be default.")
 
         let gradeSystem1 = GradeSystem(name: "Yosemite Decimal System", category:"Sports", locales: [], grades: [])
         NSUserDefaults.standardUserDefaults().setSelectedGradeSystems([gradeSystem1])

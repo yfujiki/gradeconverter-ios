@@ -16,17 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        var fontName = "ChalkboardSE-Regular"
-        var boldFontName = "ChalkboardSE-Bold"
-        var navigationBarTitleFontSize = CGFloat(28)
-        var navigationBarItemFontSize = CGFloat(22)
-
-        if CurrentLang() == .ja {
-            fontName = "rounded-mplus-2p-light"
-            boldFontName = "rounded-mplus-2p-heavy"
-            navigationBarTitleFontSize = CGFloat(22)
-            navigationBarItemFontSize = CGFloat(18)
-        }
+        let fontName = FontNameForCurrentLang()
+        let boldFontName = BoldFontNameForCurrentLang()
+        let navigationBarTitleFontSize = NavigationBarTitleFontSize()
+        let navigationBarItemFontSize = NavigationBarItemFontSize()
 
         // navigation bar bar color
         UINavigationBar.appearance().barTintColor = UIColor.myAquaColor()
