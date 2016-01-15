@@ -229,7 +229,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         transform = CGAffineTransformIdentity
     }
 
-    func cardViewSnapshot() -> UIImageView {
+    func cardViewSnapshot() -> UIImageView? {
         return cardView.snapshot()
     }
 

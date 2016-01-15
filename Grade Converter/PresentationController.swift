@@ -34,7 +34,9 @@ class PresentationController: UIPresentationController {
         }
         
         coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
-            self?.dimmingView.alpha = kDimmingViewAlpha
+            if let strongSelf = self {
+                strongSelf.dimmingView.alpha = strongSelf.kDimmingViewAlpha
+            }
         }, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
         })
     }

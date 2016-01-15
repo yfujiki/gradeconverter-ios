@@ -356,8 +356,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     private func reorderDidBeginAtIndexPath(indexPath: NSIndexPath?) -> (NSIndexPath?, UIImageView?){
         if let srcIndexPath = indexPath,
-            let srcCell = tableView.cellForRowAtIndexPath(srcIndexPath) as? MainTableViewCell {
-            let snapshotView = srcCell.cardViewSnapshot()
+            let srcCell = tableView.cellForRowAtIndexPath(srcIndexPath) as? MainTableViewCell,
+            let snapshotView = srcCell.cardViewSnapshot() {
             snapshotView.center = srcCell.center
             tableView.addSubview(snapshotView)
 
