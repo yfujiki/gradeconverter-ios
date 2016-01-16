@@ -31,6 +31,27 @@ class FastlaneSnapshotUITests: XCTestCase {
     }
     
     func testMainScreen() {
-        snapshot("Main0")
+        let tablesQuery = XCUIApplication().tables
+        tablesQuery.cells.allElementsBoundByIndex.first!.buttons["right arrow"].tap()
+
+        // Check Point : number name of the snapshot
+        snapshot("0Main")
+
+        // Check Point : bring back the state
+        tablesQuery.cells.allElementsBoundByIndex.first!.buttons["left arrow"].tap()
+    }
+
+//    func testEditScreen() {
+//        let app = XCUIApplication()
+//        app.navigationBars["Main Navigation Bar"].buttons["Edit Button"].tap()
+//
+//        snapshot("Edit")
+//    }
+
+    func testMoreScreen() {
+        let app = XCUIApplication()
+        app.tables.cells.allElementsBoundByIndex.last!.tap()
+
+        snapshot("1Add")
     }
 }
