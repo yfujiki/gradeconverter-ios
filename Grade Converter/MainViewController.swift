@@ -68,7 +68,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = editButtonItem()
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.accessibilityIdentifier = "Main Navigation Bar"
+        }
+
+        let editButton = editButtonItem()
+        editButton.accessibilityIdentifier = "Edit Button"
+        navigationItem.rightBarButtonItem = editButton
 
         updateSelectedSystems()
 
