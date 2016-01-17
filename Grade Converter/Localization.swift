@@ -65,7 +65,7 @@ func NavigationBarTitleFontSize() -> CGFloat {
     if CurrentLang() == .ja {
         return CGFloat(22)
     } else {
-        return CGFloat(28)
+        return CGFloat(26)
     }
 }
 
