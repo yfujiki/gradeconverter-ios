@@ -8,11 +8,14 @@
 
 import UIKit
 import MessageUI
+import iAd
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
+    private var bannerView: ADBannerView?
+    private var bannerViewHeightConstraint: NSLayoutConstraint?
 
     private var selectedSystems: [GradeSystem] = []
 
@@ -87,6 +90,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
+
+        showAd()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -95,9 +100,32 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.reloadData()
     }
 
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        let isLandscape = size.height < size.width
+        let bannerViewHeight = isLandscape ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
+        bannerViewHeightConstraint?.constant = bannerViewHeight
+
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func showAd() {
+        bannerView = ADBannerView(adType: .Banner)
+        bannerView?.delegate = self
+        view.addSubview(bannerView!)
+        bannerView?.translatesAutoresizingMaskIntoConstraints = false
+        let bannerViewHeight = UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
+        bannerViewHeightConstraint = bannerView?.heightAnchor.constraintEqualToConstant(bannerViewHeight)
+        bannerViewHeightConstraint?.active = true
+        bannerView?.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        bannerView?.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        bannerView?.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
     }
 
     private func redrawVisibleRows() {
@@ -398,3 +426,5 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 }
 
+extension MainViewController: ADBannerViewDelegate {
+}

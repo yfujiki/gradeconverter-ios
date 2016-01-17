@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 let kNSUserDefaultsSystemSelectionChangedNotification = "com.responsivebytes.gradeConverter.SystemSelectionChangedNotification"
 let kGradeSelectedNotification = "com.responsivebytes.GradeConverter.GradeSelectedNotification"
@@ -15,3 +16,6 @@ let kNewIndexesKey = "newIndexesKey"
 
 let kSupportEmailAddress = "support@responsivebyt.es"
 let kSupportEmailSubject = NSLocalizedString("[Support] About Grade Converter", comment: "Support Email Title")
+
+let kIAdBannerViewHeightPortrait = CGFloat(50)
+let kIAdBannerViewHeightLandscape = CGFloat(32)
