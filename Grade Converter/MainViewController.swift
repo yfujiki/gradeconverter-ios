@@ -427,4 +427,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 }
 
 extension MainViewController: ADBannerViewDelegate {
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        NSLog("Failed to load banner : \(error.debugDescription)")
+    }
 }
