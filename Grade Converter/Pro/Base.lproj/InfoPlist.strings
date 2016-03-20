@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Grade Converter
+
+  Created by Yuichi Fujiki on 3/19/16.
+  Copyright © 2016 Responsive Bytes. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Grades Pro";
