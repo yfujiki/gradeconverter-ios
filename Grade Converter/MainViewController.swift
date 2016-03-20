@@ -90,8 +90,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
-
+#if PRO
+#else
         showAd()
+#endif
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -101,11 +103,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        let isLandscape = size.height < size.width
-        let bannerViewHeight = isLandscape ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
-        bannerViewHeightConstraint?.constant = bannerViewHeight
 
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
+#if PRO
+#else
+        adjustBannerViewToSize(size)
+#endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,6 +126,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         bannerView?.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         bannerView?.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         bannerView?.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
+    }
+
+    private func adjustBannerViewToSize(size: CGSize) {
+        let isLandscape = size.height < size.width
+        let bannerViewHeight = isLandscape ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
+        bannerViewHeightConstraint?.constant = bannerViewHeight
 
         tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
     }
