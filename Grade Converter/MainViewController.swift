@@ -25,14 +25,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var observers = [NSObjectProtocol]()
 
     lazy private var longPressGestureRecognizer: UILongPressGestureRecognizer = {
-        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.longPressGestureRecognized(_:)))
         gestureRecognizer.minimumPressDuration = 0.2
         gestureRecognizer.delegate = self
 
         return gestureRecognizer
     }()
 
-    lazy private var blurEffectView: UIVisualEffectView = { [unowned self] _ in
+    lazy private var blurEffectView: UIVisualEffectView = {
         let effect = UIBlurEffect(style: .Light)
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.imageView.bounds
@@ -194,19 +194,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     private func updateBaseSystemToIndex(index: Int) {
-        for (var i=0; i<selectedSystems.count; i++) {
+        for i in 0 ..< selectedSystems.count {
             selectedSystems[i].isBaseSystem = (i == index)
         }
     }
 
     private func reloadVisibleCellsButCell(cell: UITableViewCell, animated: Bool) {
 
-        let indexPaths = tableView.visibleCells.reduce([NSIndexPath](), combine: { (var tmp: [NSIndexPath], visibleCell: UITableViewCell) -> [NSIndexPath] in
+        let indexPaths = tableView.visibleCells.reduce([NSIndexPath](), combine: { (tmp: [NSIndexPath], visibleCell: UITableViewCell) -> [NSIndexPath] in
+            var results = tmp
             if let visibleCell = visibleCell as? MainTableViewCell where visibleCell != cell,
                 let visibleIndexPath = tableView.indexPathForCell(visibleCell) {
-                    tmp.append(visibleIndexPath)
+                    results.append(visibleIndexPath)
             }
-            return tmp
+            return results
         })
 
         let animationOption: UITableViewRowAnimation = animated ? .Automatic : .None

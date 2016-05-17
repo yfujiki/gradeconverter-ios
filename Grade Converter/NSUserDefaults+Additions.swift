@@ -77,15 +77,16 @@ extension NSUserDefaults {
         let globalSystemTable = GradeSystemTable.sharedInstance
 
         if let systemKeys = NSUserDefaults.standardUserDefaults().arrayForKey(kNSUserDefaultsSelectedGradeSystems) as? [[String:String]] {
-            return systemKeys.reduce([], combine: { (var gradeSystems: [GradeSystem], dict: [String : String]) -> [GradeSystem] in
+            return systemKeys.reduce([], combine: { (tmp: [GradeSystem], dict: [String : String]) -> [GradeSystem] in
+                var results = tmp
                 let name = dict[kNSUserDefaultsGradeNameKey] ?? ""
                 let category = dict[kNSUserDefaultsGradeCategoryKey] ?? ""
 
                 if let gradeSystem = globalSystemTable.gradeSystemForName(name, category: category) {
-                    gradeSystems.append(gradeSystem)
+                    results.append(gradeSystem)
                 }
 
-                return gradeSystems
+                return results
             })
         }
 

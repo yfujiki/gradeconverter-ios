@@ -121,7 +121,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     func configureGradeLabels() {
-        for var i=0; i<gradeLabels.count; i++ {
+        for i in 0 ..< gradeLabels.count {
             configureGradeLabelAtIndex(i)
         }
 

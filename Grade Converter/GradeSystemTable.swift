@@ -92,7 +92,7 @@ struct GradeSystem : Equatable {
 
     func indexesForGrade(grade: String) -> [Int] {
         var indexes = [Int]()
-        for var i=0; i<grades.count; i++ {
+        for i in 0 ..< grades.count {
             if grades[i] == grade {
                 indexes.append(i)
             }
@@ -102,7 +102,7 @@ struct GradeSystem : Equatable {
     }
 
     private func higherGradeAtIndex(index: Int) -> String? {
-        for var i=index; i<grades.count; i++ {
+        for i in index ..< grades.count {
             if grades[i].characters.count > 0 {
                 return grades[i]
 
@@ -112,7 +112,7 @@ struct GradeSystem : Equatable {
     }
 
     private func lowerGradeAtIndex(index: Int) -> String? {
-        for var i=index; i>=0; i-- {
+        for i in (0...index).reverse() {
             if grades[i].characters.count > 0 {
                 return grades[i]
             }
@@ -138,14 +138,14 @@ struct GradeSystem : Equatable {
 
         if lowGrade == highGrade {
             if higher {
-                for var i=sortedIndexes[indexes.count - 1]; i<grades.count; i++ {
+                for i in sortedIndexes[indexes.count - 1] ..< grades.count {
                     if grades[i].characters.count > 0 && grades[i] != highGrade {
                         nextGrade = grades[i]
                         break
                     }
                 }
             } else {
-                for var i=sortedIndexes[0]; i>=0; i-- {
+                for i in (0...sortedIndexes[0]).reverse() {
                     if grades[i].characters.count > 0 && grades[i] != lowGrade {
                         nextGrade = grades[i]
                         break
@@ -201,7 +201,7 @@ class GradeSystemTable {
             let arrayOfLocales = lines[2].componentsSeparatedByString(",") as [String]
             let arrayOfGrades = lines[3..<lines.count]
 
-            for var i = 0; i < names.count; i++ {
+            for i in 0 ..< names.count {
                 let locales = arrayOfLocales[i].componentsSeparatedByString(" ")
                 let gradeSystem = GradeSystem(name: names[i], category: categories[i], locales: locales, grades: [String]())
                 tableBody[gradeSystem.key] = gradeSystem
@@ -210,7 +210,7 @@ class GradeSystemTable {
             for grades in arrayOfGrades {
                 let gradesOfSameLevel = grades.componentsSeparatedByString(",") as [String]
 
-                for var i=0; i<names.count; i++ {
+                for i in 0 ..< names.count {
                     let key = "\(names[i])-\(categories[i])"
                     tableBody[key]?.addGrade(gradesOfSameLevel[i])
                 }
@@ -238,7 +238,9 @@ class GradeSystemTable {
     }
 
     func gradeSystems() -> [GradeSystem] {
-        return namesAndCategories().reduce([GradeSystem]()) { (var result:[GradeSystem], pair:(name:String, category:String)) -> [GradeSystem] in
+        return namesAndCategories().reduce([GradeSystem]()) { (tmp:[GradeSystem], pair:(name:String, category:String)) -> [GradeSystem] in
+
+            var result = tmp;
             if let gradeSystem = gradeSystemForName(pair.name, category: pair.category) {
                 result.append(gradeSystem)
             }

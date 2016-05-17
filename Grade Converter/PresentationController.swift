@@ -19,7 +19,7 @@ class PresentationController: UIPresentationController {
             view.frame = containerView.bounds
         }
 
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissPresentedViewController:"))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PresentationController.dismissPresentedViewController(_:))))
         
         return view
     }()
