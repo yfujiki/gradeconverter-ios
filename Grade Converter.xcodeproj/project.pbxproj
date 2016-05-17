@@ -393,6 +393,7 @@
 				DB940B3B1B3615F400E996F8 /* Frameworks */,
 				DB940B3C1B3615F400E996F8 /* Resources */,
 				DBFAD8351B68070500EF244F /* ShellScript */,
+				DB08E95B1CEAADEC007C9F14 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -429,6 +430,7 @@
 				DB9A8F911C9E3D1B005803F6 /* Frameworks */,
 				DB9A8F941C9E3D1B005803F6 /* Resources */,
 				DB9A8FA11C9E3D1B005803F6 /* ShellScript */,
+				DB08E95C1CEAAF19007C9F14 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -539,6 +541,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DB08E95B1CEAADEC007C9F14 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Mark WARNINGs and SERIOUSs as warnings and TODOs as errors in RELEASE builds excluding the Vendor and Third Party directories.\nif which XcodeIssueGenerator >/dev/null; then\n  XcodeIssueGenerator -b RELEASE -w \"WARNING, SERIOUS\" -e TODO -x \"Vendor/\"\n  XcodeIssueGenerator -b DEBUG -w \"WARNING, SERIOUS\" -e TODO -x \"Vendor/\"\nelse\n  echo \"warning: XcodeIssueGenerator is not installed.\"\nfi";
+		};
+		DB08E95C1CEAAF19007C9F14 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Mark WARNINGs and SERIOUSs as warnings and TODOs as errors in RELEASE builds excluding the Vendor and Third Party directories.\nif which XcodeIssueGenerator >/dev/null; then\n  XcodeIssueGenerator -b RELEASE -w \"WARNING, SERIOUS\" -e TODO -x \"Vendor/\"\n  XcodeIssueGenerator -b DEBUG -w \"WARNING, SERIOUS\" -e TODO -x \"Vendor/\"\nelse\n  echo \"warning: XcodeIssueGenerator is not installed.\"\nfi";
+		};
 		DB9A8FA11C9E3D1B005803F6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
