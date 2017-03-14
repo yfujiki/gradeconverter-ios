@@ -15,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private func application(application _: UIApplication, didFinishLaunchingWithOptions _: [AnyHashable: Any]?) -> Bool {
-
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         Fabric.with([Crashlytics()])
 
         let fontName = FontNameForCurrentLang()
