@@ -392,7 +392,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             focusIndexPathOfReordering = replaceCellFromIndexPath(focusIndexPathOfReordering, toIndexPath: indexPath)
 
             if let snapshotView = snapShotViewForReordering {
-                snapShotViewForReordering?.center = CGPoint(x: snapshotView.center.x, y: location.y)
+                snapshotView.center = CGPoint(x: snapshotView.center.x, y: location.y)
             }
         default:
             cleanupReorderingAction()
