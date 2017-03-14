@@ -16,56 +16,54 @@ let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 let kNSUserDefaultsDefaultIndexes = [Int(17)]
 
 let kNSUserDefaultsDefaultGradeSystem: [GradeSystem] = {
-    if CurrentCountry() == .JP {
+    if CurrentCountry() == .jp {
         return [
             GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
             GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!,
-            GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
+            GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
         ]
     }
 
     // US and everything else
     return [
         GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
-        GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!
+        GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!,
     ]
 }()
 
-extension NSUserDefaults {
+extension UserDefaults {
 
-
-
-    func setCurrentIndexes(indexes: [Int]) {
-        NSUserDefaults.standardUserDefaults().setObject(indexes, forKey: kNSUserDefaultsCurrentIndexes)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func setCurrentIndexes(_ indexes: [Int]) {
+        UserDefaults.standard.set(indexes, forKey: kNSUserDefaultsCurrentIndexes)
+        UserDefaults.standard.synchronize()
     }
 
     func currentIndexes() -> [Int] {
-        let indexes = NSUserDefaults.standardUserDefaults().arrayForKey(kNSUserDefaultsCurrentIndexes) as? [Int]
+        let indexes = UserDefaults.standard.array(forKey: kNSUserDefaultsCurrentIndexes) as? [Int]
 
         return indexes ?? kNSUserDefaultsDefaultIndexes
     }
 
-    func setSelectedGradeSystems(gradeSystems:[GradeSystem]) {
+    func setSelectedGradeSystems(_ gradeSystems: [GradeSystem]) {
         let systemKeys = gradeSystems.map { (gradeSystem: GradeSystem) -> [String: String] in
             let name = gradeSystem.name
             let category = gradeSystem.category
             return [kNSUserDefaultsGradeNameKey: name, kNSUserDefaultsGradeCategoryKey: category]
         }
 
-        NSUserDefaults.standardUserDefaults().setObject(systemKeys, forKey: kNSUserDefaultsSelectedGradeSystems)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(systemKeys, forKey: kNSUserDefaultsSelectedGradeSystems)
+        UserDefaults.standard.synchronize()
 
-        NSNotificationCenter.defaultCenter().postNotificationName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: kNSUserDefaultsSystemSelectionChangedNotification), object: nil)
     }
 
-    func addSelectedGradeSystem(gradeSystem:GradeSystem) {
+    func addSelectedGradeSystem(_ gradeSystem: GradeSystem) {
         var gradeSystems = selectedGradeSystems()
         gradeSystems.append(gradeSystem)
         setSelectedGradeSystems(gradeSystems)
     }
 
-    func removeSelectedGradeSystem(gradeSystemToRemove: GradeSystem) {
+    func removeSelectedGradeSystem(_ gradeSystemToRemove: GradeSystem) {
         var gradeSystems = selectedGradeSystems()
         gradeSystems = gradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
             return gradeSystem != gradeSystemToRemove
@@ -76,8 +74,8 @@ extension NSUserDefaults {
     func selectedGradeSystems() -> [GradeSystem] {
         let globalSystemTable = GradeSystemTable.sharedInstance
 
-        if let systemKeys = NSUserDefaults.standardUserDefaults().arrayForKey(kNSUserDefaultsSelectedGradeSystems) as? [[String:String]] {
-            return systemKeys.reduce([], combine: { (tmp: [GradeSystem], dict: [String : String]) -> [GradeSystem] in
+        if let systemKeys = UserDefaults.standard.array(forKey: kNSUserDefaultsSelectedGradeSystems) as? [[String: String]] {
+            return systemKeys.reduce([], { (tmp: [GradeSystem], dict: [String: String]) -> [GradeSystem] in
                 var results = tmp
                 let name = dict[kNSUserDefaultsGradeNameKey] ?? ""
                 let category = dict[kNSUserDefaultsGradeCategoryKey] ?? ""

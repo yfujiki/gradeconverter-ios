@@ -10,11 +10,11 @@ import UIKit
 
 @objc class SemiModalPresentationAnimatingTransitioning: PresentationAnimatingTransitioning {
 
-    override func toViewFrameFromToViewController(toViewController: UIViewController, containerView: UIView) -> CGRect {
-        return CGRectMake(20, 20, containerView.frame.width - 40, containerView.frame.height - 20)
+    override func toViewFrameFromToViewController(toViewController _: UIViewController, containerView: UIView) -> CGRect {
+        return CGRect(x: 20, y: 20, width: containerView.frame.width - 40, height: containerView.frame.height - 20)
     }
 
-    override func fromViewFrameFromFromViewController(fromViewController: UIViewController, containerView: UIView) -> CGRect {
-        return CGRectMake(20, 20, containerView.frame.width - 40, containerView.frame.height - 20)
+    override func fromViewFrameFromFromViewController(fromViewController _: UIViewController, containerView: UIView) -> CGRect {
+        return CGRect(x: 20, y: 20, width: containerView.frame.width - 40, height: containerView.frame.height - 20)
     }
 }

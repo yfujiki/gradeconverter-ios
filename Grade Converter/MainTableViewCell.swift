@@ -9,11 +9,11 @@
 import UIKit
 
 protocol MainTableViewCellDelegate: NSObjectProtocol {
-    func didDeleteCell(cell: MainTableViewCell)
+    func didDeleteCell(_ cell: MainTableViewCell)
 }
 
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
-    private let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
+    fileprivate let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(M_PI) / CGFloat(180.0)
 
     class var CardViewLeadingConstraint: CGFloat {
         return 16
@@ -32,11 +32,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var cardColor: UIColor?
     var delegate: MainTableViewCellDelegate?
     var editMode: Bool = false
-    private var scrolling: Bool = false
+    fileprivate var scrolling: Bool = false
 
-    @IBOutlet private weak var gradeNameLabel: UILabel!
-    @IBOutlet private weak var gradeLabelScrollView: UIScrollView!
-    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet fileprivate weak var gradeNameLabel: UILabel!
+    @IBOutlet fileprivate weak var gradeLabelScrollView: UIScrollView!
+    @IBOutlet fileprivate weak var cardView: UIView!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var handleButton: UIButton!
     @IBOutlet weak var leftArrowButton: UIButton!
@@ -47,39 +47,41 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
 
-    @IBAction func deleteButtonTapped(sender: AnyObject) {
+    @IBAction func deleteButtonTapped(_ sender: AnyObject) {
         delegate?.didDeleteCell(self)
     }
 
-    @IBAction func leftButtonTapped(sender: AnyObject) {
+    @IBAction func leftButtonTapped(_ sender: AnyObject) {
         if !scrolling && gradeLabelScrollViewHasLeftPage() {
             let currentOffset = gradeLabelScrollView.contentOffset
-            let nextOffset = CGPointMake(currentOffset.x - gradeLabelScrollView.bounds.width, currentOffset.y)
+            let nextOffset = CGPoint(x: currentOffset.x - gradeLabelScrollView.bounds.width, y: currentOffset.y)
             gradeLabelScrollView.setContentOffset(nextOffset, animated: true)
             scrolling = true
         }
     }
 
-    @IBAction func rightButtonTapped(sender: AnyObject) {
+    @IBAction func rightButtonTapped(_ sender: AnyObject) {
         if !scrolling && gradeLabelScrollViewHasRightPage() {
             let currentOffset = gradeLabelScrollView.contentOffset
-            let nextOffset = CGPointMake(currentOffset.x + gradeLabelScrollView.bounds.width, currentOffset.y)
+            let nextOffset = CGPoint(x: currentOffset.x + gradeLabelScrollView.bounds.width, y: currentOffset.y)
             gradeLabelScrollView.setContentOffset(nextOffset, animated: true)
             scrolling = true
         }
     }
 
-    lazy private var gradeLabels: [UILabel] = {
-        return [MainTableViewCell.newGradeLabel(),
-                MainTableViewCell.newGradeLabel(),
-                MainTableViewCell.newGradeLabel()]
+    fileprivate lazy var gradeLabels: [UILabel] = {
+        return [
+            MainTableViewCell.newGradeLabel(),
+            MainTableViewCell.newGradeLabel(),
+            MainTableViewCell.newGradeLabel(),
+        ]
     }()
 
-    private var scrollViewWidth: CGFloat {
+    fileprivate var scrollViewWidth: CGFloat {
         return gradeLabelScrollView.frame.width
     }
 
-    private var scrollViewHeight: CGFloat {
+    fileprivate var scrollViewHeight: CGFloat {
         return gradeLabelScrollView.frame.height
     }
 
@@ -90,7 +92,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
         gradeLabelScrollView.delegate = self
         if let gestureRecognizers = gradeLabelScrollView.gestureRecognizers {
-            for gestureRecognizer in gestureRecognizers.generate() {
+            for gestureRecognizer in gestureRecognizers.makeIterator() {
                 if gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UISwipeGestureRecognizer {
                     cardView.addGestureRecognizer(gestureRecognizer as UIGestureRecognizer)
                 }
@@ -114,7 +116,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             cardView.backgroundColor = cardColor
         }
 
-        gradeLabelScrollView.scrollEnabled = !editMode
+        gradeLabelScrollView.isScrollEnabled = !editMode
 
         updateButtons()
         updateBorder()
@@ -125,20 +127,20 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             configureGradeLabelAtIndex(i)
         }
 
-        gradeLabelScrollView.contentSize = CGSizeMake(scrollViewWidth * 3, scrollViewHeight)
+        gradeLabelScrollView.contentSize = CGSize(width: scrollViewWidth * 3, height: scrollViewHeight)
     }
 
     func configureInitialContentOffset() {
-        gradeLabelScrollView.contentOffset = CGPointMake(scrollViewWidth, 0)
+        gradeLabelScrollView.contentOffset = CGPoint(x: scrollViewWidth, y: 0)
     }
 
-    private func configureGradeLabelAtIndex(index: Int) {
+    fileprivate func configureGradeLabelAtIndex(_ index: Int) {
         let gradeLabel = gradeLabels[index]
 
         if let gradeSystem = gradeSystem,
             let indexes = indexes {
 
-            switch (index) {
+            switch index {
             case 0:
                 gradeLabel.text = NSLocalizedString(gradeSystem.lowerGradeFromIndexes(indexes) ?? "", comment: "Grade itself")
             case 1:
@@ -148,20 +150,20 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             }
         }
 
-        let frame = CGRectMake(scrollViewWidth * CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
+        let frame = CGRect(x: scrollViewWidth * CGFloat(index), y: 0, width: scrollViewWidth, height: scrollViewHeight)
         gradeLabel.frame = frame
     }
 
-    // MARK:- UIScrollViewDelegate
+    // MARK: - UIScrollViewDelegate
 
     // Comes to this delegate method on left/right button tap
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_: UIScrollView) {
         scrolling = false
 
         didSelectNewGrade()
     }
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
 
         if let indexes = indexes {
@@ -185,14 +187,14 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
             if offsetX < scrollViewWidth * 0.5 {
                 let grade = gradeSystem?.lowerGradeFromIndexes(indexes)
                 if let grade = grade,
-                   let gradeIndexes = gradeSystem?.indexesForGrade(grade) {
+                    let gradeIndexes = gradeSystem?.indexesForGrade(grade) {
                     self.indexes = gradeIndexes
                 }
                 scrollView.contentOffset.x += scrollViewWidth
             } else if offsetX > scrollViewWidth * 1.5 {
                 let grade = gradeSystem?.higherGradeFromIndexes(indexes)
                 if let grade = grade,
-                   let gradeIndexes = gradeSystem?.indexesForGrade(grade) {
+                    let gradeIndexes = gradeSystem?.indexesForGrade(grade) {
                     self.indexes = gradeIndexes
                 }
                 scrollView.contentOffset.x -= scrollViewWidth
@@ -203,94 +205,94 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     // Comes at the end of manual scrolling. Programatic scrolling does not reach here.
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scrollView.contentOffset.x = scrollViewWidth
 
         didSelectNewGrade()
     }
 
-    // MARK:- Edit mode
-    private func startJiggling() {
-        let leftWobble = CGAffineTransformMakeRotation(-kAnimationRotateDeg)
-        let rightWobble = CGAffineTransformMakeRotation(kAnimationRotateDeg)
+    // MARK: - Edit mode
+    fileprivate func startJiggling() {
+        let leftWobble = CGAffineTransform(rotationAngle: -kAnimationRotateDeg)
+        let rightWobble = CGAffineTransform(rotationAngle: kAnimationRotateDeg)
 
         transform = leftWobble
 
-        UIView.animateWithDuration(0.1, delay: 0, options: ([.Autoreverse, .AllowUserInteraction, .Repeat]), animations: { [weak self] () -> Void in
+        UIView.animate(withDuration: 0.1, delay: 0, options: ([.autoreverse, .allowUserInteraction, .repeat]), animations: { [weak self] () in
             UIView.setAnimationRepeatCount(Float(NSNotFound))
             self?.transform = rightWobble
             return
-            }, completion: { (success: Bool) -> Void in
+        }, completion: { (_: Bool) in
         })
     }
 
-    private func stopJiggling() {
+    fileprivate func stopJiggling() {
         layer.removeAllAnimations()
-        transform = CGAffineTransformIdentity
+        transform = CGAffineTransform.identity
     }
 
     func cardViewSnapshot() -> UIImageView? {
         return cardView.snapshot()
     }
 
-    // MARK:- Private methods
-    private func gradeLabelScrollViewCenter() -> CGPoint {
+    // MARK: - Private methods
+    fileprivate func gradeLabelScrollViewCenter() -> CGPoint {
         let currentOffset = gradeLabelScrollView.contentOffset
-        return CGPointMake(currentOffset.x + gradeLabelScrollView.bounds.width / 2, currentOffset.y + gradeLabelScrollView.bounds.height / 2)
+        return CGPoint(x: currentOffset.x + gradeLabelScrollView.bounds.width / 2, y: currentOffset.y + gradeLabelScrollView.bounds.height / 2)
     }
 
-    private func gradeLabelScrollViewHasLeftPage() -> Bool {
+    fileprivate func gradeLabelScrollViewHasLeftPage() -> Bool {
         return gradeSystem?.lowerGradeFromIndexes(indexes!) != nil
     }
 
-    private func gradeLabelScrollViewHasRightPage() -> Bool {
+    fileprivate func gradeLabelScrollViewHasRightPage() -> Bool {
         return gradeSystem?.higherGradeFromIndexes(indexes!) != nil
     }
 
-    private class func newGradeLabel() -> UILabel {
+    fileprivate class func newGradeLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: FontNameForCurrentLang(), size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
-        label.textAlignment = .Center
-        label.baselineAdjustment = UIBaselineAdjustment.AlignCenters
-        
+        label.textAlignment = .center
+        label.baselineAdjustment = UIBaselineAdjustment.alignCenters
+
         return label
     }
 
-    private func didSelectNewGrade() {
+    fileprivate func didSelectNewGrade() {
         let userInfo = [kNewIndexesKey: indexes ?? []]
-        NSNotificationCenter.defaultCenter().postNotificationName(kGradeSelectedNotification, object: self, userInfo: userInfo)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: kGradeSelectedNotification), object: self, userInfo: userInfo)
     }
 
-    private func updateButtons() {
+    fileprivate func updateButtons() {
         if editMode {
             startJiggling()
-            deleteButton.hidden = false
-            handleButton.hidden = false
-            rightArrowButton.hidden = true
-            leftArrowButton.hidden = true
+            deleteButton.isHidden = false
+            handleButton.isHidden = false
+            rightArrowButton.isHidden = true
+            leftArrowButton.isHidden = true
         } else {
             stopJiggling()
-            deleteButton.hidden = true
-            handleButton.hidden = true
-            rightArrowButton.hidden = false
-            leftArrowButton.hidden = false
+            deleteButton.isHidden = true
+            handleButton.isHidden = true
+            rightArrowButton.isHidden = false
+            leftArrowButton.isHidden = false
 
-            leftArrowButton.enabled = gradeLabelScrollViewHasLeftPage()
-            rightArrowButton.enabled = gradeLabelScrollViewHasRightPage()
+            leftArrowButton.isEnabled = gradeLabelScrollViewHasLeftPage()
+            rightArrowButton.isEnabled = gradeLabelScrollViewHasRightPage()
         }
     }
 
-    private func updateBorder() {
+    fileprivate func updateBorder() {
         if !editMode && gradeSystem?.isBaseSystem == true {
             cardView.layer.masksToBounds = false
-            cardView.layer.shadowColor = UIColor.myLightAquaColor().CGColor
-            cardView.layer.shadowOffset = CGSizeZero
-            cardView.layer.shadowRadius = CGFloat(8 / UIScreen.mainScreen().scale)
+            cardView.layer.shadowColor = UIColor.myLightAquaColor().cgColor
+            cardView.layer.shadowOffset = CGSize.zero
+            cardView.layer.shadowRadius = CGFloat(8 / UIScreen.main.scale)
             cardView.layer.shadowOpacity = 1
-            cardView.layer.borderWidth = CGFloat(8 / UIScreen.mainScreen().scale)
-            cardView.layer.borderColor = UIColor.myLightAquaColor().CGColor
+            cardView.layer.borderWidth = CGFloat(8 / UIScreen.main.scale)
+            cardView.layer.borderColor = UIColor.myLightAquaColor().cgColor
         } else {
             cardView.layer.masksToBounds = true
             cardView.layer.shadowColor = nil
@@ -300,9 +302,9 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         }
     }
 
-    private func categoryImageFromGradeSystem(gradeSystem: GradeSystem) -> UIImage? {
+    fileprivate func categoryImageFromGradeSystem(_ gradeSystem: GradeSystem) -> UIImage? {
         let imageName = gradeSystem.category == "Sports" ? "sports" : "boulder"
-        
+
         return UIImage(named: NSLocalizedString(imageName, comment: "Image name for climbing category."))
     }
 }

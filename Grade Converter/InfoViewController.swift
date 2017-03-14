@@ -10,21 +10,21 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    @IBAction func closeButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeButtonTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func emailbuttonTapped(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName(kEmailComposingNotification, object: nil)
+    @IBAction func emailbuttonTapped(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: kEmailComposingNotification), object: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        preferredContentSize = CGSizeMake(280, 300)
+        preferredContentSize = CGSize(width: 280, height: 300)
 
         if CurrentLang() == .ja {
-            preferredContentSize = CGSizeMake(280, 260)
+            preferredContentSize = CGSize(width: 280, height: 260)
         }
     }
 }

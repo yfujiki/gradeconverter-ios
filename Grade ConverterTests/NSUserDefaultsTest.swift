@@ -14,25 +14,25 @@ class NSUserDefaultsTest: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kNSUserDefaultsCurrentIndexes)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kNSUserDefaultsSelectedGradeSystems)
+        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsCurrentIndexes)
+        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsSelectedGradeSystems)
     }
 
     override func tearDown() {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kNSUserDefaultsCurrentIndexes)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kNSUserDefaultsSelectedGradeSystems)
+        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsCurrentIndexes)
+        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsSelectedGradeSystems)
 
         super.tearDown()
     }
 
     func testCurrentIndexes() {
-        XCTAssertEqual(kNSUserDefaultsDefaultIndexes, NSUserDefaults.standardUserDefaults().currentIndexes(), "Initially, current should be default indexes.")
+        XCTAssertEqual(kNSUserDefaultsDefaultIndexes, UserDefaults.standard.currentIndexes(), "Initially, current should be default indexes.")
 
-        var currentIndexes = NSUserDefaults.standardUserDefaults().currentIndexes()
+        var currentIndexes = UserDefaults.standard.currentIndexes()
         currentIndexes.append(19)
         currentIndexes.append(20)
 
-        NSUserDefaults.standardUserDefaults().setCurrentIndexes(currentIndexes)
+        UserDefaults.standard.setCurrentIndexes(currentIndexes)
 
         var expectedIndexes = kNSUserDefaultsDefaultIndexes
         expectedIndexes.append(19)
@@ -42,17 +42,17 @@ class NSUserDefaultsTest: XCTestCase {
     }
 
     func testSelectedGradeSystems() {
-        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "Initially, selected grade systems should be default.")
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, UserDefaults.standard.selectedGradeSystems(), "Initially, selected grade systems should be default.")
 
-        let gradeSystem1 = GradeSystem(name: "Yosemite Decimal System", category:"Sports", locales: [], grades: [])
-        NSUserDefaults.standardUserDefaults().setSelectedGradeSystems([gradeSystem1])
-        XCTAssertEqual([gradeSystem1], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper additions")
+        let gradeSystem1 = GradeSystem(name: "Yosemite Decimal System", category: "Sports", locales: [], grades: [])
+        UserDefaults.standard.setSelectedGradeSystems([gradeSystem1])
+        XCTAssertEqual([gradeSystem1], UserDefaults.standard.selectedGradeSystems(), "The results should represent proper additions")
 
-        let gradeSystem2 = GradeSystem(name: "Hueco", category:"Boulder", locales: [], grades: [])
-        NSUserDefaults.standardUserDefaults().addSelectedGradeSystem(gradeSystem2)
-        XCTAssertEqual([gradeSystem1, gradeSystem2], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper additions")
+        let gradeSystem2 = GradeSystem(name: "Hueco", category: "Boulder", locales: [], grades: [])
+        UserDefaults.standard.addSelectedGradeSystem(gradeSystem2)
+        XCTAssertEqual([gradeSystem1, gradeSystem2], UserDefaults.standard.selectedGradeSystems(), "The results should represent proper additions")
 
-        NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(gradeSystem1)
-        XCTAssertEqual([gradeSystem2], NSUserDefaults.standardUserDefaults().selectedGradeSystems(), "The results should represent proper removals")
+        UserDefaults.standard.removeSelectedGradeSystem(gradeSystem1)
+        XCTAssertEqual([gradeSystem2], UserDefaults.standard.selectedGradeSystems(), "The results should represent proper removals")
     }
 }

@@ -15,7 +15,7 @@ extension UILabel {
         }
         set {
             // If the font is not bold, set this font
-            if font.fontName.rangeOfString("Medium") == nil {
+            if font.fontName.range(of: "Medium") == nil {
                 font = UIFont(name: newValue, size: font.pointSize)
             }
         }
@@ -27,7 +27,7 @@ extension UILabel {
         }
         set {
             // If the font is bold, set this font
-            if font.fontName.rangeOfString("Medium") != nil {
+            if font.fontName.range(of: "Medium") != nil {
                 font = UIFont(name: newValue, size: font.pointSize)
             }
         }

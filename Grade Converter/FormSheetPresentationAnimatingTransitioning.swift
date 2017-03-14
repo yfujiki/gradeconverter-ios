@@ -16,7 +16,7 @@ import UIKit
         let offsetX = (containerViewSize.width - toViewSize.width) / 2
         let offsetY = (containerViewSize.height - toViewSize.height) / 2
 
-        return CGRectMake(offsetX, offsetY, toViewSize.width, toViewSize.height)
+        return CGRect(x: offsetX, y: offsetY, width: toViewSize.width, height: toViewSize.height)
     }
 
     override func fromViewFrameFromFromViewController(fromViewController: UIViewController, containerView: UIView) -> CGRect {
@@ -25,15 +25,15 @@ import UIKit
         let offsetX = (containerViewSize.width - fromViewSize.width) / 2
         let offsetY = (containerViewSize.height - fromViewSize.height) / 2
 
-        return CGRectMake(offsetX, offsetY, fromViewSize.width, fromViewSize.height)
+        return CGRect(x: offsetX, y: offsetY, width: fromViewSize.width, height: fromViewSize.height)
     }
 
-    override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        super.animateTransition(transitionContext)
+    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        super.animateTransition(using: transitionContext)
 
         if presenting {
-            if let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
-               let toView = toViewController.view {
+            if let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+                let toView = toViewController.view {
                 toView.layer.cornerRadius = 6
             }
         }

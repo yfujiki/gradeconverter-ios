@@ -9,61 +9,61 @@
 import UIKit
 
 class PresentationController: UIPresentationController {
-    private let kDimmingViewAlpha = CGFloat(0.7)
+    fileprivate let kDimmingViewAlpha = CGFloat(0.7)
 
-    lazy private var dimmingView: UIView = { [unowned self] _ in
+    fileprivate lazy var dimmingView: UIView = { [unowned self] _ in
         var view = UIView()
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
 
         if let containerView = self.containerView {
             view.frame = containerView.bounds
         }
 
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PresentationController.dismissPresentedViewController(_:))))
-        
+
         return view
     }()
 
     override func presentationTransitionWillBegin() {
-        let coordinator = presentedViewController.transitionCoordinator()
+        let coordinator = presentedViewController.transitionCoordinator
         dimmingView.alpha = 0.0
 
         if let containerView = containerView {
             containerView.addSubview(dimmingView)
             setConstraintsForDimmingViewInContainerView(containerView)
         }
-        
-        coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+
+        coordinator?.animate(alongsideTransition: { [weak self] (_: UIViewControllerTransitionCoordinatorContext!) in
             if let strongSelf = self {
                 strongSelf.dimmingView.alpha = strongSelf.kDimmingViewAlpha
             }
-        }, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+        }, completion: { (_: UIViewControllerTransitionCoordinatorContext!) in
         })
     }
 
     override func dismissalTransitionWillBegin() {
         if let mainNavigationController = presentingViewController as? UINavigationController,
             let mainViewController = mainNavigationController.childViewControllers.first as? MainViewController {
-                mainViewController.reloadTableView()
+            mainViewController.reloadTableView()
         }
 
-        let coordinator = presentingViewController.transitionCoordinator()
+        let coordinator = presentingViewController.transitionCoordinator
         dimmingView.alpha = kDimmingViewAlpha
-        coordinator?.animateAlongsideTransition({ [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+        coordinator?.animate(alongsideTransition: { [weak self] (_: UIViewControllerTransitionCoordinatorContext!) in
             self?.dimmingView.alpha = 0.0
-        }, completion: { [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+        }, completion: { [weak self] (_: UIViewControllerTransitionCoordinatorContext!) in
             self?.dimmingView.removeFromSuperview()
         })
     }
 
-    private func setConstraintsForDimmingViewInContainerView(containerView: UIView) {
+    fileprivate func setConstraintsForDimmingViewInContainerView(_ containerView: UIView) {
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
         let views = ["containerView": containerView, "dimmingView": dimmingView]
-        containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[dimmingView]|", options: .AlignAllCenterX, metrics: nil, views: views))
-        containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[dimmingView]|", options: .AlignAllCenterY, metrics: nil, views: views))
+        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|", options: .alignAllCenterX, metrics: nil, views: views))
+        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 
-    func dismissPresentedViewController(sender: AnyObject) {
-        presentedViewController.dismissViewControllerAnimated(true, completion: nil)
+    func dismissPresentedViewController(_ sender: AnyObject) {
+        presentedViewController.dismiss(animated: true, completion: nil)
     }
 }

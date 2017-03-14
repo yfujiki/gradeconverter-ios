@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 enum Country: Int {
-    case US = 0
-    case JP
-    case Others
+    case us = 0
+    case jp
+    case others
 }
 
 enum Lang: Int {
@@ -22,19 +22,19 @@ enum Lang: Int {
 }
 
 func CurrentCountry() -> Country {
-    if let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String {
+    if let countryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String {
         if countryCode == "US" {
-            return Country.US
+            return Country.us
         } else if countryCode == "JP" {
-            return Country.JP
+            return Country.jp
         }
     }
 
-    return Country.Others
+    return Country.others
 }
 
 func CurrentLang() -> Lang {
-    if let currentLang = NSBundle.mainBundle().preferredLocalizations.first {
+    if let currentLang = Bundle.main.preferredLocalizations.first {
         if currentLang == "en" {
             return Lang.en
         } else if currentLang == "ja" {

@@ -9,16 +9,16 @@
 import UIKit
 
 protocol EditTableViewCellDelegate: NSObjectProtocol {
-    func didAddGradeCell(cell: EditTableViewCell)
+    func didAddGradeCell(_ cell: EditTableViewCell)
 }
 
 class EditTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet private weak var gradeNameLabel: UILabel!
+    @IBOutlet fileprivate weak var gradeNameLabel: UILabel!
     @IBOutlet weak var gradeCategoryLabel: UILabel!
 
-    @IBAction func addButtonTapped(sender: AnyObject) {
+    @IBAction func addButtonTapped(_ sender: AnyObject) {
         delegate?.didAddGradeCell(self)
     }
 
@@ -35,7 +35,7 @@ class EditTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
 
         cardView.layer.cornerRadius = 4
 
@@ -43,7 +43,7 @@ class EditTableViewCell: UITableViewCell {
         gradeCategoryLabel.text = gradeSystem?.category == nil ? "" : localizedCategoryStringForGradeSystem(gradeSystem!)
     }
 
-    private func localizedCategoryStringForGradeSystem(gradeSystem: GradeSystem) -> String {
+    fileprivate func localizedCategoryStringForGradeSystem(_ gradeSystem: GradeSystem) -> String {
         return NSLocalizedString("(\(gradeSystem.category))", comment: "Climbing category in parenthesis")
     }
 }

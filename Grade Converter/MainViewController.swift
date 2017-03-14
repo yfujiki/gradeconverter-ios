@@ -12,19 +12,19 @@ import iAd
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
-    private var bannerView: ADBannerView?
-    private var bannerViewHeightConstraint: NSLayoutConstraint?
+    fileprivate var bannerView: ADBannerView?
+    fileprivate var bannerViewHeightConstraint: NSLayoutConstraint?
 
-    private var selectedSystems: [GradeSystem] = []
+    fileprivate var selectedSystems: [GradeSystem] = []
 
-    private var kMinimumCellHeight: CGFloat = 96
-    private var kMaximumCellHeight: CGFloat = 96
+    fileprivate var kMinimumCellHeight: CGFloat = 96
+    fileprivate var kMaximumCellHeight: CGFloat = 96
 
-    private var observers = [NSObjectProtocol]()
+    fileprivate var observers = [NSObjectProtocol]()
 
-    lazy private var longPressGestureRecognizer: UILongPressGestureRecognizer = {
+    fileprivate lazy var longPressGestureRecognizer: UILongPressGestureRecognizer = {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.longPressGestureRecognized(_:)))
         gestureRecognizer.minimumPressDuration = 0.2
         gestureRecognizer.delegate = self
@@ -32,34 +32,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return gestureRecognizer
     }()
 
-    lazy private var blurEffectView: UIVisualEffectView = {
-        let effect = UIBlurEffect(style: .Light)
+    fileprivate lazy var blurEffectView: UIVisualEffectView = {
+        let effect = UIBlurEffect(style: .light)
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.imageView.bounds
 
         return effectView
     }()
 
-    private func updateSelectedSystems() {
-        selectedSystems = NSUserDefaults.standardUserDefaults().selectedGradeSystems()
+    fileprivate func updateSelectedSystems() {
+        selectedSystems = UserDefaults.standard.selectedGradeSystems()
 
-        navigationItem.rightBarButtonItem?.enabled = selectedSystems.count > 0
+        navigationItem.rightBarButtonItem?.isEnabled = selectedSystems.count > 0
 
         if selectedSystems.count == 0 {
-            editing = false
+            isEditing = false
         }
     }
 
     deinit {
         for observer in observers {
-            NSNotificationCenter.defaultCenter().removeObserver(observer)
+            NotificationCenter.default.removeObserver(observer)
         }
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
-        if (editing) {
+        if editing {
             tableView.addGestureRecognizer(longPressGestureRecognizer)
         } else {
             tableView.removeGestureRecognizer(longPressGestureRecognizer)
@@ -75,39 +75,39 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             navigationBar.accessibilityIdentifier = "Main Navigation Bar"
         }
 
-        let editButton = editButtonItem()
+        let editButton = editButtonItem
         editButton.accessibilityIdentifier = "Edit Button"
         navigationItem.rightBarButtonItem = editButton
 
         updateSelectedSystems()
 
-        kMaximumCellHeight = CGRectGetHeight(tableView.frame) / 3
+        kMaximumCellHeight = tableView.frame.height / 3
 
-        tableView.registerNib(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
-        tableView.registerNib(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
+        tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
+        tableView.register(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
 
         registerForNotifications()
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
-#if PRO
-#else
-        showAd()
-#endif
+        #if PRO
+        #else
+            showAd()
+        #endif
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         tableView.reloadData()
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with _: UIViewControllerTransitionCoordinator) {
 
-#if PRO
-#else
-        adjustBannerViewToSize(size)
-#endif
+        #if PRO
+        #else
+            adjustBannerViewToSize(size)
+        #endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,22 +115,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
 
-    private func showAd() {
-        bannerView = ADBannerView(adType: .Banner)
+    fileprivate func showAd() {
+        bannerView = ADBannerView(adType: .banner)
         bannerView?.delegate = self
         view.addSubview(bannerView!)
         bannerView?.translatesAutoresizingMaskIntoConstraints = false
-        let bannerViewHeight = UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
-        bannerViewHeightConstraint = bannerView?.heightAnchor.constraintEqualToConstant(bannerViewHeight)
-        bannerViewHeightConstraint?.active = true
-        bannerView?.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        bannerView?.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        bannerView?.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        let bannerViewHeight = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
+        bannerViewHeightConstraint = bannerView?.heightAnchor.constraint(equalToConstant: bannerViewHeight)
+        bannerViewHeightConstraint?.isActive = true
+        bannerView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        bannerView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bannerView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
         tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
     }
 
-    private func adjustBannerViewToSize(size: CGSize) {
+    fileprivate func adjustBannerViewToSize(_ size: CGSize) {
         let isLandscape = size.height < size.width
         let bannerViewHeight = isLandscape ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
         bannerViewHeightConstraint?.constant = bannerViewHeight
@@ -138,33 +138,33 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
     }
 
-    private func redrawVisibleRows() {
+    fileprivate func redrawVisibleRows() {
         if let indexPaths = tableView.indexPathsForVisibleRows {
-            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+            tableView.reloadRows(at: indexPaths, with: .automatic)
         }
     }
 
-    private func setConstraintsForBlurEffectView() {
+    fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["imageView": imageView, "blurEffectView": blurEffectView]
-        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[blurEffectView]|", options: .AlignAllCenterX, metrics: nil, views: views))
-        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[blurEffectView]|", options: .AlignAllCenterY, metrics: nil, views: views))
+        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String : Any]
+        imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
+        imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 
-    // MARK:- Notification handlers
-    private func registerForNotifications() {
-        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
+    // MARK: - Notification handlers
+    fileprivate func registerForNotifications() {
+        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kNSUserDefaultsSystemSelectionChangedNotification), object: nil, queue: nil) { [weak self] _ in
             self?.updateSelectedSystems()
         })
 
-        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kGradeSelectedNotification, object: nil, queue: nil) { [weak self] (notification: NSNotification!) -> Void in
+        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kGradeSelectedNotification), object: nil, queue: nil) { [weak self] (notification: Notification!) in
             if let strongSelf = self {
                 if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
-                    if NSUserDefaults.standardUserDefaults().currentIndexes() != indexes {
-                        NSUserDefaults.standardUserDefaults().setCurrentIndexes(indexes)
+                    if UserDefaults.standard.currentIndexes() != indexes {
+                        UserDefaults.standard.setCurrentIndexes(indexes)
 
                         if let baseCell = notification.object as? MainTableViewCell {
-                            let baseIndexPath = strongSelf.tableView.indexPathForCell(baseCell)
+                            let baseIndexPath = strongSelf.tableView.indexPath(for: baseCell)
                             let baseRow = baseIndexPath == nil ? NSNotFound : baseIndexPath!.row
                             strongSelf.updateBaseSystemToIndex(baseRow)
 
@@ -178,97 +178,97 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         })
 
-        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kEmailComposingNotification, object: nil, queue: nil, usingBlock: { [weak self] (notification: NSNotification) -> Void in
+        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kEmailComposingNotification), object: nil, queue: nil, using: { [weak self] (_: Notification) in
             if MFMailComposeViewController.canSendMail() {
                 let composeViewController = MFMailComposeViewController()
                 composeViewController.mailComposeDelegate = self
                 composeViewController.setToRecipients([kSupportEmailAddress])
                 composeViewController.setSubject(kSupportEmailSubject)
-                composeViewController.navigationBar.tintColor = UIColor.whiteColor()
+                composeViewController.navigationBar.tintColor = UIColor.white
 
-                self?.dismissViewControllerAnimated(false, completion: { [weak self] () -> Void in
-                    self?.presentViewController(composeViewController, animated: true, completion: nil)
+                self?.dismiss(animated: false, completion: { [weak self] () in
+                    self?.present(composeViewController, animated: true, completion: nil)
                 })
             }
         }))
     }
 
-    private func updateBaseSystemToIndex(index: Int) {
+    fileprivate func updateBaseSystemToIndex(_ index: Int) {
         for i in 0 ..< selectedSystems.count {
             selectedSystems[i].isBaseSystem = (i == index)
         }
     }
 
-    private func reloadVisibleCellsButCell(cell: UITableViewCell, animated: Bool) {
+    fileprivate func reloadVisibleCellsButCell(_ cell: UITableViewCell, animated: Bool) {
 
-        let indexPaths = tableView.visibleCells.reduce([NSIndexPath](), combine: { (tmp: [NSIndexPath], visibleCell: UITableViewCell) -> [NSIndexPath] in
+        let indexPaths = tableView.visibleCells.reduce([IndexPath](), { (tmp: [IndexPath], visibleCell: UITableViewCell) -> [IndexPath] in
             var results = tmp
-            if let visibleCell = visibleCell as? MainTableViewCell where visibleCell != cell,
-                let visibleIndexPath = tableView.indexPathForCell(visibleCell) {
-                    results.append(visibleIndexPath)
+            if let visibleCell = visibleCell as? MainTableViewCell, visibleCell != cell,
+                let visibleIndexPath = tableView.indexPath(for: visibleCell) {
+                results.append(visibleIndexPath)
             }
             return results
         })
 
-        let animationOption: UITableViewRowAnimation = animated ? .Automatic : .None
-        tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animationOption)
+        let animationOption: UITableViewRowAnimation = animated ? .automatic : .none
+        tableView.reloadRows(at: indexPaths, with: animationOption)
     }
 
-    private func reloadOnlyCell(cell: UITableViewCell, animated: Bool) {
-        if let baseIndexPath = tableView.indexPathForCell(cell) {
-            let animationOption: UITableViewRowAnimation = animated ? .Automatic : .None
-            tableView.reloadRowsAtIndexPaths([baseIndexPath], withRowAnimation: animationOption)
+    fileprivate func reloadOnlyCell(_ cell: UITableViewCell, animated: Bool) {
+        if let baseIndexPath = tableView.indexPath(for: cell) {
+            let animationOption: UITableViewRowAnimation = animated ? .automatic : .none
+            tableView.reloadRows(at: [baseIndexPath], with: animationOption)
         }
     }
 
-    // MARK:- Segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // MARK: - Segue
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "PresentEdit" {
-            let destinationViewController = segue.destinationViewController
+            let destinationViewController = segue.destination
             destinationViewController.transitioningDelegate = self
-            destinationViewController.modalPresentationStyle = .Custom
+            destinationViewController.modalPresentationStyle = .custom
         } else if segue.identifier == "PresentInfo" {
-            let destinationViewController = segue.destinationViewController
+            let destinationViewController = segue.destination
             destinationViewController.transitioningDelegate = self
-            destinationViewController.modalPresentationStyle = .Custom
+            destinationViewController.modalPresentationStyle = .custom
         }
     }
 
-    // MARK:- UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: - UITableViewDataSource
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return selectedSystems.count + 1
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < selectedSystems.count {
-            let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell") as! MainTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as! MainTableViewCell
             cell.delegate = self
-            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clear
 
             cell.gradeSystem = selectedSystems[indexPath.row]
-            cell.indexes = NSUserDefaults.standardUserDefaults().currentIndexes()
+            cell.indexes = UserDefaults.standard.currentIndexes()
 
             let colors = UIColor.myColors()
             cell.cardColor = colors[indexPath.row % colors.count]
 
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("AddTableViewCell") as! AddTableViewCell
-            cell.backgroundColor = UIColor.clearColor()
-            cell.hidden = editing
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell") as! AddTableViewCell
+            cell.backgroundColor = UIColor.clear
+            cell.isHidden = isEditing
 
             return cell
         }
     }
 
-    // MARK:- UITableViewDelegate
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    // MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         return kMinimumCellHeight
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row < selectedSystems.count {
-            let totalHeight = CGRectGetHeight(tableView.frame) - AddTableViewCell.kCellHeight
+            let totalHeight = tableView.frame.height - AddTableViewCell.kCellHeight
             let count = selectedSystems.count
             var targetHeight = totalHeight / CGFloat(count)
             targetHeight = min(targetHeight, kMaximumCellHeight)
@@ -280,38 +280,38 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.tag = indexPath.row
-        
+
         if let mainTableViewCell = cell as? MainTableViewCell {
             mainTableViewCell.configureGradeLabels()
             mainTableViewCell.configureInitialContentOffset()
-            mainTableViewCell.editMode = editing
+            mainTableViewCell.editMode = isEditing
         }
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == selectedSystems.count {
-            performSegueWithIdentifier("PresentEdit", sender: self)
+            performSegue(withIdentifier: "PresentEdit", sender: self)
         }
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt _: IndexPath) -> Bool {
         return false
     }
 
-    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canMoveRowAt _: IndexPath) -> Bool {
         return false
     }
 
     func reloadTableView() {
         tableView.reloadData()
     }
-    
-    // MARK:- UIViewControllerTransitioningDelegate
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+    // MARK: - UIViewControllerTransitioningDelegate
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 
         var transitioning: UIViewControllerAnimatedTransitioning?
 
@@ -328,7 +328,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return transitioning
     }
 
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         var transitioning: UIViewControllerAnimatedTransitioning?
 
         if dismissed is UINavigationController && dismissed.childViewControllers.first is EditViewController {
@@ -344,69 +344,69 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return transitioning
     }
 
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presentedViewController: presented, presentingViewController: presenting)
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return PresentationController(presentedViewController: presented, presenting: presenting)
     }
 
-    // MARK:- MainTableViewCellDelegate
-    func didDeleteCell(cell: MainTableViewCell) {
-        if let indexPath = tableView.indexPathForCell(cell) {
+    // MARK: - MainTableViewCellDelegate
+    func didDeleteCell(_ cell: MainTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
             tableView.beginUpdates()
             let systemToDelete = selectedSystems[indexPath.row]
-            NSUserDefaults.standardUserDefaults().removeSelectedGradeSystem(systemToDelete)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            UserDefaults.standard.removeSelectedGradeSystem(systemToDelete)
+            self.tableView.deleteRows(at: [indexPath], with: .left)
             self.tableView.endUpdates()
         }
     }
 
-    // MARK:- UIGestureRecognizerDelegate
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let location = gestureRecognizer.locationInView(tableView)
+    // MARK: - UIGestureRecognizerDelegate
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let location = gestureRecognizer.location(in: tableView)
 
         if location.x >= MainTableViewCell.CardViewLeadingConstraint + MainTableViewCell.DeleteButtonLeadingConstraint &&
             location.x <= MainTableViewCell.CardViewLeadingConstraint + MainTableViewCell.DeleteButtonLeadingConstraint + MainTableViewCell.DeleteButtonWidthConstraint {
-                return false
+            return false
         }
 
         return true
     }
 
-    //MARK:- MFMailComposeViewControllerDelegate
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    // MARK: - MFMailComposeViewControllerDelegate
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith _: MFMailComposeResult, error _: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 
-    // MARK:- Reordering
-    var focusIndexPathOfReordering: NSIndexPath?
+    // MARK: - Reordering
+    var focusIndexPathOfReordering: IndexPath?
     var snapShotViewForReordering: UIImageView?
-    func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
+    func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
         let state = gestureRecognizer.state
 
-        let location = gestureRecognizer.locationInView(tableView)
-        let indexPath = tableView.indexPathForRowAtPoint(location)
+        let location = gestureRecognizer.location(in: tableView)
+        let indexPath = tableView.indexPathForRow(at: location)
 
-        switch (state) {
-        case .Began:
+        switch state {
+        case .began:
             (focusIndexPathOfReordering, snapShotViewForReordering) = reorderDidBeginAtIndexPath(indexPath)
-        case .Changed:
-            focusIndexPathOfReordering = replaceCellFromIndexPath(focusIndexPathOfReordering, toIndexPath:indexPath)
+        case .changed:
+            focusIndexPathOfReordering = replaceCellFromIndexPath(focusIndexPathOfReordering, toIndexPath: indexPath)
 
             if let snapshotView = snapShotViewForReordering {
-                snapShotViewForReordering?.center = CGPointMake(snapshotView.center.x, location.y)
+                snapShotViewForReordering?.center = CGPoint(x: snapshotView.center.x, y: location.y)
             }
         default:
             cleanupReorderingAction()
         }
     }
 
-    private func reorderDidBeginAtIndexPath(indexPath: NSIndexPath?) -> (NSIndexPath?, UIImageView?){
+    fileprivate func reorderDidBeginAtIndexPath(_ indexPath: IndexPath?) -> (IndexPath?, UIImageView?) {
         if let srcIndexPath = indexPath,
-            let srcCell = tableView.cellForRowAtIndexPath(srcIndexPath) as? MainTableViewCell,
+            let srcCell = tableView.cellForRow(at: srcIndexPath) as? MainTableViewCell,
             let snapshotView = srcCell.cardViewSnapshot() {
             snapshotView.center = srcCell.center
             tableView.addSubview(snapshotView)
 
-            srcCell.hidden = true
+            srcCell.isHidden = true
 
             return (srcIndexPath, snapshotView)
         }
@@ -414,31 +414,31 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return (nil, nil)
     }
 
-    private func replaceCellFromIndexPath(fromIndexPath: NSIndexPath?, toIndexPath: NSIndexPath?) -> (NSIndexPath?) {
-        if let fromIndexPath = fromIndexPath where fromIndexPath.row < selectedSystems.count,
-            let toIndexPath = toIndexPath where toIndexPath != fromIndexPath &&  toIndexPath.row < selectedSystems.count {
+    fileprivate func replaceCellFromIndexPath(_ fromIndexPath: IndexPath?, toIndexPath: IndexPath?) -> (IndexPath?) {
+        if let fromIndexPath = fromIndexPath, fromIndexPath.row < selectedSystems.count,
+            let toIndexPath = toIndexPath, toIndexPath != fromIndexPath && toIndexPath.row < selectedSystems.count {
 
             let origSystem = selectedSystems[fromIndexPath.row]
             selectedSystems[fromIndexPath.row] = selectedSystems[toIndexPath.row]
             selectedSystems[toIndexPath.row] = origSystem
-            tableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
+            tableView.moveRow(at: fromIndexPath, to: toIndexPath)
 
             redrawVisibleRows()
 
-            tableView.cellForRowAtIndexPath(toIndexPath)?.hidden = true
+            tableView.cellForRow(at: toIndexPath)?.isHidden = true
         }
 
         return toIndexPath
     }
 
-    private func cleanupReorderingAction() {
+    fileprivate func cleanupReorderingAction() {
         snapShotViewForReordering?.removeFromSuperview()
         redrawVisibleRows()
     }
 }
 
 extension MainViewController: ADBannerViewDelegate {
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        NSLog("Failed to load banner : \(error.debugDescription)")
+    func bannerView(_: ADBannerView!, didFailToReceiveAdWithError error: Error!) {
+        NSLog("Failed to load banner : \(error)")
     }
 }

@@ -58,7 +58,7 @@ class GradeSystemTableTest: XCTestCase {
         XCTAssertEqual("Hueco", table.namesAndCategories()[13].0, "System name should be correct.")
         XCTAssertEqual("Ogawayama", table.namesAndCategories()[14].0, "System name should be correct.")
         XCTAssertEqual("Toyota", table.namesAndCategories()[15].0, "System name should be correct.")
-}
+    }
 
     func testGradeSystemForNameCategory() {
         XCTAssertEqual("Brazil", table.gradeSystemForName("Brazil", category: "Sports")!.name, "Name should match.")
@@ -74,7 +74,7 @@ class GradeSystemTableTest: XCTestCase {
         let yosemiteGrade = table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
 
         XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0, higher: false), "Lowest grade should be 5.1.")
-        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1, higher: true), "Highest grade should be 5.15c.") // TODO : that's a little bit weak
+        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1, higher: true), "Highest grade should be 5.15c.")
     }
 
     func testGradeAtIndexes() {
@@ -89,7 +89,7 @@ class GradeSystemTableTest: XCTestCase {
     func textIndexesForGrade() {
         let huecoGrade = table.gradeSystemForName("Hueco", category: "Boulder")!
 
-        XCTAssertEqual([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], huecoGrade.indexesForGrade("VB"), "VB should cover wide range.")
+        XCTAssertEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], huecoGrade.indexesForGrade("VB"), "VB should cover wide range.")
         XCTAssertEqual([29, 30], huecoGrade.indexesForGrade("V6"), "V6 should cover 2 slots.")
     }
 

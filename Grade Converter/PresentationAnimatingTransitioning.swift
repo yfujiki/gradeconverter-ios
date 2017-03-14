@@ -12,57 +12,56 @@ import UIKit
 
     var presenting: Bool = false
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using _: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
 
-    func toViewFrameFromToViewController(toViewController: UIViewController, containerView: UIView) -> CGRect {
+    func toViewFrameFromToViewController(toViewController _: UIViewController, containerView _: UIView) -> CGRect {
         // Override in subclass
         assert(false, "This method needs to be overridden in subclass.")
-        return CGRectZero
+        return CGRect.zero
     }
 
-    func fromViewFrameFromFromViewController(fromViewController: UIViewController, containerView: UIView) -> CGRect {
+    func fromViewFrameFromFromViewController(fromViewController _: UIViewController, containerView _: UIView) -> CGRect {
         // Override in subclass
         assert(false, "This method needs to be overridden in subclass.")
-        return CGRectZero
+        return CGRect.zero
     }
-    
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
+
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
         let fromView = fromViewController?.view
 
-        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         let toView = toViewController?.view
 
         if presenting {
+            let containerView = transitionContext.containerView
             if let toView = toView,
-                let containerView = transitionContext.containerView(),
                 let toViewController = toViewController {
-                    let toViewFrame = toViewFrameFromToViewController(toViewController, containerView: containerView)
-                    toView.frame = CGRectOffset(toViewFrame, 0, containerView.frame.size.height - toView.frame.origin.y)
-                    containerView.addSubview(toView)
+                let toViewFrame = toViewFrameFromToViewController(toViewController: toViewController, containerView: containerView)
+                toView.frame = toViewFrame.offsetBy(dx: 0, dy: containerView.frame.size.height - toView.frame.origin.y)
+                containerView.addSubview(toView)
 
-                    UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 5, options: [], animations: { () -> Void in
-                        toView.frame = toViewFrame
-                        }, completion: { (success:Bool) -> Void in
-                            transitionContext.completeTransition(true)
-                    })
+                UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 5, options: [], animations: { () in
+                    toView.frame = toViewFrame
+                }, completion: { (_: Bool) in
+                    transitionContext.completeTransition(true)
+                })
             }
         } else {
+            let containerView = transitionContext.containerView
             if let fromView = fromView,
-               let containerView = transitionContext.containerView(),
-               let fromViewController = fromViewController {
-                fromView.frame = fromViewFrameFromFromViewController(fromViewController, containerView: containerView)
+                let fromViewController = fromViewController {
+                fromView.frame = fromViewFrameFromFromViewController(fromViewController: fromViewController, containerView: containerView)
 
-                UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 5, options: [], animations: { () -> Void in
-                    fromView.frame = CGRectOffset(fromView.frame, 0, containerView.frame.size.height - fromView.frame.origin.y)
-                    }, completion: { (success: Bool) -> Void in
-                        fromView.removeFromSuperview()
-                        transitionContext.completeTransition(true)
+                UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 5, options: [], animations: { () in
+                    fromView.frame = (fromView.frame).offsetBy(dx: 0, dy: containerView.frame.size.height - fromView.frame.origin.y)
+                }, completion: { (_: Bool) in
+                    fromView.removeFromSuperview()
+                    transitionContext.completeTransition(true)
                 })
             }
         }
     }
-
 }

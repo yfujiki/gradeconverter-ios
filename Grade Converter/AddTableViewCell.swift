@@ -12,7 +12,7 @@ class AddTableViewCell: UITableViewCell {
 
     class var kCellHeight: CGFloat { return 96 }
 
-    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet fileprivate weak var cardView: UIView!
     @IBOutlet weak var label: UILabel!
 
     override func awakeFromNib() {
@@ -22,13 +22,13 @@ class AddTableViewCell: UITableViewCell {
         cardView.backgroundColor = UIColor.addColor()
     }
 
-    override func setHighlighted(highlighted: Bool, animated: Bool) {
+    override func setHighlighted(_ highlighted: Bool, animated _: Bool) {
         if highlighted {
             cardView.alpha = 0.8
-            label.textColor = UIColor.grayColor()
+            label.textColor = UIColor.gray
         } else {
             cardView.alpha = 1.0
-            label.textColor = UIColor.blackColor()
+            label.textColor = UIColor.black
         }
     }
 }

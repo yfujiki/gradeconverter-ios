@@ -453,13 +453,16 @@
 				TargetAttributes = {
 					DB711BE71C499D300000C82B = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = DB940B3D1B3615F400E996F8;
 					};
 					DB940B3D1B3615F400E996F8 = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0820;
 					};
 					DB940B521B3615F400E996F8 = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = DB940B3D1B3615F400E996F8;
 					};
 				};
@@ -753,6 +756,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsiveBytes.Grade-ConverterUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Grade Converter";
 				USES_XCTRUNNER = YES;
 			};
@@ -766,6 +770,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsiveBytes.Grade-ConverterUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Grade Converter";
 				USES_XCTRUNNER = YES;
 			};
@@ -866,6 +871,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -880,6 +886,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -899,6 +906,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grade Converter.app/Grade Converter";
 			};
 			name = Debug;
@@ -915,6 +923,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grade Converter.app/Grade Converter";
 			};
 			name = Release;

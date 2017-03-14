@@ -15,14 +15,14 @@ extension UIView {
             return nil
         }
 
-        layer.renderInContext(context)
+        layer.render(in: context)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
         let imageView = UIImageView(image: image)
         imageView.layer.shadowRadius = 5
         imageView.layer.shadowOpacity = 0.4
-//        imageView.layer.shadowOffset = CGSizeMake(-5, 0)
+        //        imageView.layer.shadowOffset = CGSizeMake(-5, 0)
 
         return imageView
     }

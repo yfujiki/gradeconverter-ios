@@ -9,36 +9,36 @@
 import UIKit
 
 class EditViewController: UIViewController, EditTableViewCellDelegate {
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var imageView: UIImageView!
-    
-    @IBAction func doneButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
+
+    @IBAction func doneButtonTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
-    private var kCellHeight: CGFloat = 96
+    fileprivate var kCellHeight: CGFloat = 96
 
-    private let allGradeSystems = GradeSystemTable.sharedInstance.gradeSystems()
-    private var gradeSystems = [GradeSystem]()
-    private var observers = [NSObjectProtocol]()
+    fileprivate let allGradeSystems = GradeSystemTable.sharedInstance.gradeSystems()
+    fileprivate var gradeSystems = [GradeSystem]()
+    fileprivate var observers = [NSObjectProtocol]()
 
-    lazy private var blurEffectView: UIVisualEffectView = { [unowned self] _ in
-        let effect = UIBlurEffect(style: .Light)
+    fileprivate lazy var blurEffectView: UIVisualEffectView = { [unowned self] _ in
+        let effect = UIBlurEffect(style: .light)
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.view.bounds
 
         return effectView
     }()
 
-    private func updateGradeSystems() {
+    fileprivate func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
-            return !NSUserDefaults.standardUserDefaults().selectedGradeSystems().contains(gradeSystem)
+            return !UserDefaults.standard.selectedGradeSystems().contains(gradeSystem)
         }
     }
 
     deinit {
         for observer in observers {
-            NSNotificationCenter.defaultCenter().removeObserver(observer)
+            NotificationCenter.default.removeObserver(observer)
         }
     }
 
@@ -47,9 +47,9 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
 
         updateGradeSystems()
 
-        tableView.registerNib(UINib(nibName: "EditTableViewCell", bundle: nil), forCellReuseIdentifier: "EditTableViewCell")
+        tableView.register(UINib(nibName: "EditTableViewCell", bundle: nil), forCellReuseIdentifier: "EditTableViewCell")
 
-        observers.append(NSNotificationCenter.defaultCenter().addObserverForName(kNSUserDefaultsSystemSelectionChangedNotification, object: nil, queue: nil) { [weak self] _ in
+        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kNSUserDefaultsSystemSelectionChangedNotification), object: nil, queue: nil) { [weak self] _ in
             self?.updateGradeSystems()
         })
 
@@ -59,54 +59,54 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
         tableView.tableFooterView = UIView()
     }
 
-    private func setConstraintsForBlurEffectView() {
+    fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["imageView": imageView, "blurEffectView": blurEffectView]
-        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[blurEffectView]|", options: .AlignAllCenterX, metrics: nil, views: views))
-        imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[blurEffectView]|", options: .AlignAllCenterY, metrics: nil, views: views))
+        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String : Any]
+        imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
+        imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 
-    // MARK:- UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: - UITableViewDataSource
+    func tableView(tableView _: UITableView, numberOfRowsInSection _: Int) -> Int {
         return gradeSystems.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EditTableViewCell") as! EditTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EditTableViewCell") as! EditTableViewCell
         cell.delegate = self
         cell.gradeSystem = gradeSystems[indexPath.row]
 
         return cell
     }
 
-    // MARK:- UITableViewDelegate
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    // MARK: - UITableViewDelegate
+    func tableView(tableView _: UITableView, estimatedHeightForRowAtIndexPath _: IndexPath) -> CGFloat {
         return kCellHeight
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView _: UITableView, heightForRowAtIndexPath _: IndexPath) -> CGFloat {
         return kCellHeight
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         addGradeFromIndexPath(indexPath)
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // MARK:- EditTableViewCellDelegate
+    // MARK: - EditTableViewCellDelegate
 
-    func didAddGradeCell(cell: EditTableViewCell) {
-        if let selectedIndexPath = tableView.indexPathForCell(cell) {
+    func didAddGradeCell(_ cell: EditTableViewCell) {
+        if let selectedIndexPath = tableView.indexPath(for: cell) {
             addGradeFromIndexPath(selectedIndexPath)
         }
     }
 
-    private func addGradeFromIndexPath(indexPath: NSIndexPath) {
+    fileprivate func addGradeFromIndexPath(_ indexPath: IndexPath) {
         tableView.beginUpdates()
         let gradeSystem = gradeSystems[indexPath.row]
-        NSUserDefaults.standardUserDefaults().addSelectedGradeSystem(gradeSystem)
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+        UserDefaults.standard.addSelectedGradeSystem(gradeSystem)
+        tableView.deleteRows(at: [indexPath], with: .left)
         tableView.endUpdates()
     }
 }
