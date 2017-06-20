@@ -8,8 +8,8 @@
 
 import Foundation
 
-let kNSUserDefaultsCurrentIndexes = "com.responsivebytes.gradeConverter.currentIndexes"
-let kNSUserDefaultsSelectedGradeSystems = "com.responsivebytes.gradeConverter.selectedGradeSystems"
+let kNSUserDefaultsCurrentIndexes = "com.yfujiki.gradeConverter.currentIndexes"
+let kNSUserDefaultsSelectedGradeSystems = "com.yfujiki.gradeConverter.selectedGradeSystems"
 let kNSUserDefaultsGradeNameKey = "gradeName"
 let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 

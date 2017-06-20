@@ -9,9 +9,9 @@
 import Foundation
 import CoreGraphics
 
-let kNSUserDefaultsSystemSelectionChangedNotification = "com.responsivebytes.gradeConverter.SystemSelectionChangedNotification"
-let kGradeSelectedNotification = "com.responsivebytes.GradeConverter.GradeSelectedNotification"
-let kEmailComposingNotification = "com.responsivebytes.GradeConverter.EmailComposingNotification"
+let kNSUserDefaultsSystemSelectionChangedNotification = "com.yfujiki.gradeConverter.SystemSelectionChangedNotification"
+let kGradeSelectedNotification = "com.yfujiki.GradeConverter.GradeSelectedNotification"
+let kEmailComposingNotification = "com.yfujiki.GradeConverter.EmailComposingNotification"
 let kNewIndexesKey = "newIndexesKey"
 
 let kSupportEmailAddress = "support@responsivebyt.es"
