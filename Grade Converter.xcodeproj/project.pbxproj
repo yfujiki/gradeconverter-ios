@@ -84,12 +84,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB711BED1C499D300000C82B /* PBXContainerItemProxy */ = {
+		DB8BEF6D1EF8D532009F3FBE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB940B361B3615F400E996F8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DB940B3D1B3615F400E996F8;
-			remoteInfo = "Grade Converter";
+			remoteGlobalIDString = DB9A8F7D1C9E3D1B005803F6;
+			remoteInfo = "Grade Converter Pro";
 		};
 		DB940B541B3615F400E996F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -378,7 +378,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				DB711BEE1C499D300000C82B /* PBXTargetDependency */,
+				DB8BEF6E1EF8D532009F3FBE /* PBXTargetDependency */,
 			);
 			name = "Grade ConverterUITests";
 			productName = "Grade ConverterUITests";
@@ -453,8 +453,9 @@
 				TargetAttributes = {
 					DB711BE71C499D300000C82B = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = BTWWPDZ4GE;
 						LastSwiftMigration = 0820;
-						TestTargetID = DB940B3D1B3615F400E996F8;
+						TestTargetID = DB9A8F7D1C9E3D1B005803F6;
 					};
 					DB940B3D1B3615F400E996F8 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -463,6 +464,7 @@
 					};
 					DB940B521B3615F400E996F8 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = BTWWPDZ4GE;
 						LastSwiftMigration = 0820;
 						TestTargetID = DB940B3D1B3615F400E996F8;
 					};
@@ -681,10 +683,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DB711BEE1C499D300000C82B /* PBXTargetDependency */ = {
+		DB8BEF6E1EF8D532009F3FBE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DB940B3D1B3615F400E996F8 /* Grade Converter */;
-			targetProxy = DB711BED1C499D300000C82B /* PBXContainerItemProxy */;
+			target = DB9A8F7D1C9E3D1B005803F6 /* Grade Converter Pro */;
+			targetProxy = DB8BEF6D1EF8D532009F3FBE /* PBXContainerItemProxy */;
 		};
 		DB940B551B3615F400E996F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -755,13 +757,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				INFOPLIST_FILE = "Grade ConverterUITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsiveBytes.Grade-ConverterUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = "Grade Converter";
+				TEST_TARGET_NAME = "Grade Converter Pro";
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -769,13 +772,14 @@
 		DB711BF11C499D300000C82B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				INFOPLIST_FILE = "Grade ConverterUITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsiveBytes.Grade-ConverterUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = "Grade Converter";
+				TEST_TARGET_NAME = "Grade Converter Pro";
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;
@@ -907,6 +911,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -925,6 +930,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Grade ConverterTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -948,6 +954,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverterpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -964,6 +971,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverterpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

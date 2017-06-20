@@ -41,17 +41,17 @@ class FastlaneSnapshotUITests: XCTestCase {
         tablesQuery.cells.allElementsBoundByIndex.first!.buttons["left arrow"].tap()
     }
 
-    //    func testEditScreen() {
-    //        let app = XCUIApplication()
-    //        app.navigationBars["Main Navigation Bar"].buttons["Edit Button"].tap()
-    //
-    //        snapshot("Edit")
-    //    }
-
     func testMoreScreen() {
         let app = XCUIApplication()
         app.tables.cells.allElementsBoundByIndex.last!.tap()
 
         snapshot("1Add")
+    }
+
+    func testEditScreen() {
+        let app = XCUIApplication()
+        app.navigationBars["Main Navigation Bar"].buttons["Edit Button"].tap()
+
+        snapshot("2Edit")
     }
 }
