@@ -218,7 +218,7 @@ class GradeSystemTable {
         } catch let error1 as NSError {
             error = error1
             if error != nil {
-                NSLog("Failed to read contents from file \(type(of: self).kFileName) : \(error?.debugDescription)")
+                NSLog("Failed to read contents from file \(type(of: self).kFileName) : \(error?.debugDescription ?? "")")
                 abort()
             }
         }

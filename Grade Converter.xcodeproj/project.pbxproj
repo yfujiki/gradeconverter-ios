@@ -458,12 +458,16 @@
 					};
 					DB940B3D1B3615F400E996F8 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = R9L632HWAR;
 						LastSwiftMigration = 0820;
 					};
 					DB940B521B3615F400E996F8 = {
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 0820;
 						TestTargetID = DB940B3D1B3615F400E996F8;
+					};
+					DB9A8F7D1C9E3D1B005803F6 = {
+						DevelopmentTeam = R9L632HWAR;
 					};
 				};
 			};
@@ -871,11 +875,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R9L632HWAR;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yfujiki.Grade-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -886,11 +891,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R9L632HWAR;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yfujiki.Grade-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -901,10 +907,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -922,10 +925,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Grade ConverterTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
@@ -939,12 +939,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R9L632HWAR;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG -D PRO";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yfujiki.Grade-Converter-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
 			};
@@ -954,12 +955,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R9L632HWAR;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D PRO";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.responsivebytes.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yfujiki.Grade-Converter-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Grade Converter-Bridging-Header.h";
 			};

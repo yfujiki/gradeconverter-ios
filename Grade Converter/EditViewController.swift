@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditViewController: UIViewController, EditTableViewCellDelegate {
+class EditViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var imageView: UIImageView!
 
@@ -65,37 +65,41 @@ class EditViewController: UIViewController, EditTableViewCellDelegate {
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
+}
 
-    // MARK: - UITableViewDataSource
-    func tableView(tableView _: UITableView, numberOfRowsInSection _: Int) -> Int {
+extension EditViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         return gradeSystems.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditTableViewCell") as! EditTableViewCell
         cell.delegate = self
         cell.gradeSystem = gradeSystems[indexPath.row]
 
         return cell
     }
+}
 
+extension EditViewController : UITableViewDelegate {
     // MARK: - UITableViewDelegate
-    func tableView(tableView _: UITableView, estimatedHeightForRowAtIndexPath _: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
     }
 
-    func tableView(tableView _: UITableView, heightForRowAtIndexPath _: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    @objc func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         addGradeFromIndexPath(indexPath)
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // MARK: - EditTableViewCellDelegate
+}
 
+extension EditViewController : EditTableViewCellDelegate {
     func didAddGradeCell(_ cell: EditTableViewCell) {
         if let selectedIndexPath = tableView.indexPath(for: cell) {
             addGradeFromIndexPath(selectedIndexPath)
