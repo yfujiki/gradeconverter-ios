@@ -13,7 +13,7 @@ protocol MainTableViewCellDelegate: NSObjectProtocol {
 }
 
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
-    fileprivate let kAnimationRotateDeg = CGFloat(1.0) * CGFloat(Double.pi) / CGFloat(180.0)
+    fileprivate let kAnimationRotateDeg = CGFloat(0.5) * CGFloat(Double.pi) / CGFloat(180.0)
 
     class var CardViewLeadingConstraint: CGFloat {
         return 16
