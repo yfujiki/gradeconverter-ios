@@ -39,9 +39,12 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do |options|
-    sigh
-    gym(scheme: options["scheme"])
-    pilot
+    target = options[:target] || "free"
+    app_id = (target == "free") ? "com.yfujiki.gradeconverter" : "com.yfujiki.gradeconverterpro"
+    scheme = (target == "free") ? "Grade Converter" : "Grade Converter Pro"
+    sigh(app_identifier: app_id)
+    gym(scheme: scheme)
+    pilot(app_identifier: app_id)
   end
 
   desc "Deploy a new version to the App Store"
