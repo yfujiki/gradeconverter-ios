@@ -21,7 +21,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        preferredContentSize = CGSize(width: 280, height: 300)
+        preferredContentSize = CGSize(width: 280, height: 240)
 
         if CurrentLang() == .ja {
             preferredContentSize = CGSize(width: 280, height: 260)

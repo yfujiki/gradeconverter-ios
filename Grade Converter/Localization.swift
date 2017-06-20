@@ -49,7 +49,7 @@ func FontNameForCurrentLang() -> String {
     if CurrentLang() == .ja {
         return "rounded-mplus-2p-light"
     } else {
-        return "ChalkboardSE-Regular"
+        return "Gill Sans"
     }
 }
 
@@ -57,7 +57,7 @@ func BoldFontNameForCurrentLang() -> String {
     if CurrentLang() == .ja {
         return "rounded-mplus-2p-heavy"
     } else {
-        return "ChalkboardSE-Bold"
+        return "Gill Sans"
     }
 }
 
