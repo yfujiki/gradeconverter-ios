@@ -9,6 +9,8 @@
 import Foundation
 import CoreGraphics
 
+let kGradeSystemTableURLPath = "https://s3.amazonaws.com/gradeconverter.yfujiki.com/GradeSystemTable.csv"
+
 let kNSUserDefaultsSystemSelectionChangedNotification = "com.yfujiki.gradeConverter.SystemSelectionChangedNotification"
 let kGradeSelectedNotification = "com.yfujiki.GradeConverter.GradeSelectedNotification"
 let kEmailComposingNotification = "com.yfujiki.GradeConverter.EmailComposingNotification"
