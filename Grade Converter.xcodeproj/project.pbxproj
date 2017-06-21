@@ -29,6 +29,14 @@
 		DB79CBA01B655C4D000024A5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CB9F1B655C4D000024A5 /* InfoViewController.swift */; };
 		DB79CBA21B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CBA11B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift */; };
 		DB79CBA41B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CBA31B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift */; };
+		DB8BEF781EFA486C009F3FBE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */; };
+		DB8BEF791EFA486C009F3FBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF751EFA486C009F3FBE /* RxSwift.framework */; };
+		DB8BEF7A1EFA486C009F3FBE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF761EFA486C009F3FBE /* Alamofire.framework */; };
+		DB8BEF7B1EFA486C009F3FBE /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */; };
+		DB8BEF7E1EFA4989009F3FBE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */; };
+		DB8BEF7F1EFA4989009F3FBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF751EFA486C009F3FBE /* RxSwift.framework */; };
+		DB8BEF801EFA4989009F3FBE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF761EFA486C009F3FBE /* Alamofire.framework */; };
+		DB8BEF811EFA4989009F3FBE /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */; };
 		DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B431B3615F400E996F8 /* AppDelegate.swift */; };
 		DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B451B3615F400E996F8 /* MainViewController.swift */; };
 		DB940B491B3615F400E996F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB940B471B3615F400E996F8 /* Main.storyboard */; };
@@ -127,6 +135,10 @@
 		DB79CBAE1B668BC2000024A5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		DB8BEF6F1EF8E34F009F3FBE /* Grade Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grade Converter.entitlements"; sourceTree = "<group>"; };
 		DB8BEF701EF8E974009F3FBE /* Grade Converter Pro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Grade Converter Pro.entitlements"; path = "Grade Converter Pro/Grade Converter Pro.entitlements"; sourceTree = SOURCE_ROOT; };
+		DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		DB8BEF751EFA486C009F3FBE /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		DB8BEF761EFA486C009F3FBE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
 		DB940B3E1B3615F400E996F8 /* Grade Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B421B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B431B3615F400E996F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +181,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8BEF781EFA486C009F3FBE /* RxCocoa.framework in Frameworks */,
+				DB8BEF791EFA486C009F3FBE /* RxSwift.framework in Frameworks */,
+				DB8BEF7A1EFA486C009F3FBE /* Alamofire.framework in Frameworks */,
+				DB8BEF7B1EFA486C009F3FBE /* RxAlamofire.framework in Frameworks */,
 				DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */,
 				DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */,
 			);
@@ -185,6 +201,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8BEF7E1EFA4989009F3FBE /* RxCocoa.framework in Frameworks */,
+				DB8BEF7F1EFA4989009F3FBE /* RxSwift.framework in Frameworks */,
+				DB8BEF801EFA4989009F3FBE /* Alamofire.framework in Frameworks */,
+				DB8BEF811EFA4989009F3FBE /* RxAlamofire.framework in Frameworks */,
 				DB9A8F921C9E3D1B005803F6 /* Crashlytics.framework in Frameworks */,
 				DB9A8F931C9E3D1B005803F6 /* Fabric.framework in Frameworks */,
 			);
@@ -270,6 +290,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		DB8BEF731EFA486B009F3FBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */,
+				DB8BEF751EFA486C009F3FBE /* RxSwift.framework */,
+				DB8BEF761EFA486C009F3FBE /* Alamofire.framework */,
+				DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DB940B351B3615F400E996F8 = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +308,7 @@
 				DB940B561B3615F400E996F8 /* Grade ConverterTests */,
 				DB711BE91C499D300000C82B /* Grade ConverterUITests */,
 				DB940B3F1B3615F400E996F8 /* Products */,
+				DB8BEF731EFA486B009F3FBE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -398,6 +430,7 @@
 				DB940B3C1B3615F400E996F8 /* Resources */,
 				DBFAD8351B68070500EF244F /* ShellScript */,
 				DB08E95B1CEAADEC007C9F14 /* ShellScript */,
+				DB8BEF7C1EFA489A009F3FBE /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -435,6 +468,7 @@
 				DB9A8F941C9E3D1B005803F6 /* Resources */,
 				DB9A8FA11C9E3D1B005803F6 /* ShellScript */,
 				DB08E95C1CEAAF19007C9F14 /* ShellScript */,
+				DB8BEF7D1EFA491B009F3FBE /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -589,6 +623,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Mark WARNINGs and SERIOUSs as warnings and TODOs as errors in RELEASE builds excluding the Vendor and Third Party directories.\nif which XcodeIssueGenerator >/dev/null; then\n  XcodeIssueGenerator -b RELEASE -w \"WARNING, SERIOUS\" -e TODO -x \"Vendor/\"\n  XcodeIssueGenerator -b DEBUG -w \"WARNING, SERIOUS\" -e TODO -x \"Vendor/\"\nelse\n  echo \"warning: XcodeIssueGenerator is not installed.\"\nfi";
+		};
+		DB8BEF7C1EFA489A009F3FBE /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DB8BEF7D1EFA491B009F3FBE /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		DB9A8FA11C9E3D1B005803F6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -895,7 +965,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = Grades;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
-				FRAMEWORK_SEARCH_PATHS = .;
+				FRAMEWORK_SEARCH_PATHS = (
+					.,
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -912,7 +985,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = Grades;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
-				FRAMEWORK_SEARCH_PATHS = .;
+				FRAMEWORK_SEARCH_PATHS = (
+					.,
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -963,7 +1039,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Grades Pro";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
-				FRAMEWORK_SEARCH_PATHS = .;
+				FRAMEWORK_SEARCH_PATHS = (
+					.,
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -981,7 +1060,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Grades Pro";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
-				FRAMEWORK_SEARCH_PATHS = .;
+				FRAMEWORK_SEARCH_PATHS = (
+					.,
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
