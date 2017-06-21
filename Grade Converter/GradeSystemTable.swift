@@ -181,18 +181,23 @@ class GradeSystemTable {
 
     static let sharedInstance = GradeSystemTable()
 
-    fileprivate static var kFileName: String {
+    fileprivate static var kBundleFilePath: String {
         return Bundle.main.path(forResource: "GradeSystemTable", ofType: "csv")!
+    }
+
+    fileprivate static var kFilePath: String {
+        let documentDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        return documentDir.appending("/GradeSystemTable.csv")
     }
 
     // Dictionary where key => grade system name, value => array of grade number
     fileprivate var tableBody: [String: GradeSystem] = [:]
 
     fileprivate init() {
-        var error: NSError?
+        moveFromBundleToDocument()
 
         do {
-            let contents = try NSString(contentsOfFile: type(of: self).kFileName, encoding: String.Encoding.utf8.rawValue)
+            let contents = try NSString(contentsOfFile: type(of: self).kFilePath, encoding: String.Encoding.utf8.rawValue)
             let lines = contents.components(separatedBy: "\n") as [String]
 
             let names = lines[0].components(separatedBy: ",") as [String]
@@ -215,12 +220,23 @@ class GradeSystemTable {
                 }
             }
 
-        } catch let error1 as NSError {
-            error = error1
-            if error != nil {
-                NSLog("Failed to read contents from file \(type(of: self).kFileName) : \(error?.debugDescription ?? "")")
-                abort()
-            }
+        } catch let error as NSError {
+            NSLog("Failed to read contents from file \(type(of: self).kFilePath) : \(error.debugDescription)")
+            abort()
+        }
+    }
+
+    fileprivate func moveFromBundleToDocument() {
+        let fileManager = FileManager()
+        if fileManager.fileExists(atPath: GradeSystemTable.kFilePath) {
+            return
+        }
+
+        do {
+            try fileManager.copyItem(atPath: GradeSystemTable.kBundleFilePath, toPath: GradeSystemTable.kFilePath)
+        } catch let error as NSError {
+            NSLog("Failed to move bundle content to file \(type(of: self).kFilePath) : \(error.debugDescription)")
+            abort()
         }
     }
 
