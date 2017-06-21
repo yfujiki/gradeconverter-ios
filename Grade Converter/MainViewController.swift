@@ -90,10 +90,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
-        #if PRO
-        #else
-            showAd()
-        #endif
+
+// For now, don't think about ad. This app is probably good as completely free.
+//        #if PRO
+//        #else
+//            showAd()
+//        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
