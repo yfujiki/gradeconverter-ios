@@ -18,7 +18,7 @@ struct GradeSystem: Equatable {
     init(name: String, category: String, locales: [String], grades: [String]) {
         self.name = name
         self.category = category
-        self.countryCodes = locales
+        countryCodes = locales
         self.grades = grades
     }
 
@@ -263,7 +263,7 @@ class GradeSystemTable {
 
             return result
         }.sorted(by: { (a: GradeSystem, b: GradeSystem) -> Bool in
-            return a.name.caseInsensitiveCompare(b.name) == .orderedAscending
+            a.name.caseInsensitiveCompare(b.name) == .orderedAscending
         })
     }
 }

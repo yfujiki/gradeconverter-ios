@@ -63,7 +63,7 @@ class PresentationController: UIPresentationController {
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 
-    func dismissPresentedViewController(_ sender: AnyObject) {
+    func dismissPresentedViewController(_: AnyObject) {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
 }

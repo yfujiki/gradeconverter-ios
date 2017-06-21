@@ -10,11 +10,11 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    @IBAction func closeButtonTapped(_ sender: AnyObject) {
+    @IBAction func closeButtonTapped(_: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func emailbuttonTapped(_ sender: AnyObject) {
+    @IBAction func emailbuttonTapped(_: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: kEmailComposingNotification), object: nil)
     }
 

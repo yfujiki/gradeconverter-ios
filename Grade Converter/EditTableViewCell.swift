@@ -18,7 +18,7 @@ class EditTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var gradeNameLabel: UILabel!
     @IBOutlet weak var gradeCategoryLabel: UILabel!
 
-    @IBAction func addButtonTapped(_ sender: AnyObject) {
+    @IBAction func addButtonTapped(_: AnyObject) {
         delegate?.didAddGradeCell(self)
     }
 

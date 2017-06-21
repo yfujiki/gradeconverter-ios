@@ -47,11 +47,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
 
-    @IBAction func deleteButtonTapped(_ sender: AnyObject) {
+    @IBAction func deleteButtonTapped(_: AnyObject) {
         delegate?.didDeleteCell(self)
     }
 
-    @IBAction func leftButtonTapped(_ sender: AnyObject) {
+    @IBAction func leftButtonTapped(_: AnyObject) {
         if !scrolling && gradeLabelScrollViewHasLeftPage() {
             let currentOffset = gradeLabelScrollView.contentOffset
             let nextOffset = CGPoint(x: currentOffset.x - gradeLabelScrollView.bounds.width, y: currentOffset.y)
@@ -60,7 +60,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         }
     }
 
-    @IBAction func rightButtonTapped(_ sender: AnyObject) {
+    @IBAction func rightButtonTapped(_: AnyObject) {
         if !scrolling && gradeLabelScrollViewHasRightPage() {
             let currentOffset = gradeLabelScrollView.contentOffset
             let nextOffset = CGPoint(x: currentOffset.x + gradeLabelScrollView.bounds.width, y: currentOffset.y)
@@ -70,7 +70,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     fileprivate lazy var gradeLabels: [UILabel] = {
-        return [
+        [
             MainTableViewCell.newGradeLabel(),
             MainTableViewCell.newGradeLabel(),
             MainTableViewCell.newGradeLabel(),

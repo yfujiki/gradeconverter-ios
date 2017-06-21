@@ -425,6 +425,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB940B5D1B3615F400E996F8 /* Build configuration list for PBXNativeTarget "Grade Converter" */;
 			buildPhases = (
+				DB8BEF831EFA4BC0009F3FBE /* Swiftformat */,
 				DB940B3A1B3615F400E996F8 /* Sources */,
 				DB940B3B1B3615F400E996F8 /* Frameworks */,
 				DB940B3C1B3615F400E996F8 /* Resources */,
@@ -462,6 +463,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB9A8FA21C9E3D1B005803F6 /* Build configuration list for PBXNativeTarget "Grade Converter Pro" */;
 			buildPhases = (
+				DB8BEF821EFA4B11009F3FBE /* Swiftformat */,
 				DB9A8F7E1C9E3D1B005803F6 /* Sources */,
 				DB9A8F911C9E3D1B005803F6 /* Frameworks */,
 				DB9A8F941C9E3D1B005803F6 /* Resources */,
@@ -631,6 +633,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DB8BEF821EFA4B11009F3FBE /* Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftformat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./scripts/swiftformat ./Grade\\ Converter";
+		};
+		DB8BEF831EFA4BC0009F3FBE /* Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftformat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./scripts/swiftformat ./Grade\\ Converter";
 		};
 		DB9A8FA11C9E3D1B005803F6 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;

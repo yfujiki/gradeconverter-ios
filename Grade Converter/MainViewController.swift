@@ -91,11 +91,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
 
-// For now, don't think about ad. This app is probably good as completely free.
-//        #if PRO
-//        #else
-//            showAd()
-//        #endif
+        // For now, don't think about ad. This app is probably good as completely free.
+        //        #if PRO
+        //        #else
+        //            showAd()
+        //        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -148,7 +148,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String : Any]
+        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: Any]
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
@@ -282,7 +282,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.tag = indexPath.row
 
         if let mainTableViewCell = cell as? MainTableViewCell {
@@ -313,7 +313,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting _: UIViewController, source _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 
         var transitioning: UIViewControllerAnimatedTransitioning?
 
@@ -346,7 +346,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return transitioning
     }
 
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source _: UIViewController) -> UIPresentationController? {
         return PresentationController(presentedViewController: presented, presenting: presenting)
     }
 
@@ -356,8 +356,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.beginUpdates()
             let systemToDelete = selectedSystems[indexPath.row]
             UserDefaults.standard.removeSelectedGradeSystem(systemToDelete)
-            self.tableView.deleteRows(at: [indexPath], with: .left)
-            self.tableView.endUpdates()
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
         }
     }
 

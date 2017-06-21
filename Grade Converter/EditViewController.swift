@@ -12,7 +12,7 @@ class EditViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var imageView: UIImageView!
 
-    @IBAction func doneButtonTapped(_ sender: AnyObject) {
+    @IBAction func doneButtonTapped(_: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
 
@@ -32,7 +32,7 @@ class EditViewController: UIViewController {
 
     fileprivate func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
-            return !UserDefaults.standard.selectedGradeSystems().contains(gradeSystem)
+            !UserDefaults.standard.selectedGradeSystems().contains(gradeSystem)
         }
     }
 
@@ -61,13 +61,13 @@ class EditViewController: UIViewController {
 
     fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String : Any]
+        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: Any]
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 }
 
-extension EditViewController : UITableViewDataSource {
+extension EditViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         return gradeSystems.count
     }
@@ -81,13 +81,13 @@ extension EditViewController : UITableViewDataSource {
     }
 }
 
-extension EditViewController : UITableViewDelegate {
+extension EditViewController: UITableViewDelegate {
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         return kCellHeight
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return kCellHeight
     }
 
@@ -96,10 +96,9 @@ extension EditViewController : UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }
 
-extension EditViewController : EditTableViewCellDelegate {
+extension EditViewController: EditTableViewCellDelegate {
     func didAddGradeCell(_ cell: EditTableViewCell) {
         if let selectedIndexPath = tableView.indexPath(for: cell) {
             addGradeFromIndexPath(selectedIndexPath)
