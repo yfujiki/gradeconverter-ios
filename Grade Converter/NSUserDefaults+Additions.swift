@@ -26,8 +26,10 @@ let kNSUserDefaultsDefaultGradeSystem: [GradeSystem] = {
 
     // US and everything else
     return [
-        GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
         GradeSystemTable.sharedInstance.gradeSystemForName("Hueco", category: "Boulder")!,
+        GradeSystemTable.sharedInstance.gradeSystemForName("Fontainebleu", category: "Boulder")!,
+        GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
+        GradeSystemTable.sharedInstance.gradeSystemForName("French", category: "Sports")!,
     ]
 }()
 
