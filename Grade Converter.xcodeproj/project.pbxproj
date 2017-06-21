@@ -8,18 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		DB05E9C91B67330F00577CCD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
-		DB05E9CA1B67382C00577CCD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
 		DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF58D1B4235C900141E47 /* PresentationController.swift */; };
 		DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */; };
 		DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
-		DB5DC3BB1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
 		DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */; };
 		DB5DC3C01B3BAB890016F707 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */; };
 		DB5DC3C31B3BAECF0016F707 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */; };
 		DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */; };
 		DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */; };
 		DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
-		DB5DC3CC1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
 		DB711BEB1C499D300000C82B /* Grade_ConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */; };
 		DB711BF21C499D600000C82B /* FastlaneSnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */; };
 		DB711BF41C499D770000C82B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BF31C499D770000C82B /* SnapshotHelper.swift */; };
@@ -30,13 +27,19 @@
 		DB79CBA21B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CBA11B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift */; };
 		DB79CBA41B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CBA31B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift */; };
 		DB8BEF781EFA486C009F3FBE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */; };
-		DB8BEF791EFA486C009F3FBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF751EFA486C009F3FBE /* RxSwift.framework */; };
+		DB8BEF791EFA486C009F3FBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF751EFA486C009F3FBE /* RxSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DB8BEF7A1EFA486C009F3FBE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF761EFA486C009F3FBE /* Alamofire.framework */; };
 		DB8BEF7B1EFA486C009F3FBE /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */; };
 		DB8BEF7E1EFA4989009F3FBE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */; };
 		DB8BEF7F1EFA4989009F3FBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF751EFA486C009F3FBE /* RxSwift.framework */; };
 		DB8BEF801EFA4989009F3FBE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF761EFA486C009F3FBE /* Alamofire.framework */; };
 		DB8BEF811EFA4989009F3FBE /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */; };
+		DB8BEF861EFA5830009F3FBE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF761EFA486C009F3FBE /* Alamofire.framework */; };
+		DB8BEF871EFA5830009F3FBE /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */; };
+		DB8BEF881EFA5830009F3FBE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */; };
+		DB8BEF891EFA5830009F3FBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8BEF751EFA486C009F3FBE /* RxSwift.framework */; };
+		DB8BEF8A1EFA5861009F3FBE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8371B6807A500EF244F /* Crashlytics.framework */; };
+		DB8BEF8B1EFA5861009F3FBE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8361B6807A500EF244F /* Fabric.framework */; };
 		DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B431B3615F400E996F8 /* AppDelegate.swift */; };
 		DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B451B3615F400E996F8 /* MainViewController.swift */; };
 		DB940B491B3615F400E996F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB940B471B3615F400E996F8 /* Main.storyboard */; };
@@ -48,7 +51,6 @@
 		DB940B691B364F3E00E996F8 /* GradeSystemTable.csv in Resources */ = {isa = PBXBuildFile; fileRef = DB940B681B364F3E00E996F8 /* GradeSystemTable.csv */; };
 		DB940B6B1B364F6C00E996F8 /* GradeSystemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */; };
 		DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6C1B3659E200E996F8 /* GradeSystemTableTest.swift */; };
-		DB940B6E1B365A3900E996F8 /* GradeSystemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */; };
 		DB9A8F7F1C9E3D1B005803F6 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
 		DB9A8F801C9E3D1B005803F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DB9A8F811C9E3D1B005803F6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */; };
@@ -82,7 +84,6 @@
 		DB9A8FA71C9E3D6E005803F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB9A8F451C9E3905005803F6 /* InfoPlist.strings */; };
 		DB9A8FA81C9E3D8B005803F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB9A8F491C9E390D005803F6 /* InfoPlist.strings */; };
 		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
-		DBD38D221B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */; };
 		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
 		DBD8DFE41B56C08F0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
@@ -194,6 +195,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8BEF8A1EFA5861009F3FBE /* Crashlytics.framework in Frameworks */,
+				DB8BEF8B1EFA5861009F3FBE /* Fabric.framework in Frameworks */,
+				DB8BEF861EFA5830009F3FBE /* Alamofire.framework in Frameworks */,
+				DB8BEF871EFA5830009F3FBE /* RxAlamofire.framework in Frameworks */,
+				DB8BEF881EFA5830009F3FBE /* RxCocoa.framework in Frameworks */,
+				DB8BEF891EFA5830009F3FBE /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,14 +739,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB05E9CA1B67382C00577CCD /* Localization.swift in Sources */,
 				DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */,
-				DB940B6E1B365A3900E996F8 /* GradeSystemTable.swift in Sources */,
 				DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */,
 				DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */,
-				DBD38D221B3FCE8000F9E40F /* Constants.swift in Sources */,
-				DB5DC3BB1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
-				DB5DC3CC1B3BE9230016F707 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,7 +1010,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1027,7 +1033,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Grade ConverterTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yfujiki.$(PRODUCT_NAME:rfc1034identifier)";

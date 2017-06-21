@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+@testable import Grade_Converter
 
 class GradeSystemTableTest: XCTestCase {
 
