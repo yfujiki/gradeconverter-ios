@@ -126,7 +126,7 @@
 		DB79CBAC1B668BBB000024A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		DB79CBAE1B668BC2000024A5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		DB8BEF6F1EF8E34F009F3FBE /* Grade Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grade Converter.entitlements"; sourceTree = "<group>"; };
-		DB8BEF701EF8E974009F3FBE /* Grade Converter Pro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Grade Converter Pro.entitlements"; path = "Grade Converter Pro/Grade Converter Pro.entitlements"; sourceTree = "<group>"; };
+		DB8BEF701EF8E974009F3FBE /* Grade Converter Pro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Grade Converter Pro.entitlements"; path = "Grade Converter Pro/Grade Converter Pro.entitlements"; sourceTree = SOURCE_ROOT; };
 		DB940B3E1B3615F400E996F8 /* Grade Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB940B421B3615F400E996F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB940B431B3615F400E996F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -273,7 +273,6 @@
 		DB940B351B3615F400E996F8 = {
 			isa = PBXGroup;
 			children = (
-				DB8BEF701EF8E974009F3FBE /* Grade Converter Pro.entitlements */,
 				DB940B401B3615F400E996F8 /* Grade Converter */,
 				DB940B561B3615F400E996F8 /* Grade ConverterTests */,
 				DB711BE91C499D300000C82B /* Grade ConverterUITests */,
@@ -295,6 +294,7 @@
 		DB940B401B3615F400E996F8 /* Grade Converter */ = {
 			isa = PBXGroup;
 			children = (
+				DB8BEF701EF8E974009F3FBE /* Grade Converter Pro.entitlements */,
 				DB8BEF6F1EF8E34F009F3FBE /* Grade Converter.entitlements */,
 				DB79CB9A1B646FB9000024A5 /* Fonts */,
 				DB3DF58C1B42342100141E47 /* Presentations */,
@@ -893,6 +893,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = Grades;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
@@ -909,6 +910,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = Grades;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
@@ -959,6 +961,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "Grades Pro";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
@@ -976,6 +979,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "Grades Pro";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
