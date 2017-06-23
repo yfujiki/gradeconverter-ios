@@ -76,3 +76,7 @@ func NavigationBarItemFontSize() -> CGFloat {
         return CGFloat(22)
     }
 }
+
+func OK() -> String {
+    return NSLocalizedString("OK", comment: "OK")
+}

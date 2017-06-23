@@ -92,3 +92,10 @@
 
 /* Support Email Title */
 "[Support] About Grade Converter" = "[Support] About Grade Converter";
+
+/* Update Alert */
+"The grade table is updated. Data will reload." = "The grade table is updated. Data will reload.";
+
+/* OK */
+"OK" = "OK";
+

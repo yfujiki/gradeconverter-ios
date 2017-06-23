@@ -186,6 +186,7 @@ class GradeSystemTable {
     private var _updated: Variable<Bool> = Variable(true)
     var updated: Observable<Bool> {
         return _updated.asObservable()
+            .skip(1)
             .distinctUntilChanged()
             .filter { $0 }
     }
@@ -259,6 +260,11 @@ class GradeSystemTable {
     func downloadNewFile() -> Observable<Void> {
         let session = URLSession.shared
         return session.rx.data(.get, URL(string: kGradeSystemTableURLPath)!).do(onNext: { data in
+            let oldData = try? Data(contentsOf: URL(fileURLWithPath: type(of: self).kFilePath))
+            guard oldData != nil && oldData != data else {
+                return
+            }
+
             try? data.write(to: URL(fileURLWithPath: type(of: self).kFilePath))
             self._updated.value = false
             self.readContentsFromFile()

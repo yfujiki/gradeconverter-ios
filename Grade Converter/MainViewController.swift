@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import iAd
+import RxSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
 
@@ -23,6 +24,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     fileprivate var kMaximumCellHeight: CGFloat = 96
 
     fileprivate var observers = [NSObjectProtocol]()
+    private var disposeBag = DisposeBag()
 
     fileprivate lazy var longPressGestureRecognizer: UILongPressGestureRecognizer = {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.longPressGestureRecognized(_:)))
@@ -96,6 +98,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //        #else
         //            showAd()
         //        #endif
+
+        GradeSystemTable.sharedInstance.updated.subscribe(
+            onNext: { _ in
+                let title = NSLocalizedString("The grade table is updated. Data will reload.", comment: "Title for update alert")
+                let ok = OK()
+                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                let action = UIAlertAction(title: ok, style: .cancel, handler: { _ in
+                    UserDefaults.standard.setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
+                    self.updateSelectedSystems()
+                    self.tableView.reloadData()
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+        ).disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {

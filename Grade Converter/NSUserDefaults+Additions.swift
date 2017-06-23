@@ -15,7 +15,7 @@ let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 
 let kNSUserDefaultsDefaultIndexes = [Int(17)]
 
-let kNSUserDefaultsDefaultGradeSystem: [GradeSystem] = {
+var kNSUserDefaultsDefaultGradeSystem: [GradeSystem] {
     if CurrentCountry() == .jp {
         return [
             GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
@@ -31,7 +31,7 @@ let kNSUserDefaultsDefaultGradeSystem: [GradeSystem] = {
         GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!,
         GradeSystemTable.sharedInstance.gradeSystemForName("French", category: "Sports")!,
     ]
-}()
+}
 
 extension UserDefaults {
 

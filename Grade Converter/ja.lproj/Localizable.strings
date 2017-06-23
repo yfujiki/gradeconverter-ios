@@ -92,3 +92,9 @@
 
 /* Support Email Title */
 "[Support] About Grade Converter" = "【サポート】クライミンググレード変換アプリについて";
+
+/* Update Alert */
+"The grade table is updated. Data will reload." = "グレード表が更新されました。データをリロードします。";
+
+/* OK */
+"OK" = "OK";
