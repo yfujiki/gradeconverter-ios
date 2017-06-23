@@ -39,6 +39,7 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do |options|
+    increment_build_number
     target = options[:target] || "free"
     app_id = (target == "free") ? "com.yfujiki.gradeconverter" : "com.yfujiki.gradeconverterpro"
     scheme = (target == "free") ? "Grade Converter" : "Grade Converter Pro"
