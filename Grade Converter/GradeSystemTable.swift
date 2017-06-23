@@ -154,9 +154,9 @@ struct GradeSystem: Equatable {
                 }
             }
         } else {
-            if higher {
+            if higher && highGrade.characters.count > 0 {
                 nextGrade = highGrade
-            } else {
+            } else if !higher && lowGrade.characters.count > 0 {
                 nextGrade = lowGrade
             }
         }
