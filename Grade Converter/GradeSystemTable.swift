@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxAlamofire
 
 struct GradeSystem: Equatable {
     var name: String
@@ -181,6 +183,13 @@ class GradeSystemTable {
 
     static let sharedInstance = GradeSystemTable()
 
+    private var _updated: Variable<Bool> = Variable(true)
+    var updated: Observable<Bool> {
+        return _updated.asObservable()
+            .distinctUntilChanged()
+            .filter { $0 }
+    }
+
     fileprivate static var kBundleFilePath: String {
         return Bundle.main.path(forResource: "GradeSystemTable", ofType: "csv")!
     }
@@ -195,7 +204,24 @@ class GradeSystemTable {
 
     fileprivate init() {
         moveFromBundleToDocument()
+        readContentsFromFile()
+    }
 
+    fileprivate func moveFromBundleToDocument() {
+        let fileManager = FileManager()
+        if fileManager.fileExists(atPath: GradeSystemTable.kFilePath) {
+            return
+        }
+
+        do {
+            try fileManager.copyItem(atPath: GradeSystemTable.kBundleFilePath, toPath: GradeSystemTable.kFilePath)
+        } catch let error as NSError {
+            NSLog("Failed to move bundle content to file \(type(of: self).kFilePath) : \(error.debugDescription)")
+            abort()
+        }
+    }
+
+    fileprivate func readContentsFromFile() {
         do {
             let contents = try NSString(contentsOfFile: type(of: self).kFilePath, encoding: String.Encoding.utf8.rawValue)
             let lines = contents.components(separatedBy: "\n") as [String]
@@ -212,6 +238,10 @@ class GradeSystemTable {
             }
 
             for grades in arrayOfGrades {
+                if grades.characters.count == 0 {
+                    continue
+                }
+
                 let gradesOfSameLevel = grades.components(separatedBy: ",") as [String]
 
                 for i in 0 ..< names.count {
@@ -226,18 +256,15 @@ class GradeSystemTable {
         }
     }
 
-    fileprivate func moveFromBundleToDocument() {
-        let fileManager = FileManager()
-        if fileManager.fileExists(atPath: GradeSystemTable.kFilePath) {
-            return
-        }
-
-        do {
-            try fileManager.copyItem(atPath: GradeSystemTable.kBundleFilePath, toPath: GradeSystemTable.kFilePath)
-        } catch let error as NSError {
-            NSLog("Failed to move bundle content to file \(type(of: self).kFilePath) : \(error.debugDescription)")
-            abort()
-        }
+    func downloadNewFile() -> Observable<Void> {
+        let session = URLSession.shared
+        return session.rx.data(.get, URL(string: kGradeSystemTableURLPath)!).do(onNext: { data in
+            try? data.write(to: URL(fileURLWithPath: type(of: self).kFilePath))
+            self._updated.value = false
+            self.readContentsFromFile()
+            self._updated.value = true
+        }).map({ _ -> Void in
+        })
     }
 
     func namesAndCategories() -> [(String, String)] {
