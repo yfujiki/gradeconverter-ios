@@ -359,7 +359,6 @@
 				DBFAD8361B6807A500EF244F /* Fabric.framework */,
 				DBFAD8371B6807A500EF244F /* Crashlytics.framework */,
 				DB940B421B3615F400E996F8 /* Info.plist */,
-				DB31CF751F03061500E7837E /* GoogleService-Info.plist */,
 				DB76478D1B5311D900BF01E9 /* Grade Converter-Bridging-Header.h */,
 				DBD8DFE61B56C08F0078111B /* Localizable.strings */,
 			);
@@ -397,6 +396,7 @@
 		DB9A8F3D1C9E3861005803F6 /* Free */ = {
 			isa = PBXGroup;
 			children = (
+				DB31CF751F03061500E7837E /* GoogleService-Info.plist */,
 				DB9A8F491C9E390D005803F6 /* InfoPlist.strings */,
 			);
 			path = Free;
