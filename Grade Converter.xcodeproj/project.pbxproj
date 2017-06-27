@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DB05E9C91B67330F00577CCD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
+		DB31CF761F03061500E7837E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB31CF751F03061500E7837E /* GoogleService-Info.plist */; };
 		DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF58D1B4235C900141E47 /* PresentationController.swift */; };
 		DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */; };
 		DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
@@ -111,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		DB05E9C81B67330F00577CCD /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		DB31CF751F03061500E7837E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3DF58D1B4235C900141E47 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Additions.swift"; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				DBFAD8361B6807A500EF244F /* Fabric.framework */,
 				DBFAD8371B6807A500EF244F /* Crashlytics.framework */,
 				DB940B421B3615F400E996F8 /* Info.plist */,
+				DB31CF751F03061500E7837E /* GoogleService-Info.plist */,
 				DB76478D1B5311D900BF01E9 /* Grade Converter-Bridging-Header.h */,
 				DBD8DFE61B56C08F0078111B /* Localizable.strings */,
 			);
@@ -567,6 +570,7 @@
 				DB940B691B364F3E00E996F8 /* GradeSystemTable.csv in Resources */,
 				DB940B4E1B3615F400E996F8 /* LaunchScreen.xib in Resources */,
 				DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */,
+				DB31CF761F03061500E7837E /* GoogleService-Info.plist in Resources */,
 				DB940B661B361C3B00E996F8 /* MainTableViewCell.xib in Resources */,
 				DBD8DFE41B56C08F0078111B /* Localizable.strings in Resources */,
 				DB79CB9E1B646FE3000024A5 /* rounded-mplus-2p-light.ttf in Resources */,
