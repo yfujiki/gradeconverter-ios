@@ -1,0 +1,6 @@
+framework module Pods_Grade_Converter_Pro {
+  umbrella header "Pods-Grade Converter Pro-umbrella.h"
+
+  export *
+  module * { export * }
+}

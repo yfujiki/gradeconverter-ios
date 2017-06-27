@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31A6A407CDF1F09E091717E4 /* libPods-Grade ConverterUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D18186BDBF4AD900574579 /* libPods-Grade ConverterUITests.a */; };
+		75CA3E39B5DF1880358E959F /* libPods-Grade ConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C3E092D5900472DE01404E /* libPods-Grade ConverterTests.a */; };
+		8503CFE4EB75073ADFFDEEF6 /* Pods_Grade_Converter_Pro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */; };
+		D32312125837ECA4120D1E7F /* libPods-Grade Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */; };
 		DB05E9C91B67330F00577CCD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
 		DB31CF761F03061500E7837E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB31CF751F03061500E7837E /* GoogleService-Info.plist */; };
 		DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF58D1B4235C900141E47 /* PresentationController.swift */; };
@@ -111,6 +115,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11ACBC314021B6B0B8C51082 /* Pods-Grade Converter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter.debug.xcconfig"; sourceTree = "<group>"; };
+		11D18186BDBF4AD900574579 /* libPods-Grade ConverterUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Grade ConverterUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Grade Converter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1722EDE481619DB2D4B5804B /* Pods-Grade ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade ConverterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
+		19AD17B0163E3F477F0B71A6 /* Pods-Grade Converter Pro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter Pro.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro.release.xcconfig"; sourceTree = "<group>"; };
+		4556031EA37B60DD7A730582 /* Pods-Grade Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter.release.xcconfig"; sourceTree = "<group>"; };
+		4618E1BC9946D267A032E3C9 /* Pods-Grade ConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade ConverterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade ConverterUITests/Pods-Grade ConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
+		52890E6D658631B1939AA0FA /* Pods-Grade ConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade ConverterUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grade ConverterUITests/Pods-Grade ConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AEF56717EDDBBE187425E3D0 /* Pods-Grade ConverterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade ConverterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C6585F0ACC206DC068CBB85C /* Pods-Grade Converter Pro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter Pro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro.debug.xcconfig"; sourceTree = "<group>"; };
+		D0C3E092D5900472DE01404E /* libPods-Grade ConverterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Grade ConverterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB05E9C81B67330F00577CCD /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		DB31CF751F03061500E7837E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3DF58D1B4235C900141E47 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
@@ -170,6 +185,7 @@
 		DBD8DFE71B56C0950078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBFAD8361B6807A500EF244F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
 		DBFAD8371B6807A500EF244F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
+		E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grade_Converter_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A6A407CDF1F09E091717E4 /* libPods-Grade ConverterUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +207,7 @@
 				DB8BEF7B1EFA486C009F3FBE /* RxAlamofire.framework in Frameworks */,
 				DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */,
 				DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */,
+				D32312125837ECA4120D1E7F /* libPods-Grade Converter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +221,7 @@
 				DB8BEF871EFA5830009F3FBE /* RxAlamofire.framework in Frameworks */,
 				DB8BEF881EFA5830009F3FBE /* RxCocoa.framework in Frameworks */,
 				DB8BEF891EFA5830009F3FBE /* RxSwift.framework in Frameworks */,
+				75CA3E39B5DF1880358E959F /* libPods-Grade ConverterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,12 +235,28 @@
 				DB8BEF811EFA4989009F3FBE /* RxAlamofire.framework in Frameworks */,
 				DB9A8F921C9E3D1B005803F6 /* Crashlytics.framework in Frameworks */,
 				DB9A8F931C9E3D1B005803F6 /* Fabric.framework in Frameworks */,
+				8503CFE4EB75073ADFFDEEF6 /* Pods_Grade_Converter_Pro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81429C1CEFDB1EE5F512E3A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				11ACBC314021B6B0B8C51082 /* Pods-Grade Converter.debug.xcconfig */,
+				4556031EA37B60DD7A730582 /* Pods-Grade Converter.release.xcconfig */,
+				C6585F0ACC206DC068CBB85C /* Pods-Grade Converter Pro.debug.xcconfig */,
+				19AD17B0163E3F477F0B71A6 /* Pods-Grade Converter Pro.release.xcconfig */,
+				AEF56717EDDBBE187425E3D0 /* Pods-Grade ConverterTests.debug.xcconfig */,
+				1722EDE481619DB2D4B5804B /* Pods-Grade ConverterTests.release.xcconfig */,
+				52890E6D658631B1939AA0FA /* Pods-Grade ConverterUITests.debug.xcconfig */,
+				4618E1BC9946D267A032E3C9 /* Pods-Grade ConverterUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DB3DF5881B4233B400141E47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +341,10 @@
 				DB8BEF751EFA486C009F3FBE /* RxSwift.framework */,
 				DB8BEF761EFA486C009F3FBE /* Alamofire.framework */,
 				DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */,
+				15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */,
+				E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */,
+				D0C3E092D5900472DE01404E /* libPods-Grade ConverterTests.a */,
+				11D18186BDBF4AD900574579 /* libPods-Grade ConverterUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -318,6 +357,7 @@
 				DB711BE91C499D300000C82B /* Grade ConverterUITests */,
 				DB940B3F1B3615F400E996F8 /* Products */,
 				DB8BEF731EFA486B009F3FBE /* Frameworks */,
+				81429C1CEFDB1EE5F512E3A9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -417,9 +457,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB711BEF1C499D300000C82B /* Build configuration list for PBXNativeTarget "Grade ConverterUITests" */;
 			buildPhases = (
+				5F129CFBCFE5D30C1D48AC35 /* [CP] Check Pods Manifest.lock */,
 				DB711BE41C499D300000C82B /* Sources */,
 				DB711BE51C499D300000C82B /* Frameworks */,
 				DB711BE61C499D300000C82B /* Resources */,
+				BA12B328E25D113BEC8E24D7 /* [CP] Embed Pods Frameworks */,
+				A36F1DB306344BF208766F2D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -435,12 +478,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB940B5D1B3615F400E996F8 /* Build configuration list for PBXNativeTarget "Grade Converter" */;
 			buildPhases = (
+				4CB7E284BCD3731DD5EB4FC3 /* [CP] Check Pods Manifest.lock */,
 				DB8BEF831EFA4BC0009F3FBE /* Swiftformat */,
 				DB940B3A1B3615F400E996F8 /* Sources */,
 				DB940B3B1B3615F400E996F8 /* Frameworks */,
 				DB940B3C1B3615F400E996F8 /* Resources */,
 				DBFAD8351B68070500EF244F /* Fabric */,
 				DB8BEF7C1EFA489A009F3FBE /* Carthage */,
+				DD88002160FB14F08189FA37 /* [CP] Embed Pods Frameworks */,
+				4C0B71A95AA6783DB3D08695 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -455,9 +501,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB940B601B3615F400E996F8 /* Build configuration list for PBXNativeTarget "Grade ConverterTests" */;
 			buildPhases = (
+				D81A6F6ECD524BC25DE3D77E /* [CP] Check Pods Manifest.lock */,
 				DB940B4F1B3615F400E996F8 /* Sources */,
 				DB940B501B3615F400E996F8 /* Frameworks */,
 				DB940B511B3615F400E996F8 /* Resources */,
+				F097FA60EFCE9BD10904F21B /* [CP] Embed Pods Frameworks */,
+				4975B8AD75FCEFD14FA37D76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -473,12 +522,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB9A8FA21C9E3D1B005803F6 /* Build configuration list for PBXNativeTarget "Grade Converter Pro" */;
 			buildPhases = (
+				B5274E8A4E6D2AD66AB0B7E0 /* [CP] Check Pods Manifest.lock */,
 				DB8BEF821EFA4B11009F3FBE /* Swiftformat */,
 				DB9A8F7E1C9E3D1B005803F6 /* Sources */,
 				DB9A8F911C9E3D1B005803F6 /* Frameworks */,
 				DB9A8F941C9E3D1B005803F6 /* Resources */,
 				DB9A8FA11C9E3D1B005803F6 /* Fabric */,
 				DB8BEF7D1EFA491B009F3FBE /* Carthage */,
+				039A4978FE276EF5769415D2 /* [CP] Embed Pods Frameworks */,
+				89C743715475B3C22F7018EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -609,6 +661,156 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		039A4978FE276EF5769415D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4975B8AD75FCEFD14FA37D76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C0B71A95AA6783DB3D08695 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CB7E284BCD3731DD5EB4FC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5F129CFBCFE5D30C1D48AC35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		89C743715475B3C22F7018EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A36F1DB306344BF208766F2D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterUITests/Pods-Grade ConverterUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5274E8A4E6D2AD66AB0B7E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA12B328E25D113BEC8E24D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterUITests/Pods-Grade ConverterUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D81A6F6ECD524BC25DE3D77E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		DB8BEF7C1EFA489A009F3FBE /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,6 +902,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 7b0a99403c40e57432aa63bf676099405145b6ba bc2a12c0c49c9e5399863acd93c8c8714b35668ad21baf12f52418bc33f3fde7";
+		};
+		DD88002160FB14F08189FA37 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F097FA60EFCE9BD10904F21B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -849,6 +1081,7 @@
 /* Begin XCBuildConfiguration section */
 		DB711BF01C499D300000C82B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52890E6D658631B1939AA0FA /* Pods-Grade ConverterUITests.debug.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
@@ -865,6 +1098,7 @@
 		};
 		DB711BF11C499D300000C82B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4618E1BC9946D267A032E3C9 /* Pods-Grade ConverterUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				INFOPLIST_FILE = "Grade ConverterUITests/Info.plist";
@@ -971,12 +1205,14 @@
 		};
 		DB940B5E1B3615F400E996F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11ACBC314021B6B0B8C51082 /* Pods-Grade Converter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = Grades;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					.,
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
@@ -993,12 +1229,14 @@
 		};
 		DB940B5F1B3615F400E996F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4556031EA37B60DD7A730582 /* Pods-Grade Converter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = Grades;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					.,
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
@@ -1015,6 +1253,7 @@
 		};
 		DB940B611B3615F400E996F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEF56717EDDBBE187425E3D0 /* Pods-Grade ConverterTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
@@ -1038,6 +1277,7 @@
 		};
 		DB940B621B3615F400E996F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1722EDE481619DB2D4B5804B /* Pods-Grade ConverterTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
@@ -1057,12 +1297,14 @@
 		};
 		DB9A8FA31C9E3D1B005803F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6585F0ACC206DC068CBB85C /* Pods-Grade Converter Pro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Grades Pro";
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					.,
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
@@ -1080,12 +1322,14 @@
 		};
 		DB9A8FA41C9E3D1B005803F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19AD17B0163E3F477F0B71A6 /* Pods-Grade Converter Pro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_DISPLAY_NAME = "Grades Pro";
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					.,
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
