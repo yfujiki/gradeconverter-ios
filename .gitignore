@@ -61,6 +61,7 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
+*.mobileprovision
 
 
 ### https://raw.github.com/github/gitignore/656f766bfc75f912d611a973158be0fe9e2ba2f2/Global/xcode.gitignore
