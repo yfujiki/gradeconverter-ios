@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class InfoViewController: UIViewController {
 
@@ -20,6 +21,11 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: type(of: self),
+            AnalyticsParameterItemName: type(of: self),
+        ])
 
         preferredContentSize = CGSize(width: 280, height: 240)
 

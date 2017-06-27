@@ -92,4 +92,14 @@ extension UserDefaults {
 
         return kNSUserDefaultsDefaultGradeSystem
     }
+
+    func selectedGradeSystemNamesCSV() -> String {
+        return selectedGradeSystems().reduce("") { (intermediate, system) -> String in
+            if intermediate.characters.count == 0 {
+                return system.name
+            } else {
+                return intermediate + ", " + system.name
+            }
+        }
+    }
 }

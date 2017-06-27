@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 import iAd
 import RxSwift
+import Firebase
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
 
@@ -117,6 +118,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: type(of: self),
+            AnalyticsParameterItemName: type(of: self),
+        ])
 
         tableView.reloadData()
     }

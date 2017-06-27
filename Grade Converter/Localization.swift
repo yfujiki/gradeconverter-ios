@@ -13,12 +13,28 @@ enum Country: Int {
     case us = 0
     case jp
     case others
+
+    var string: String {
+        switch self {
+        case .us: return "US"
+        case .jp: return "EN"
+        case .others: return "OTHERS"
+        }
+    }
 }
 
 enum Lang: Int {
     case en = 0
     case ja
     case others
+
+    var string: String {
+        switch self {
+        case .en: return "US"
+        case .ja: return "EN"
+        case .others: return "OTHERS"
+        }
+    }
 }
 
 func CurrentCountry() -> Country {
@@ -34,7 +50,7 @@ func CurrentCountry() -> Country {
 }
 
 func CurrentLang() -> Lang {
-    if let currentLang = Bundle.main.preferredLocalizations.first {
+    if let currentLang = NSLocale.preferredLanguages.first {
         if currentLang == "en" {
             return Lang.en
         } else if currentLang == "ja" {

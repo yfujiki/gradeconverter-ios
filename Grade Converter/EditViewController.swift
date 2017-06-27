@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class EditViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
@@ -44,6 +45,11 @@ class EditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [
+            AnalyticsParameterItemID: type(of: self),
+            AnalyticsParameterItemName: type(of: self),
+        ])
 
         updateGradeSystems()
 

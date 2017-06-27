@@ -62,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_: UIApplication) {
+        Analytics.setUserProperty(CurrentLang().string, forName: "lang")
+        Analytics.setUserProperty(CurrentCountry().string, forName: "country")
+        Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [AnalyticsParameterItemID: UserDefaults.standard.selectedGradeSystemNamesCSV()])
+
         _ = GradeSystemTable.sharedInstance.downloadNewFile().subscribe(
             onNext: {
             }

@@ -11,6 +11,7 @@ target 'Grade Converter' do
   target 'Grade ConverterTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Firebase'
   end
 
   target 'Grade ConverterUITests' do
