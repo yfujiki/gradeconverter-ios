@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import Firebase
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
         Fabric.with([Crashlytics()])
         FirebaseApp.configure()
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+        }
 
         let fontName = FontNameForCurrentLang()
         let boldFontName = BoldFontNameForCurrentLang()
