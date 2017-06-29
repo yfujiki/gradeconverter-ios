@@ -10,12 +10,8 @@ import UIKit
 
 extension UIView {
     func snapshot() -> UIImageView? {
-        UIGraphicsBeginImageContext(bounds.size)
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return nil
-        }
-
-        layer.render(in: context)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
