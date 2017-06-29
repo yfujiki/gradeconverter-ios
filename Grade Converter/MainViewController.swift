@@ -458,6 +458,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     fileprivate func cleanupReorderingAction() {
         snapShotViewForReordering?.removeFromSuperview()
+        UserDefaults.standard.setSelectedGradeSystems(selectedSystems)
         redrawVisibleRows()
     }
 }
