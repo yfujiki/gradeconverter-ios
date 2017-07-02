@@ -49,10 +49,13 @@ platform :ios do
   end
 
   desc "Deploy a new version to the App Store"
-  lane :deploy do
-    snapshot
-    sigh
-    gym # Build your app - more options available
+  lane :deploy do |options|
+    # snapshot
+    target = options[:target] || "free"
+    app_id = (target == "free") ? "com.yfujiki.gradeconverter" : "com.yfujiki.gradeconverterpro"
+    scheme = (target == "free") ? "Grade Converter" : "Grade Converter Pro"
+    sigh(app_identifier: app_id)
+    gym(scheme: scheme)
     deliver(force: true)
     # frameit
   end
