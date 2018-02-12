@@ -26,5 +26,6 @@ target 'Grade Converter Pro' do
   use_frameworks!
 
   # Pods for Grade Converter Pro
+  pod 'Firebase/Core'
 
 end

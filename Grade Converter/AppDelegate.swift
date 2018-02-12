@@ -33,13 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.myAquaColor()
         // navigation bar title text color
         UINavigationBar.appearance().titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: fontName, size: navigationBarTitleFontSize)!,
-            NSForegroundColorAttributeName: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: fontName, size: navigationBarTitleFontSize)!,
+            NSAttributedStringKey.foregroundColor: UIColor.white,
         ]
         // navigation items title colors
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName: UIFont(name: fontName, size: navigationBarItemFontSize)!,
-            NSForegroundColorAttributeName: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: fontName, size: navigationBarItemFontSize)!,
+            NSAttributedStringKey.foregroundColor: UIColor.white,
         ], for: UIControlState())
 
         //        window?.tintColor = UIColor.whiteColor() <= This works for navigation bar item if it is only color

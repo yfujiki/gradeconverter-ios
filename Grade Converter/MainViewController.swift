@@ -404,7 +404,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Reordering
     var focusIndexPathOfReordering: IndexPath?
     var snapShotViewForReordering: UIImageView?
-    func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
+    @objc func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
         let state = gestureRecognizer.state
 
         let location = gestureRecognizer.location(in: tableView)

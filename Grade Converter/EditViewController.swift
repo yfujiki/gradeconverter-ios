@@ -23,7 +23,7 @@ class EditViewController: UIViewController {
     fileprivate var gradeSystems = [GradeSystem]()
     fileprivate var observers = [NSObjectProtocol]()
 
-    fileprivate lazy var blurEffectView: UIVisualEffectView = { [unowned self] _ in
+    fileprivate lazy var blurEffectView: UIVisualEffectView = { // [unowned self] _ in
         let effect = UIBlurEffect(style: .light)
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.view.bounds

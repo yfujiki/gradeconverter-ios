@@ -11,7 +11,7 @@ import UIKit
 class PresentationController: UIPresentationController {
     fileprivate let kDimmingViewAlpha = CGFloat(0.7)
 
-    fileprivate lazy var dimmingView: UIView = { [unowned self] _ in
+    fileprivate lazy var dimmingView: UIView = { // [unowned self] _ in
         var view = UIView()
         view.backgroundColor = UIColor.black
 
@@ -63,7 +63,7 @@ class PresentationController: UIPresentationController {
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 
-    func dismissPresentedViewController(_: AnyObject) {
+    @objc func dismissPresentedViewController(_: AnyObject) {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
 }
