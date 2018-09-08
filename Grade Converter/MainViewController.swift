@@ -119,6 +119,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.reloadData()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        if tableView.contentSize.height < size.height {
+            // If entire contents fits in the screen of the new orientation, then scroll to the top
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
+    }
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
 
