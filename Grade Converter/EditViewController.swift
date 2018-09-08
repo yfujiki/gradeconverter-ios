@@ -65,6 +65,13 @@ class EditViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
 
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+
+        view.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+    }
+
     fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: Any]
