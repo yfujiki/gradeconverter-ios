@@ -12,6 +12,7 @@
 		8503CFE4EB75073ADFFDEEF6 /* Pods_Grade_Converter_Pro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */; };
 		D32312125837ECA4120D1E7F /* libPods-Grade Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */; };
 		DB05E9C91B67330F00577CCD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
+		DB0B674C21444C6E000056DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0B674B21444C6D000056DF /* GoogleService-Info.plist */; };
 		DB31CF761F03061500E7837E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB31CF751F03061500E7837E /* GoogleService-Info.plist */; };
 		DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF58D1B4235C900141E47 /* PresentationController.swift */; };
 		DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */; };
@@ -127,6 +128,7 @@
 		C6585F0ACC206DC068CBB85C /* Pods-Grade Converter Pro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter Pro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro.debug.xcconfig"; sourceTree = "<group>"; };
 		D0C3E092D5900472DE01404E /* libPods-Grade ConverterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Grade ConverterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB05E9C81B67330F00577CCD /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		DB0B674B21444C6D000056DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB31CF751F03061500E7837E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3DF58D1B4235C900141E47 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 		DB9A8F3E1C9E3873005803F6 /* Pro */ = {
 			isa = PBXGroup;
 			children = (
+				DB0B674B21444C6D000056DF /* GoogleService-Info.plist */,
 				DB9A8F451C9E3905005803F6 /* InfoPlist.strings */,
 			);
 			path = Pro;
@@ -643,6 +646,7 @@
 				DB9A8F971C9E3D1B005803F6 /* GradeSystemTable.csv in Resources */,
 				DB9A8F981C9E3D1B005803F6 /* LaunchScreen.xib in Resources */,
 				DB9A8F991C9E3D1B005803F6 /* AddTableViewCell.xib in Resources */,
+				DB0B674C21444C6E000056DF /* GoogleService-Info.plist in Resources */,
 				DB9A8F9A1C9E3D1B005803F6 /* MainTableViewCell.xib in Resources */,
 				DB9A8F9B1C9E3D1B005803F6 /* Localizable.strings in Resources */,
 				DB9A8F9C1C9E3D1B005803F6 /* rounded-mplus-2p-light.ttf in Resources */,
