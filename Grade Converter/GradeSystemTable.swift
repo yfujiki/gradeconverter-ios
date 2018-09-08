@@ -43,7 +43,7 @@ struct GradeSystem: Equatable {
 
         var grade = grades[convertedIndex]
 
-        if grade.characters.count == 0 {
+        if grade.utf8.count == 0 {
             // There is no corresponding entry at that specific index
             if higher {
                 if let higherGrade = higherGradeAtIndex(index) {
@@ -75,10 +75,10 @@ struct GradeSystem: Equatable {
 
         if lowGrade == highGrade {
             return NSLocalizedString(lowGrade, comment: "Grade itself")
-        } else if lowGrade.characters.count == 0 {
+        } else if lowGrade.utf8.count == 0 {
             let localizedGrade = NSLocalizedString(highGrade, comment: "Grade itself")
             return "~ \(localizedGrade))"
-        } else if highGrade.characters.count == 0 {
+        } else if highGrade.utf8.count == 0 {
             let localizedGrade = NSLocalizedString(lowGrade, comment: "Grade itself")
             return "\(localizedGrade) ~"
         } else if areAdjacentGrades(lowGrade: lowGrade, highGrade: highGrade) {
@@ -105,7 +105,7 @@ struct GradeSystem: Equatable {
 
     fileprivate func higherGradeAtIndex(_ index: Int) -> String? {
         for i in index ..< grades.count {
-            if grades[i].characters.count > 0 {
+            if grades[i].utf8.count > 0 {
                 return grades[i]
             }
         }
@@ -114,7 +114,7 @@ struct GradeSystem: Equatable {
 
     fileprivate func lowerGradeAtIndex(_ index: Int) -> String? {
         for i in (0 ... index).reversed() {
-            if grades[i].characters.count > 0 {
+            if grades[i].utf8.count > 0 {
                 return grades[i]
             }
         }
@@ -140,23 +140,23 @@ struct GradeSystem: Equatable {
         if lowGrade == highGrade {
             if higher {
                 for i in sortedIndexes[indexes.count - 1] ..< grades.count {
-                    if grades[i].characters.count > 0 && grades[i] != highGrade {
+                    if grades[i].utf8.count > 0 && grades[i] != highGrade {
                         nextGrade = grades[i]
                         break
                     }
                 }
             } else {
                 for i in (0 ... sortedIndexes[0]).reversed() {
-                    if grades[i].characters.count > 0 && grades[i] != lowGrade {
+                    if grades[i].utf8.count > 0 && grades[i] != lowGrade {
                         nextGrade = grades[i]
                         break
                     }
                 }
             }
         } else {
-            if higher && highGrade.characters.count > 0 {
+            if higher && highGrade.utf8.count > 0 {
                 nextGrade = highGrade
-            } else if !higher && lowGrade.characters.count > 0 {
+            } else if !higher && lowGrade.utf8.count > 0 {
                 nextGrade = lowGrade
             }
         }
@@ -239,7 +239,7 @@ class GradeSystemTable {
             }
 
             for grades in arrayOfGrades {
-                if grades.characters.count == 0 {
+                if grades.utf8.count == 0 {
                     continue
                 }
 

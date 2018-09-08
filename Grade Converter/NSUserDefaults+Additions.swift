@@ -95,7 +95,7 @@ extension UserDefaults {
 
     func selectedGradeSystemNamesCSV() -> String {
         return selectedGradeSystems().reduce("") { (intermediate, system) -> String in
-            if intermediate.characters.count == 0 {
+            if intermediate.utf8.count == 0 {
                 return system.name
             } else {
                 return intermediate + ", " + system.name
