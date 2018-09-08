@@ -127,6 +127,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.reloadData()
     }
 
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+
+        view.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+    }
+
     override func viewWillTransition(to size: CGSize, with _: UIViewControllerTransitionCoordinator) {
 
         #if PRO
