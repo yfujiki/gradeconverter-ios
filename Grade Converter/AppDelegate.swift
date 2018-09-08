@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         FirebaseApp.configure()
         if #available(iOS 10.3, *) {
-            SKStoreReviewController.requestReview()
+            if ProcessInfo.processInfo.environment.index(forKey: "UITEST") == nil {
+                // We don't want to show this in UITEST
+                SKStoreReviewController.requestReview()
+            }
         }
 
         let fontName = FontNameForCurrentLang()
