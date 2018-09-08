@@ -18,6 +18,3 @@ let kNewIndexesKey = "newIndexesKey"
 
 let kSupportEmailAddress = "support@responsivebyt.es"
 let kSupportEmailSubject = NSLocalizedString("[Support] About Grade Converter", comment: "Support Email Title")
-
-let kIAdBannerViewHeightPortrait = CGFloat(50)
-let kIAdBannerViewHeightLandscape = CGFloat(32)

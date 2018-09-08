@@ -8,7 +8,6 @@
 
 import UIKit
 import MessageUI
-import iAd
 import RxSwift
 import Firebase
 
@@ -16,7 +15,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
-    fileprivate var bannerView: ADBannerView?
     fileprivate var bannerViewHeightConstraint: NSLayoutConstraint?
 
     fileprivate var selectedSystems: [GradeSystem] = []
@@ -94,12 +92,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
 
-        // For now, don't think about ad. This app is probably good as completely free.
-        //        #if PRO
-        //        #else
-        //            showAd()
-        //        #endif
-
         GradeSystemTable.sharedInstance.updated.subscribe(
             onNext: { _ in
                 let title = NSLocalizedString("The grade table is updated. Data will reload.", comment: "Title for update alert")
@@ -134,40 +126,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
     }
 
-    override func viewWillTransition(to size: CGSize, with _: UIViewControllerTransitionCoordinator) {
-
-        #if PRO
-        #else
-            adjustBannerViewToSize(size)
-        #endif
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    fileprivate func showAd() {
-        bannerView = ADBannerView(adType: .banner)
-        bannerView?.delegate = self
-        view.addSubview(bannerView!)
-        bannerView?.translatesAutoresizingMaskIntoConstraints = false
-        let bannerViewHeight = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
-        bannerViewHeightConstraint = bannerView?.heightAnchor.constraint(equalToConstant: bannerViewHeight)
-        bannerViewHeightConstraint?.isActive = true
-        bannerView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        bannerView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bannerView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
-    }
-
-    fileprivate func adjustBannerViewToSize(_ size: CGSize) {
-        let isLandscape = size.height < size.width
-        let bannerViewHeight = isLandscape ? kIAdBannerViewHeightLandscape : kIAdBannerViewHeightPortrait
-        bannerViewHeightConstraint?.constant = bannerViewHeight
-
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, bannerViewHeight, 0)
     }
 
     fileprivate func redrawVisibleRows() {
@@ -467,11 +428,5 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         snapShotViewForReordering?.removeFromSuperview()
         UserDefaults.standard.setSelectedGradeSystems(selectedSystems)
         redrawVisibleRows()
-    }
-}
-
-extension MainViewController: ADBannerViewDelegate {
-    func bannerView(_: ADBannerView, didFailToReceiveAdWithError error: Error) {
-        NSLog("Failed to load banner : \(error)")
     }
 }
