@@ -461,8 +461,6 @@
 				DB711BE41C499D300000C82B /* Sources */,
 				DB711BE51C499D300000C82B /* Frameworks */,
 				DB711BE61C499D300000C82B /* Resources */,
-				BA12B328E25D113BEC8E24D7 /* [CP] Embed Pods Frameworks */,
-				A36F1DB306344BF208766F2D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -485,8 +483,6 @@
 				DB940B3C1B3615F400E996F8 /* Resources */,
 				DBFAD8351B68070500EF244F /* Fabric */,
 				DB8BEF7C1EFA489A009F3FBE /* Carthage */,
-				DD88002160FB14F08189FA37 /* [CP] Embed Pods Frameworks */,
-				4C0B71A95AA6783DB3D08695 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,8 +501,6 @@
 				DB940B4F1B3615F400E996F8 /* Sources */,
 				DB940B501B3615F400E996F8 /* Frameworks */,
 				DB940B511B3615F400E996F8 /* Resources */,
-				F097FA60EFCE9BD10904F21B /* [CP] Embed Pods Frameworks */,
-				4975B8AD75FCEFD14FA37D76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -530,7 +524,6 @@
 				DB9A8FA11C9E3D1B005803F6 /* Fabric */,
 				DB8BEF7D1EFA491B009F3FBE /* Carthage */,
 				039A4978FE276EF5769415D2 /* [CP] Embed Pods Frameworks */,
-				89C743715475B3C22F7018EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -682,36 +675,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4975B8AD75FCEFD14FA37D76 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C0B71A95AA6783DB3D08695 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4CB7E284BCD3731DD5EB4FC3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -748,36 +711,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		89C743715475B3C22F7018EF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A36F1DB306344BF208766F2D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterUITests/Pods-Grade ConverterUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B5274E8A4E6D2AD66AB0B7E0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -794,21 +727,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA12B328E25D113BEC8E24D7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterUITests/Pods-Grade ConverterUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D81A6F6ECD524BC25DE3D77E /* [CP] Check Pods Manifest.lock */ = {
@@ -920,36 +838,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 7b0a99403c40e57432aa63bf676099405145b6ba bc2a12c0c49c9e5399863acd93c8c8714b35668ad21baf12f52418bc33f3fde7";
-		};
-		DD88002160FB14F08189FA37 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F097FA60EFCE9BD10904F21B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1180,7 +1068,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -1230,7 +1118,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
@@ -1253,7 +1141,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1277,7 +1165,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1347,7 +1235,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG -D PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverterpro;
@@ -1373,7 +1261,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Grade Converter/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverterpro;
