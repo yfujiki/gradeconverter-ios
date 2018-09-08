@@ -9,7 +9,7 @@
 import UIKit
 
 extension UILabel {
-    var substituteFontName: String {
+    @objc var substituteFontName: String {
         get {
             return font.fontName
         }
@@ -21,7 +21,7 @@ extension UILabel {
         }
     }
 
-    var substituteBoldFontName: String {
+    @objc var substituteBoldFontName: String {
         get {
             return font.fontName
         }
