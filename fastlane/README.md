@@ -33,6 +33,11 @@ This will also make sure the profile is up to date
 fastlane ios deploy
 ```
 Deploy a new version to the App Store
+### ios archive
+```
+fastlane ios archive
+```
+Create archive for App Store/TestFlight
 
 ----
 
