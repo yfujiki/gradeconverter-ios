@@ -212,13 +212,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return results
         })
 
-        let animationOption: UITableViewRowAnimation = animated ? .automatic : .none
+        let animationOption: UITableView.RowAnimation = animated ? .automatic : .none
         tableView.reloadRows(at: indexPaths, with: animationOption)
     }
 
     fileprivate func reloadOnlyCell(_ cell: UITableViewCell, animated: Bool) {
         if let baseIndexPath = tableView.indexPath(for: cell) {
-            let animationOption: UITableViewRowAnimation = animated ? .automatic : .none
+            let animationOption: UITableView.RowAnimation = animated ? .automatic : .none
             tableView.reloadRows(at: [baseIndexPath], with: animationOption)
         }
     }
@@ -317,7 +317,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         var transitioning: UIViewControllerAnimatedTransitioning?
 
-        if presented is UINavigationController && presented.childViewControllers.first is EditViewController {
+        if presented is UINavigationController && presented.children.first is EditViewController {
             let editViewTransitioning = SemiModalPresentationAnimatingTransitioning()
             editViewTransitioning.presenting = true
             transitioning = editViewTransitioning
@@ -333,7 +333,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         var transitioning: UIViewControllerAnimatedTransitioning?
 
-        if dismissed is UINavigationController && dismissed.childViewControllers.first is EditViewController {
+        if dismissed is UINavigationController && dismissed.children.first is EditViewController {
             let editViewTransitioning = SemiModalPresentationAnimatingTransitioning()
             editViewTransitioning.presenting = false
             transitioning = editViewTransitioning
