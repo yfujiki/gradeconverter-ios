@@ -17,14 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // Dependency injection for the single store
+    var localStorage: LocalStorage!
+
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Fabric.with([Crashlytics()])
         FirebaseApp.configure()
-        if #available(iOS 10.3, *) {
-            if ProcessInfo.processInfo.environment.index(forKey: "UITEST") == nil {
-                // We don't want to show this in UITEST
-                SKStoreReviewController.requestReview()
-            }
+
+        localStorage = LocalStorageImpl() as LocalStorage
+
+        if ProcessInfo.processInfo.environment.index(forKey: "UITEST") == nil {
+            // We don't want to show this in UITEST
+            SKStoreReviewController.requestReview()
         }
 
         let fontName = FontNameForCurrentLang()
@@ -72,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Analytics.setUserProperty(CurrentLang().string, forName: "lang")
         Analytics.setUserProperty(CurrentCountry().string, forName: "country")
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [AnalyticsParameterItemID: UserDefaults.standard.selectedGradeSystemNamesCSV()])
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [AnalyticsParameterItemID: SystemLocalStorage().selectedGradeSystemNamesCSV()])
 
         _ = GradeSystemTable.sharedInstance.downloadNewFile().subscribe(
             onNext: {

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 let kGradeSystemTableURLPath = "https://s3.amazonaws.com/gradeconverter.yfujiki.com/GradeSystemTable.csv"
 
@@ -18,3 +19,7 @@ let kNewIndexesKey = "newIndexesKey"
 
 let kSupportEmailAddress = "support@responsivebyt.es"
 let kSupportEmailSubject = NSLocalizedString("[Support] About Grade Converter", comment: "Support Email Title")
+
+func SystemLocalStorage() -> LocalStorage {
+    return (UIApplication.shared.delegate as! AppDelegate).localStorage
+}

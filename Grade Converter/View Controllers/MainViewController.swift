@@ -42,7 +42,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }()
 
     fileprivate func updateSelectedSystems() {
-        selectedSystems = UserDefaults.standard.selectedGradeSystems()
+        selectedSystems = SystemLocalStorage().selectedGradeSystems()
 
         navigationItem.rightBarButtonItem?.isEnabled = selectedSystems.count > 0
 
@@ -98,7 +98,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let ok = OK()
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: ok, style: .cancel, handler: { _ in
-                    UserDefaults.standard.setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
+                    SystemLocalStorage().setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
                     self.updateSelectedSystems()
                     self.tableView.reloadData()
                 })
@@ -162,8 +162,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kGradeSelectedNotification), object: nil, queue: nil) { [weak self] (notification: Notification!) in
             if let strongSelf = self {
                 if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
-                    if UserDefaults.standard.currentIndexes() != indexes {
-                        UserDefaults.standard.setCurrentIndexes(indexes)
+                    if SystemLocalStorage().currentIndexes() != indexes {
+                        SystemLocalStorage().setCurrentIndexes(indexes)
 
                         if let baseCell = notification.object as? MainTableViewCell {
                             let baseIndexPath = strongSelf.tableView.indexPath(for: baseCell)
@@ -248,7 +248,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.backgroundColor = UIColor.clear
 
             cell.gradeSystem = selectedSystems[indexPath.row]
-            cell.indexes = UserDefaults.standard.currentIndexes()
+            cell.indexes = SystemLocalStorage().currentIndexes()
 
             let colors = UIColor.myColors()
             cell.cardColor = colors[indexPath.row % colors.count]
@@ -355,7 +355,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let indexPath = tableView.indexPath(for: cell) {
             tableView.beginUpdates()
             let systemToDelete = selectedSystems[indexPath.row]
-            UserDefaults.standard.removeSelectedGradeSystem(systemToDelete)
+            SystemLocalStorage().removeSelectedGradeSystem(systemToDelete)
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()
         }
@@ -435,7 +435,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     fileprivate func cleanupReorderingAction() {
         snapShotViewForReordering?.removeFromSuperview()
-        UserDefaults.standard.setSelectedGradeSystems(selectedSystems)
+        SystemLocalStorage().setSelectedGradeSystems(selectedSystems)
         redrawVisibleRows()
     }
 }

@@ -33,7 +33,7 @@ class EditViewController: UIViewController {
 
     fileprivate func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
-            !UserDefaults.standard.selectedGradeSystems().contains(gradeSystem)
+            SystemLocalStorage().selectedGradeSystems().contains(gradeSystem)
         }
     }
 
@@ -121,7 +121,7 @@ extension EditViewController: EditTableViewCellDelegate {
     fileprivate func addGradeFromIndexPath(_ indexPath: IndexPath) {
         tableView.beginUpdates()
         let gradeSystem = gradeSystems[indexPath.row]
-        UserDefaults.standard.addSelectedGradeSystem(gradeSystem)
+        SystemLocalStorage().addSelectedGradeSystem(gradeSystem)
         tableView.deleteRows(at: [indexPath], with: .left)
         tableView.endUpdates()
     }
