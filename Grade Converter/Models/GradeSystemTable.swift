@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
-struct GradeSystem: Equatable {
+struct GradeSystem {
     var name: String
     var category: String
     var countryCodes: [String]
@@ -175,8 +175,10 @@ struct GradeSystem: Equatable {
     }
 }
 
-func == (this: GradeSystem, that: GradeSystem) -> Bool {
-    return this.name == that.name && this.category == that.category
+extension GradeSystem: Equatable {
+    static func == (this: GradeSystem, that: GradeSystem) -> Bool {
+        return this.name == that.name && this.category == that.category
+    }
 }
 
 class GradeSystemTable {
