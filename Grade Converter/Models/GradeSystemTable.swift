@@ -15,7 +15,6 @@ struct GradeSystem {
     var category: String
     var countryCodes: [String]
     var grades: [String] = [String]()
-    var isBaseSystem: Bool = false
 
     init(name: String, category: String, locales: [String], grades: [String]) {
         self.name = name

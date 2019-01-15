@@ -36,4 +36,20 @@ class LocalStorageImpl: LocalStorage {
     func selectedGradeSystemNamesCSV() -> String {
         return UserDefaults.standard.selectedGradeSystemNamesCSV()
     }
+
+    func setBaseSystem(_ gradeSystem: GradeSystem) {
+        UserDefaults.standard.setBaseSystem(gradeSystem: gradeSystem)
+    }
+
+    func baseSystem() -> GradeSystem? {
+        return UserDefaults.standard.baseSystem()
+    }
+
+    func isBaseSystem(_ gradeSystem: GradeSystem?) -> Bool {
+        if gradeSystem == nil {
+            return false
+        }
+
+        return UserDefaults.standard.baseSystem() == gradeSystem
+    }
 }

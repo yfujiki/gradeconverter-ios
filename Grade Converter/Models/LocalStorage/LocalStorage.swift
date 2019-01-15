@@ -23,4 +23,10 @@ protocol LocalStorage {
     func selectedGradeSystems() -> [GradeSystem]
 
     func selectedGradeSystemNamesCSV() -> String
+
+    func setBaseSystem(_ gradeSystem: GradeSystem)
+
+    func baseSystem() -> GradeSystem?
+
+    func isBaseSystem(_ gradeSystem: GradeSystem?) -> Bool
 }
