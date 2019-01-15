@@ -83,7 +83,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
 
-        // ToDo : This notification should come from repository => ViewModel as well
         GradeSystemTable.sharedInstance.updated.subscribe(
             onNext: { _ in
                 let title = NSLocalizedString("The grade table is updated. Data will reload.", comment: "Title for update alert")
@@ -156,34 +155,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: Any]
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
-    }
-
-    fileprivate func redrawVisibleRows() {
-        if let indexPaths = tableView.indexPathsForVisibleRows {
-            tableView.reloadRows(at: indexPaths, with: .automatic)
-        }
-    }
-
-    fileprivate func reloadVisibleCellsButCell(_ cell: UITableViewCell, animated: Bool) {
-
-        let indexPaths = tableView.visibleCells.reduce([IndexPath](), { (tmp: [IndexPath], visibleCell: UITableViewCell) -> [IndexPath] in
-            var results = tmp
-            if let visibleCell = visibleCell as? MainTableViewCell, visibleCell != cell,
-                let visibleIndexPath = tableView.indexPath(for: visibleCell) {
-                results.append(visibleIndexPath)
-            }
-            return results
-        })
-
-        let animationOption: UITableView.RowAnimation = animated ? .automatic : .none
-        tableView.reloadRows(at: indexPaths, with: animationOption)
-    }
-
-    fileprivate func reloadOnlyCell(_ cell: UITableViewCell, animated: Bool) {
-        if let baseIndexPath = tableView.indexPath(for: cell) {
-            let animationOption: UITableView.RowAnimation = animated ? .automatic : .none
-            tableView.reloadRows(at: [baseIndexPath], with: animationOption)
-        }
     }
 
     // MARK: - Segue
@@ -282,11 +253,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     func didDeleteCell(_ cell: MainTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
             viewModel.deleteGradeSystem(at: indexPath.row, commit: false)
-            //            tableView.beginUpdates()
-            //            let systemToDelete = selectedSystems[indexPath.row]
-            //            SystemLocalStorage().removeSelectedGradeSystem(systemToDelete)
-            //            tableView.deleteRows(at: [indexPath], with: .left)
-            //            tableView.endUpdates()
         }
     }
 
@@ -355,11 +321,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
             let toIndexPath = toIndexPath, toIndexPath != fromIndexPath && toIndexPath.row < viewModel.selectedGradeSystemCount {
 
             viewModel.reorderGradeSystem(from: fromIndexPath.row, to: toIndexPath.row, commit: false)
-            //            tableView.moveRow(at: fromIndexPath, to: toIndexPath)
-            //
-            //            redrawVisibleRows()
-            //
-            //            tableView.cellForRow(at: toIndexPath)?.isHidden = true
+            tableView.cellForRow(at: toIndexPath)?.isHidden = true
         }
 
         return toIndexPath
@@ -368,6 +330,5 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     fileprivate func cleanupReorderingAction() {
         snapShotViewForReordering?.removeFromSuperview()
         viewModel.commitGradeSystemSelectionChange()
-        //        redrawVisibleRows()
     }
 }
