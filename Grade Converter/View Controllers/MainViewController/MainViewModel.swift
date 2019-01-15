@@ -33,20 +33,18 @@ class MainViewModel {
 
     private var observers = [NSObjectProtocol]()
 
-    //    var selectedGradeSystems: Observable<[GradeSystem]>
-    //    var currentIndexes: Observable<([Int], GradeSystem?)>
-    //    var baseSystem: Observable<GradeSystem?>
+    var mainModels: Observable<[MainModel]>
 
-    var mainModel: Observable<[MainModel]>
+    var selectedGradeSystemCount: Int {
+        return selectedGradeSystemsVar.value.count
+    }
 
     init() {
         selectedGradeSystemsVar = Variable<[GradeSystem]>(SystemLocalStorage().selectedGradeSystems())
         currentIndexesVar = Variable<[Int]>(SystemLocalStorage().currentIndexes())
-        baseSystemVar = Variable<GradeSystem?>(SystemLocalStorage().selectedGradeSystems().first(where: { (system) -> Bool in
-            system.isBaseSystem
-        }))
+        baseSystemVar = Variable<GradeSystem?>(SystemLocalStorage().baseSystem())
 
-        mainModel = Observable.combineLatest(selectedGradeSystemsVar.asObservable(), currentIndexesVar.asObservable(), baseSystemVar.asObservable())
+        mainModels = Observable.combineLatest(selectedGradeSystemsVar.asObservable(), currentIndexesVar.asObservable(), baseSystemVar.asObservable())
             .map({ (arg) -> [MainModel] in
 
                 let (selectedGradeSystems, currentIndexes, _) = arg
@@ -89,18 +87,52 @@ class MainViewModel {
         //        }))
     }
 
-    func updateBaseSystemToIndex(_ index: Int) {
-        let gradeSystems = selectedGradeSystemsVar.value.enumerated().map { (i: Int, gradeSystem: GradeSystem) -> GradeSystem in
-            var gradeSystemCopy = gradeSystem
-            if i == index {
-                gradeSystemCopy.isBaseSystem = true
-                baseSystemVar.value = gradeSystem
-            } else {
-                gradeSystemCopy.isBaseSystem = false
-            }
-            return gradeSystemCopy
+    func deleteGradeSystem(at index: Int, commit: Bool = true) {
+        var gradeSystems = selectedGradeSystemsVar.value
+
+        guard gradeSystems.count > index else {
+            return
         }
 
-        selectedGradeSystemsVar.value = gradeSystems
+        gradeSystems.remove(at: index)
+        setSelectedGradeSystems(gradeSystems, commit: commit)
+    }
+
+    func reorderGradeSystem(from fromIndex: Int, to toIndex: Int, commit: Bool = true) {
+        var gradeSystems = selectedGradeSystemsVar.value
+
+        guard gradeSystems.count > fromIndex else {
+            return
+        }
+
+        guard gradeSystems.count > toIndex else {
+            return
+        }
+
+        let origSystem = gradeSystems[fromIndex]
+        gradeSystems[fromIndex] = gradeSystems[toIndex]
+        gradeSystems[toIndex] = origSystem
+
+        setSelectedGradeSystems(gradeSystems, commit: commit)
+    }
+
+    func setSelectedGradeSystems(_ gradeSystems: [GradeSystem], commit: Bool = true) {
+        if commit {
+            SystemLocalStorage().setSelectedGradeSystems(gradeSystems)
+        } else {
+            selectedGradeSystemsVar.value = gradeSystems
+        }
+    }
+
+    func commitGradeSystemSelectionChange() {
+        SystemLocalStorage().setSelectedGradeSystems(selectedGradeSystemsVar.value)
+    }
+
+    func setCurrentIndexes(_ currentIndexes: [Int]) {
+        SystemLocalStorage().setCurrentIndexes(currentIndexes)
+    }
+
+    func updateBaseSystem(to baseSystem: GradeSystem) {
+        SystemLocalStorage().setBaseSystem(baseSystem)
     }
 }
