@@ -9,15 +9,20 @@
 import UIKit
 import MessageUI
 import RxSwift
+import RxCocoa
 import Firebase
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, MainTableViewCellDelegate {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     fileprivate var bannerViewHeightConstraint: NSLayoutConstraint?
 
+    // ToDo : 要らないはず
     fileprivate var selectedSystems: [GradeSystem] = []
+    fileprivate lazy var viewModel = {
+        MainViewModel()
+    }()
 
     fileprivate var kMinimumCellHeight: CGFloat = 96
     fileprivate var kMaximumCellHeight: CGFloat = 96
@@ -40,16 +45,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         return effectView
     }()
-
-    fileprivate func updateSelectedSystems() {
-        selectedSystems = SystemLocalStorage().selectedGradeSystems()
-
-        navigationItem.rightBarButtonItem?.isEnabled = selectedSystems.count > 0
-
-        if selectedSystems.count == 0 {
-            isEditing = false
-        }
-    }
 
     deinit {
         for observer in observers {
@@ -80,18 +75,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         editButton.accessibilityIdentifier = "Edit Button"
         navigationItem.rightBarButtonItem = editButton
 
-        updateSelectedSystems()
+        configureBindings()
+        //        updateSelectedSystems()
+        //        fileprivate func updateSelectedSystems() {
+        //            selectedSystems = SystemLocalStorage().selectedGradeSystems()
+        //
+        //            navigationItem.rightBarButtonItem?.isEnabled = selectedSystems.count > 0
+        //
+        //            if selectedSystems.count == 0 {
+        //                isEditing = false
+        //            }
+        //        }
 
         kMaximumCellHeight = tableView.frame.height / 3
 
         tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         tableView.register(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
 
-        registerForNotifications()
-
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
 
+        // ToDo : This notification should come from repository => ViewModel as well
         GradeSystemTable.sharedInstance.updated.subscribe(
             onNext: { _ in
                 let title = NSLocalizedString("The grade table is updated. Data will reload.", comment: "Title for update alert")
@@ -99,8 +103,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: ok, style: .cancel, handler: { _ in
                     SystemLocalStorage().setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
-                    self.updateSelectedSystems()
-                    self.tableView.reloadData()
+                    //                    self.updateSelectedSystems()
+                    //                    self.tableView.reloadData()
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
@@ -140,6 +144,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
 
+    fileprivate func configureBindings() {
+        viewModel.mainModel.bind(to: tableView.rx.items) { tableView, row, model in
+            let identifier = "MainTableViewCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: row, section: 0)) as! MainTableViewCell
+            cell.gradeSystem = model.gradeSystem
+            cell.indexes = model.currentIndexes
+            return cell
+        }.disposed(by: disposeBag)
+    }
+
     fileprivate func redrawVisibleRows() {
         if let indexPaths = tableView.indexPathsForVisibleRows {
             tableView.reloadRows(at: indexPaths, with: .automatic)
@@ -151,48 +165,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: Any]
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
-    }
-
-    // MARK: - Notification handlers
-    fileprivate func registerForNotifications() {
-        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kNSUserDefaultsSystemSelectionChangedNotification), object: nil, queue: nil) { [weak self] _ in
-            self?.updateSelectedSystems()
-        })
-
-        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kGradeSelectedNotification), object: nil, queue: nil) { [weak self] (notification: Notification!) in
-            if let strongSelf = self {
-                if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
-                    if SystemLocalStorage().currentIndexes() != indexes {
-                        SystemLocalStorage().setCurrentIndexes(indexes)
-
-                        if let baseCell = notification.object as? MainTableViewCell {
-                            let baseIndexPath = strongSelf.tableView.indexPath(for: baseCell)
-                            let baseRow = baseIndexPath == nil ? NSNotFound : baseIndexPath!.row
-                            strongSelf.updateBaseSystemToIndex(baseRow)
-
-                            strongSelf.tableView.beginUpdates()
-                            strongSelf.reloadVisibleCellsButCell(baseCell, animated: true)
-                            strongSelf.reloadOnlyCell(baseCell, animated: false)
-                            strongSelf.tableView.endUpdates()
-                        }
-                    }
-                }
-            }
-        })
-
-        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kEmailComposingNotification), object: nil, queue: nil, using: { [weak self] (_: Notification) in
-            if MFMailComposeViewController.canSendMail() {
-                let composeViewController = MFMailComposeViewController()
-                composeViewController.mailComposeDelegate = self
-                composeViewController.setToRecipients([kSupportEmailAddress])
-                composeViewController.setSubject(kSupportEmailSubject)
-                composeViewController.navigationBar.tintColor = UIColor.white
-
-                self?.dismiss(animated: false, completion: { [weak self] () in
-                    self?.present(composeViewController, animated: true, completion: nil)
-                })
-            }
-        }))
     }
 
     fileprivate func updateBaseSystemToIndex(_ index: Int) {
@@ -237,31 +209,31 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     // MARK: - UITableViewDataSource
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return selectedSystems.count + 1
-    }
+    //    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    //        return selectedSystems.count + 1
+    //    }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < selectedSystems.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as! MainTableViewCell
-            cell.delegate = self
-            cell.backgroundColor = UIColor.clear
-
-            cell.gradeSystem = selectedSystems[indexPath.row]
-            cell.indexes = SystemLocalStorage().currentIndexes()
-
-            let colors = UIColor.myColors()
-            cell.cardColor = colors[indexPath.row % colors.count]
-
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell") as! AddTableViewCell
-            cell.backgroundColor = UIColor.clear
-            cell.isHidden = isEditing
-
-            return cell
-        }
-    }
+    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //        if indexPath.row < selectedSystems.count {
+    //            let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as! MainTableViewCell
+    //            cell.delegate = self
+    //            cell.backgroundColor = UIColor.clear
+    //
+    //            cell.gradeSystem = selectedSystems[indexPath.row]
+    //            cell.indexes = SystemLocalStorage().currentIndexes()
+    //
+    //            let colors = UIColor.myColors()
+    //            cell.cardColor = colors[indexPath.row % colors.count]
+    //
+    //            return cell
+    //        } else {
+    //            let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell") as! AddTableViewCell
+    //            cell.backgroundColor = UIColor.clear
+    //            cell.isHidden = isEditing
+    //
+    //            return cell
+    //        }
+    //    }
 
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
