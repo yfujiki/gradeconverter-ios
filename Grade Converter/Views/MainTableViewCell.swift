@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainTableViewCellDelegate: NSObjectProtocol {
     func didDeleteCell(_ cell: MainTableViewCell)
+    func didSelectNewIndexes(_ indexes: [Int], on gradeSystem: GradeSystem, cell: MainTableViewCell)
 }
 
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
@@ -261,8 +262,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     fileprivate func didSelectNewGrade() {
-        let userInfo = [kNewIndexesKey: indexes ?? []]
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kGradeSelectedNotification), object: self, userInfo: userInfo)
+        delegate?.didSelectNewIndexes(indexes ?? [], on: gradeSystem!, cell: self)
     }
 
     fileprivate func updateButtons() {
@@ -285,7 +285,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     fileprivate func updateBorder() {
-        if !editMode && gradeSystem?.isBaseSystem == true {
+        if !editMode && SystemLocalStorage().isBaseSystem(gradeSystem) {
             cardView.layer.masksToBounds = false
             cardView.layer.shadowColor = UIColor.myLightAquaColor().cgColor
             cardView.layer.shadowOffset = CGSize.zero

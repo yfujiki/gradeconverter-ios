@@ -18,8 +18,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     @IBOutlet weak var imageView: UIImageView!
     fileprivate var bannerViewHeightConstraint: NSLayoutConstraint?
 
-    // ToDo : 要らないはず
-    fileprivate var selectedSystems: [GradeSystem] = []
     fileprivate lazy var viewModel = {
         MainViewModel()
     }()
@@ -76,16 +74,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         navigationItem.rightBarButtonItem = editButton
 
         configureBindings()
-        //        updateSelectedSystems()
-        //        fileprivate func updateSelectedSystems() {
-        //            selectedSystems = SystemLocalStorage().selectedGradeSystems()
-        //
-        //            navigationItem.rightBarButtonItem?.isEnabled = selectedSystems.count > 0
-        //
-        //            if selectedSystems.count == 0 {
-        //                isEditing = false
-        //            }
-        //        }
 
         kMaximumCellHeight = tableView.frame.height / 3
 
@@ -103,8 +91,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: ok, style: .cancel, handler: { _ in
                     SystemLocalStorage().setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
-                    //                    self.updateSelectedSystems()
-                    //                    self.tableView.reloadData()
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
@@ -119,8 +105,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
             AnalyticsParameterItemID: type(of: self),
             AnalyticsParameterItemName: type(of: self),
         ])
-
-        tableView.reloadData()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -145,7 +129,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }
 
     fileprivate func configureBindings() {
-        viewModel.mainModel.bind(to: tableView.rx.items) { [weak self] tableView, row, model in
+        viewModel.mainModels.bind(to: tableView.rx.items) { [weak self] tableView, row, model in
             if let gradeModel = model as? MainViewModel.GradeModel {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: IndexPath(row: row, section: 0)) as! MainTableViewCell
                 cell.delegate = self
@@ -167,12 +151,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         }.disposed(by: disposeBag)
     }
 
-    fileprivate func redrawVisibleRows() {
-        if let indexPaths = tableView.indexPathsForVisibleRows {
-            tableView.reloadRows(at: indexPaths, with: .automatic)
-        }
-    }
-
     fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: Any]
@@ -180,9 +158,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
 
-    fileprivate func updateBaseSystemToIndex(_ index: Int) {
-        for i in 0 ..< selectedSystems.count {
-            selectedSystems[i].isBaseSystem = (i == index)
+    fileprivate func redrawVisibleRows() {
+        if let indexPaths = tableView.indexPathsForVisibleRows {
+            tableView.reloadRows(at: indexPaths, with: .automatic)
         }
     }
 
@@ -227,9 +205,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row < selectedSystems.count {
+        if indexPath.row < viewModel.selectedGradeSystemCount {
             let totalHeight = tableView.frame.height - AddTableViewCell.kCellHeight
-            let count = selectedSystems.count
+            let count = viewModel.selectedGradeSystemCount
             var targetHeight = totalHeight / CGFloat(count)
             targetHeight = min(targetHeight, kMaximumCellHeight)
             targetHeight = max(targetHeight, kMinimumCellHeight)
@@ -251,19 +229,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == selectedSystems.count {
+        if indexPath.row == viewModel.selectedGradeSystemCount {
             performSegue(withIdentifier: "PresentEdit", sender: self)
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, canEditRowAt _: IndexPath) -> Bool {
-        return false
-    }
-
-    func tableView(_ tableView: UITableView, canMoveRowAt _: IndexPath) -> Bool {
-        return false
     }
 
     func reloadTableView() {
@@ -311,12 +281,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     // MARK: - MainTableViewCellDelegate
     func didDeleteCell(_ cell: MainTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            tableView.beginUpdates()
-            let systemToDelete = selectedSystems[indexPath.row]
-            SystemLocalStorage().removeSelectedGradeSystem(systemToDelete)
-            tableView.deleteRows(at: [indexPath], with: .left)
-            tableView.endUpdates()
+            viewModel.deleteGradeSystem(at: indexPath.row, commit: false)
+            //            tableView.beginUpdates()
+            //            let systemToDelete = selectedSystems[indexPath.row]
+            //            SystemLocalStorage().removeSelectedGradeSystem(systemToDelete)
+            //            tableView.deleteRows(at: [indexPath], with: .left)
+            //            tableView.endUpdates()
         }
+    }
+
+    func didSelectNewIndexes(_ indexes: [Int], on gradeSystem: GradeSystem, cell _: MainTableViewCell) {
+        viewModel.setCurrentIndexes(indexes)
+        viewModel.updateBaseSystem(to: gradeSystem)
     }
 
     // MARK: - UIGestureRecognizerDelegate
@@ -375,17 +351,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }
 
     fileprivate func replaceCellFromIndexPath(_ fromIndexPath: IndexPath?, toIndexPath: IndexPath?) -> (IndexPath?) {
-        if let fromIndexPath = fromIndexPath, fromIndexPath.row < selectedSystems.count,
-            let toIndexPath = toIndexPath, toIndexPath != fromIndexPath && toIndexPath.row < selectedSystems.count {
+        if let fromIndexPath = fromIndexPath, fromIndexPath.row < viewModel.selectedGradeSystemCount,
+            let toIndexPath = toIndexPath, toIndexPath != fromIndexPath && toIndexPath.row < viewModel.selectedGradeSystemCount {
 
-            let origSystem = selectedSystems[fromIndexPath.row]
-            selectedSystems[fromIndexPath.row] = selectedSystems[toIndexPath.row]
-            selectedSystems[toIndexPath.row] = origSystem
-            tableView.moveRow(at: fromIndexPath, to: toIndexPath)
-
-            redrawVisibleRows()
-
-            tableView.cellForRow(at: toIndexPath)?.isHidden = true
+            viewModel.reorderGradeSystem(from: fromIndexPath.row, to: toIndexPath.row, commit: false)
+            //            tableView.moveRow(at: fromIndexPath, to: toIndexPath)
+            //
+            //            redrawVisibleRows()
+            //
+            //            tableView.cellForRow(at: toIndexPath)?.isHidden = true
         }
 
         return toIndexPath
@@ -393,7 +367,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
     fileprivate func cleanupReorderingAction() {
         snapShotViewForReordering?.removeFromSuperview()
-        SystemLocalStorage().setSelectedGradeSystems(selectedSystems)
-        redrawVisibleRows()
+        viewModel.commitGradeSystemSelectionChange()
+        //        redrawVisibleRows()
     }
 }
