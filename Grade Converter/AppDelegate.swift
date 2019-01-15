@@ -26,10 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         localStorage = LocalStorageImpl() as LocalStorage
 
-        if ProcessInfo.processInfo.environment.index(forKey: "UITEST") == nil {
-            // We don't want to show this in UITEST
-            SKStoreReviewController.requestReview()
-        }
+        #if DEBUG
+        #else
+            if ProcessInfo.processInfo.environment.index(forKey: "UITEST") == nil {
+                // We don't want to show this in UITEST or during debug
+                SKStoreReviewController.requestReview()
+            }
+        #endif
 
         let fontName = FontNameForCurrentLang()
         let boldFontName = BoldFontNameForCurrentLang()
