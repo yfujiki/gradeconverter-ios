@@ -10,6 +10,7 @@ import Foundation
 
 let kNSUserDefaultsCurrentIndexes = "com.yfujiki.gradeConverter.currentIndexes"
 let kNSUserDefaultsSelectedGradeSystems = "com.yfujiki.gradeConverter.selectedGradeSystems"
+let kNSUserDefaultsBaseSystem = "com.yfujiki.gradeConverter.baseSystem"
 let kNSUserDefaultsGradeNameKey = "gradeName"
 let kNSUserDefaultsGradeCategoryKey = "gradeCategory"
 
@@ -38,6 +39,10 @@ extension UserDefaults {
     func setCurrentIndexes(_ indexes: [Int]) {
         UserDefaults.standard.set(indexes, forKey: kNSUserDefaultsCurrentIndexes)
         UserDefaults.standard.synchronize()
+
+        let notifcationName = NotificationTypes.currentIndexChangedNotification.notificationName()
+        let userInfo = [NotificationTypes.NotificationKeys.currentIndexesKey: indexes]
+        NotificationCenter.default.post(name: notifcationName, object: self, userInfo: userInfo)
     }
 
     func currentIndexes() -> [Int] {
@@ -56,7 +61,9 @@ extension UserDefaults {
         UserDefaults.standard.set(systemKeys, forKey: kNSUserDefaultsSelectedGradeSystems)
         UserDefaults.standard.synchronize()
 
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kNSUserDefaultsSystemSelectionChangedNotification), object: nil)
+        let notifcationName = NotificationTypes.systemSelectionChangedNotification.notificationName()
+        let userInfo = [NotificationTypes.NotificationKeys.selectedSystemsKey: gradeSystems]
+        NotificationCenter.default.post(name: notifcationName, object: self, userInfo: userInfo)
     }
 
     func addSelectedGradeSystem(_ gradeSystem: GradeSystem) {
@@ -101,5 +108,26 @@ extension UserDefaults {
                 return intermediate + ", " + system.name
             }
         }
+    }
+
+    func baseSystem() -> GradeSystem? {
+        let key = UserDefaults.standard.value(forKey: kNSUserDefaultsBaseSystem) as? String
+
+        guard let array = key?.split(separator: "-"), array.count == 2 else {
+            return nil
+        }
+        let name = String(array.first!)
+        let category = String(array.last!)
+
+        return GradeSystemTable.sharedInstance.gradeSystemForName(name, category: category)
+    }
+
+    func setBaseSystem(gradeSystem: GradeSystem?) {
+        UserDefaults.standard.set(gradeSystem?.key, forKey: kNSUserDefaultsBaseSystem)
+        UserDefaults.standard.synchronize()
+
+        let notifcationName = NotificationTypes.baseSystemChangedNotification.notificationName()
+        let userInfo = gradeSystem == nil ? [:] : [NotificationTypes.NotificationKeys.baseSystemKey: gradeSystem]
+        NotificationCenter.default.post(name: notifcationName, object: self, userInfo: userInfo)
     }
 }

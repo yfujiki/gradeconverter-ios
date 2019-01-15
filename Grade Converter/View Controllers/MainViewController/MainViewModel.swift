@@ -62,28 +62,16 @@ class MainViewModel {
     }
 
     fileprivate func registerForNotifications() {
-        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kNSUserDefaultsSystemSelectionChangedNotification), object: nil, queue: nil) { [weak self] _ in
+        observers.append(NotificationCenter.default.addObserver(forName: NotificationTypes.systemSelectionChangedNotification.notificationName(), object: nil, queue: nil) { [weak self] _ in
             self?.selectedGradeSystemsVar.value = SystemLocalStorage().selectedGradeSystems()
         })
 
-        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kGradeSelectedNotification), object: nil, queue: nil) { [weak self] (notification: Notification!) in
-            if let indexes = notification.userInfo?[kNewIndexesKey] as? [Int] {
-                self?.currentIndexesVar.value = indexes
-                //                    if SystemLocalStorage().currentIndexes() != indexes {
-                //                        SystemLocalStorage().setCurrentIndexes(indexes)
-                //
-                //                        if let baseCell = notification.object as? MainTableViewCell {
-                //                            let baseIndexPath = strongSelf.tableView.indexPath(for: baseCell)
-                //                            let baseRow = baseIndexPath == nil ? NSNotFound : baseIndexPath!.row
-                //                            strongSelf.updateBaseSystemToIndex(baseRow)
-                //
-                //                            strongSelf.tableView.beginUpdates()
-                //                            strongSelf.reloadVisibleCellsButCell(baseCell, animated: true)
-                //                            strongSelf.reloadOnlyCell(baseCell, animated: false)
-                //                            strongSelf.tableView.endUpdates()
-                //                        }
-                //                    }
-            }
+        observers.append(NotificationCenter.default.addObserver(forName: NotificationTypes.currentIndexChangedNotification.notificationName(), object: nil, queue: nil) { [weak self] _ in
+            self?.currentIndexesVar.value = SystemLocalStorage().currentIndexes()
+        })
+
+        observers.append(NotificationCenter.default.addObserver(forName: NotificationTypes.baseSystemChangedNotification.notificationName(), object: nil, queue: nil) { [weak self] _ in
+            self?.baseSystemVar.value = SystemLocalStorage().baseSystem()
         })
 
         //        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kEmailComposingNotification), object: nil, queue: nil, using: { [weak self] (_: Notification) in
