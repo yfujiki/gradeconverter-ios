@@ -145,12 +145,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }
 
     fileprivate func configureBindings() {
-        viewModel.mainModel.bind(to: tableView.rx.items) { tableView, row, model in
-            let identifier = "MainTableViewCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: row, section: 0)) as! MainTableViewCell
-            cell.gradeSystem = model.gradeSystem
-            cell.indexes = model.currentIndexes
-            return cell
+        viewModel.mainModel.bind(to: tableView.rx.items) { [weak self] tableView, row, model in
+            if let gradeModel = model as? MainViewModel.GradeModel {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: IndexPath(row: row, section: 0)) as! MainTableViewCell
+                cell.delegate = self
+                cell.backgroundColor = UIColor.clear
+
+                cell.gradeSystem = gradeModel.gradeSystem
+                cell.indexes = gradeModel.currentIndexes
+                let colors = UIColor.myColors()
+                cell.cardColor = colors[row % colors.count]
+
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell") as! AddTableViewCell
+                cell.backgroundColor = UIColor.clear
+                cell.isHidden = self?.isEditing ?? false
+
+                return cell
+            }
         }.disposed(by: disposeBag)
     }
 
@@ -207,33 +220,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
             destinationViewController.modalPresentationStyle = .custom
         }
     }
-
-    // MARK: - UITableViewDataSource
-    //    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    //        return selectedSystems.count + 1
-    //    }
-
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        if indexPath.row < selectedSystems.count {
-    //            let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as! MainTableViewCell
-    //            cell.delegate = self
-    //            cell.backgroundColor = UIColor.clear
-    //
-    //            cell.gradeSystem = selectedSystems[indexPath.row]
-    //            cell.indexes = SystemLocalStorage().currentIndexes()
-    //
-    //            let colors = UIColor.myColors()
-    //            cell.cardColor = colors[indexPath.row % colors.count]
-    //
-    //            return cell
-    //        } else {
-    //            let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell") as! AddTableViewCell
-    //            cell.backgroundColor = UIColor.clear
-    //            cell.isHidden = isEditing
-    //
-    //            return cell
-    //        }
-    //    }
 
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {

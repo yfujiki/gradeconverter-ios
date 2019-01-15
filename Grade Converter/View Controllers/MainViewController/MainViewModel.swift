@@ -9,14 +9,22 @@
 import Foundation
 import RxSwift
 
+protocol MainModel {
+}
+
 class MainViewModel {
-    public struct MainModel: Equatable {
-        public static func == (lhs: MainModel, rhs: MainModel) -> Bool {
+
+    public struct GradeModel: MainModel, Equatable {
+        public static func == (lhs: GradeModel, rhs: GradeModel) -> Bool {
             return lhs.gradeSystem.key == rhs.gradeSystem.key
         }
 
         var gradeSystem: GradeSystem
         var currentIndexes: [Int]
+    }
+
+    public struct StringModel: MainModel {
+        var string: String
     }
 
     private var selectedGradeSystemsVar: Variable<[GradeSystem]>
@@ -39,10 +47,12 @@ class MainViewModel {
         }))
 
         mainModel = Observable.combineLatest(selectedGradeSystemsVar.asObservable(), currentIndexesVar.asObservable(), baseSystemVar.asObservable())
-            .map({ (selectedGradeSystems, currentIndexes, _) -> [MainModel] in
-                selectedGradeSystems.map({ (gradeSystem) -> MainModel in
-                    MainModel(gradeSystem: gradeSystem, currentIndexes: currentIndexes)
-                })
+            .map({ (arg) -> [MainModel] in
+
+                let (selectedGradeSystems, currentIndexes, _) = arg
+                return selectedGradeSystems.map({ (gradeSystem) -> MainModel in
+                    GradeModel(gradeSystem: gradeSystem, currentIndexes: currentIndexes)
+                }) + [StringModel(string: "More...")]
             })
         //        selectedGradeSystems = selectedGradeSystemsVar.asObservable()
         //        baseSystem = baseSystemVar.asObservable().takeLast(2)
