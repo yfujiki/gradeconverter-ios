@@ -31,7 +31,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var gradeSystem: GradeSystem?
     var indexes: [Int]?
     var cardColor: UIColor?
-    var delegate: MainTableViewCellDelegate?
+    weak var delegate: MainTableViewCellDelegate?
     var editMode: Bool = false
     fileprivate var scrolling: Bool = false
 
