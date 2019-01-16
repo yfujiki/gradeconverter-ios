@@ -297,7 +297,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
             let toIndexPath = toIndexPath, toIndexPath != fromIndexPath && toIndexPath.row < viewModel.selectedGradeSystemCount {
 
             viewModel.reorderGradeSystem(from: fromIndexPath.row, to: toIndexPath.row, commit: false)
-            tableView.cellForRow(at: toIndexPath)?.isHidden = true
+
+            //            tableView.cellForRow(at: toIndexPath)?.isHidden = true
         }
 
         return toIndexPath
@@ -306,5 +307,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     fileprivate func cleanupReorderingAction() {
         snapShotViewForReordering?.removeFromSuperview()
         viewModel.commitGradeSystemSelectionChange()
+
+        if let srcIndexPath = focusIndexPathOfReordering {
+            let srcCell = tableView.cellForRow(at: srcIndexPath) as? MainTableViewCell
+            srcCell?.isHidden = false
+        }
     }
 }
