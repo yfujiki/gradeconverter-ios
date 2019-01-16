@@ -103,6 +103,8 @@
 		DBA6AAA721EFA50500C1E3BB /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */; };
 		DBA6AAA821EFA54200C1E3BB /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */; };
 		DBA6AAA921EFA54200C1E3BB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */; };
+		DBA6AAAB21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */; };
+		DBA6AAAC21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */; };
 		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */; };
 		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
@@ -207,6 +209,7 @@
 		DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+DataSource.swift"; sourceTree = "<group>"; };
 		DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
+		DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditViewController+DataSource.swift"; sourceTree = "<group>"; };
 		DBD38D201B3FCE8000F9E40F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemiModalPresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
 		DBD8DFDC1B56574D0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTableViewCell.xib; sourceTree = "<group>"; };
@@ -511,6 +514,7 @@
 			children = (
 				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
 				DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */,
+				DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */,
 			);
 			path = EditViewController;
 			sourceTree = "<group>";
@@ -928,6 +932,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB05E9C91B67330F00577CCD /* Localization.swift in Sources */,
+				DBA6AAAB21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */,
 				DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */,
 				DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */,
 				DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */,
@@ -968,6 +973,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBA6AA9721EA19F600C1E3BB /* LocalStorageImpl.swift in Sources */,
+				DBA6AAAC21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */,
 				DB9A8F7F1C9E3D1B005803F6 /* Localization.swift in Sources */,
 				DB9A8F801C9E3D1B005803F6 /* Constants.swift in Sources */,
 				DB9A8F811C9E3D1B005803F6 /* UIView+Additions.swift in Sources */,

@@ -68,10 +68,7 @@ class EditViewController: UIViewController {
     }
 
     fileprivate func configureBindings() {
-        viewModel.gradeSystems.bind(to: tableView.rx.items(cellIdentifier: "EditTableViewCell", cellType: EditTableViewCell.self)) { _, gradeSystem, cell in
-            cell.gradeSystem = gradeSystem
-            cell.delegate = self
-        }.disposed(by: disposeBag)
+        viewModel.editModels.bind(to: tableView.rx.items(dataSource: dataSource())).disposed(by: disposeBag)
     }
 }
 
@@ -86,7 +83,8 @@ extension EditViewController: UITableViewDelegate {
     }
 
     @objc func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        addGradeFromIndexPath(indexPath)
+        let gradeSystem = viewModel.snapshotGradeSystems()[indexPath.row]
+        viewModel.addGradeSystem(gradeSystem: gradeSystem)
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -95,15 +93,8 @@ extension EditViewController: UITableViewDelegate {
 extension EditViewController: EditTableViewCellDelegate {
     func didAddGradeCell(_ cell: EditTableViewCell) {
         if let selectedIndexPath = tableView.indexPath(for: cell) {
-            addGradeFromIndexPath(selectedIndexPath)
+            let gradeSystem = viewModel.snapshotGradeSystems()[selectedIndexPath.row]
+            viewModel.addGradeSystem(gradeSystem: gradeSystem)
         }
-    }
-
-    fileprivate func addGradeFromIndexPath(_ indexPath: IndexPath) {
-        tableView.beginUpdates()
-        let gradeSystem = viewModel.snapshotGradeSystems()[indexPath.row]
-        SystemLocalStorage().addSelectedGradeSystem(gradeSystem)
-        tableView.deleteRows(at: [indexPath], with: .left)
-        tableView.endUpdates()
     }
 }
