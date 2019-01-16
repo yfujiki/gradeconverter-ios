@@ -33,7 +33,7 @@ class EditViewController: UIViewController {
 
     fileprivate func updateGradeSystems() {
         gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
-            SystemLocalStorage().selectedGradeSystems().contains(gradeSystem)
+            !SystemLocalStorage().selectedGradeSystems().contains(gradeSystem)
         }
     }
 
