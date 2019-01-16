@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import RxSwift
+import RxCocoa
 
 class EditViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
@@ -19,10 +21,6 @@ class EditViewController: UIViewController {
 
     fileprivate var kCellHeight: CGFloat = 96
 
-    fileprivate let allGradeSystems = GradeSystemTable.sharedInstance.gradeSystems()
-    fileprivate var gradeSystems = [GradeSystem]()
-    fileprivate var observers = [NSObjectProtocol]()
-
     fileprivate lazy var blurEffectView: UIVisualEffectView = { // [unowned self] _ in
         let effect = UIBlurEffect(style: .light)
         var effectView = UIVisualEffectView(effect: effect)
@@ -31,17 +29,11 @@ class EditViewController: UIViewController {
         return effectView
     }()
 
-    fileprivate func updateGradeSystems() {
-        gradeSystems = allGradeSystems.filter { (gradeSystem: GradeSystem) -> Bool in
-            !SystemLocalStorage().selectedGradeSystems().contains(gradeSystem)
-        }
-    }
+    fileprivate lazy var viewModel = {
+        EditViewModel()
+    }()
 
-    deinit {
-        for observer in observers {
-            NotificationCenter.default.removeObserver(observer)
-        }
-    }
+    fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +43,9 @@ class EditViewController: UIViewController {
             AnalyticsParameterItemName: type(of: self),
         ])
 
-        updateGradeSystems()
-
         tableView.register(UINib(nibName: "EditTableViewCell", bundle: nil), forCellReuseIdentifier: "EditTableViewCell")
 
-        observers.append(NotificationCenter.default.addObserver(forName: NotificationTypes.systemSelectionChangedNotification.notificationName(), object: nil, queue: nil) { [weak self] _ in
-            self?.updateGradeSystems()
-        })
+        configureBindings()
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
@@ -78,19 +66,12 @@ class EditViewController: UIViewController {
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
         imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
     }
-}
 
-extension EditViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return gradeSystems.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EditTableViewCell") as! EditTableViewCell
-        cell.delegate = self
-        cell.gradeSystem = gradeSystems[indexPath.row]
-
-        return cell
+    fileprivate func configureBindings() {
+        viewModel.gradeSystems.bind(to: tableView.rx.items(cellIdentifier: "EditTableViewCell", cellType: EditTableViewCell.self)) { _, gradeSystem, cell in
+            cell.gradeSystem = gradeSystem
+            cell.delegate = self
+        }.disposed(by: disposeBag)
     }
 }
 
@@ -120,7 +101,7 @@ extension EditViewController: EditTableViewCellDelegate {
 
     fileprivate func addGradeFromIndexPath(_ indexPath: IndexPath) {
         tableView.beginUpdates()
-        let gradeSystem = gradeSystems[indexPath.row]
+        let gradeSystem = viewModel.snapshotGradeSystems()[indexPath.row]
         SystemLocalStorage().addSelectedGradeSystem(gradeSystem)
         tableView.deleteRows(at: [indexPath], with: .left)
         tableView.endUpdates()

@@ -59,6 +59,12 @@ class MainViewModel {
         registerForNotifications()
     }
 
+    deinit {
+        for observer in observers {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
+
     fileprivate func registerForNotifications() {
         observers.append(NotificationCenter.default.addObserver(forName: NotificationTypes.systemSelectionChangedNotification.notificationName(), object: nil, queue: nil) { [weak self] _ in
             self?.selectedGradeSystemsVar.value = SystemLocalStorage().selectedGradeSystems()

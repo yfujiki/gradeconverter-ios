@@ -95,6 +95,8 @@
 		DBA6AA9821EA19FA00C1E3BB /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9321EA19E200C1E3BB /* LocalStorage.swift */; };
 		DBA6AA9B21EA203200C1E3BB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */; };
 		DBA6AA9C21EA203200C1E3BB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */; };
+		DBA6AA9F21EF6FBD00C1E3BB /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */; };
+		DBA6AAA021EF6FBD00C1E3BB /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */; };
 		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */; };
 		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
@@ -195,6 +197,7 @@
 		DBA6AA9321EA19E200C1E3BB /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		DBA6AA9521EA19F600C1E3BB /* LocalStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageImpl.swift; sourceTree = "<group>"; };
 		DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		DBD38D201B3FCE8000F9E40F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemiModalPresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
 		DBD8DFDC1B56574D0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTableViewCell.xib; sourceTree = "<group>"; };
@@ -292,8 +295,8 @@
 		DB3DF5891B4233BE00141E47 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBA6AA9D21EF6F9D00C1E3BB /* EditViewController */,
 				DBA6AA9921EA1FFA00C1E3BB /* MainViewController */,
-				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
 				DB79CB9F1B655C4D000024A5 /* InfoViewController.swift */,
 				DB940B471B3615F400E996F8 /* Main.storyboard */,
 			);
@@ -485,6 +488,15 @@
 				DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */,
 			);
 			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		DBA6AA9D21EF6F9D00C1E3BB /* EditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
+				DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */,
+			);
+			path = EditViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -903,6 +915,7 @@
 				DB940B6B1B364F6C00E996F8 /* GradeSystemTable.swift in Sources */,
 				DB79CBA01B655C4D000024A5 /* InfoViewController.swift in Sources */,
 				DB79CBA41B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift in Sources */,
+				DBA6AA9F21EF6FBD00C1E3BB /* EditViewModel.swift in Sources */,
 				DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
 				DB79CBA21B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */,
 				DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */,
@@ -941,6 +954,7 @@
 				DB9A8F831C9E3D1B005803F6 /* UILabel+Additions.swift in Sources */,
 				DB9A8F841C9E3D1B005803F6 /* GradeSystemTable.swift in Sources */,
 				DB9A8F851C9E3D1B005803F6 /* InfoViewController.swift in Sources */,
+				DBA6AAA021EF6FBD00C1E3BB /* EditViewModel.swift in Sources */,
 				DB9A8F861C9E3D1B005803F6 /* PresentationAnimatingTransitioning.swift in Sources */,
 				DB9A8F871C9E3D1B005803F6 /* NSUserDefaults+Additions.swift in Sources */,
 				DB9A8F881C9E3D1B005803F6 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */,

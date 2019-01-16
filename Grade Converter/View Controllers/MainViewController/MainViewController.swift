@@ -129,6 +129,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
     fileprivate func configureBindings() {
         viewModel.mainModels.bind(to: tableView.rx.items) { [weak self] tableView, row, model in
+
+            // ToDo: Want to do it so we draw only when there was a change
             if let gradeModel = model as? MainViewModel.GradeModel {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: IndexPath(row: row, section: 0)) as! MainTableViewCell
                 cell.delegate = self

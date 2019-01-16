@@ -37,6 +37,13 @@ class LocalStorageImpl: LocalStorage {
         return UserDefaults.standard.selectedGradeSystemNamesCSV()
     }
 
+    func unselectedGradeSystems() -> [GradeSystem] {
+        let selectedGradeSystems = self.selectedGradeSystems()
+        return GradeSystemTable.sharedInstance.gradeSystems().filter { (gradeSystem) -> Bool in
+            !selectedGradeSystems.contains(gradeSystem)
+        }
+    }
+
     func setBaseSystem(_ gradeSystem: GradeSystem) {
         UserDefaults.standard.setBaseSystem(gradeSystem: gradeSystem)
     }
