@@ -122,34 +122,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     fileprivate func configureBindings() {
-        viewModel.mainModels.bind(to: tableView.rx.items) { [weak self] tableView, row, model in
-
-            // ToDo: Want to do it so we draw only when there was a change
-            if let gradeModel = model as? MainViewModel.GradeModel {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: IndexPath(row: row, section: 0)) as! MainTableViewCell
-                cell.delegate = self
-                cell.backgroundColor = UIColor.clear
-
-                cell.gradeSystem = gradeModel.gradeSystem
-                cell.indexes = gradeModel.currentIndexes
-                let colors = UIColor.myColors()
-                cell.cardColor = colors[row % colors.count]
-
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTableViewCell") as! AddTableViewCell
-                cell.backgroundColor = UIColor.clear
-                cell.isHidden = self?.isEditing ?? false
-
-                return cell
-            }
-        }.disposed(by: disposeBag)
+        viewModel.mainModels.bind(to: tableView.rx.items(dataSource: dataSource())).disposed(by: disposeBag)
     }
 
     fileprivate func setConstraintsForBlurEffectView() {

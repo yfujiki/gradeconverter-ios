@@ -97,6 +97,12 @@
 		DBA6AA9C21EA203200C1E3BB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */; };
 		DBA6AA9F21EF6FBD00C1E3BB /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */; };
 		DBA6AAA021EF6FBD00C1E3BB /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */; };
+		DBA6AAA221EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */; };
+		DBA6AAA321EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */; };
+		DBA6AAA621EFA50500C1E3BB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */; };
+		DBA6AAA721EFA50500C1E3BB /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */; };
+		DBA6AAA821EFA54200C1E3BB /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */; };
+		DBA6AAA921EFA54200C1E3BB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */; };
 		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */; };
 		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
@@ -198,6 +204,9 @@
 		DBA6AA9521EA19F600C1E3BB /* LocalStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageImpl.swift; sourceTree = "<group>"; };
 		DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+DataSource.swift"; sourceTree = "<group>"; };
+		DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		DBD38D201B3FCE8000F9E40F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemiModalPresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
 		DBD8DFDC1B56574D0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTableViewCell.xib; sourceTree = "<group>"; };
@@ -222,6 +231,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA6AAA621EFA50500C1E3BB /* RxDataSources.framework in Frameworks */,
+				DBA6AAA721EFA50500C1E3BB /* Differentiator.framework in Frameworks */,
 				DB8BEF781EFA486C009F3FBE /* RxCocoa.framework in Frameworks */,
 				DB8BEF791EFA486C009F3FBE /* RxSwift.framework in Frameworks */,
 				DB8BEF7A1EFA486C009F3FBE /* Alamofire.framework in Frameworks */,
@@ -250,6 +261,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA6AAA821EFA54200C1E3BB /* Differentiator.framework in Frameworks */,
+				DBA6AAA921EFA54200C1E3BB /* RxDataSources.framework in Frameworks */,
 				DB8BEF7E1EFA4989009F3FBE /* RxCocoa.framework in Frameworks */,
 				DB8BEF7F1EFA4989009F3FBE /* RxSwift.framework in Frameworks */,
 				DB8BEF801EFA4989009F3FBE /* Alamofire.framework in Frameworks */,
@@ -359,6 +372,8 @@
 		DB8BEF731EFA486B009F3FBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */,
+				DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */,
 				DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */,
 				DB8BEF751EFA486C009F3FBE /* RxSwift.framework */,
 				DB8BEF761EFA486C009F3FBE /* Alamofire.framework */,
@@ -486,6 +501,7 @@
 			children = (
 				DB940B451B3615F400E996F8 /* MainViewController.swift */,
 				DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */,
+				DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -808,13 +824,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		DB8BEF7D1EFA491B009F3FBE /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -826,13 +844,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		DB8BEF821EFA4B11009F3FBE /* Swiftformat */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -921,6 +941,7 @@
 				DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */,
 				DB5DC3C01B3BAB890016F707 /* AddTableViewCell.swift in Sources */,
 				DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */,
+				DBA6AAA221EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */,
 				DB940B651B361C3B00E996F8 /* MainTableViewCell.swift in Sources */,
 				DBA6AA9B21EA203200C1E3BB /* MainViewModel.swift in Sources */,
 				DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */,
@@ -960,6 +981,7 @@
 				DB9A8F881C9E3D1B005803F6 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */,
 				DBA6AA9821EA19FA00C1E3BB /* LocalStorage.swift in Sources */,
 				DB9A8F891C9E3D1B005803F6 /* EditTableViewCell.swift in Sources */,
+				DBA6AAA321EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */,
 				DB9A8F8A1C9E3D1B005803F6 /* AddTableViewCell.swift in Sources */,
 				DBA6AA9C21EA203200C1E3BB /* MainViewModel.swift in Sources */,
 				DB9A8F8B1C9E3D1B005803F6 /* SemiModalPresentationAnimatingTransitioning.swift in Sources */,

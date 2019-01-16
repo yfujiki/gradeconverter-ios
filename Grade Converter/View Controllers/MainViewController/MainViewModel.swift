@@ -8,23 +8,113 @@
 
 import Foundation
 import RxSwift
-
-protocol MainModel {
-}
+import RxDataSources
 
 class MainViewModel {
 
-    public struct GradeModel: MainModel, Equatable {
-        public static func == (lhs: GradeModel, rhs: GradeModel) -> Bool {
-            return lhs.gradeSystem.key == rhs.gradeSystem.key
+    struct MainModelSection: AnimatableSectionModelType, Equatable {
+        var items: [MainModel]
+        var header: String
+
+        var identity: String {
+            return header
         }
 
-        var gradeSystem: GradeSystem
+        init(items: [MainModel]) {
+            self.items = items
+            header = ""
+        }
+
+        init(original: MainModelSection, items: [MainModel]) {
+            self = original
+            self.items = items
+        }
+
+        static func ==(lhs: MainModelSection, rhs: MainModelSection) -> Bool {
+            return lhs.header == rhs.header
+        }
+    }
+
+    // Can't see how I can make this a protocol. It looks like if we have different type of models as Item in
+    // AnimatableSectionModelType, there is no way to make them as structs.
+    // We need to call them as class and subclass for different type of models.
+    class MainModel: IdentifiableType, Equatable {
+        public static func == (lhs: MainModel, rhs: MainModel) -> Bool {
+            return lhs.equalTo(rhs)
+        }
+
+        var identity: String {
+            assertionFailure("We shouldn't call MainModel directly. Only subclass should be used.")
+            return ""
+        }
+
+        func equalTo(_: MainModel) -> Bool {
+            assertionFailure("We shouldn't call MainModel directly. Only subclass should be used.")
+            return false
+        }
+    }
+
+    class GradeModel: MainModel {
+
+        private override init() {
+            gradeSystem = nil
+            currentIndexes = []
+            super.init()
+        }
+
+        convenience init(gradeSystem: GradeSystem, currentIndexes: [Int]) {
+            self.init()
+            self.gradeSystem = gradeSystem
+            self.currentIndexes = currentIndexes
+        }
+
+        override func equalTo(_ rhs: MainModel) -> Bool {
+            guard let other = rhs as? GradeModel else {
+                return false
+            }
+
+            if gradeSystem != other.gradeSystem {
+                return false
+            }
+
+            if currentIndexes != other.currentIndexes {
+                return false
+            }
+
+            return true
+        }
+
+        override var identity: String {
+            return gradeSystem?.key ?? ""
+        }
+
+        var gradeSystem: GradeSystem?
         var currentIndexes: [Int]
     }
 
-    public struct StringModel: MainModel {
+    class StringModel: MainModel {
         var string: String
+
+        private override init() {
+            string = ""
+            super.init()
+        }
+
+        convenience init(string: String) {
+            self.init()
+            self.string = string
+        }
+
+        override func equalTo(_ rhs: MainModel) -> Bool {
+            guard let other = rhs as? StringModel else {
+                return false
+            }
+            return string == other.string
+        }
+
+        override var identity: String {
+            return string
+        }
     }
 
     private var selectedGradeSystemsVar: Variable<[GradeSystem]>
@@ -33,7 +123,7 @@ class MainViewModel {
 
     private var observers = [NSObjectProtocol]()
 
-    var mainModels: Observable<[MainModel]>
+    var mainModels: Observable<[MainModelSection]>
 
     var selectedGradeSystemCount: Int {
         return selectedGradeSystemsVar.value.count
@@ -45,16 +135,15 @@ class MainViewModel {
         baseSystemVar = Variable<GradeSystem?>(SystemLocalStorage().baseSystem())
 
         mainModels = Observable.combineLatest(selectedGradeSystemsVar.asObservable(), currentIndexesVar.asObservable(), baseSystemVar.asObservable())
-            .map({ (arg) -> [MainModel] in
+            .map({ (arg) -> [MainModelSection] in
 
                 let (selectedGradeSystems, currentIndexes, _) = arg
-                return selectedGradeSystems.map({ (gradeSystem) -> MainModel in
+                let models = selectedGradeSystems.map({ (gradeSystem) -> GradeModel in
                     GradeModel(gradeSystem: gradeSystem, currentIndexes: currentIndexes)
                 }) + [StringModel(string: "More...")]
+
+                return [MainModelSection(items: models)]
             })
-        //        selectedGradeSystems = selectedGradeSystemsVar.asObservable()
-        //        baseSystem = baseSystemVar.asObservable().takeLast(2)
-        //        currentIndexes = Observable.combineLatest(currentIndexesVar.asObservable(), baseSystem)
 
         registerForNotifications()
     }

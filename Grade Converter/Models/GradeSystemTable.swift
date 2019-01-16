@@ -176,7 +176,7 @@ struct GradeSystem {
 
 extension GradeSystem: Equatable {
     static func == (this: GradeSystem, that: GradeSystem) -> Bool {
-        return this.name == that.name && this.category == that.category
+        return this.key == that.key
     }
 }
 
