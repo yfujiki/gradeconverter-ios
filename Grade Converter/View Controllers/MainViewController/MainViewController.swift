@@ -228,7 +228,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     // MARK: - MainTableViewCellDelegate
     func didDeleteCell(_ cell: MainTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
-            viewModel.deleteGradeSystem(at: indexPath.row, commit: false)
+            viewModel.deleteGradeSystem(at: indexPath.row, commit: true)
         }
     }
 
