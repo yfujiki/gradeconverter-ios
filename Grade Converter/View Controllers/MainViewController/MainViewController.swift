@@ -196,8 +196,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
             let editViewTransitioning = SemiModalPresentationAnimatingTransitioning()
             editViewTransitioning.presenting = true
             transitioning = editViewTransitioning
-        } else if presented is InfoViewController {
+        } else if let infoViewController = presented as? InfoViewController {
             let infoViewTransitioning = FormSheetPresentationAnimatingTransitioning()
+            infoViewController.delegate = self
             infoViewTransitioning.presenting = true
             transitioning = infoViewTransitioning
         }

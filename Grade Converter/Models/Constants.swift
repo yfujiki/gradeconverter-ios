@@ -50,8 +50,6 @@ enum NotificationTypes {
     }
 }
 
-let kEmailComposingNotification = "com.yfujiki.GradeConverter.EmailComposingNotification"
-
 let kSupportEmailAddress = "support@responsivebyt.es"
 let kSupportEmailSubject = NSLocalizedString("[Support] About Grade Converter", comment: "Support Email Title")
 

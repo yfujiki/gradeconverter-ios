@@ -166,20 +166,6 @@ class MainViewModel {
         observers.append(NotificationCenter.default.addObserver(forName: NotificationTypes.baseSystemChangedNotification.notificationName(), object: nil, queue: nil) { [weak self] _ in
             self?.baseSystemVar.value = SystemLocalStorage().baseSystem()
         })
-
-        //        observers.append(NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kEmailComposingNotification), object: nil, queue: nil, using: { [weak self] (_: Notification) in
-        //            if MFMailComposeViewController.canSendMail() {
-        //                let composeViewController = MFMailComposeViewController()
-        //                composeViewController.mailComposeDelegate = self
-        //                composeViewController.setToRecipients([kSupportEmailAddress])
-        //                composeViewController.setSubject(kSupportEmailSubject)
-        //                composeViewController.navigationBar.tintColor = UIColor.white
-        //
-        //                self?.dismiss(animated: false, completion: { [weak self] () in
-        //                    self?.present(composeViewController, animated: true, completion: nil)
-        //                })
-        //            }
-        //        }))
     }
 
     func deleteGradeSystem(at index: Int, commit: Bool = true) {
