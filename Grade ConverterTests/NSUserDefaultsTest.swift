@@ -12,28 +12,28 @@ import XCTest
 
 class NSUserDefaultsTest: XCTestCase {
 
+    var userDefaults: UserDefaults!
+
     override func setUp() {
         super.setUp()
 
-        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsCurrentIndexes)
-        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsSelectedGradeSystems)
+        userDefaults = UserDefaults(suiteName: "UnitTest")
+        LocalStorageImpl(userDefaults: userDefaults).injectToApp()
     }
 
     override func tearDown() {
-        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsCurrentIndexes)
-        UserDefaults.standard.removeObject(forKey: kNSUserDefaultsSelectedGradeSystems)
-
+        userDefaults.removeSuite(named: "UnitTest")
         super.tearDown()
     }
 
     func testCurrentIndexes() {
-        XCTAssertEqual(kNSUserDefaultsDefaultIndexes, UserDefaults.standard.currentIndexes(), "Initially, current should be default indexes.")
+        XCTAssertEqual(kNSUserDefaultsDefaultIndexes, userDefaults.currentIndexes(), "Initially, current should be default indexes.")
 
-        var currentIndexes = UserDefaults.standard.currentIndexes()
+        var currentIndexes = userDefaults.currentIndexes()
         currentIndexes.append(19)
         currentIndexes.append(20)
 
-        UserDefaults.standard.setCurrentIndexes(currentIndexes)
+        userDefaults.setCurrentIndexes(currentIndexes)
 
         var expectedIndexes = kNSUserDefaultsDefaultIndexes
         expectedIndexes.append(19)
@@ -43,17 +43,17 @@ class NSUserDefaultsTest: XCTestCase {
     }
 
     func testSelectedGradeSystems() {
-        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, UserDefaults.standard.selectedGradeSystems(), "Initially, selected grade systems should be default.")
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, userDefaults.selectedGradeSystems(), "Initially, selected grade systems should be default.")
 
         let gradeSystem1 = GradeSystem(name: "Yosemite Decimal System", category: "Sports", locales: [], grades: [])
-        UserDefaults.standard.setSelectedGradeSystems([gradeSystem1])
-        XCTAssertEqual([gradeSystem1], UserDefaults.standard.selectedGradeSystems(), "The results should represent proper additions")
+        userDefaults.setSelectedGradeSystems([gradeSystem1])
+        XCTAssertEqual([gradeSystem1], userDefaults.selectedGradeSystems(), "The results should represent proper additions")
 
         let gradeSystem2 = GradeSystem(name: "Hueco", category: "Boulder", locales: [], grades: [])
-        UserDefaults.standard.addSelectedGradeSystem(gradeSystem2)
-        XCTAssertEqual([gradeSystem1, gradeSystem2], UserDefaults.standard.selectedGradeSystems(), "The results should represent proper additions")
+        userDefaults.addSelectedGradeSystem(gradeSystem2)
+        XCTAssertEqual([gradeSystem1, gradeSystem2], userDefaults.selectedGradeSystems(), "The results should represent proper additions")
 
-        UserDefaults.standard.removeSelectedGradeSystem(gradeSystem1)
-        XCTAssertEqual([gradeSystem2], UserDefaults.standard.selectedGradeSystems(), "The results should represent proper removals")
+        userDefaults.removeSelectedGradeSystem(gradeSystem1)
+        XCTAssertEqual([gradeSystem2], userDefaults.selectedGradeSystems(), "The results should represent proper removals")
     }
 }

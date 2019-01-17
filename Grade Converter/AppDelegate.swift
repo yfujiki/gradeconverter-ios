@@ -20,11 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Dependency injection for the single store
     var localStorage: LocalStorage!
 
+    var userDefaultsForTest: UserDefaults?
+
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Fabric.with([Crashlytics()])
         FirebaseApp.configure()
 
-        localStorage = LocalStorageStandardImpl() as LocalStorage
+        if ProcessInfo.processInfo.environment.index(forKey: "UITEST") == nil {
+            localStorage = LocalStorageStandardImpl() as LocalStorage
+        } else {
+            userDefaultsForTest = UserDefaults(suiteName: "UITest")
+            if let userDefaults = userDefaultsForTest {
+                localStorage = LocalStorageImpl(userDefaults: userDefaults) as LocalStorage
+            }
+        }
 
         #if DEBUG
         #else
@@ -89,5 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+        if let userDefaults = userDefaultsForTest {
+            userDefaults.removeSuite(named: "UITest")
+        }
     }
 }

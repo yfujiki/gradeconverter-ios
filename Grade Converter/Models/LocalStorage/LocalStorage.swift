@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LocalStorage {
 
@@ -31,4 +32,10 @@ protocol LocalStorage {
     func baseSystem() -> GradeSystem?
 
     func isBaseSystem(_ gradeSystem: GradeSystem?) -> Bool
+}
+
+extension LocalStorage {
+    func injectToApp() {
+        (UIApplication.shared.delegate as? AppDelegate)?.localStorage = self
+    }
 }

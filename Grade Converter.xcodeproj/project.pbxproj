@@ -23,7 +23,6 @@
 		DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */; };
 		DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */; };
 		DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
-		DB711BEB1C499D300000C82B /* Grade_ConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */; };
 		DB711BF21C499D600000C82B /* FastlaneSnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */; };
 		DB711BF41C499D770000C82B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BF31C499D770000C82B /* SnapshotHelper.swift */; };
 		DB79CB911B640B7D000024A5 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CB901B640B7D000024A5 /* UILabel+Additions.swift */; };
@@ -124,13 +123,6 @@
 			remoteGlobalIDString = DB940B3D1B3615F400E996F8;
 			remoteInfo = "Grade Converter";
 		};
-		DB8BEF6D1EF8D532009F3FBE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB940B361B3615F400E996F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB9A8F7D1C9E3D1B005803F6;
-			remoteInfo = "Grade Converter Pro";
-		};
 		DB940B541B3615F400E996F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB940B361B3615F400E996F8 /* Project object */;
@@ -166,7 +158,6 @@
 		DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshotUITests.swift; sourceTree = "<group>"; };
 		DB711BE81C499D300000C82B /* Grade ConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grade ConverterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade_ConverterUITests.swift; sourceTree = "<group>"; };
 		DB711BEC1C499D300000C82B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB711BF31C499D770000C82B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DB76478D1B5311D900BF01E9 /* Grade Converter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Grade Converter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -359,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */,
-				DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */,
 				DB711BEC1C499D300000C82B /* Info.plist */,
 				DB711BF31C499D770000C82B /* SnapshotHelper.swift */,
 			);
@@ -538,7 +528,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DB8BEF6E1EF8D532009F3FBE /* PBXTargetDependency */,
 				DB0B674E21444D34000056DF /* PBXTargetDependency */,
 			);
 			name = "Grade ConverterUITests";
@@ -925,7 +914,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB711BEB1C499D300000C82B /* Grade_ConverterUITests.swift in Sources */,
 				DB711BF21C499D600000C82B /* FastlaneSnapshotUITests.swift in Sources */,
 				DB711BF41C499D770000C82B /* SnapshotHelper.swift in Sources */,
 			);
@@ -1012,11 +1000,6 @@
 			isa = PBXTargetDependency;
 			target = DB940B3D1B3615F400E996F8 /* Grade Converter */;
 			targetProxy = DB0B674D21444D34000056DF /* PBXContainerItemProxy */;
-		};
-		DB8BEF6E1EF8D532009F3FBE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DB9A8F7D1C9E3D1B005803F6 /* Grade Converter Pro */;
-			targetProxy = DB8BEF6D1EF8D532009F3FBE /* PBXContainerItemProxy */;
 		};
 		DB940B551B3615F400E996F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

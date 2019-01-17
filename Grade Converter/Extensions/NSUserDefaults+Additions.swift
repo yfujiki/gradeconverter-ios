@@ -46,7 +46,7 @@ extension UserDefaults {
     }
 
     func currentIndexes() -> [Int] {
-        let indexes = UserDefaults.standard.array(forKey: kNSUserDefaultsCurrentIndexes) as? [Int]
+        let indexes = array(forKey: kNSUserDefaultsCurrentIndexes) as? [Int]
 
         return indexes ?? kNSUserDefaultsDefaultIndexes
     }
@@ -83,7 +83,7 @@ extension UserDefaults {
     func selectedGradeSystems() -> [GradeSystem] {
         let globalSystemTable = GradeSystemTable.sharedInstance
 
-        if let systemKeys = UserDefaults.standard.array(forKey: kNSUserDefaultsSelectedGradeSystems) as? [[String: String]] {
+        if let systemKeys = array(forKey: kNSUserDefaultsSelectedGradeSystems) as? [[String: String]] {
             return systemKeys.reduce([], { (tmp: [GradeSystem], dict: [String: String]) -> [GradeSystem] in
                 var results = tmp
                 let name = dict[kNSUserDefaultsGradeNameKey] ?? ""
