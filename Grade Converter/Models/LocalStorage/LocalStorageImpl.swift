@@ -8,33 +8,45 @@
 
 import Foundation
 
+class LocalStorageStandardImpl: LocalStorageImpl {
+    init() {
+        super.init(userDefaults: UserDefaults.standard)
+    }
+}
+
 class LocalStorageImpl: LocalStorage {
+    private var userDefaults: UserDefaults
+
+    init(userDefaults: UserDefaults) {
+        self.userDefaults = userDefaults
+    }
+
     func setCurrentIndexes(_ indexes: [Int]) {
-        UserDefaults.standard.setCurrentIndexes(indexes)
+        userDefaults.setCurrentIndexes(indexes)
     }
 
     func currentIndexes() -> [Int] {
-        return UserDefaults.standard.currentIndexes()
+        return userDefaults.currentIndexes()
     }
 
     func setSelectedGradeSystems(_ gradeSystems: [GradeSystem]) {
-        UserDefaults.standard.setSelectedGradeSystems(gradeSystems)
+        userDefaults.setSelectedGradeSystems(gradeSystems)
     }
 
     func addSelectedGradeSystem(_ gradeSystem: GradeSystem) {
-        UserDefaults.standard.addSelectedGradeSystem(gradeSystem)
+        userDefaults.addSelectedGradeSystem(gradeSystem)
     }
 
     func removeSelectedGradeSystem(_ gradeSystemToRemove: GradeSystem) {
-        UserDefaults.standard.removeSelectedGradeSystem(gradeSystemToRemove)
+        userDefaults.removeSelectedGradeSystem(gradeSystemToRemove)
     }
 
     func selectedGradeSystems() -> [GradeSystem] {
-        return UserDefaults.standard.selectedGradeSystems()
+        return userDefaults.selectedGradeSystems()
     }
 
     func selectedGradeSystemNamesCSV() -> String {
-        return UserDefaults.standard.selectedGradeSystemNamesCSV()
+        return userDefaults.selectedGradeSystemNamesCSV()
     }
 
     func unselectedGradeSystems() -> [GradeSystem] {
@@ -45,11 +57,11 @@ class LocalStorageImpl: LocalStorage {
     }
 
     func setBaseSystem(_ gradeSystem: GradeSystem) {
-        UserDefaults.standard.setBaseSystem(gradeSystem: gradeSystem)
+        userDefaults.setBaseSystem(gradeSystem: gradeSystem)
     }
 
     func baseSystem() -> GradeSystem? {
-        return UserDefaults.standard.baseSystem()
+        return userDefaults.baseSystem()
     }
 
     func isBaseSystem(_ gradeSystem: GradeSystem?) -> Bool {
@@ -57,6 +69,6 @@ class LocalStorageImpl: LocalStorage {
             return false
         }
 
-        return UserDefaults.standard.baseSystem() == gradeSystem
+        return userDefaults.baseSystem() == gradeSystem
     }
 }

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         FirebaseApp.configure()
 
-        localStorage = LocalStorageImpl() as LocalStorage
+        localStorage = LocalStorageStandardImpl() as LocalStorage
 
         #if DEBUG
         #else

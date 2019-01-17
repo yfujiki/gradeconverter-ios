@@ -37,8 +37,8 @@ var kNSUserDefaultsDefaultGradeSystem: [GradeSystem] {
 extension UserDefaults {
 
     func setCurrentIndexes(_ indexes: [Int]) {
-        UserDefaults.standard.set(indexes, forKey: kNSUserDefaultsCurrentIndexes)
-        UserDefaults.standard.synchronize()
+        set(indexes, forKey: kNSUserDefaultsCurrentIndexes)
+        synchronize()
 
         let notifcationName = NotificationTypes.currentIndexChangedNotification.notificationName()
         let userInfo = [NotificationTypes.NotificationKeys.currentIndexesKey: indexes]
@@ -58,8 +58,8 @@ extension UserDefaults {
             return [kNSUserDefaultsGradeNameKey: name, kNSUserDefaultsGradeCategoryKey: category]
         }
 
-        UserDefaults.standard.set(systemKeys, forKey: kNSUserDefaultsSelectedGradeSystems)
-        UserDefaults.standard.synchronize()
+        set(systemKeys, forKey: kNSUserDefaultsSelectedGradeSystems)
+        synchronize()
 
         let notifcationName = NotificationTypes.systemSelectionChangedNotification.notificationName()
         let userInfo = [NotificationTypes.NotificationKeys.selectedSystemsKey: gradeSystems]
@@ -111,7 +111,7 @@ extension UserDefaults {
     }
 
     func baseSystem() -> GradeSystem? {
-        let key = UserDefaults.standard.value(forKey: kNSUserDefaultsBaseSystem) as? String
+        let key = value(forKey: kNSUserDefaultsBaseSystem) as? String
 
         guard let array = key?.split(separator: "-"), array.count == 2 else {
             return nil
@@ -123,8 +123,8 @@ extension UserDefaults {
     }
 
     func setBaseSystem(gradeSystem: GradeSystem?) {
-        UserDefaults.standard.set(gradeSystem?.key, forKey: kNSUserDefaultsBaseSystem)
-        UserDefaults.standard.synchronize()
+        set(gradeSystem?.key, forKey: kNSUserDefaultsBaseSystem)
+        synchronize()
 
         let notifcationName = NotificationTypes.baseSystemChangedNotification.notificationName()
         let userInfo = gradeSystem == nil ? [:] : [NotificationTypes.NotificationKeys.baseSystemKey: gradeSystem]
