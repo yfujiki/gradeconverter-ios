@@ -214,6 +214,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     // MARK: - Edit mode
     fileprivate func startJiggling() {
+        // The jiggle animation is going to block UI Test.
+        if ProcessInfo.processInfo.environment.index(forKey: "UITEST") != nil {
+            return
+        }
+
         let leftWobble = CGAffineTransform(rotationAngle: -kAnimationRotateDeg)
         let rightWobble = CGAffineTransform(rotationAngle: kAnimationRotateDeg)
 
