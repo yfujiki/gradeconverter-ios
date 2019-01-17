@@ -142,4 +142,51 @@ class MainViewModelTests: XCTestCase {
             XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem[correspondingIndex], gradeSystem)
         }
     }
+
+    func testSetGradeSystemsNoCommit() {
+        let gradeSystems = [
+            GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
+            GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
+        ]
+
+        let disposable = mainViewModel.mainModels
+            .skip(1)
+            .subscribe { sections in
+                let initialCount = gradeSystems.count + 1 // section models include "Add" row model
+                let items = sections.element!.first!.items
+                XCTAssertEqual(initialCount, items.count)
+        }
+
+        _ = compositeDisposable.insert(disposable)
+
+        mainViewModel.setSelectedGradeSystems(gradeSystems, commit: false)
+
+        // No commit to the storage
+        XCTAssertNotEqual(gradeSystems, SystemLocalStorage().selectedGradeSystems())
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, SystemLocalStorage().selectedGradeSystems())
+    }
+
+    func testSetGradeSystemsWithCommit() {
+        let gradeSystems = [
+            GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!,
+            GradeSystemTable.sharedInstance.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
+        ]
+
+        let disposable = mainViewModel.mainModels
+            .skip(1)
+            .subscribe { sections in
+                let initialCount = gradeSystems.count + 1 // section models include "Add" row model
+                let items = sections.element!.first!.items
+                XCTAssertEqual(initialCount, items.count)
+        }
+
+        _ = compositeDisposable.insert(disposable)
+
+        mainViewModel.setSelectedGradeSystems(gradeSystems)
+
+        // No commit to the storage
+        XCTAssertEqual(gradeSystems, SystemLocalStorage().selectedGradeSystems())
+    }
+
+
 }
