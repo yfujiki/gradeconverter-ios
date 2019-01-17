@@ -45,9 +45,9 @@ class MainViewModel {
                 switch rhs {
                 case let .gradeModel(rhsGradeSystem, rhsCurrentIndexes):
                     // This is a hack to avoid rerendering of the base system
-                    //                    if SystemLocalStorage().isBaseSystem(rhsGradeSystem) {
-                    //                        return false
-                    //                    }
+                    if SystemLocalStorage().isBaseSystem(rhsGradeSystem) {
+                        return true
+                    }
                     if lhsGradeSystem != rhsGradeSystem {
                         return false
                     }

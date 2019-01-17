@@ -234,8 +234,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }
 
     func didSelectNewIndexes(_ indexes: [Int], on gradeSystem: GradeSystem, cell _: MainTableViewCell) {
-        viewModel.setCurrentIndexes(indexes)
+        // This order is important. Set base system first before changing current indexes.
         viewModel.updateBaseSystem(to: gradeSystem)
+        viewModel.setCurrentIndexes(indexes)
     }
 
     // MARK: - UIGestureRecognizerDelegate
