@@ -164,6 +164,11 @@ class MainViewModelTests: XCTestCase {
         // No commit to the storage
         XCTAssertNotEqual(gradeSystems, SystemLocalStorage().selectedGradeSystems())
         XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, SystemLocalStorage().selectedGradeSystems())
+
+        mainViewModel.commitGradeSystemSelectionChange()
+
+        // Commit to the storage
+        XCTAssertEqual(gradeSystems, SystemLocalStorage().selectedGradeSystems())
     }
 
     func testSetGradeSystemsWithCommit() {
@@ -188,5 +193,22 @@ class MainViewModelTests: XCTestCase {
         XCTAssertEqual(gradeSystems, SystemLocalStorage().selectedGradeSystems())
     }
 
+    func testSetCurrentIndexes() {
+        let indexes = [30, 31]
 
+        let disposable = mainViewModel.mainModels
+            .skip(1)
+            .subscribe { sections in
+                let items = sections.element!.first!.items
+                for case MainViewModel.MainModel.gradeModel(_, let currentIndexes) in items {
+                    XCTAssertEqual(indexes, currentIndexes)
+                }
+        }
+
+        _ = compositeDisposable.insert(disposable)
+
+        mainViewModel.setCurrentIndexes(indexes)
+
+        XCTAssertEqual(indexes, SystemLocalStorage().currentIndexes())
+    }
 }
