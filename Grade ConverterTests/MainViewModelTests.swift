@@ -41,7 +41,7 @@ class MainViewModelTests: XCTestCase {
                 let initialCount = kNSUserDefaultsDefaultGradeSystem.count + 1 // section models include "Add" row model
                 let items = sections.element!.first!.items
                 XCTAssertEqual(initialCount - 1, items.count)
-            }
+        }
         _ = compositeDisposable.insert(disposable)
 
         mainViewModel.deleteGradeSystem(at: 0, commit: false)
@@ -55,9 +55,9 @@ class MainViewModelTests: XCTestCase {
         let disposable = mainViewModel.mainModels
             .skip(1)
             .subscribe { sections in
-            let initialCount = kNSUserDefaultsDefaultGradeSystem.count + 1 // section models include "Add" row model
-            let items = sections.element!.first!.items
-            XCTAssertEqual(initialCount - 1, items.count)
+                let initialCount = kNSUserDefaultsDefaultGradeSystem.count + 1 // section models include "Add" row model
+                let items = sections.element!.first!.items
+                XCTAssertEqual(initialCount - 1, items.count)
         }
         _ = compositeDisposable.insert(disposable)
 
@@ -231,9 +231,10 @@ class MainViewModelTests: XCTestCase {
         }
 
         _ = compositeDisposable.insert(disposable)
-        
+
         mainViewModel.updateBaseSystem(to: baseSystem)
 
         XCTAssertEqual(baseSystem, SystemLocalStorage().baseSystem())
     }
 }
+

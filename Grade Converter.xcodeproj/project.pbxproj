@@ -112,6 +112,7 @@
 		DBD8DFE41B56C08F0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
 		DBD8DFE81B56C11E0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
 		DBDEF84721F0A4D800C22127 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEF84621F0A4D800C22127 /* MainViewModelTests.swift */; };
+		DBDEF84921F0CFBE00C22127 /* EditViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEF84821F0CFBE00C22127 /* EditViewModelTests.swift */; };
 		DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8361B6807A500EF244F /* Fabric.framework */; };
 		DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8371B6807A500EF244F /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -212,6 +213,7 @@
 		DBD8DFE51B56C08F0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBD8DFE71B56C0950078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBDEF84621F0A4D800C22127 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		DBDEF84821F0CFBE00C22127 /* EditViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewModelTests.swift; sourceTree = "<group>"; };
 		DBFAD8361B6807A500EF244F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		DBFAD8371B6807A500EF244F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grade_Converter_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,6 +445,7 @@
 		DB940B561B3615F400E996F8 /* Grade ConverterTests */ = {
 			isa = PBXGroup;
 			children = (
+				DBDEF84821F0CFBE00C22127 /* EditViewModelTests.swift */,
 				DB940B571B3615F400E996F8 /* Supporting Files */,
 				DB940B6C1B3659E200E996F8 /* GradeSystemTableTest.swift */,
 				DB940B591B3615F400E996F8 /* Grade_ConverterTests.swift */,
@@ -958,6 +961,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBDEF84921F0CFBE00C22127 /* EditViewModelTests.swift in Sources */,
 				DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */,
 				DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */,
 				DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */,
