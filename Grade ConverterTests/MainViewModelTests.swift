@@ -211,4 +211,29 @@ class MainViewModelTests: XCTestCase {
 
         XCTAssertEqual(indexes, SystemLocalStorage().currentIndexes())
     }
+
+    func testSetBaseSystem() {
+        let baseSystem = GradeSystemTable.sharedInstance.gradeSystemForName("Ogawayama", category: "Boulder")!
+
+        let disposable = mainViewModel.mainModels
+            .skip(1)
+            .subscribe { sections in
+                let items = sections.element!.first!.items
+                for case MainViewModel.MainModel.gradeModel(let gradeSystem, _) in items {
+                    if gradeSystem.key == baseSystem.key {
+                        // Should be base system
+                        XCTAssertTrue(SystemLocalStorage().isBaseSystem(gradeSystem))
+                    } else {
+                        // Should not be base system
+                        XCTAssertFalse(SystemLocalStorage().isBaseSystem(gradeSystem))
+                    }
+                }
+        }
+
+        _ = compositeDisposable.insert(disposable)
+        
+        mainViewModel.updateBaseSystem(to: baseSystem)
+
+        XCTAssertEqual(baseSystem, SystemLocalStorage().baseSystem())
+    }
 }
