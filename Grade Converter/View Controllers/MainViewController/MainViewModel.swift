@@ -35,85 +35,46 @@ class MainViewModel {
         }
     }
 
-    // Can't see how I can make this a protocol. It looks like if we have different type of models as Item in
-    // AnimatableSectionModelType, there is no way to make them as structs.
-    // We need to call them as class and subclass for different type of models.
-    class MainModel: IdentifiableType, Equatable {
+    enum MainModel: IdentifiableType, Equatable {
+        case gradeModel(gradeSystem: GradeSystem, currentIndexes: [Int])
+        case stringModel(string: String)
+
         public static func == (lhs: MainModel, rhs: MainModel) -> Bool {
-            return lhs.equalTo(rhs)
+            switch lhs {
+            case let .gradeModel(lhsGradeSystem, lhsCurrentIndexes):
+                switch rhs {
+                case let .gradeModel(rhsGradeSystem, rhsCurrentIndexes):
+                    // This is a hack to avoid rerendering of the base system
+                    //                    if SystemLocalStorage().isBaseSystem(rhsGradeSystem) {
+                    //                        return false
+                    //                    }
+                    if lhsGradeSystem != rhsGradeSystem {
+                        return false
+                    }
+                    if lhsCurrentIndexes != rhsCurrentIndexes {
+                        return false
+                    }
+                    return true
+                case .stringModel:
+                    return false
+                }
+            case let .stringModel(lhsString):
+                switch rhs {
+                case .gradeModel:
+                    return false
+                case let .stringModel(rhsString):
+                    return lhsString == rhsString
+                }
+            }
         }
 
         var identity: String {
-            assertionFailure("We shouldn't call MainModel directly. Only subclass should be used.")
-            return ""
-        }
-
-        func equalTo(_: MainModel) -> Bool {
-            assertionFailure("We shouldn't call MainModel directly. Only subclass should be used.")
-            return false
-        }
-    }
-
-    class GradeModel: MainModel {
-
-        private override init() {
-            gradeSystem = nil
-            currentIndexes = []
-            super.init()
-        }
-
-        convenience init(gradeSystem: GradeSystem, currentIndexes: [Int]) {
-            self.init()
-            self.gradeSystem = gradeSystem
-            self.currentIndexes = currentIndexes
-        }
-
-        override func equalTo(_ rhs: MainModel) -> Bool {
-            guard let other = rhs as? GradeModel else {
-                return false
+            switch self {
+            case let .gradeModel(gradeSystem, _):
+                return gradeSystem.key
+            case let .stringModel(string):
+                return string
             }
-
-            if gradeSystem != other.gradeSystem {
-                return false
-            }
-
-            if currentIndexes != other.currentIndexes {
-                return false
-            }
-
-            return true
-        }
-
-        override var identity: String {
-            return gradeSystem?.key ?? ""
-        }
-
-        var gradeSystem: GradeSystem?
-        var currentIndexes: [Int]
-    }
-
-    class StringModel: MainModel {
-        var string: String
-
-        private override init() {
-            string = ""
-            super.init()
-        }
-
-        convenience init(string: String) {
-            self.init()
-            self.string = string
-        }
-
-        override func equalTo(_ rhs: MainModel) -> Bool {
-            guard let other = rhs as? StringModel else {
-                return false
-            }
-            return string == other.string
-        }
-
-        override var identity: String {
-            return string
         }
     }
 
@@ -138,9 +99,9 @@ class MainViewModel {
             .map({ (arg) -> [MainModelSection] in
 
                 let (selectedGradeSystems, currentIndexes, _) = arg
-                let models = selectedGradeSystems.map({ (gradeSystem) -> GradeModel in
-                    GradeModel(gradeSystem: gradeSystem, currentIndexes: currentIndexes)
-                }) + [StringModel(string: "More...")]
+                let models = selectedGradeSystems.map({ (gradeSystem) -> MainModel in
+                    MainModel.gradeModel(gradeSystem: gradeSystem, currentIndexes: currentIndexes)
+                }) + [MainModel.stringModel(string: "More...")]
 
                 return [MainModelSection(items: models)]
             })

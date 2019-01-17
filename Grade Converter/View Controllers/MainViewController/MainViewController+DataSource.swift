@@ -16,19 +16,20 @@ extension MainViewController {
                                                            reloadAnimation: .fade,
                                                            deleteAnimation: .left),
             configureCell: { [weak self] _, table, indexPath, model in
-                if let gradeModel = model as? MainViewModel.GradeModel {
+                switch model {
+                case let .gradeModel(gradeSystem, currentIndexes):
                     let cell = table.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
 
                     cell.delegate = self
                     cell.backgroundColor = UIColor.clear
 
-                    cell.gradeSystem = gradeModel.gradeSystem
-                    cell.indexes = gradeModel.currentIndexes
+                    cell.gradeSystem = gradeSystem
+                    cell.indexes = currentIndexes
                     let colors = UIColor.myColors()
                     cell.cardColor = colors[indexPath.row % colors.count]
 
                     return cell
-                } else {
+                case .stringModel:
                     let cell = table.dequeueReusableCell(withIdentifier: "AddTableViewCell", for: indexPath) as! AddTableViewCell
 
                     cell.backgroundColor = UIColor.clear
