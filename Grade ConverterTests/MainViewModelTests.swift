@@ -30,7 +30,7 @@ class MainViewModelTests: XCTestCase {
             compositeDisposable.dispose()
         }
 
-        userDefaults.removeSuite(named: "UnitTest")
+        userDefaults.removePersistentDomain(forName: "UnitTest")
     }
 
     func testDeleteGradeSystemNoCommit() {
@@ -66,5 +66,80 @@ class MainViewModelTests: XCTestCase {
         // 2. The state of LocalStorage changes
         XCTAssertNotEqual(kNSUserDefaultsDefaultGradeSystem, SystemLocalStorage().selectedGradeSystems())
         XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem.count - 1, SystemLocalStorage().selectedGradeSystems().count)
+    }
+
+    func testReorderGradeSystemNoCommit() {
+        // 1. Event comes in
+        let disposable = mainViewModel.mainModels
+            .skip(1)
+            .subscribe { sections in
+                let initialCount = kNSUserDefaultsDefaultGradeSystem.count + 1 // section models include "Add" row model
+                let items = sections.element!.first!.items
+                XCTAssertEqual(initialCount, items.count)
+
+                items.enumerated().forEach({ (index: Int, mainModel: MainViewModel.MainModel) in
+                    guard case MainViewModel.MainModel.gradeModel(let gradeSystem, _) = mainModel else {
+                        return
+                    }
+
+                    var correspondingIndex = index
+                    if (index == 0) {
+                        correspondingIndex = 2
+                    } else if (index == 2) {
+                        correspondingIndex = 0
+                    }
+                    XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem[correspondingIndex], gradeSystem)
+                })
+
+        }
+        _ = compositeDisposable.insert(disposable)
+
+        mainViewModel.reorderGradeSystem(from: 0, to: 2, commit: false)
+
+        // Storage has NOT changed status yet
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem.count, SystemLocalStorage().selectedGradeSystems().count)
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem, SystemLocalStorage().selectedGradeSystems())
+    }
+
+    func testReorderGradeSystemWithCommit() {
+        // 1. Event comes in
+        let disposable = mainViewModel.mainModels
+            .skip(1)
+            .subscribe { sections in
+                let initialCount = kNSUserDefaultsDefaultGradeSystem.count + 1 // section models include "Add" row model
+                let items = sections.element!.first!.items
+                XCTAssertEqual(initialCount, items.count)
+
+                items.enumerated().forEach({ (index: Int, mainModel: MainViewModel.MainModel) in
+                    guard case MainViewModel.MainModel.gradeModel(let gradeSystem, _) = mainModel else {
+                        return
+                    }
+
+                    var correspondingIndex = index
+                    if (index == 0) {
+                        correspondingIndex = 2
+                    } else if (index == 2) {
+                        correspondingIndex = 0
+                    }
+                    XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem[correspondingIndex].key, gradeSystem.key)
+                })
+
+        }
+        _ = compositeDisposable.insert(disposable)
+
+        mainViewModel.reorderGradeSystem(from: 0, to: 2)
+
+        XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem.count, SystemLocalStorage().selectedGradeSystems().count)
+
+        // Storage has changed status
+        SystemLocalStorage().selectedGradeSystems().enumerated().forEach { (index, gradeSystem) in
+            var correspondingIndex = index
+            if (index == 0) {
+                correspondingIndex = 2
+            } else if (index == 2) {
+                correspondingIndex = 0
+            }
+            XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem[correspondingIndex], gradeSystem)
+        }
     }
 }

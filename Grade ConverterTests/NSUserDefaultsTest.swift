@@ -22,7 +22,7 @@ class NSUserDefaultsTest: XCTestCase {
     }
 
     override func tearDown() {
-        userDefaults.removeSuite(named: "UnitTest")
+        userDefaults.removePersistentDomain(forName: "UnitTest")
         super.tearDown()
     }
 

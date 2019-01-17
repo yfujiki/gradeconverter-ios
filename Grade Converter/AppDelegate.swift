@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 
         if let userDefaults = userDefaultsForTest {
-            userDefaults.removeSuite(named: "UITest")
+            userDefaults.removePersistentDomain(forName: "UITest")
         }
     }
 }
