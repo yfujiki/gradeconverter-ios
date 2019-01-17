@@ -127,7 +127,7 @@ extension UserDefaults {
         synchronize()
 
         let notifcationName = NotificationTypes.baseSystemChangedNotification.notificationName()
-        let userInfo = gradeSystem == nil ? [:] : [NotificationTypes.NotificationKeys.baseSystemKey: gradeSystem]
+        let userInfo = gradeSystem == nil ? [:] : [NotificationTypes.NotificationKeys.baseSystemKey: gradeSystem!]
         NotificationCenter.default.post(name: notifcationName, object: self, userInfo: userInfo)
     }
 }
