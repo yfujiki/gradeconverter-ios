@@ -17,7 +17,7 @@ enum Country: Int {
     var string: String {
         switch self {
         case .us: return "US"
-        case .jp: return "EN"
+        case .jp: return "JP"
         case .others: return "OTHERS"
         }
     }
@@ -30,8 +30,8 @@ enum Lang: Int {
 
     var string: String {
         switch self {
-        case .en: return "US"
-        case .ja: return "EN"
+        case .en: return "EN"
+        case .ja: return "JA"
         case .others: return "OTHERS"
         }
     }
