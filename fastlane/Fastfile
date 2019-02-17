@@ -51,6 +51,7 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   lane :deploy do |options|
     # snapshot
+    increment_build_number
     target = options[:target] || "free"
     app_id = (target == "free") ? "com.yfujiki.gradeconverter" : "com.yfujiki.gradeconverterpro"
     scheme = (target == "free") ? "Grade Converter" : "Grade Converter Pro"
@@ -60,7 +61,16 @@ platform :ios do
     # frameit
   end
 
-  # You can define as many lanes as you want
+  desc "Create archive for App Store/TestFlight"
+  lane :archive do |options|
+    increment_build_number
+    target = options[:target] || "free"
+    app_id = (target == "free") ? "com.yfujiki.gradeconverter" : "com.yfujiki.gradeconverterpro"
+    scheme = (target == "free") ? "Grade Converter" : " Grade Converter Pro"
+    sigh(app_identifier: app_id)
+    gym(scheme: scheme)
+    # You can define as many lanes as you want
+  end
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful

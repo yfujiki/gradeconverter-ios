@@ -43,7 +43,7 @@ class PresentationController: UIPresentationController {
 
     override func dismissalTransitionWillBegin() {
         if let mainNavigationController = presentingViewController as? UINavigationController,
-            let mainViewController = mainNavigationController.childViewControllers.first as? MainViewController {
+            let mainViewController = mainNavigationController.children.first as? MainViewController {
             mainViewController.reloadTableView()
         }
 

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         Fabric.with([Crashlytics()])
         FirebaseApp.configure()
         if #available(iOS 10.3, *) {
@@ -36,14 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.myAquaColor()
         // navigation bar title text color
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedStringKey.font: UIFont(name: fontName, size: navigationBarTitleFontSize)!,
-            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: fontName, size: navigationBarTitleFontSize)!,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
         ]
         // navigation items title colors
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedStringKey.font: UIFont(name: fontName, size: navigationBarItemFontSize)!,
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-        ], for: UIControlState())
+            NSAttributedString.Key.font: UIFont(name: fontName, size: navigationBarItemFontSize)!,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+        ], for: UIControl.State())
 
         //        window?.tintColor = UIColor.whiteColor() <= This works for navigation bar item if it is only color
 
