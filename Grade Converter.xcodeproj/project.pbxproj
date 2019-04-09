@@ -673,7 +673,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
 			);
@@ -684,7 +684,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4CB7E284BCD3731DD5EB4FC3 /* [CP] Check Pods Manifest.lock */ = {
