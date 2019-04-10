@@ -86,6 +86,48 @@ platform :ios do
     #   success: false
     # )
   end
+
+  ####### Certificates #######
+  desc "Installs the certificates and profiles locally"
+  lane :certificates do |options|
+    if options[:use_temporary_keychain]
+      create_temporary_keychain
+    end
+
+    readonly = (options[:refresh_certificates] ? false : true)
+    force_for_new_devices = !readonly
+
+    match(
+      app_identifier: "com.yfujiki.gradeconverter",
+      team_id: "BTWWPDZ4GE",
+      type: "development",
+      readonly: readonly,
+      force_for_new_devices: force_for_new_devices
+    )
+
+    match(
+      app_identifier: "com.yfujiki.gradeconverter",
+      team_id: "BTWWPDZ4GE",
+      type: "appstore",
+      readonly: readonly
+    )
+    if options[:use_temporary_keychain]
+      sh "security set-key-partition-list -S apple-tool:,apple: -s -k #{ENV["KEYCHAIN_PASSWORD"]} #{ENV["KEYCHAIN_NAME"]}"
+    end
+  end
+
+  private_lane :create_temporary_keychain do
+    keychain_name = "temporary_keychain"
+    ENV["KEYCHAIN_NAME"] = keychain_name
+    ENV["KEYCHAIN_PASSWORD"] = keychain_name
+
+    create_keychain(
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
+  end
 end
 
 

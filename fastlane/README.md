@@ -38,6 +38,11 @@ Deploy a new version to the App Store
 fastlane ios archive
 ```
 Create archive for App Store/TestFlight
+### ios certificates
+```
+fastlane ios certificates
+```
+Installs the certificates and profiles locally
 
 ----
 
