@@ -13,14 +13,18 @@ import XCTest
 class GradeSystemTableTest: XCTestCase {
 
     var table: GradeSystemTable!
+    var userDefaults: UserDefaults!
 
     override func setUp() {
         table = GradeSystemTable.sharedInstance
+        userDefaults = UserDefaults(suiteName: "UnitTest")
+        LocalStorageImpl(userDefaults: userDefaults).injectToApp()
 
         super.setUp()
     }
 
     override func tearDown() {
+        userDefaults.removePersistentDomain(forName: "UnitTest")
         super.tearDown()
     }
 

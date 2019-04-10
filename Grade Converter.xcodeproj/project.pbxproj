@@ -23,7 +23,6 @@
 		DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3C41B3BBDE50016F707 /* EditTableViewCell.swift */; };
 		DB5DC3C71B3BBDE50016F707 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5DC3C51B3BBDE50016F707 /* EditTableViewCell.xib */; };
 		DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */; };
-		DB711BEB1C499D300000C82B /* Grade_ConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */; };
 		DB711BF21C499D600000C82B /* FastlaneSnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */; };
 		DB711BF41C499D770000C82B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB711BF31C499D770000C82B /* SnapshotHelper.swift */; };
 		DB79CB911B640B7D000024A5 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB79CB901B640B7D000024A5 /* UILabel+Additions.swift */; };
@@ -89,11 +88,31 @@
 		DB9A8FA01C9E3D1B005803F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB940B4A1B3615F400E996F8 /* Images.xcassets */; };
 		DB9A8FA71C9E3D6E005803F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB9A8F451C9E3905005803F6 /* InfoPlist.strings */; };
 		DB9A8FA81C9E3D8B005803F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB9A8F491C9E390D005803F6 /* InfoPlist.strings */; };
+		DBA6AA9421EA19E200C1E3BB /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9321EA19E200C1E3BB /* LocalStorage.swift */; };
+		DBA6AA9621EA19F600C1E3BB /* LocalStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9521EA19F600C1E3BB /* LocalStorageImpl.swift */; };
+		DBA6AA9721EA19F600C1E3BB /* LocalStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9521EA19F600C1E3BB /* LocalStorageImpl.swift */; };
+		DBA6AA9821EA19FA00C1E3BB /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9321EA19E200C1E3BB /* LocalStorage.swift */; };
+		DBA6AA9B21EA203200C1E3BB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */; };
+		DBA6AA9C21EA203200C1E3BB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */; };
+		DBA6AA9F21EF6FBD00C1E3BB /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */; };
+		DBA6AAA021EF6FBD00C1E3BB /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */; };
+		DBA6AAA221EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */; };
+		DBA6AAA321EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */; };
+		DBA6AAA621EFA50500C1E3BB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */; };
+		DBA6AAA721EFA50500C1E3BB /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */; };
+		DBA6AAA821EFA54200C1E3BB /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */; };
+		DBA6AAA921EFA54200C1E3BB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */; };
+		DBA6AAAB21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */; };
+		DBA6AAAC21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */; };
+		DBA6AAAE21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAAD21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift */; };
+		DBA6AAAF21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6AAAD21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift */; };
 		DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D201B3FCE8000F9E40F /* Constants.swift */; };
 		DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */; };
 		DBD8DFDB1B56574D0078111B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFDD1B56574D0078111B /* AddTableViewCell.xib */; };
 		DBD8DFE41B56C08F0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
 		DBD8DFE81B56C11E0078111B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBD8DFE61B56C08F0078111B /* Localizable.strings */; };
+		DBDEF84721F0A4D800C22127 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEF84621F0A4D800C22127 /* MainViewModelTests.swift */; };
+		DBDEF84921F0CFBE00C22127 /* EditViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEF84821F0CFBE00C22127 /* EditViewModelTests.swift */; };
 		DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8361B6807A500EF244F /* Fabric.framework */; };
 		DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFAD8371B6807A500EF244F /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -105,13 +124,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = DB940B3D1B3615F400E996F8;
 			remoteInfo = "Grade Converter";
-		};
-		DB8BEF6D1EF8D532009F3FBE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB940B361B3615F400E996F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB9A8F7D1C9E3D1B005803F6;
-			remoteInfo = "Grade Converter Pro";
 		};
 		DB940B541B3615F400E996F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -148,7 +160,6 @@
 		DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshotUITests.swift; sourceTree = "<group>"; };
 		DB711BE81C499D300000C82B /* Grade ConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Grade ConverterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade_ConverterUITests.swift; sourceTree = "<group>"; };
 		DB711BEC1C499D300000C82B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB711BF31C499D770000C82B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DB76478D1B5311D900BF01E9 /* Grade Converter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Grade Converter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -186,12 +197,23 @@
 		DB9A8F481C9E390D005803F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB9A8F4A1C9E390E005803F6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB9A8FA51C9E3D1B005803F6 /* Grade Converter Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grade Converter Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBA6AA9321EA19E200C1E3BB /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		DBA6AA9521EA19F600C1E3BB /* LocalStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageImpl.swift; sourceTree = "<group>"; };
+		DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+DataSource.swift"; sourceTree = "<group>"; };
+		DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
+		DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditViewController+DataSource.swift"; sourceTree = "<group>"; };
+		DBA6AAAD21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+InfoViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		DBD38D201B3FCE8000F9E40F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBD38D261B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemiModalPresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
 		DBD8DFDC1B56574D0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTableViewCell.xib; sourceTree = "<group>"; };
 		DBD8DFE11B56575F0078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AddTableViewCell.xib; sourceTree = "<group>"; };
 		DBD8DFE51B56C08F0078111B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBD8DFE71B56C0950078111B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DBDEF84621F0A4D800C22127 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		DBDEF84821F0CFBE00C22127 /* EditViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewModelTests.swift; sourceTree = "<group>"; };
 		DBFAD8361B6807A500EF244F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		DBFAD8371B6807A500EF244F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grade_Converter_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +232,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA6AAA621EFA50500C1E3BB /* RxDataSources.framework in Frameworks */,
+				DBA6AAA721EFA50500C1E3BB /* Differentiator.framework in Frameworks */,
 				DB8BEF781EFA486C009F3FBE /* RxCocoa.framework in Frameworks */,
 				DB8BEF791EFA486C009F3FBE /* RxSwift.framework in Frameworks */,
 				DB8BEF7A1EFA486C009F3FBE /* Alamofire.framework in Frameworks */,
@@ -238,6 +262,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA6AAA821EFA54200C1E3BB /* Differentiator.framework in Frameworks */,
+				DBA6AAA921EFA54200C1E3BB /* RxDataSources.framework in Frameworks */,
 				DB8BEF7E1EFA4989009F3FBE /* RxCocoa.framework in Frameworks */,
 				DB8BEF7F1EFA4989009F3FBE /* RxSwift.framework in Frameworks */,
 				DB8BEF801EFA4989009F3FBE /* Alamofire.framework in Frameworks */,
@@ -283,10 +309,10 @@
 		DB3DF5891B4233BE00141E47 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
+				DBA6AA9D21EF6F9D00C1E3BB /* EditViewController */,
+				DBA6AA9921EA1FFA00C1E3BB /* MainViewController */,
 				DB79CB9F1B655C4D000024A5 /* InfoViewController.swift */,
 				DB940B471B3615F400E996F8 /* Main.storyboard */,
-				DB940B451B3615F400E996F8 /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -294,6 +320,7 @@
 		DB3DF58A1B4233FC00141E47 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DBA6AA9221EA19CA00C1E3BB /* LocalStorage */,
 				DBD38D201B3FCE8000F9E40F /* Constants.swift */,
 				DB940B6A1B364F6C00E996F8 /* GradeSystemTable.swift */,
 				DB05E9C81B67330F00577CCD /* Localization.swift */,
@@ -327,7 +354,6 @@
 			isa = PBXGroup;
 			children = (
 				DB711BE31C499D1E0000C82B /* FastlaneSnapshotUITests.swift */,
-				DB711BEA1C499D300000C82B /* Grade_ConverterUITests.swift */,
 				DB711BEC1C499D300000C82B /* Info.plist */,
 				DB711BF31C499D770000C82B /* SnapshotHelper.swift */,
 			);
@@ -346,6 +372,8 @@
 		DB8BEF731EFA486B009F3FBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBA6AAA521EFA50500C1E3BB /* Differentiator.framework */,
+				DBA6AAA421EFA50500C1E3BB /* RxDataSources.framework */,
 				DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */,
 				DB8BEF751EFA486C009F3FBE /* RxSwift.framework */,
 				DB8BEF761EFA486C009F3FBE /* Alamofire.framework */,
@@ -417,10 +445,12 @@
 		DB940B561B3615F400E996F8 /* Grade ConverterTests */ = {
 			isa = PBXGroup;
 			children = (
+				DBDEF84821F0CFBE00C22127 /* EditViewModelTests.swift */,
 				DB940B571B3615F400E996F8 /* Supporting Files */,
 				DB940B6C1B3659E200E996F8 /* GradeSystemTableTest.swift */,
 				DB940B591B3615F400E996F8 /* Grade_ConverterTests.swift */,
 				DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */,
+				DBDEF84621F0A4D800C22127 /* MainViewModelTests.swift */,
 			);
 			path = "Grade ConverterTests";
 			sourceTree = "<group>";
@@ -459,6 +489,36 @@
 			path = Pro;
 			sourceTree = "<group>";
 		};
+		DBA6AA9221EA19CA00C1E3BB /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				DBA6AA9321EA19E200C1E3BB /* LocalStorage.swift */,
+				DBA6AA9521EA19F600C1E3BB /* LocalStorageImpl.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		DBA6AA9921EA1FFA00C1E3BB /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB940B451B3615F400E996F8 /* MainViewController.swift */,
+				DBA6AA9A21EA203200C1E3BB /* MainViewModel.swift */,
+				DBA6AAA121EF95DF00C1E3BB /* MainViewController+DataSource.swift */,
+				DBA6AAAD21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		DBA6AA9D21EF6F9D00C1E3BB /* EditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DB5DC3C21B3BAECF0016F707 /* EditViewController.swift */,
+				DBA6AA9E21EF6FBD00C1E3BB /* EditViewModel.swift */,
+				DBA6AAAA21EFEC4B00C1E3BB /* EditViewController+DataSource.swift */,
+			);
+			path = EditViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,7 +534,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DB8BEF6E1EF8D532009F3FBE /* PBXTargetDependency */,
 				DB0B674E21444D34000056DF /* PBXTargetDependency */,
 			);
 			name = "Grade ConverterUITests";
@@ -769,13 +828,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		DB8BEF7D1EFA491B009F3FBE /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -787,13 +848,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		DB8BEF821EFA4B11009F3FBE /* Swiftformat */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -858,7 +921,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB711BEB1C499D300000C82B /* Grade_ConverterUITests.swift in Sources */,
 				DB711BF21C499D600000C82B /* FastlaneSnapshotUITests.swift in Sources */,
 				DB711BF41C499D770000C82B /* SnapshotHelper.swift in Sources */,
 			);
@@ -869,23 +931,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB05E9C91B67330F00577CCD /* Localization.swift in Sources */,
+				DBA6AAAB21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */,
 				DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */,
 				DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */,
+				DBA6AAAE21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift in Sources */,
 				DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */,
 				DB79CB911B640B7D000024A5 /* UILabel+Additions.swift in Sources */,
 				DB940B6B1B364F6C00E996F8 /* GradeSystemTable.swift in Sources */,
 				DB79CBA01B655C4D000024A5 /* InfoViewController.swift in Sources */,
 				DB79CBA41B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift in Sources */,
+				DBA6AA9F21EF6FBD00C1E3BB /* EditViewModel.swift in Sources */,
 				DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */,
 				DB79CBA21B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */,
 				DB5DC3C61B3BBDE50016F707 /* EditTableViewCell.swift in Sources */,
 				DB5DC3C01B3BAB890016F707 /* AddTableViewCell.swift in Sources */,
 				DBD38D271B41063A00F9E40F /* SemiModalPresentationAnimatingTransitioning.swift in Sources */,
+				DBA6AAA221EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */,
 				DB940B651B361C3B00E996F8 /* MainTableViewCell.swift in Sources */,
+				DBA6AA9B21EA203200C1E3BB /* MainViewModel.swift in Sources */,
 				DB940B441B3615F400E996F8 /* AppDelegate.swift in Sources */,
 				DB5DC3C31B3BAECF0016F707 /* EditViewController.swift in Sources */,
 				DB5DC3CB1B3BE9230016F707 /* UIColor+Additions.swift in Sources */,
+				DBA6AA9421EA19E200C1E3BB /* LocalStorage.swift in Sources */,
 				DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */,
+				DBA6AA9621EA19F600C1E3BB /* LocalStorageImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,9 +962,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBDEF84921F0CFBE00C22127 /* EditViewModelTests.swift in Sources */,
 				DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */,
 				DB940B5A1B3615F400E996F8 /* Grade_ConverterTests.swift in Sources */,
 				DB940B6D1B3659E200E996F8 /* GradeSystemTableTest.swift in Sources */,
+				DBDEF84721F0A4D800C22127 /* MainViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,18 +974,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA6AA9721EA19F600C1E3BB /* LocalStorageImpl.swift in Sources */,
+				DBA6AAAC21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */,
 				DB9A8F7F1C9E3D1B005803F6 /* Localization.swift in Sources */,
 				DB9A8F801C9E3D1B005803F6 /* Constants.swift in Sources */,
+				DBA6AAAF21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift in Sources */,
 				DB9A8F811C9E3D1B005803F6 /* UIView+Additions.swift in Sources */,
 				DB9A8F821C9E3D1B005803F6 /* MainViewController.swift in Sources */,
 				DB9A8F831C9E3D1B005803F6 /* UILabel+Additions.swift in Sources */,
 				DB9A8F841C9E3D1B005803F6 /* GradeSystemTable.swift in Sources */,
 				DB9A8F851C9E3D1B005803F6 /* InfoViewController.swift in Sources */,
+				DBA6AAA021EF6FBD00C1E3BB /* EditViewModel.swift in Sources */,
 				DB9A8F861C9E3D1B005803F6 /* PresentationAnimatingTransitioning.swift in Sources */,
 				DB9A8F871C9E3D1B005803F6 /* NSUserDefaults+Additions.swift in Sources */,
 				DB9A8F881C9E3D1B005803F6 /* FormSheetPresentationAnimatingTransitioning.swift in Sources */,
+				DBA6AA9821EA19FA00C1E3BB /* LocalStorage.swift in Sources */,
 				DB9A8F891C9E3D1B005803F6 /* EditTableViewCell.swift in Sources */,
+				DBA6AAA321EF95DF00C1E3BB /* MainViewController+DataSource.swift in Sources */,
 				DB9A8F8A1C9E3D1B005803F6 /* AddTableViewCell.swift in Sources */,
+				DBA6AA9C21EA203200C1E3BB /* MainViewModel.swift in Sources */,
 				DB9A8F8B1C9E3D1B005803F6 /* SemiModalPresentationAnimatingTransitioning.swift in Sources */,
 				DB9A8F8C1C9E3D1B005803F6 /* MainTableViewCell.swift in Sources */,
 				DB9A8F8D1C9E3D1B005803F6 /* AppDelegate.swift in Sources */,
@@ -931,11 +1009,6 @@
 			isa = PBXTargetDependency;
 			target = DB940B3D1B3615F400E996F8 /* Grade Converter */;
 			targetProxy = DB0B674D21444D34000056DF /* PBXContainerItemProxy */;
-		};
-		DB8BEF6E1EF8D532009F3FBE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DB9A8F7D1C9E3D1B005803F6 /* Grade Converter Pro */;
-			targetProxy = DB8BEF6D1EF8D532009F3FBE /* PBXContainerItemProxy */;
 		};
 		DB940B551B3615F400E996F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

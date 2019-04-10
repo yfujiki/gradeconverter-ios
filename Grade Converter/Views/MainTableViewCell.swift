@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainTableViewCellDelegate: NSObjectProtocol {
     func didDeleteCell(_ cell: MainTableViewCell)
+    func didSelectNewIndexes(_ indexes: [Int], on gradeSystem: GradeSystem, cell: MainTableViewCell)
 }
 
 class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
@@ -30,7 +31,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var gradeSystem: GradeSystem?
     var indexes: [Int]?
     var cardColor: UIColor?
-    var delegate: MainTableViewCellDelegate?
+    weak var delegate: MainTableViewCellDelegate?
     var editMode: Bool = false
     fileprivate var scrolling: Bool = false
 
@@ -213,6 +214,11 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     // MARK: - Edit mode
     fileprivate func startJiggling() {
+        // The jiggle animation is going to block UI Test.
+        if ProcessInfo.processInfo.environment.index(forKey: "UITEST") != nil {
+            return
+        }
+
         let leftWobble = CGAffineTransform(rotationAngle: -kAnimationRotateDeg)
         let rightWobble = CGAffineTransform(rotationAngle: kAnimationRotateDeg)
 
@@ -261,8 +267,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     fileprivate func didSelectNewGrade() {
-        let userInfo = [kNewIndexesKey: indexes ?? []]
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kGradeSelectedNotification), object: self, userInfo: userInfo)
+        delegate?.didSelectNewIndexes(indexes ?? [], on: gradeSystem!, cell: self)
     }
 
     fileprivate func updateButtons() {
@@ -285,7 +290,7 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     fileprivate func updateBorder() {
-        if !editMode && gradeSystem?.isBaseSystem == true {
+        if !editMode && SystemLocalStorage().isBaseSystem(gradeSystem) {
             cardView.layer.masksToBounds = false
             cardView.layer.shadowColor = UIColor.myLightAquaColor().cgColor
             cardView.layer.shadowOffset = CGSize.zero
