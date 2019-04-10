@@ -128,6 +128,33 @@ platform :ios do
       add_to_search_list: true
     )
   end
+
+  ####### Testing #######
+  desc "Runs all the tests"
+  lane :tests do
+    unit_tests
+    ui_tests
+  end
+
+  desc "Runs all unit tests"
+  lane :unit_tests do
+    scan(
+      workspace: "Grade Converter.xcworkspace",
+      scheme: "Unit Test",
+      devices: ["iPhone Xs"],
+      clean: true
+    )
+  end
+
+  desc "Runs all ui tests"
+  lane :ui_tests do
+    scan(
+      workspace: "Grade Converter.xcworkspace",
+      scheme: "UI Test",
+      devices: ["iPhone Xs Max", "iPhone X", "iPhone 8 Plus", "iPhone 7", "iPhone SE"],
+      clean: true
+    )
+  end
 end
 
 

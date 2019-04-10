@@ -43,6 +43,21 @@ Create archive for App Store/TestFlight
 fastlane ios certificates
 ```
 Installs the certificates and profiles locally
+### ios tests
+```
+fastlane ios tests
+```
+Runs all the tests
+### ios unit_tests
+```
+fastlane ios unit_tests
+```
+Runs all unit tests
+### ios ui_tests
+```
+fastlane ios ui_tests
+```
+Runs all ui tests
 
 ----
 
