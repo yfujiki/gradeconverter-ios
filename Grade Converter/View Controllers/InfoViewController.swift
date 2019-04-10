@@ -9,14 +9,22 @@
 import UIKit
 import Firebase
 
+protocol InfoViewControllerDelegate: class {
+    func composeEmail()
+}
+
 class InfoViewController: UIViewController {
+
+    weak var delegate: InfoViewControllerDelegate?
 
     @IBAction func closeButtonTapped(_: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func emailbuttonTapped(_: AnyObject) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kEmailComposingNotification), object: nil)
+        dismiss(animated: true) {
+            self.delegate?.composeEmail()
+        }
     }
 
     override func viewDidLoad() {
