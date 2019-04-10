@@ -23,7 +23,7 @@ class EditTableViewCell: UITableViewCell {
     }
 
     var gradeSystem: GradeSystem?
-    var delegate: EditTableViewCellDelegate?
+    weak var delegate: EditTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
