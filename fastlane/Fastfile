@@ -24,18 +24,34 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
-    
+
     # increment_build_number
 
     # xctool # run the tests of your app
   end
 
-  desc "Runs all the tests"
-  lane :test do
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+
+  ####### Screenshots #######
+  desc "Get all screenshots"
+  lane :screenshots do
     snapshot
   end
 
+  ####### Deployment #######
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do |options|
@@ -72,19 +88,31 @@ platform :ios do
     # You can define as many lanes as you want
   end
 
-  after_all do |lane|
-    # This block is called, only if the executed lane was successful
-    
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
+  ####### Testing #######
+  desc "Runs all the tests"
+  lane :tests do
+    unit_tests
+    ui_tests
   end
 
-  error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+  desc "Runs all unit tests"
+  lane :unit_tests do
+    scan(
+      workspace: "Grade Converter.xcworkspace",
+      scheme: "Unit Test",
+      devices: ["iPhone Xs"],
+      clean: true
+    )
+  end
+
+  desc "Runs all ui tests"
+  lane :ui_tests do
+    scan(
+      workspace: "Grade Converter.xcworkspace",
+      scheme: "UI Test",
+      devices: ["iPhone Xs Max", "iPhone X", "iPhone 8 Plus", "iPhone 7", "iPhone SE"],
+      clean: true
+    )
   end
 end
 
