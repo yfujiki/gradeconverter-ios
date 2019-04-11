@@ -3,3 +3,10 @@ osx_image: xcode10.2
 xcode_workspace: Grade Converter.xcworkspace
 xcode_scheme: Grade Converter
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone Xs
+
+addons:
+  homebrew:
+    brewfile: true
+
+before_script:
+  - carthage bootstrap --platform ios --no-use-binaries --cache-builds
