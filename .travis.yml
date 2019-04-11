@@ -4,6 +4,9 @@ xcode_workspace: Grade Converter.xcworkspace
 xcode_scheme: Grade Converter
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone Xs
 
+cache:
+  directories: ["Carthage"]
+
 addons:
   homebrew:
     brewfile: true
