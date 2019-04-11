@@ -10,3 +10,7 @@ addons:
 
 before_script:
   - carthage bootstrap --platform ios --no-use-binaries --cache-builds
+
+script:
+  - set -o pipefail
+  - fastlane tests
