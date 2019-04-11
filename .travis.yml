@@ -15,5 +15,5 @@ before_script:
   - carthage bootstrap --platform ios --no-use-binaries --cache-builds
 
 script:
-  - set -o pipefail
+  - set -e -o pipefail
   - fastlane tests
