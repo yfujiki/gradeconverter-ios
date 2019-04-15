@@ -18,16 +18,15 @@ before_install:
 jobs:
   include:
     - stage: tests
-        name: "Unit/UI Tests"
-        script:
-          - set -e -o pipefail
-          - fastlane tests
+      name: "Unit/UI Tests"
+      script:
+        - set -e -o pipefail
+        - fastlane tests
     - stage: deploy
-        name: "Deploy"
-        if:
-          (branch = master) AND (tag IS present)
-        script:
-          - "security set-key-partition-list -S apple-tool:,apple: -s -k ${KEYCHAIN_PASSWORD} ${KEYCHAIN_NAME}"
-          - fastlane match
-          - set -e -o pipefail
-          - fastlane beta
+      name: "Deploy"
+      if: (branch = master) AND (tag IS present)
+      script:
+        - "security set-key-partition-list -S apple-tool:,apple: -s -k ${KEYCHAIN_PASSWORD} ${KEYCHAIN_NAME}"
+        - fastlane match
+        - set -e -o pipefail
+        - fastlane beta
