@@ -648,10 +648,9 @@
 			};
 			buildConfigurationList = DB940B391B3615F400E996F8 /* Build configuration list for PBXProject "Grade Converter" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				ja,
