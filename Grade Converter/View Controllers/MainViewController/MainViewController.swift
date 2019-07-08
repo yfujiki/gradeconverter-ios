@@ -82,19 +82,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
-
-        GradeSystemTable.sharedInstance.updated.subscribe(
-            onNext: { _ in
-                let title = NSLocalizedString("The grade table is updated. Data will reload.", comment: "Title for update alert")
-                let ok = OK()
-                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                let action = UIAlertAction(title: ok, style: .cancel, handler: { _ in
-                    SystemLocalStorage().setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
-                })
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
-            }
-        ).disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {
