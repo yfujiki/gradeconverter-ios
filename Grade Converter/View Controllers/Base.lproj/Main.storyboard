@@ -134,10 +134,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_bg" translatesAutoresizingMaskIntoConstraints="NO" id="2wq-fI-NPz">
-                                <rect key="frame" x="0.0" y="44" width="375" height="1920"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-Ew-kLz">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1900"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
@@ -147,13 +147,14 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="Qok-4t-xap" secondAttribute="leading" id="Di8-UJ-ha5"/>
-                            <constraint firstItem="Qok-4t-xap" firstAttribute="trailing" secondItem="2wq-fI-NPz" secondAttribute="trailing" id="MBg-cR-zqR"/>
-                            <constraint firstItem="2wq-fI-NPz" firstAttribute="top" secondItem="Qok-4t-xap" secondAttribute="top" constant="-20" id="QaC-RC-YyE"/>
-                            <constraint firstItem="Qok-4t-xap" firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="UtP-k3-qls"/>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="Qok-4t-xap" secondAttribute="top" id="sUF-V6-vSC"/>
-                            <constraint firstItem="2wq-fI-NPz" firstAttribute="leading" secondItem="Qok-4t-xap" secondAttribute="leading" id="ukg-X8-gPo"/>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="height" secondItem="2wq-fI-NPz" secondAttribute="height" constant="-20" id="wwI-6d-FBq"/>
+                            <constraint firstItem="2wq-fI-NPz" firstAttribute="bottom" secondItem="sDN-fM-NiZ" secondAttribute="bottom" id="Qbp-tc-GK7"/>
+                            <constraint firstItem="2wq-fI-NPz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="WhD-9e-phM"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="Qok-4t-xap" secondAttribute="leading" id="ZQg-Lb-oLS"/>
+                            <constraint firstAttribute="trailing" secondItem="2wq-fI-NPz" secondAttribute="trailing" id="asU-Px-OaO"/>
+                            <constraint firstAttribute="top" secondItem="2wq-fI-NPz" secondAttribute="top" constant="-44" id="gPX-iR-Jdw"/>
+                            <constraint firstItem="Qok-4t-xap" firstAttribute="bottom" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="iSD-kJ-vRr"/>
+                            <constraint firstItem="Qok-4t-xap" firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="jIP-hl-HZv"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="Qok-4t-xap" secondAttribute="top" id="zfd-kM-cc5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qok-4t-xap"/>
                     </view>
@@ -172,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrk-wV-eWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="402"/>
+            <point key="canvasLocation" x="2540" y="401.64917541229386"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q7e-7g-va6">
