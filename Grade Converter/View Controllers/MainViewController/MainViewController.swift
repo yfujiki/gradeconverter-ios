@@ -79,6 +79,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
         tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         tableView.register(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
+        tableView.contentInsetAdjustmentBehavior = .never
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
