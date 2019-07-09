@@ -229,7 +229,7 @@ class GradeSystemTable {
     fileprivate func readContentsFromFile() {
         do {
             let contents = try NSString(contentsOfFile: type(of: self).kFilePath, encoding: String.Encoding.utf8.rawValue)
-            let lines = contents.components(separatedBy: "\n") as [String]
+            let lines = contents.components(separatedBy: "\r\n") as [String]
 
             let names = lines[0].components(separatedBy: ",") as [String]
             let categories = lines[1].components(separatedBy: ",") as [String]
