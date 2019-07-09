@@ -16,6 +16,7 @@
 		DB31CF761F03061500E7837E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB31CF751F03061500E7837E /* GoogleService-Info.plist */; };
 		DB3DF58E1B4235C900141E47 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF58D1B4235C900141E47 /* PresentationController.swift */; };
 		DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */; };
+		DB5BEF3A22D4E7CD00E221DD /* UIDevice+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5BEF3922D4E7CD00E221DD /* UIDevice+Additions.swift */; };
 		DB5DC3BA1B3B968D0016F707 /* NSUserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */; };
 		DB5DC3BD1B3B96E70016F707 /* NSUserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */; };
 		DB5DC3C01B3BAB890016F707 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */; };
@@ -151,6 +152,7 @@
 		DB31CF751F03061500E7837E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3DF58D1B4235C900141E47 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		DB5BEF3922D4E7CD00E221DD /* UIDevice+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsTest.swift; sourceTree = "<group>"; };
 		DB5DC3BE1B3BAB890016F707 /* AddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				DB5DC3CA1B3BE9230016F707 /* UIColor+Additions.swift */,
 				DB79CB901B640B7D000024A5 /* UILabel+Additions.swift */,
 				DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */,
+				DB5BEF3922D4E7CD00E221DD /* UIDevice+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 				DB05E9C91B67330F00577CCD /* Localization.swift in Sources */,
 				DBA6AAAB21EFEC4B00C1E3BB /* EditViewController+DataSource.swift in Sources */,
 				DBD38D211B3FCE8000F9E40F /* Constants.swift in Sources */,
+				DB5BEF3A22D4E7CD00E221DD /* UIDevice+Additions.swift in Sources */,
 				DB3DF5BE1B439D5A00141E47 /* UIView+Additions.swift in Sources */,
 				DBA6AAAE21EFF1DC00C1E3BB /* MainViewController+InfoViewControllerDelegate.swift in Sources */,
 				DB940B461B3615F400E996F8 /* MainViewController.swift in Sources */,
