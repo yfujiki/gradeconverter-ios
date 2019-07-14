@@ -61,6 +61,11 @@
                BlueprintName = "Grade ConverterUITests"
                ReferencedContainer = "container:Grade Converter.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FastlaneSnapshotUITests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

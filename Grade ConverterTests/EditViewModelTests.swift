@@ -34,14 +34,18 @@ class EditViewModelTests: XCTestCase {
     }
 
     func testAddGradeSystems() {
+        let exp = expectation(description: "Selecting should remove item from editModels")
+
         let gradeSystem = GradeSystemTable.sharedInstance.gradeSystemForName("Brazil", category: "Boulder")!
 
         let disposable = editViewModel.editModels
             .skip(1)
             .subscribe { sections in
-                let initialCount = GradeSystemTable.sharedInstance.gradeSystems().count - kNSUserDefaultsDefaultGradeSystem.count
-                let items = sections.element!.first!.items
-                XCTAssertEqual(initialCount - 1, items.count)
+                let initialCountToSelect = GradeSystemTable.sharedInstance.gradeSystems().count - kNSUserDefaultsDefaultGradeSystem.count
+                let itemsToSelect = sections.element!.first!.items
+                XCTAssertEqual(initialCountToSelect - 1, itemsToSelect.count)
+
+                exp.fulfill()
         }
 
         _ = compositeDisposable.insert(disposable)
@@ -50,5 +54,8 @@ class EditViewModelTests: XCTestCase {
 
         XCTAssertEqual(kNSUserDefaultsDefaultGradeSystem + [gradeSystem],
                        SystemLocalStorage().selectedGradeSystems())
+
+        let result = XCTWaiter.wait(for: [exp], timeout: 1)
+        XCTAssertEqual(.completed, result)
     }
 }

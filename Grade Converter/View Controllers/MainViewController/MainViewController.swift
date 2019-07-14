@@ -16,7 +16,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
-    fileprivate var bannerViewHeightConstraint: NSLayoutConstraint?
 
     fileprivate lazy var viewModel = {
         MainViewModel()
@@ -79,22 +78,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
         tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         tableView.register(UINib(nibName: "AddTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTableViewCell")
+        tableView.contentInsetAdjustmentBehavior = .never
 
         imageView.addSubview(blurEffectView)
         setConstraintsForBlurEffectView()
-
-        GradeSystemTable.sharedInstance.updated.subscribe(
-            onNext: { _ in
-                let title = NSLocalizedString("The grade table is updated. Data will reload.", comment: "Title for update alert")
-                let ok = OK()
-                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                let action = UIAlertAction(title: ok, style: .cancel, handler: { _ in
-                    SystemLocalStorage().setCurrentIndexes(kNSUserDefaultsDefaultIndexes)
-                })
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
-            }
-        ).disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -128,9 +115,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
 
     fileprivate func setConstraintsForBlurEffectView() {
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["imageView": imageView, "blurEffectView": blurEffectView] as [String: UIView]
-        imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[blurEffectView]|", options: .alignAllCenterX, metrics: nil, views: views))
-        imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[blurEffectView]|", options: .alignAllCenterY, metrics: nil, views: views))
+
+        NSLayoutConstraint.activate([
+            blurEffectView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            blurEffectView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            blurEffectView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            blurEffectView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+        ])
     }
 
     // MARK: - Segue

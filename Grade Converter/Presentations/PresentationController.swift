@@ -58,9 +58,13 @@ class PresentationController: UIPresentationController {
 
     fileprivate func setConstraintsForDimmingViewInContainerView(_ containerView: UIView) {
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
-        let views = ["containerView": containerView, "dimmingView": dimmingView]
-        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|", options: .alignAllCenterX, metrics: nil, views: views))
-        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|", options: .alignAllCenterY, metrics: nil, views: views))
+
+        NSLayoutConstraint.activate([
+            dimmingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            dimmingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            dimmingView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            dimmingView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+        ])
     }
 
     @objc func dismissPresentedViewController(_: AnyObject) {

@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,34 +18,42 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-HI-ybK" userLabel="Card View">
-                        <rect key="frame" x="8" y="4" width="304" height="119.5"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-1E-7Qb">
-                                <rect key="frame" x="117" y="46.5" width="70" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="4Dp-1E-7Qb" secondAttribute="centerY" id="qhG-NO-mjr"/>
-                            <constraint firstAttribute="centerX" secondItem="4Dp-1E-7Qb" secondAttribute="centerX" id="vum-NN-gzm"/>
-                        </constraints>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-HI-ybK" userLabel="Upper Card View">
+                        <rect key="frame" x="8" y="4" width="304" height="60"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ac-ki-HPL" userLabel="Lower Card View">
+                        <rect key="frame" x="8" y="64" width="304" height="59.5"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-1E-7Qb">
+                        <rect key="frame" x="125.5" y="50.5" width="69" height="27"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="4Dp-1E-7Qb" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="3I1-Ya-uFG"/>
+                    <constraint firstItem="1ac-ki-HPL" firstAttribute="trailing" secondItem="xHG-HI-ybK" secondAttribute="trailing" id="947-Fc-0t7"/>
                     <constraint firstItem="xHG-HI-ybK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="QUS-4g-aGo"/>
-                    <constraint firstAttribute="bottom" secondItem="xHG-HI-ybK" secondAttribute="bottom" constant="4" id="mJb-YO-WX8"/>
+                    <constraint firstAttribute="bottom" secondItem="1ac-ki-HPL" secondAttribute="bottom" constant="4" id="Toq-uZ-Alp"/>
+                    <constraint firstItem="1ac-ki-HPL" firstAttribute="top" secondItem="xHG-HI-ybK" secondAttribute="bottom" id="ZVp-f9-EE3"/>
+                    <constraint firstItem="1ac-ki-HPL" firstAttribute="height" secondItem="xHG-HI-ybK" secondAttribute="height" id="eTf-N9-lrT"/>
                     <constraint firstItem="xHG-HI-ybK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="q3e-hh-dFI"/>
+                    <constraint firstItem="4Dp-1E-7Qb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wbx-tc-Xlz"/>
+                    <constraint firstItem="1ac-ki-HPL" firstAttribute="leading" secondItem="xHG-HI-ybK" secondAttribute="leading" id="ySD-ig-jrn"/>
                     <constraint firstAttribute="trailing" secondItem="xHG-HI-ybK" secondAttribute="trailing" constant="8" id="zef-wR-eeQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cardView" destination="xHG-HI-ybK" id="CTJ-n5-sQf"/>
                 <outlet property="label" destination="4Dp-1E-7Qb" id="qK3-sB-tWP"/>
+                <outlet property="lowerCardLeadingConstraint" destination="ySD-ig-jrn" id="MvY-Dz-W34"/>
+                <outlet property="lowerCardTrailingConstraint" destination="947-Fc-0t7" id="P08-HA-h9P"/>
+                <outlet property="lowerCardView" destination="1ac-ki-HPL" id="iHN-pz-vxW"/>
+                <outlet property="upperCardView" destination="xHG-HI-ybK" id="Elm-Fr-h6U"/>
             </connections>
+            <point key="canvasLocation" x="24.637681159420293" y="51.5625"/>
         </tableViewCell>
     </objects>
 </document>
