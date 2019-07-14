@@ -80,7 +80,7 @@ class GradeSystemTableTest: XCTestCase {
         let yosemiteGrade = table.gradeSystemForName("Yosemite Decimal System", category: "Sports")!
 
         XCTAssertEqual("5.1", yosemiteGrade.gradeAtIndex(0, higher: false), "Lowest grade should be 5.1.")
-        XCTAssertEqual("5.15c", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1, higher: true), "Highest grade should be 5.15c.")
+        XCTAssertEqual("5.15d", yosemiteGrade.gradeAtIndex(yosemiteGrade.grades.count - 1, higher: true), "Highest grade should be 5.15d.")
     }
 
     func testGradeAtIndexes() {
@@ -112,7 +112,7 @@ class GradeSystemTableTest: XCTestCase {
         XCTAssertEqual("V4", huecoGrade.higherGradeFromIndexes([21, 24])!, "Higher grade of V3-V4 should be V4.")
 
         XCTAssertEqual("V3", huecoGrade.lowerGradeFromIndexes([21, 25])!, "Lower grade of V3-V4 should be V3.")
-        XCTAssertEqual("V5", huecoGrade.higherGradeFromIndexes([21, 25])!, "Higher grade of V3-V4 should be V4.")
+        XCTAssertEqual("V4", huecoGrade.higherGradeFromIndexes([21, 25])!, "Higher grade of V3-V4 should be V4.")
     }
 
     func testGradeSystemsForLocale() {
