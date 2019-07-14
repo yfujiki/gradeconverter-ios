@@ -21,6 +21,8 @@ class AddTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var upperCardView: UIView!
     @IBOutlet fileprivate weak var lowerCardView: UIView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var lowerCardLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lowerCardTrailingConstraint: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,9 +33,17 @@ class AddTableViewCell: UITableViewCell {
         if UIDevice.current.hasNotch {
             lowerCardView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             lowerCardView.layer.cornerRadius = 36
+
+            // To fix mysteryous 1 px offset on the notch devices on the bottom.
+            // It may be fixed in the later OS and this may byte us back.
+            lowerCardLeadingConstraint.constant = -1
+            lowerCardTrailingConstraint.constant = 1
         } else {
             lowerCardView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             lowerCardView.layer.cornerRadius = 4
+
+            lowerCardLeadingConstraint.constant = 0
+            lowerCardTrailingConstraint.constant = 0
         }
 
         [upperCardView, lowerCardView].forEach { cardView in

@@ -48,6 +48,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="label" destination="4Dp-1E-7Qb" id="qK3-sB-tWP"/>
+                <outlet property="lowerCardLeadingConstraint" destination="ySD-ig-jrn" id="MvY-Dz-W34"/>
+                <outlet property="lowerCardTrailingConstraint" destination="947-Fc-0t7" id="P08-HA-h9P"/>
                 <outlet property="lowerCardView" destination="1ac-ki-HPL" id="iHN-pz-vxW"/>
                 <outlet property="upperCardView" destination="xHG-HI-ybK" id="Elm-Fr-h6U"/>
             </connections>
