@@ -16,11 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios test
+### ios screenshots
 ```
-fastlane ios test
+fastlane ios screenshots
 ```
-Runs all the tests
+Get all screenshots
 ### ios beta
 ```
 fastlane ios beta
@@ -38,11 +38,6 @@ Deploy a new version to the App Store
 fastlane ios archive
 ```
 Create archive for App Store/TestFlight
-### ios certificates
-```
-fastlane ios certificates
-```
-Installs the certificates and profiles locally
 ### ios tests
 ```
 fastlane ios tests
