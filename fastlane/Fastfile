@@ -61,7 +61,7 @@ platform :ios do
     scheme = (target == "free") ? "Grade Converter" : "Grade Converter Pro"
     sigh(app_identifier: app_id)
     gym(scheme: scheme)
-    pilot(app_identifier: app_id)
+    pilot(app_identifier: app_id, team_id: '1295261')
   end
 
   desc "Deploy a new version to the App Store"
@@ -73,7 +73,7 @@ platform :ios do
     scheme = (target == "free") ? "Grade Converter" : "Grade Converter Pro"
     sigh(app_identifier: app_id)
     gym(scheme: scheme)
-    deliver(force: true)
+    deliver(force: true, team_id: '1295261')
     # frameit
   end
 

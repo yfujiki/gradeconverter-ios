@@ -212,21 +212,24 @@ class GradeSystemTable {
     fileprivate func moveFromBundleToDocument() {
         let fileManager = FileManager()
         if fileManager.fileExists(atPath: GradeSystemTable.kFilePath) {
-            return
+            do {
+                try fileManager.removeItem(atPath: GradeSystemTable.kFilePath)
+            } catch let error as NSError {
+                fatalError("Failed to remove file \(type(of: self).kFilePath) : \(error.debugDescription)")
+            }
         }
 
         do {
             try fileManager.copyItem(atPath: GradeSystemTable.kBundleFilePath, toPath: GradeSystemTable.kFilePath)
         } catch let error as NSError {
-            NSLog("Failed to move bundle content to file \(type(of: self).kFilePath) : \(error.debugDescription)")
-            abort()
+            fatalError("Failed to move bundle content to file \(type(of: self).kFilePath) : \(error.debugDescription)")
         }
     }
 
     fileprivate func readContentsFromFile() {
         do {
             let contents = try NSString(contentsOfFile: type(of: self).kFilePath, encoding: String.Encoding.utf8.rawValue)
-            let lines = contents.components(separatedBy: "\n") as [String]
+            let lines = contents.components(separatedBy: "\r\n") as [String]
 
             let names = lines[0].components(separatedBy: ",") as [String]
             let categories = lines[1].components(separatedBy: ",") as [String]
@@ -256,22 +259,6 @@ class GradeSystemTable {
             NSLog("Failed to read contents from file \(type(of: self).kFilePath) : \(error.debugDescription)")
             abort()
         }
-    }
-
-    func downloadNewFile() -> Observable<Void> {
-        let session = URLSession.shared
-        return session.rx.data(.get, URL(string: kGradeSystemTableURLPath)!).do(onNext: { data in
-            let oldData = try? Data(contentsOf: URL(fileURLWithPath: type(of: self).kFilePath))
-            guard oldData != nil && oldData != data else {
-                return
-            }
-
-            try? data.write(to: URL(fileURLWithPath: type(of: self).kFilePath))
-            self._updated.value = false
-            self.readContentsFromFile()
-            self._updated.value = true
-        }).map({ _ -> Void in
-        })
     }
 
     func namesAndCategories() -> [(String, String)] {

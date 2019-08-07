@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Ia-mP-QVi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ia-mP-QVi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="9yn-m0-eTz">
             <objects>
                 <viewController id="4bk-4t-QYX" customClass="InfoViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HP8-yB-Kll"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZBI-Tg-LmT"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e4t-oD-HcJ">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,11 +59,12 @@
                             <constraint firstAttribute="leadingMargin" secondItem="FXC-m9-G7x" secondAttribute="leading" id="Bvm-2T-rys"/>
                             <constraint firstItem="eoN-Uk-bTg" firstAttribute="leading" secondItem="e4t-oD-HcJ" secondAttribute="leadingMargin" id="To8-yN-MTl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eoN-Uk-bTg" secondAttribute="trailing" id="bJJ-lX-fws"/>
-                            <constraint firstItem="FXC-m9-G7x" firstAttribute="top" secondItem="HP8-yB-Kll" secondAttribute="bottom" constant="20" id="dkw-Ms-aNW"/>
+                            <constraint firstItem="FXC-m9-G7x" firstAttribute="top" secondItem="XoZ-wU-S6J" secondAttribute="top" constant="20" id="dkw-Ms-aNW"/>
                             <constraint firstItem="eoN-Uk-bTg" firstAttribute="top" secondItem="95T-wa-iMg" secondAttribute="bottom" id="gKt-dX-QCk"/>
                             <constraint firstItem="sOu-oA-jSs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FXC-m9-G7x" secondAttribute="trailing" constant="16" id="kV5-Fi-mOx"/>
                             <constraint firstItem="sOu-oA-jSs" firstAttribute="centerY" secondItem="FXC-m9-G7x" secondAttribute="centerY" id="rXf-Tv-mnB"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="XoZ-wU-S6J"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -81,19 +79,15 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="MainViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dRw-BD-8Nn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1920"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4bq-5q-1dv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1920"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Nqi-3f-22J"/>
@@ -102,14 +96,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4bq-5q-1dv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="5OC-Wx-p4V"/>
-                            <constraint firstItem="4bq-5q-1dv" firstAttribute="height" secondItem="dRw-BD-8Nn" secondAttribute="height" id="N4h-ft-M9C"/>
-                            <constraint firstItem="4bq-5q-1dv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aU0-sG-5E3"/>
-                            <constraint firstItem="dRw-BD-8Nn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fiU-gC-EY8"/>
-                            <constraint firstAttribute="trailing" secondItem="4bq-5q-1dv" secondAttribute="trailing" id="qj6-LT-ss9"/>
-                            <constraint firstItem="dRw-BD-8Nn" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="rwm-KR-ULY"/>
-                            <constraint firstAttribute="trailing" secondItem="dRw-BD-8Nn" secondAttribute="trailing" id="s2Z-Uk-IIy"/>
+                            <constraint firstItem="4bq-5q-1dv" firstAttribute="top" secondItem="H6q-Cs-phA" secondAttribute="top" id="21U-qO-d5Y"/>
+                            <constraint firstItem="dRw-BD-8Nn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="FPa-VY-eD1"/>
+                            <constraint firstItem="H6q-Cs-phA" firstAttribute="trailing" secondItem="4bq-5q-1dv" secondAttribute="trailing" id="GOl-YG-Yhc"/>
+                            <constraint firstAttribute="trailing" secondItem="dRw-BD-8Nn" secondAttribute="trailing" id="Kk9-qm-Qa0"/>
+                            <constraint firstAttribute="bottom" secondItem="dRw-BD-8Nn" secondAttribute="bottom" id="UD2-Lf-7H1"/>
+                            <constraint firstItem="dRw-BD-8Nn" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="64" id="aEC-Ma-3tG"/>
+                            <constraint firstAttribute="bottom" secondItem="4bq-5q-1dv" secondAttribute="bottom" id="jmt-qk-npw"/>
+                            <constraint firstItem="4bq-5q-1dv" firstAttribute="leading" secondItem="H6q-Cs-phA" secondAttribute="leading" id="vYy-tt-uIE"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="H6q-Cs-phA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Grade Converter" id="F81-zo-MgV">
                         <barButtonItem key="leftBarButtonItem" image="info" id="lIo-Il-GXq">
@@ -127,25 +123,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959" y="441"/>
+            <point key="canvasLocation" x="957.60000000000002" y="440.32983508245883"/>
         </scene>
         <!--Add Grade System-->
         <scene sceneID="mBP-ps-GOJ">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="2P1-b5-Pwc" customClass="EditViewController" customModule="Grade_Converter" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kxH-sl-dmp"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lhi-kY-AHh"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sDN-fM-NiZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_bg" translatesAutoresizingMaskIntoConstraints="NO" id="2wq-fI-NPz">
-                                <rect key="frame" x="0.0" y="44" width="375" height="1920"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-Ew-kLz">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1920"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
@@ -155,14 +147,16 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="height" secondItem="2wq-fI-NPz" secondAttribute="height" id="3Wb-Jd-Zbs"/>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="Di8-UJ-ha5"/>
-                            <constraint firstAttribute="trailing" secondItem="2wq-fI-NPz" secondAttribute="trailing" id="MBg-cR-zqR"/>
-                            <constraint firstItem="2wq-fI-NPz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" constant="-20" id="QaC-RC-YyE"/>
-                            <constraint firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="UtP-k3-qls"/>
-                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="kxH-sl-dmp" secondAttribute="bottom" id="sUF-V6-vSC"/>
-                            <constraint firstItem="2wq-fI-NPz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="ukg-X8-gPo"/>
+                            <constraint firstItem="2wq-fI-NPz" firstAttribute="bottom" secondItem="sDN-fM-NiZ" secondAttribute="bottom" id="Qbp-tc-GK7"/>
+                            <constraint firstItem="2wq-fI-NPz" firstAttribute="leading" secondItem="sDN-fM-NiZ" secondAttribute="leading" id="WhD-9e-phM"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="leading" secondItem="Qok-4t-xap" secondAttribute="leading" id="ZQg-Lb-oLS"/>
+                            <constraint firstAttribute="trailing" secondItem="2wq-fI-NPz" secondAttribute="trailing" id="asU-Px-OaO"/>
+                            <constraint firstAttribute="top" secondItem="2wq-fI-NPz" secondAttribute="top" constant="-44" id="gPX-iR-Jdw"/>
+                            <constraint firstItem="Qok-4t-xap" firstAttribute="bottom" secondItem="eeC-Ew-kLz" secondAttribute="bottom" id="iSD-kJ-vRr"/>
+                            <constraint firstItem="Qok-4t-xap" firstAttribute="trailing" secondItem="eeC-Ew-kLz" secondAttribute="trailing" id="jIP-hl-HZv"/>
+                            <constraint firstItem="eeC-Ew-kLz" firstAttribute="top" secondItem="Qok-4t-xap" secondAttribute="top" id="zfd-kM-cc5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qok-4t-xap"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Grade System" id="UJA-uS-tjn">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="eiy-qG-uti">
@@ -179,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrk-wV-eWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="402"/>
+            <point key="canvasLocation" x="2540" y="401.64917541229386"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q7e-7g-va6">
