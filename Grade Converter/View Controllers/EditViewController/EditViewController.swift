@@ -15,6 +15,8 @@ class EditViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var imageView: UIImageView!
 
+    @IBOutlet weak var doneBarButtonItem: UIBarButtonItem!
+
     @IBAction func doneButtonTapped(_: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
@@ -51,6 +53,8 @@ class EditViewController: UIViewController {
         setConstraintsForBlurEffectView()
 
         tableView.tableFooterView = UIView()
+
+        configureColors()
     }
 
     override func updateViewConstraints() {
@@ -73,6 +77,10 @@ class EditViewController: UIViewController {
 
     fileprivate func configureBindings() {
         viewModel.editModels.bind(to: tableView.rx.items(dataSource: dataSource())).disposed(by: disposeBag)
+    }
+
+    private func configureColors() {
+        doneBarButtonItem.tintColor = .white
     }
 }
 

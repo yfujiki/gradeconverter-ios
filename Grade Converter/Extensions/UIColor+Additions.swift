@@ -20,15 +20,49 @@ extension UIColor {
     }
 
     class func systemLightGrayColor() -> UIColor {
-        return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1.0)
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 96.0 / 255, green: 96.0 / 255, blue: 96.0 / 255, alpha: 1.0)
+                } else {
+                    return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1.0)
+                }
+            }
+        } else {
+            return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1.0)
+        }
     }
 
     class func mainBackgroundColors() -> [UIColor] {
-        return [UIColor.white, UIColor.white]
+        return [mainBackgroundColor(), mainBackgroundColor()]
+    }
+
+    class func mainBackgroundColor() -> UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 64.0 / 255, green: 64.0 / 255, blue: 64.0 / 255, alpha: 1.0)
+                } else {
+                    return .white
+                }
+            }
+        } else {
+            return .white
+        }
     }
 
     class func mainForegroundColor() -> UIColor {
-        return UIColor(red: 64.0 / 255, green: 64.0 / 255, blue: 64.0 / 255, alpha: 1.0)
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return .white
+                } else {
+                    return UIColor(red: 64.0 / 255, green: 64.0 / 255, blue: 64.0 / 255, alpha: 1.0)
+                }
+            }
+        } else {
+            return UIColor(red: 64.0 / 255, green: 64.0 / 255, blue: 64.0 / 255, alpha: 1.0)
+        }
     }
 
     class func addColor() -> UIColor {

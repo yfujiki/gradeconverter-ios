@@ -17,6 +17,8 @@ class InfoViewController: UIViewController {
 
     weak var delegate: InfoViewControllerDelegate?
 
+    @IBOutlet var labels: [UILabel]!
+
     @IBAction func closeButtonTapped(_: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
@@ -40,5 +42,14 @@ class InfoViewController: UIViewController {
         if CurrentLang() == .ja {
             preferredContentSize = CGSize(width: 280, height: 260)
         }
+
+        configureColors()
+    }
+
+    private func configureColors() {
+        for label in labels {
+            label.textColor = .mainForegroundColor()
+        }
+        view.backgroundColor = .mainBackgroundColor()
     }
 }

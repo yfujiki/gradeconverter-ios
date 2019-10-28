@@ -30,6 +30,8 @@ class EditTableViewCell: UITableViewCell {
 
         cardView.layer.cornerRadius = 4
         cardView.backgroundColor = UIColor.systemLightGrayColor()
+
+        configureColors()
     }
 
     override func layoutSubviews() {
@@ -45,5 +47,10 @@ class EditTableViewCell: UITableViewCell {
 
     fileprivate func localizedCategoryStringForGradeSystem(_ gradeSystem: GradeSystem) -> String {
         return NSLocalizedString("(\(gradeSystem.category))", comment: "Climbing category in parenthesis")
+    }
+
+    private func configureColors() {
+        gradeNameLabel.textColor = .mainForegroundColor()
+        gradeCategoryLabel.textColor = .mainForegroundColor()
     }
 }
