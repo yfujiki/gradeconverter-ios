@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B7F9F197CEF8C760A704E4C /* Pods_Grade_Converter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1772D176B37CB0E6BA1DE4 /* Pods_Grade_Converter.framework */; };
 		5DF7C7EB34C3B9A44F461783 /* Pods_Grade_Converter_Pro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */; };
 		8B40AC8A348937D417684985 /* libPods-Grade ConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C3E092D5900472DE01404E /* libPods-Grade ConverterTests.a */; };
-		D8FA370A205ACA2164F4BA92 /* libPods-Grade Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */; };
 		DAE3150150673089F876958D /* libPods-Grade ConverterUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D18186BDBF4AD900574579 /* libPods-Grade ConverterUITests.a */; };
 		DB05E9C91B67330F00577CCD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB05E9C81B67330F00577CCD /* Localization.swift */; };
 		DB0B674C21444C6E000056DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0B674B21444C6D000056DF /* GoogleService-Info.plist */; };
@@ -138,7 +138,6 @@
 /* Begin PBXFileReference section */
 		11ACBC314021B6B0B8C51082 /* Pods-Grade Converter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter.debug.xcconfig"; sourceTree = "<group>"; };
 		11D18186BDBF4AD900574579 /* libPods-Grade ConverterUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Grade ConverterUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Grade Converter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1722EDE481619DB2D4B5804B /* Pods-Grade ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade ConverterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade ConverterTests/Pods-Grade ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		19AD17B0163E3F477F0B71A6 /* Pods-Grade Converter Pro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter Pro.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro.release.xcconfig"; sourceTree = "<group>"; };
 		4556031EA37B60DD7A730582 /* Pods-Grade Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grade Converter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grade Converter/Pods-Grade Converter.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +218,7 @@
 		DBFAD8361B6807A500EF244F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		DBFAD8371B6807A500EF244F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grade_Converter_Pro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE1772D176B37CB0E6BA1DE4 /* Pods_Grade_Converter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grade_Converter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +242,7 @@
 				DB8BEF7B1EFA486C009F3FBE /* RxAlamofire.framework in Frameworks */,
 				DBFAD8391B6807A500EF244F /* Crashlytics.framework in Frameworks */,
 				DBFAD8381B6807A500EF244F /* Fabric.framework in Frameworks */,
-				D8FA370A205ACA2164F4BA92 /* libPods-Grade Converter.a in Frameworks */,
+				1B7F9F197CEF8C760A704E4C /* Pods_Grade_Converter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,10 +381,10 @@
 				DB8BEF751EFA486C009F3FBE /* RxSwift.framework */,
 				DB8BEF761EFA486C009F3FBE /* Alamofire.framework */,
 				DB8BEF771EFA486C009F3FBE /* RxAlamofire.framework */,
-				15BF548F3B332458DF25E116 /* libPods-Grade Converter.a */,
 				E5AC327A07886A870175D715 /* Pods_Grade_Converter_Pro.framework */,
 				D0C3E092D5900472DE01404E /* libPods-Grade ConverterTests.a */,
 				11D18186BDBF4AD900574579 /* libPods-Grade ConverterUITests.a */,
+				EE1772D176B37CB0E6BA1DE4 /* Pods_Grade_Converter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -555,6 +555,7 @@
 				DB940B3C1B3615F400E996F8 /* Resources */,
 				DBFAD8351B68070500EF244F /* Fabric */,
 				DB8BEF7C1EFA489A009F3FBE /* Carthage */,
+				3D4524148C3ADB9A869D2FF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -746,6 +747,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Grade Converter Pro/Pods-Grade Converter Pro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D4524148C3ADB9A869D2FF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Grade Converter/Pods-Grade Converter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Grade Converter/Pods-Grade Converter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4CB7E284BCD3731DD5EB4FC3 /* [CP] Check Pods Manifest.lock */ = {
