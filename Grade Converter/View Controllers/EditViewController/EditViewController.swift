@@ -39,8 +39,8 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
 
         Analytics.logEvent(AnalyticsEventViewItem, parameters: [
-            AnalyticsParameterItemID: type(of: self),
-            AnalyticsParameterItemName: type(of: self),
+            AnalyticsParameterItemID: String(describing: type(of: self)),
+            AnalyticsParameterItemName: String(describing: type(of: self)),
         ])
 
         tableView.register(UINib(nibName: "EditTableViewCell", bundle: nil), forCellReuseIdentifier: "EditTableViewCell")

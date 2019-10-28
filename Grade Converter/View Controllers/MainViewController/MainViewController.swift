@@ -88,8 +88,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
         super.viewWillAppear(animated)
 
         Analytics.logEvent(AnalyticsEventViewItem, parameters: [
-            AnalyticsParameterItemID: type(of: self),
-            AnalyticsParameterItemName: type(of: self),
+            AnalyticsParameterItemID: String(describing: type(of: self)),
+            AnalyticsParameterItemName: String(describing: type(of: self)),
         ])
     }
 

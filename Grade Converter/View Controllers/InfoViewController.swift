@@ -31,8 +31,8 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
 
         Analytics.logEvent(AnalyticsEventViewItem, parameters: [
-            AnalyticsParameterItemID: type(of: self),
-            AnalyticsParameterItemName: type(of: self),
+            AnalyticsParameterItemID: String(describing: type(of: self)),
+            AnalyticsParameterItemName: String(describing: type(of: self)),
         ])
 
         preferredContentSize = CGSize(width: 280, height: 240)
