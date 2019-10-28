@@ -29,7 +29,7 @@ class EditTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         cardView.layer.cornerRadius = 4
-        cardView.backgroundColor = UIColor.systemLightGrayColor()
+        cardView.backgroundColor = UIColor.myLightGrayColor()
 
         configureColors()
     }

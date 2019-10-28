@@ -50,6 +50,6 @@ class InfoViewController: UIViewController {
         for label in labels {
             label.textColor = .mainForegroundColor()
         }
-        view.backgroundColor = .mainBackgroundColor()
+        view.backgroundColor = .myLightGrayColor()
     }
 }

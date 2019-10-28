@@ -15,15 +15,15 @@ extension UIColor {
     }
 
     class func myAquaColor() -> UIColor {
-        //        return UIColor(red: 80.0/255, green: 148.0/255, blue: 227.0/255, alpha: 1.0)
         return UIColor(red: 0.0 / 255, green: 152.0 / 255, blue: 255.0 / 255, alpha: 1.0)
     }
 
-    class func systemLightGrayColor() -> UIColor {
+    class func myLightGrayColor() -> UIColor {
         if #available(iOS 13, *) {
             return UIColor { (traitCollection) -> UIColor in
                 if traitCollection.userInterfaceStyle == .dark {
-                    return UIColor(red: 96.0 / 255, green: 96.0 / 255, blue: 96.0 / 255, alpha: 1.0)
+                    return UIColor(red: 32.0 / 255, green: 32.0 / 255, blue: 32.0 / 255, alpha: 1.0)
+
                 } else {
                     return UIColor(red: 242.0 / 255, green: 242.0 / 255, blue: 242.0 / 255, alpha: 1.0)
                 }
@@ -41,7 +41,7 @@ extension UIColor {
         if #available(iOS 13, *) {
             return UIColor { (traitCollection) -> UIColor in
                 if traitCollection.userInterfaceStyle == .dark {
-                    return UIColor(red: 64.0 / 255, green: 64.0 / 255, blue: 64.0 / 255, alpha: 1.0)
+                    return .black
                 } else {
                     return .white
                 }
@@ -66,6 +66,6 @@ extension UIColor {
     }
 
     class func addColor() -> UIColor {
-        return systemLightGrayColor()
+        return myLightGrayColor()
     }
 }
