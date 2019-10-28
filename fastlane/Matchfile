@@ -1,4 +1,4 @@
-git_url("https://yfujiki@bitbucket.org/yfujiki/certificates.git")
+git_url("git@bitbucket.org:yfujiki/certificates.git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
