@@ -1267,6 +1267,7 @@
 				INFOPLIST_FILE = "Grade Converter/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Supporting Files/Grade Converter-Bridging-Header.h";
@@ -1287,6 +1288,7 @@
 				INFOPLIST_FILE = "Grade Converter/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Grade Converter/Supporting Files/Grade Converter-Bridging-Header.h";
@@ -1351,6 +1353,7 @@
 				INFOPLIST_FILE = "Grade Converter/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
 				OTHER_SWIFT_FLAGS = "-D DEBUG -D PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverterpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1372,6 +1375,7 @@
 				INFOPLIST_FILE = "Grade Converter/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
 				OTHER_SWIFT_FLAGS = "-D PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yfujiki.gradeconverterpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
