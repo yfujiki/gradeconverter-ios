@@ -25,7 +25,7 @@ extension MainViewController {
 
                     cell.gradeSystem = gradeSystem
                     cell.indexes = currentIndexes
-                    let colors = UIColor.myColors()
+                    let colors = UIColor.mainBackgroundColors()
                     cell.cardColor = colors[indexPath.row % colors.count]
 
                     return cell

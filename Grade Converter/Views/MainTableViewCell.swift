@@ -103,6 +103,8 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
         for gradeLabel in gradeLabels {
             gradeLabelScrollView.addSubview(gradeLabel)
         }
+
+        configureColors()
     }
 
     override func layoutSubviews() {
@@ -153,6 +155,27 @@ class MainTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
         let frame = CGRect(x: scrollViewWidth * CGFloat(index), y: 0, width: scrollViewWidth, height: scrollViewHeight)
         gradeLabel.frame = frame
+    }
+
+    private func configureColors() {
+        for label in gradeLabels {
+            label.textColor = .mainForegroundColor()
+        }
+        gradeNameLabel.textColor = .mainForegroundColor()
+
+        let rightArrowImage = UIImage(named: "right-arrow")
+        rightArrowButton.setImage(rightArrowImage, for: .normal)
+        rightArrowButton.tintColor = .mainForegroundColor()
+
+        let leftArrowImage = UIImage(named: "left-arrow")
+        leftArrowButton.setImage(leftArrowImage, for: .normal)
+        leftArrowButton.tintColor = .mainForegroundColor()
+
+        let handleImage = UIImage(named: "handle")
+        let handleHighlightImage = UIImage(named: "handle-highlight")
+        handleButton.setImage(handleImage, for: .normal)
+        handleButton.setImage(handleHighlightImage, for: .highlighted)
+        handleButton.tintColor = .mainForegroundColor()
     }
 
     // MARK: - UIScrollViewDelegate

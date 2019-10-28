@@ -61,7 +61,7 @@ class AddTableViewCell: UITableViewCell {
             [upperCardView, lowerCardView].forEach { cardView in
                 cardView.alpha = 1.0
             }
-            label.textColor = UIColor.black
+            label.textColor = .mainForegroundColor()
         }
     }
 }
