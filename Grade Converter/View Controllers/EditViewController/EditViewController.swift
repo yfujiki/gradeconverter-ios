@@ -24,7 +24,12 @@ class EditViewController: UIViewController {
     fileprivate var kCellHeight: CGFloat = 96
 
     fileprivate lazy var blurEffectView: UIVisualEffectView = { // [unowned self] _ in
-        let effect = UIBlurEffect(style: .light)
+        let effect: UIBlurEffect
+        if #available(iOS 13, *) {
+            effect = UIBlurEffect(style: .systemUltraThinMaterial)
+        } else {
+            effect = UIBlurEffect(style: .light)
+        }
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.view.bounds
 

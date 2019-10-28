@@ -36,7 +36,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UIViewControlle
     }()
 
     fileprivate lazy var blurEffectView: UIVisualEffectView = {
-        let effect = UIBlurEffect(style: .light)
+        let effect: UIBlurEffect
+        if #available(iOS 13, *) {
+            effect = UIBlurEffect(style: .systemThinMaterial)
+        } else {
+            effect = UIBlurEffect(style: .light)
+        }
         var effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.imageView.bounds
 
