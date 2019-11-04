@@ -48,7 +48,8 @@ platform :ios do
   ####### Screenshots #######
   desc "Get all screenshots"
   lane :screenshots do
-    snapshot
+    snapshot(dark_mode: false)
+    snapshot(dark_mode: true, output_directory: './fastlane/screenshots_dark')
   end
 
   ####### Deployment #######

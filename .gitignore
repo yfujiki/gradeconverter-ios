@@ -61,6 +61,7 @@ Carthage/Build
 
 fastlane/report.xml*
 fastlane/screenshots
+fastlane/screenshots_dark
 *.mobileprovision
 
 
