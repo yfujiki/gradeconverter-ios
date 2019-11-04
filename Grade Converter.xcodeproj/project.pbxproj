@@ -151,6 +151,8 @@
 		DB31CF751F03061500E7837E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3DF58D1B4235C900141E47 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		DB3DF5BD1B439D5A00141E47 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		DB5A855323709F69003E1B24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DB5A855523709F6A003E1B24 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		DB5BEF3922D4E7CD00E221DD /* UIDevice+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3B91B3B968D0016F707 /* NSUserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		DB5DC3BC1B3B96E70016F707 /* NSUserDefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsTest.swift; sourceTree = "<group>"; };
@@ -170,8 +172,6 @@
 		DB79CB9F1B655C4D000024A5 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DB79CBA11B65F07C000024A5 /* FormSheetPresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSheetPresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
 		DB79CBA31B65F8F0000024A5 /* PresentationAnimatingTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAnimatingTransitioning.swift; sourceTree = "<group>"; };
-		DB79CBAC1B668BBB000024A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DB79CBAE1B668BC2000024A5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB8BEF6F1EF8E34F009F3FBE /* Grade Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grade Converter.entitlements"; sourceTree = "<group>"; };
 		DB8BEF701EF8E974009F3FBE /* Grade Converter Pro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grade Converter Pro.entitlements"; sourceTree = "<group>"; };
 		DB8BEF741EFA486C009F3FBE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -1046,8 +1046,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				DB940B481B3615F400E996F8 /* Base */,
-				DB79CBAC1B668BBB000024A5 /* en */,
-				DB79CBAE1B668BC2000024A5 /* ja */,
+				DB5A855323709F69003E1B24 /* en */,
+				DB5A855523709F6A003E1B24 /* ja */,
 			);
 			name = Main.storyboard;
 			path = .;
